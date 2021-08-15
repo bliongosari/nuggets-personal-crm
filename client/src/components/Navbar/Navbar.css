@@ -1,0 +1,14 @@
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+}
+
+.navbar {
+  height: 100px;
+  width: 100%;
+  background-color: var(--primary-blue);
+  display: flex;
+}
