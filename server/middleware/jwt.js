@@ -29,7 +29,7 @@ const verifyJWT = (req, res, next) => {
 };
 
 const getNewToken = (req, res) => {
-    
+
 }
 
-module.exports = verifyToken;
+module.exports = verifyJWT;

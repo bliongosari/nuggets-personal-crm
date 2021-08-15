@@ -1,0 +1,18 @@
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+}
+
+.sidebar {
+  height: 100%;
+  width: 50px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--tertiary-blue);
+  overflow-x: hidden;
+}

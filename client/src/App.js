@@ -1,11 +1,15 @@
 import React from "react";
-import { Counter } from "./features/counter/Counter";
+import { login, logout } from "./features/user/userSlice";
 import "./App.css";
+import Navbar from "./components/Navbar/Navbar.js";
+import Sidebar from "./components/Sidebar/Sidebar.js";
+import Home from "./components/Home/Home.js";
 
 function App() {
   return (
-    <div className="App">
-      <h1> This is the Frontend</h1>
+    <div className="app">
+      {/* <Navbar></Navbar> */}
+      <Home></Home>
     </div>
   );
 }

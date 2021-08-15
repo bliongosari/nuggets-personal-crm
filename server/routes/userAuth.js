@@ -7,7 +7,11 @@ const router = express.Router();
 router.post("/register", async (req, res) => {});
 
 router.post("/login", async (req, res) => {
-  const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
+  const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
+    algorithm: "HS256",
+    expiresIn: 20000,
+  });
+
   res.json({
     token,
     user: {
