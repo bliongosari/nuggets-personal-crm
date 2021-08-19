@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "14.x"
+          cache: 'npm'
+          cache-dependency-path: subdir/package-lock.json
 
       - name: npm install, build, and test
         run: |
