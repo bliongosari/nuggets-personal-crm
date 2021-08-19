@@ -9,7 +9,7 @@ on:
     
 env:
   AZURE_WEBAPP_NAME: nuggets-personal-crm    
-  AZURE_WEBAPP_PACKAGE_PATH: './server/'    
+  AZURE_WEBAPP_PACKAGE_PATH: './server'    
   NODE_VERSION: '14.x'               
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-      working-directory: "./server/"
+      working-directory: "./server"
       
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
