@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
-import userReducer from "../reducers/userSlice";
+import userReducer from "../redux/slices/userSlice";
 
 const persistConfig = {
   key: "root",
