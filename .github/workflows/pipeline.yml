@@ -13,8 +13,8 @@ env:
   NODE_VERSION: "14.x"
 
 jobs:
-  test-and-build:
-    name: Building and Testing
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Installing, Building and Testing npm
+      - name: npm install, build, and test
         env:
           CI: false
         run: |
@@ -31,24 +31,11 @@ jobs:
           npm run client-install
           npm run build --if-present
           npm run test --if-present
-
-  deploy:
-      name: "Deploying to Azure"
-      needs: test-and-build
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@master
-        - name: Use Node.js ${{ env.NODE_VERSION }}
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ env.NODE_VERSION }}
-        - name: "Deploying using publish profile"
-          uses: azure/webapps-deploy@v2
-          env:
-            CI: false
-          with:
-            app-name: ${{ env.AZURE_WEBAPP_NAME }}
-            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-            
-            
+      - name: "Deploy to Azure WebApp"
+        uses: azure/webapps-deploy@v2
+        env:
+          CI: false
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
