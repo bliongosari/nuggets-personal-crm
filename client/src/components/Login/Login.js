@@ -13,6 +13,7 @@ function Login() {
 
   return (
     <div className="login">
+      <h1>Login Page</h1>
       <h1>
         <h2> user: {user} </h2>
         <form onSubmit={() => dispatch(login(nameInput))}>

@@ -7,9 +7,8 @@ import Login from "../Login/Login.js";
 function Home() {
   return (
     <div className="home">
-      <Navbar></Navbar>
-      <Login></Login>
-      This is home page
+      {/* <Login></Login> */}
+      <h1>This is home page</h1>
     </div>
   );
 }

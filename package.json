@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "client-install": "cd ./client && npm install",
+    "client-install": "cd client && npm install",
     "start": "node app.js",
     "server": "node app.js",
-    "client": "npm start --prefix client",
+    "client": "cd client && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {

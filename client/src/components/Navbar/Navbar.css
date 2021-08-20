@@ -11,4 +11,5 @@
   width: 100%;
   background-color: var(--primary-blue);
   display: flex;
+  flex-wrap: wrap;
 }
