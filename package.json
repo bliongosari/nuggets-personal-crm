@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "client-install": "cd ../client && npm install",
+    "client-install": "cd ./client && npm install",
     "start": "nodemon app.js",
     "server": "nodemon app.js",
     "client": "npm start --prefix client",
