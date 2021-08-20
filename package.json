@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "client-install": "cd ./client && npm install",
-    "start": "npx nodemon app.js",
-    "server": "npx nodemon app.js",
+    "start": "nodemon app.js",
+    "server": "nodemon app.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -25,9 +25,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7",
+    "nodemon": "^2.0.12",
     "passport": "^0.4.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.12"
   }
 }
