@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "client-install": "cd ./client && npm install",
-    "start": "nodemon app.js",
-    "server": "nodemon app.js",
+    "start": "npx nodemon app.js",
+    "server": "npx nodemon app.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
