@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/", routes);
 
 app.get("/", (req, res) => {
-  res.send("backend");
+  res.send("this is backend");
+  console.log(process.env.NODE_ENV);
 });
 
 if (process.env.NODE_ENV === "production") {
