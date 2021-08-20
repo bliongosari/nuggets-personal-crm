@@ -7,10 +7,6 @@ function Login() {
   const [nameInput, setNameInput] = useState("");
   const dispatch = useDispatch();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
   return (
     <div className="login">
       <h1>Login Page</h1>

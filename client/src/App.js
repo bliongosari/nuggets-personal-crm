@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { login, logout } from "./redux/slices/userSlice";
 import "./App.css";
 import Home from "./components/Home/Home.js";
 import Login from "./components/Login/Login.js";
