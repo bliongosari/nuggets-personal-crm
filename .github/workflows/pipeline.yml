@@ -1,5 +1,5 @@
 name: Deploy to Azure
-
+# add on label only
 on:
   push:
     branches:
