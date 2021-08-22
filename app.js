@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/", routes);
 
 app.get("/", (req, res) => {
-  res.send("this is backend");
+  res.send("this is backend at" + process.env.NODE_ENV);
 });
 
 // app.use(express.static(path.join(__dirname, "client/build")));
