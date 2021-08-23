@@ -1,6 +1,5 @@
 import React from "react";
 import "./Welcome.css";
-import { Link } from "react-router-dom";
 
 
 function Welcome() {
