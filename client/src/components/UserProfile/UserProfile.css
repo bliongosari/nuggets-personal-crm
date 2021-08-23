@@ -82,42 +82,31 @@
     justify-content: center;
     align-items: center;
     grid-template-columns: 20% 80%;
-    @media only screen and (max-width: 768px) {
-        grid-template-columns: 100%;
-    }
+    text-align: center;
 }
 
-
 .button {
+    font-family: var(--button-font);
     background-color: var(--primary-blue);
-    border-radius: 3vh;
+    border-radius: 35px;
     color: white;
     padding: 10px 10px;
     text-align: center;
-    text-decoration: none;
+    border: none;
     display: inline-block;
     font-size: 16px;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
     cursor: pointer;
 }
 
 .button:hover {
     background-color: var(--secondary-blue);
+    opacity: 70%;
 }
 
 .icon {
     float: left;
     vertical-align: bottom;
-    fill: white;
-}
-
-.passGrid {
-    display: grid;
-    grid-column-gap: 10px 10px;
-    grid-template-columns: 10% 25% 65%;
-    @media only screen and (max-width: 768px) {
-        grid-template-columns: 100%;
-    }
-    margin-bottom: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-right: 7px;
 }

@@ -19,13 +19,15 @@ function UserProfile() {
       </div>
 
       <div class="button-container">
-        <img alt="Edit" src="../../edit.svg" class="icon"></img>
-        <button class="button">Edit Profile</button>
+        <button class="button">
+          <img alt="Edit" src="../../edit.svg" class="icon"></img>Edit Profile
+        </button>
       </div>
-      
+
       <div class="button-container">
-        <img alt="Edit" src="../../edit.svg" class="icon"></img>
-        <button class="button">Change Password</button>
+        <button class="button">
+          <img alt="Edit" src="../../edit.svg" class="icon"></img>Change Password
+        </button>
       </div>
       
     </div>
