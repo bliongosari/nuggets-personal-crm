@@ -1,15 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap");
+
 :root {
   --primary-blue: #3466aa;
   --secondary-blue: #114084;
   --tertiary-blue: #82b7dc;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
 }
 
 .navbar {
-  height: 100px;
+  height: 25%;
   width: 100%;
   background-color: var(--primary-blue);
   display: flex;
   flex-wrap: wrap;
+}
+
+h1 {
+  font-family: var(--logo-font);
+  color: var(--primary-white);
+  padding-left: 5%;
+  margin-top: 5%;
+  font-size: 130%;
+  letter-spacing: 1.5%;
+  font-weight: lighter;
+}
+
+.btn {
+  font-family: var(--button-font);
+  border-radius: 35px;
+  margin: 3%;
+  font-size: 85%;
+  width: 170%;
+  height: 55%;
+  font-weight: bold;
+  color: white;
+  background-color: var(--tertiary-blue);
+  border: none;
 }
