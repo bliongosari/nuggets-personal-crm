@@ -26,32 +26,44 @@
   font-size: 130%;
   letter-spacing: 1.5%;
   font-weight: lighter;
-  margin-top: 1.4%;
+  margin-top: 1%;
 }
 
 .btn {
   font-family: var(--button-font);
   border-radius: 35px;
   font-size: 80%;
-  height: 100%;
-  width: 170%;
+  width: 100%;
   font-weight: bolder;
   color: white;
   background-color: var(--tertiary-blue);
   letter-spacing: 1.5px;
   border: none;
   text-align: center;
+  margin-left: 0%;
+  margin-right: 5%;
 }
 
-.buttons {
+.buttonss {
   display: flex;
   flex-direction: row;
-
-  margin-left: 50%;
-  height: 5%;
-  margin-top: 1%;
+  right: 0;
+  top: 0;
+  position: absolute;
+  width: 20%;
+  height: auto;
+  margin-right: 3%;
+  margin-top: 1.5%;
 }
 
-.signbtn {
-  margin-left: 8%;
+@media only screen and (max-width: 760px) {
+  .buttonss {
+    margin-right: 5%;
+    margin-top: 3%;
+    width: 45%;
+  }
+
+  .navbar h1 {
+    margin-top: 3%;
+  }
 }

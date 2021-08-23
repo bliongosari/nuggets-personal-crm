@@ -7,19 +7,16 @@ function Navbar() {
     <div className="navbar">
         <h1>NUGGETS</h1>
 
-        <div className="buttons">
-          <div className="signbtn">
-            <Link to="/">
-              <button className="btn">Sign in</button>
-            </Link>
-          </div>
-
-          <div className="signbtn">
-            <Link to="/">
-              <button className="btn">Sign up</button>
-            </Link>
-          </div>
+        <div className="buttonss">
+          <button className="btn">
+            Sign In
+          </button>
+        
+          <button className="btn">
+            Sign Up
+          </button>
         </div>
+        
         
       </div>
   );
