@@ -3,8 +3,31 @@ import "./UserProfile.css";
 
 function UserProfile() {
   return (
-    <div className="userprofile">
-      <h1>This is User Profile page</h1>
+    <div>
+      <div class="background">
+        <img alt="User" src="../../person.svg" class="user-image"></img>
+        <h1 class="user-full-name">User Full Name</h1>
+      </div>
+
+      <div class="grid-container">
+        <h1 class="user-data-spec">First Name:</h1>
+        <h1 class="user-data">(first name)</h1>
+        <h1 class="user-data-spec">Last Name:</h1>
+        <h1 class="user-data">(last name)</h1>
+        <h1 class="user-data-spec">Email Address:</h1>
+        <h1 class="user-data">(email address)</h1>
+      </div>
+
+      <div class="button-container">
+        <img alt="Edit" src="../../edit.svg" class="icon"></img>
+        <button class="button">Edit Profile</button>
+      </div>
+      
+      <div class="button-container">
+        <img alt="Edit" src="../../edit.svg" class="icon"></img>
+        <button class="button">Change Password</button>
+      </div>
+      
     </div>
   );
 }

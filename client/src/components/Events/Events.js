@@ -1,7 +1,7 @@
 import React from "react";
 import "./Events.css";
 
-function Home() {
+function Events() {
   return (
     <div className="events">
       <h1>This is events page</h1>
