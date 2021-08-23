@@ -5,13 +5,23 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <div className="navbar">
-      <h1>NUGGETS</h1>
+        <h1>NUGGETS</h1>
 
-      <Link to="/">
-        <button className="btn">Log in</button>
-      </Link>
-      
-    </div>
+        <div className="buttons">
+          <div className="signbtn">
+            <Link to="/">
+              <button className="btn">Sign in</button>
+            </Link>
+          </div>
+
+          <div className="signbtn">
+            <Link to="/">
+              <button className="btn">Sign up</button>
+            </Link>
+          </div>
+        </div>
+        
+      </div>
   );
 }
 
