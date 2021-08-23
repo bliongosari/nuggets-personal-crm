@@ -2,14 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const contactSchema = new Schema({
-  email: {
-    type: String,
-  },
-  first_name: {
-    type: String,
-    required: true,
-  },
-  last_name: {
+  full_name: {
     type: String,
     required: true,
   },
@@ -25,6 +18,24 @@ const contactSchema = new Schema({
   },
   tags: {
     type: [Tag],
+  },
+  meeting_notes: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  phone_number: {
+    type: Number,
+  },
+  linkedin: {
+    type: String,
+  },
+  tweeter: {
+    type: String,
   },
 });
 
