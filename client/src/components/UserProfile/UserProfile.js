@@ -3,7 +3,7 @@ import "./UserProfile.css";
 
 function UserProfile() {
   return (
-    <div>
+    <div class="user-profile">
       <div class="background">
         <img alt="User" src="../../person.svg" class="user-image"></img>
         <h1 class="user-full-name">User Full Name</h1>
@@ -25,7 +25,7 @@ function UserProfile() {
       </div>
 
       <div class="button-container">
-        <button class="button">
+        <button class="button1">
           <img alt="Edit" src="../../edit.svg" class="icon"></img>Change Password
         </button>
       </div>

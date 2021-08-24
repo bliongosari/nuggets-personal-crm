@@ -2,17 +2,51 @@
   --primary-blue: #3466aa;
   --secondary-blue: #114084;
   --tertiary-blue: #82b7dc;
+  --fourth-blue: #DEECFF;
+  --fifth-blue: #D2DEED;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
 }
 
 .sidebar {
-  height: 100%;
-  width: 50px;
+  height: 84%;
+  width: 150px;
+  background-color: var(--fifth-blue);
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 52.5px;
   left: 0;
-  background-color: var(--tertiary-blue);
   overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidebar-container {
+  display: grid;
+  margin-top: 30px;
+  justify-content: left;
+  margin-left: 16.5px;
+}
+
+.sidebar-container span {
+  text-align: center;
+  align-items: center;
+  position: fixed;
+  margin-top: 3px;
+  margin-left: 20px;
+  color: var(--primary-blue);
+  font-weight: bold;
+}
+
+span:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidebar-container span {
+    display: none;
+  }
+
+  .sidebar {
+    width: 60px;
+  }
 }

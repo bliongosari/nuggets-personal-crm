@@ -4,6 +4,7 @@ import "./App.css";
 import Welcome from "./components/Welcome/Welcome.js"
 import Home from "./components/Home/Home.js";
 import Navbar from "./components/Navbar/Navbar.js";
+import Sidebar from "./components/Sidebar/Sidebar.js"
 import UserProfile from "./components/UserProfile/UserProfile";
 import Journal from "./components/Journal/Journal";
 import Contacts from "./components/Contacts/Contacts";
@@ -15,6 +16,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Navbar />
+        <Sidebar />
         <Switch>
           <Route exact path="/" component={Welcome} />
           <Route exact path="/home" component={Home} />
@@ -22,7 +24,6 @@ function App() {
           <Route exact path="/journal" component={Journal} />
           <Route exact path="/contacts" component={Contacts} />
           <Route exact path="/events" component={Events} />
-        
         </Switch>
         <Footer />
       </div>
