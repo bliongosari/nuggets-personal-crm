@@ -28,38 +28,3 @@
   font-weight: lighter;
   margin-top: 15px;
 }
-
-.btn {
-  font-family: var(--button-font);
-  border-radius: 35px;
-  font-size: 80%;
-  width: 100%;
-  font-weight: bolder;
-  color: white;
-  background-color: var(--tertiary-blue);
-  letter-spacing: 1.5px;
-  border: none;
-  text-align: center;
-  margin-left: 0%;
-  margin-right: 5%;
-}
-
-.buttonss {
-  display: flex;
-  flex-direction: row;
-  right: 0;
-  top: 0;
-  position: absolute;
-  width: 20%;
-  height: auto;
-  margin-right: 3%;
-  margin-top: 1.5%;
-}
-
-@media only screen and (max-width: 500px) {
-  .buttonss {
-    margin-right: 5%;
-    margin-top: 4%;
-    width: 45%;
-  }
-}
