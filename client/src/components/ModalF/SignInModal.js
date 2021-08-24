@@ -16,7 +16,7 @@ export default function SignInModal() {
 
   return (
     <>
-        <div className="buttonss">
+        <div className="buttons">
             <button onClick={toggleModal} className="btn">
                 Sign In
             </button>

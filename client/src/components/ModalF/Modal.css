@@ -63,7 +63,19 @@ body.active-modal {
   width: 8%;
   height: 3%;
   margin-right: 3%;
-  margin-top: 1%;
+  margin-top: 1.5%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  right: 10%;
+  top: 0;
+  position: absolute;
+  width: 8%;
+  height: 3%;
+  margin-right: 3%;
+  margin-top: 1.5%;
 }
 
 .closebutton {
@@ -199,7 +211,7 @@ body.active-modal {
   font-size: 55%;
   letter-spacing: 2px;
   font-weight: lighter;
-  width: 75%;
+  width: 78.5%;
   height: 45%;
   padding: 1px;
   border-color: var(--primary-blue);
@@ -209,15 +221,109 @@ body.active-modal {
   padding: 4px;
 }
 
+.namediv {
+  margin-top: 1%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.namebox {
+  margin-top: 0%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5%;
+  width: 41%;
+}
+
+.namebox input {
+  font-family: var(--logo-font);
+  font-size: 55%;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  width: 100%;
+  height: auto;
+  padding: 1px;
+  border-color: var(--primary-blue);
+  background-color: var(--primary-white);
+  border-radius: 0;
+  border-style: solid;
+  padding: 4px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.confirmationbox {
+  margin-top: 1%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+}
+
+.confirmationbox h2 {
+  font-family: var(--logo-font);
+  color: var(--secondary-blue);
+  margin-top: 0%;
+  font-size: 70%;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  margin-left: 2%;
+  width: 70%;
+}
+
+.confirmationbox input {
+  border: var(--secondary-blue);
+  margin-top: 1%;
+}
+
+
 @media only screen and (max-width: 500px) {
   .buttonss {
     margin-right: 5%;
     margin-top: 4%;
+    width: 20%;
+  }
+
+  .buttons {
+    width: 20%;
+    margin-top: 4%;
+    right: 25%;
     width: 45%;
   }
 
   .modal-content {
     width: 80%;
     height: auto;
+  }
+
+  .confirmationbox h2 {
+    font-size: 50%;
+  }
+
+  .confirmationbox {
+    margin-top: 2%;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 850px) {
+  .buttonss {
+    margin-right: 5%;
+    margin-top: 2%;
+    width: 20%;
+  }
+
+  .buttons {
+    width: 20%;
+    margin-top: 2%;
+    right: 25%;
   }
 }
