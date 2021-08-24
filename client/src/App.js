@@ -3,22 +3,29 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Welcome from "./components/Welcome/Welcome.js"
 import Home from "./components/Home/Home.js";
-import Login from "./components/Login/Login.js";
-import Signup from "./components/Signup/Signup.js"
-import Sidebar from "./components/Sidebar/Sidebar.js"
 import Navbar from "./components/Navbar/Navbar.js";
+import Sidebar from "./components/Sidebar/Sidebar.js"
+import UserProfile from "./components/UserProfile/UserProfile";
+import Journal from "./components/Journal/Journal";
+import Contacts from "./components/Contacts/Contacts";
+import Events from "./components/Events/Events";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Navbar />
+        <Sidebar />
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/user-profile" component={UserProfile} />
+          <Route exact path="/journal" component={Journal} />
+          <Route exact path="/contacts" component={Contacts} />
+          <Route exact path="/events" component={Events} />
         </Switch>
+        <Footer />
       </div>
     </BrowserRouter>
   );

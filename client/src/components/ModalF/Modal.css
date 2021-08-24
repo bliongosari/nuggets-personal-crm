@@ -285,6 +285,7 @@ body.active-modal {
   margin-top: 1%;
 }
 
+
 @media only screen and (max-width: 500px) {
   .buttonss {
     margin-right: 5%;
@@ -296,6 +297,7 @@ body.active-modal {
     width: 20%;
     margin-top: 4%;
     right: 25%;
+    width: 45%;
   }
 
   .modal-content {

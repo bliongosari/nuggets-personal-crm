@@ -11,19 +11,24 @@
   --button-font: "Urbanist";
 }
 
-.navbar {
-  height: 25%;
+.footerbar {
+  height: 6%;
   width: 100%;
   background-color: var(--primary-blue);
   display: flex;
   flex-direction: row;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  justify-content: center;
 }
 
-.navbar h1 {
+.footerbar h1 {
   font-family: var(--logo-font);
   color: var(--primary-white);
   padding-left: 5%;
-  font-size: 130%;
+  font-size: 90%;
   letter-spacing: 1.5%;
   font-weight: lighter;
   margin-top: 15px;

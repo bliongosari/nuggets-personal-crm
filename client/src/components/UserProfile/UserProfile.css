@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap");
+
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --fourth-blue: #DEECFF;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
+}
+
+.user-profile {
+    margin-left: 140px;
+}
+
+.background {
+    padding: 2vh;
+    background: var(--fourth-blue);
+    border-radius: 3vh;
+    max-width: 60%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-image {
+    border-radius: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--secondary-blue);
+    width: 25%;
+    padding: 5px;
+    display: block;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    fill: var(--tertiary-blue);
+}
+
+.user-full-name {
+    font-family: var(--logo-font);
+    color: var(--primary-blue);
+    margin-top: 5%;
+    font-size: 130%;
+    letter-spacing: 1.5%;
+    text-align: center;
+    padding-inline-start: 0%;
+}
+
+.grid-container {
+    display: grid;
+    grid-column-gap: 5% 5%;
+    grid-template-columns: 45% 45%;
+    row-gap: 3px;
+    margin-top: 30px;
+    margin-left:22.5%;
+    margin-right:auto;
+    max-width: 60%;
+}
+
+.user-data-spec {
+    font-family: var(--logo-font);
+    color: var(--primary-black);
+    padding-left: 5%;
+    margin-top: 5%;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: left;
+}
+
+.user-data {
+    font-family: var(--logo-font);
+    color: var(--primary-blue);
+    margin-top: 5%;
+    font-size: 100%;
+    font-weight: lighter;
+    text-align: right;
+}
+
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 20% 80%;
+    text-align: center;
+}
+
+.button {
+    font-family: var(--button-font);
+    background-color: var(--primary-blue);
+    border-radius: 35px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.button1 {
+    font-family: var(--button-font);
+    background-color: var(--primary-blue);
+    border-radius: 35px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bolder;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--secondary-blue);
+    opacity: 70%;
+}
+
+.icon {
+    float: left;
+    vertical-align: bottom;
+    padding-right: 7px;
+}
+
+@media only screen and (min-width: 600px) {
+    .background {
+        max-height: 250px;
+    }
+  
+    .user-image {
+        margin-top: 15px;
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .user-full-name {
+        margin-top: 15px;
+        font-size: 150%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .button-container {
+        margin-top: 30px;
+    }
+
+    .user-profile {
+        margin-left: 60px;
+    }
+}
+  
