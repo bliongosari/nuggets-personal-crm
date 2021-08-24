@@ -1,0 +1,327 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap");
+
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
+}
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.modal,
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 1% 1%;
+  border-radius: 30px;
+  width: 60%;
+  height: auto;
+}
+
+.btn {
+  font-family: var(--button-font);
+  border-radius: 35px;
+  font-size: 80%;
+  width: 100%;
+  font-weight: bolder;
+  color: white;
+  background-color: var(--tertiary-blue);
+  letter-spacing: 1.5px;
+  border: none;
+  text-align: center;
+  margin-left: 0%;
+  margin-right: 5%;
+}
+
+.buttonss {
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  top: 0;
+  position: absolute;
+  width: 8%;
+  height: 3%;
+  margin-right: 3%;
+  margin-top: 1.5%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  right: 10%;
+  top: 0;
+  position: absolute;
+  width: 8%;
+  height: 3%;
+  margin-right: 3%;
+  margin-top: 1.5%;
+}
+
+.closebutton {
+  right: 20px;
+  top: 10px;
+  position: absolute;
+}
+
+.closebutton img {
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+  margin-right: 10%;
+}
+
+.headingcomp {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.headingcomp h2 {
+  font-family: var(--logo-font);
+  color: var(--secondary-blue);
+  margin-top: 0%;
+  font-size: 70%;
+  letter-spacing: 3px;
+}
+
+.headingcomp img {
+  width: 20%;
+  height: auto;
+  margin-top: 4%;
+  margin-bottom: 0%;
+}
+
+.continue-btn {
+  font-family: var(--button-font);
+  font-size: 60%;
+  width: 80%;
+  height: auto;
+  font-weight: bolder;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  letter-spacing: 1.8px;
+  border-color: var(--primary-blue);
+  border-width: 2px 2px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 0;
+  border-style: solid;
+  padding: 4px;
+  text-align: center;
+  justify-content: center;
+}
+
+.logInGoogle {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+  justify-content: center;
+}
+
+.submit-btn {
+  font-family: var(--button-font);
+  font-size: 60%;
+  width: 80%;
+  height: auto;
+  font-weight: bolder;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  letter-spacing: 1.8px;
+  border-color: var(--primary-blue);
+  border-width: 2px 2px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 0;
+  border-style: solid;
+  padding: 4px;
+  text-align: center;
+  justify-content: center;
+}
+
+.submit-div {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+  justify-content: center;
+}
+
+.submit {
+  margin-bottom: 5%;
+}
+
+.divider {
+  margin-top: 1%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.divider h3 {
+  font-family: var(--logo-font);
+  color: var(--secondary-blue);
+  margin-top: 0%;
+  font-size: 70%;
+  letter-spacing: 1px;
+  font-weight: lighter;
+}
+
+.divider hr {
+  border-style: solid;
+  width: 30%;
+  height: 100%;
+  color: var(--secondary-blue);
+}
+
+.emailbox {
+  margin-top: 0%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5%;
+}
+
+.emailbox input {
+  font-family: var(--logo-font);
+  font-size: 55%;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  width: 78.5%;
+  height: 45%;
+  padding: 1px;
+  border-color: var(--primary-blue);
+  background-color: var(--primary-white);
+  border-radius: 0;
+  border-style: solid;
+  padding: 4px;
+}
+
+.namediv {
+  margin-top: 1%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.namebox {
+  margin-top: 0%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5%;
+  width: 41%;
+}
+
+.namebox input {
+  font-family: var(--logo-font);
+  font-size: 55%;
+  letter-spacing: 2px;
+  font-weight: lighter;
+  width: 100%;
+  height: auto;
+  padding: 1px;
+  border-color: var(--primary-blue);
+  background-color: var(--primary-white);
+  border-radius: 0;
+  border-style: solid;
+  padding: 4px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.confirmationbox {
+  margin-top: 1%;
+  margin-bottom: 0%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+}
+
+.confirmationbox h2 {
+  font-family: var(--logo-font);
+  color: var(--secondary-blue);
+  margin-top: 0%;
+  font-size: 70%;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  margin-left: 2%;
+  width: 70%;
+}
+
+.confirmationbox input {
+  border: var(--secondary-blue);
+  margin-top: 1%;
+}
+
+@media only screen and (max-width: 500px) {
+  .buttonss {
+    margin-right: 5%;
+    margin-top: 4%;
+    width: 20%;
+  }
+
+  .buttons {
+    width: 20%;
+    margin-top: 4%;
+    right: 25%;
+  }
+
+  .modal-content {
+    width: 80%;
+    height: auto;
+  }
+
+  .confirmationbox h2 {
+    font-size: 50%;
+  }
+
+  .confirmationbox {
+    margin-top: 2%;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 850px) {
+  .buttonss {
+    margin-right: 5%;
+    margin-top: 2%;
+    width: 20%;
+  }
+
+  .buttons {
+    width: 20%;
+    margin-top: 2%;
+    right: 25%;
+  }
+}
