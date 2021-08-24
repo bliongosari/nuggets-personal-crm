@@ -39,6 +39,7 @@
 
 span:hover {
   text-decoration: underline;
+  transition-delay: 2s;
 }
 
 @media only screen and (max-width: 600px) {
