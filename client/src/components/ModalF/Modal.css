@@ -285,7 +285,6 @@ body.active-modal {
   margin-top: 1%;
 }
 
-
 @media only screen and (max-width: 500px) {
   .buttonss {
     margin-right: 5%;
@@ -297,7 +296,7 @@ body.active-modal {
     width: 20%;
     margin-top: 4%;
     right: 25%;
-    width: 45%;
+    width: 20%;
   }
 
   .modal-content {
@@ -314,7 +313,7 @@ body.active-modal {
   }
 }
 
-@media only screen and (min-width: 500px) and (max-width: 850px) {
+@media only screen and (min-width: 500px) and (max-width: 880px) {
   .buttonss {
     margin-right: 5%;
     margin-top: 2%;
@@ -324,6 +323,20 @@ body.active-modal {
   .buttons {
     width: 20%;
     margin-top: 2%;
+    right: 25%;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .buttonss {
+    margin-right: 5%;
+    margin-top: 1.5%;
+    width: 20%;
+  }
+
+  .buttons {
+    width: 20%;
+    margin-top: 1.5%;
     right: 25%;
   }
 }
