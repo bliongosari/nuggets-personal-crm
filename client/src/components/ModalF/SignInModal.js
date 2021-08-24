@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import "./Modal.css";
 
 export default function SignInModal() {
@@ -8,35 +8,32 @@ export default function SignInModal() {
     setModal(!modal);
   };
 
-  if(modal) {
-    document.body.classList.add('active-modal')
+  if (modal) {
+    document.body.classList.add("active-modal");
   } else {
-    document.body.classList.remove('active-modal')
+    document.body.classList.remove("active-modal");
   }
 
   return (
     <>
-        <div className="buttons">
-            <button onClick={toggleModal} className="btn">
-                Sign In
-            </button>
-        </div>
-      
+      <div className="buttons">
+        <button onClick={toggleModal} className="btn">
+          Sign In
+        </button>
+      </div>
+
       {modal && (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
 
           <div className="modal-content">
-            
             <div className="headingcomp">
               <img alt="" src="../../person.svg" onClick={toggleModal}></img>
               <h2>LOG IN</h2>
             </div>
-            
+
             <div className="logInGoogle">
-              <button className="continue-btn">
-                Continue with Google
-              </button>
+              <button className="continue-btn">Continue with Google</button>
             </div>
 
             <div className="divider">
@@ -46,31 +43,49 @@ export default function SignInModal() {
             </div>
 
             <div className="emailbox">
-              <input type="text" placeholder="   EMAIL ADDRESS" name="uname" required></input>
+              <input
+                type="text"
+                placeholder="   EMAIL ADDRESS"
+                name="email"
+                required
+              ></input>
             </div>
-            
+
             <div className="emailbox">
-              <input type="text" placeholder="   PASSWORD" name="password" required></input>
+              <input
+                type="text"
+                placeholder="   PASSWORD"
+                name="password"
+                required
+              ></input>
             </div>
-            
+
             <div class="submit-div">
-                <input class="submit-btn" type="submit" value="CONTINUE " id="submit"></input>
+              <input
+                class="submit-btn"
+                type="submit"
+                value="CONTINUE "
+                id="submit"
+              ></input>
             </div>
 
             <div className="submit">
               <div class="submit-div">
-                <input class="submit-btn" type="submit" value="FORGET PASSWORD" id="forget-password"></input>
+                <input
+                  class="submit-btn"
+                  type="submit"
+                  value="FORGET PASSWORD"
+                  id="forget-password"
+                ></input>
               </div>
-            
+
               <div className="closebutton">
                 <img alt="" src="../../close.svg" onClick={toggleModal}></img>
               </div>
             </div>
-            
           </div>
         </div>
       )}
     </>
   );
 }
-
