@@ -27,9 +27,15 @@
 .footerbar h1 {
   font-family: var(--logo-font);
   color: var(--primary-white);
-  padding-left: 5%;
   font-size: 90%;
   letter-spacing: 1.5%;
   font-weight: lighter;
   margin-top: 15px;
+}
+
+.logo-footer {
+  margin-top: 15px;
+  max-height: 15px;
+  padding-left: 2px;
+  padding-right: 2px;
 }

@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Welcome from "./components/Welcome/Welcome.js"
 import Home from "./components/Home/Home.js";
-import Navbar from "./components/Navbar/Navbar.js";
-import Sidebar from "./components/Sidebar/Sidebar.js"
+import {NavbarWelcome, NavbarHome} from "./components/Navbar/Navbar.js";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Journal from "./components/Journal/Journal";
 import Contacts from "./components/Contacts/Contacts";
@@ -15,8 +14,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        <Navbar />
-        <Sidebar />
+        <Switch>
+          <Route exact path="/"><NavbarWelcome/></Route>
+          <Route path="/"><NavbarHome/></Route>
+        </Switch>
         <Switch>
           <Route exact path="/" component={Welcome} />
           <Route exact path="/home" component={Home} />

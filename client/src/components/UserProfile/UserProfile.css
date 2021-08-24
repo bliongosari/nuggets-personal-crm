@@ -124,6 +124,11 @@
     opacity: 70%;
 }
 
+.button1:hover {
+    background-color: var(--secondary-blue);
+    opacity: 70%;
+}
+
 .icon {
     float: left;
     vertical-align: bottom;
