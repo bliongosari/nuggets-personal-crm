@@ -55,19 +55,19 @@ function NavbarHome() {
       {!sidebar && (
         <div className="sidebar">
           <div className="sidebar-container">
-            <Link to="/home"><img alt="" src="../../home.svg"></img><span>Home</span></Link>
+            <Link to="/home"><img alt="" src="../../home.svg"></img></Link>
           </div>
           <div className="sidebar-container">
-            <Link to="/journal"><img alt="" src="../../journal.svg"></img><span>Journal</span></Link>
+            <Link to="/journal"><img alt="" src="../../journal.svg"></img></Link>
           </div>
           <div className="sidebar-container">
-            <Link to="/events"><img alt="" src="../../events.svg"></img><span>Events</span></Link>
+            <Link to="/events"><img alt="" src="../../events.svg"></img></Link>
           </div>
           <div className="sidebar-container">
-            <Link to="/contacts"><img alt="" src="../../contacts.svg"></img><span>Contacts</span></Link>
+            <Link to="/contacts"><img alt="" src="../../contacts.svg"></img></Link>
           </div>
           <div className="sidebar-container">
-            <Link to="/"><img alt="" src="../../logout.svg"></img><span>Log out</span></Link>    
+            <Link to="/"><img alt="" src="../../logout.svg"></img></Link>    
           </div>
         </div>
       )}
