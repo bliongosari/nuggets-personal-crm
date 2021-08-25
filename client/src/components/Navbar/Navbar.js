@@ -19,9 +19,21 @@ function NavbarWelcome() {
 function NavbarHome() {
   const [sidebar, setSidebar] = useState(false);
   const [dropdownUser, setdropdownUser] = useState(false);
+  const [dropdownNotif, setdropdownNotif] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-  const showDropdownUser = () => setdropdownUser(!dropdownUser);
+  const showDropdownUser = () => {
+    setdropdownUser(!dropdownUser);
+    if (dropdownNotif) {
+      setdropdownNotif(!dropdownNotif);
+    }
+  };
+  const showDropdownNotif = () => {
+    setdropdownNotif(!dropdownNotif)
+    if (dropdownUser) {
+      setdropdownUser(!dropdownUser);
+    }
+  };
 
   return (
     <div>
@@ -31,7 +43,21 @@ function NavbarHome() {
           <img alt="logo" src="../../logo.svg" className="logo-home"></img>
           <h1 className="title-home">NUGGETS</h1>
         </div>
-        <img alt="notification" src="../../notification.svg" className="notif-button"></img>
+
+        <div className="dropdown">
+          <img alt="notification" src="../../notification.svg" className="notif-button" onClick={showDropdownNotif}></img>
+          {dropdownNotif && (
+            <div>
+            <div className="arrow-up2"></div>
+            <div className="dropdown-content">
+              <div className="dropdown-container">
+                <span>No Notification</span>
+              </div>
+              {/* <hr></hr> */}
+            </div>
+          </div>
+          )}
+        </div>
         
         <div className="dropdown">
           <img alt="user" src="../../user.svg" className="user-button" onClick={showDropdownUser}></img>

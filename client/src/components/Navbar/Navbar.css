@@ -43,6 +43,7 @@
   font-weight: lighter;
   margin-top: 15px;
   padding-left: 10px;
+  padding-right: 20px;
 }
 
 .logo-home {
@@ -51,7 +52,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 20px;
 }
 
 .menu-button {
@@ -64,18 +64,26 @@
 }
 
 .notif-button {
+  right: 0;
+  margin-top: 12.5px;
   margin-right: 20px;
+  padding-right: 30px;
+  height: 24px;
 }
 
 .user-button {
-  margin-top: 15.5px;
-  margin-right: 20px;
+  margin-top: 13.5px;
+  margin-right: 10px;
 }
 
 .dropdown {
-  position: relative;
+  position: absolute;
   display: inline-block;
   cursor: pointer;
+  right: 0;
+  margin-top: 2px;
+  margin-right: 12px;
+  z-index: 10;
 }
 
 .dropdown-content {
@@ -86,8 +94,8 @@
   z-index: 1;
   right: 0;
   margin-top: 2px;
-  margin-right: 12px;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .dropdown-content a{
@@ -129,8 +137,19 @@ hr {
 .arrow-up {
   width: 0; 
   height: 0; 
-  margin-top: 6px;
+  margin-top: 7px;
   margin-left: 6px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid var(--primary-white);
+  display: block;
+}
+
+.arrow-up2 {
+  width: 0; 
+  height: 0; 
+  margin-top: 5px;
+  margin-left: 8px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid var(--primary-white);
