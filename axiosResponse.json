@@ -1,0 +1,46 @@
+{data: {…}, status: 200, statusText: "OK", headers: {…}, config: {…}, …}
+config:
+adapter: ƒ xhrAdapter(config)
+data: "{\"email\":\"test1@gmail.com\",\"firstname\":\"Brandon\",\"lastname\":\"Liongosari\",\"password\":\"test1\",\"passwordConfirmation\":\"test1\"}"
+headers: {Accept: "application/json, text/plain, */*", Content-Type: "application/json;charset=utf-8"}
+maxBodyLength: -1
+maxContentLength: -1
+method: "post"
+timeout: 0
+transformRequest: [ƒ]
+transformResponse: [ƒ]
+url: "http://localhost:8080/api/user/sign-up"
+validateStatus: ƒ validateStatus(status)
+xsrfCookieName: "XSRF-TOKEN"
+xsrfHeaderName: "X-XSRF-TOKEN"
+[[Prototype]]: Object
+data:
+message: "Successfully signed up"
+[[Prototype]]: Object
+headers:
+content-length: "36"
+content-type: "application/json; charset=utf-8"
+[[Prototype]]: Object
+request: XMLHttpRequest
+onabort: ƒ handleAbort()
+onerror: ƒ handleError()
+onload: null
+onloadend: null
+onloadstart: null
+onprogress: null
+onreadystatechange: ƒ handleLoad()
+ontimeout: ƒ handleTimeout()
+readyState: 4
+response: "{\"message\":\"Successfully signed up\"}"
+responseText: "{\"message\":\"Successfully signed up\"}"
+responseType: ""
+responseURL: "http://localhost:8080/api/user/sign-up"
+responseXML: null
+status: 200
+statusText: "OK"
+timeout: 0
+upload: XMLHttpRequestUpload {onloadstart: null, onprogress: null, onabort: null, onerror: null, onload: null, …}
+withCredentials: false
+[[Prototype]]: XMLHttpRequest
+status: 200
+statusText: "OK"

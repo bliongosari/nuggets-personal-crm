@@ -36,6 +36,23 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
+router.get("/verifyToken", async (req, res) => {
+  let tokenPassed =
+    req.headers["x-access-token"] || req.headers["authorization"];
+  if (tokenPassed) {
+    const token = tokenPassed.split(" ")[1];
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        return res.status(403).json({ message: "Token invalid" });
+      }
+      return res.status(200).json({ message: "Token verified" });
+    });
+  } else {
+    res.status(401).json({ message: "No Token" });
+  }
+});
+
 router.get("/info", authenticateToken, async (req, res) => {});
 
 router.post("/sign-up", async (req, res) => {
@@ -104,6 +121,7 @@ router.post("/login", async (req, res) => {
               success: true,
               token: "Bearer " + token,
               user: user,
+              message: "Successfully logged in",
             });
           } else {
             return res

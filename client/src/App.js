@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Welcome from "./components/Welcome/Welcome.js"
+import Welcome from "./components/Welcome/Welcome.js";
 import Home from "./components/Home/Home.js";
-import {NavbarWelcome, NavbarHome} from "./components/Navbar/Navbar.js";
+import { NavbarWelcome, NavbarHome } from "./components/Navbar/Navbar.js";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Journal from "./components/Journal/Journal";
 import Contacts from "./components/Contacts/Contacts";
@@ -15,8 +15,12 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Switch>
-          <Route exact path="/"><NavbarWelcome/></Route>
-          <Route path="/"><NavbarHome/></Route>
+          <Route exact path="/">
+            <NavbarWelcome />
+          </Route>
+          <Route path="/">
+            <NavbarHome />
+          </Route>
         </Switch>
         <Switch>
           <Route exact path="/" component={Welcome} />

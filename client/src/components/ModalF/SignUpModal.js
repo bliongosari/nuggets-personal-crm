@@ -16,11 +16,15 @@ export default function SignUpModal() {
     axios
       .post("http://localhost:8080/api/user/sign-up", user)
       .then(function (response) {
-        console.log(response);
-        setMessage(response);
+        setMessage(response.data.message);
+        setEmail("");
+        setFirstname("");
+        setLastname("");
+        setPassword("");
+        setPasswordConfirmation("");
       })
       .catch(function (error) {
-        console.log(error);
+        setMessage(error.response.data.message);
       });
   };
 
@@ -28,7 +32,7 @@ export default function SignUpModal() {
     setModal(!modal);
   };
 
-  const requestLogin = async (e) => {
+  const requestSignUp = async (e) => {
     e.preventDefault();
     const user = {
       email,
@@ -61,7 +65,7 @@ export default function SignUpModal() {
           <div className="modal-content">
             <div className="headingcomp">
               <img alt="" src="../../person.svg" onClick={toggleModal}></img>
-              <h2> {message}</h2>
+              <h2 style={{ color: "red" }}> {message}</h2>
               <h2>CREATE ACCOUNT</h2>
             </div>
 
@@ -75,7 +79,7 @@ export default function SignUpModal() {
               <hr></hr>
             </div>
 
-            <form onSubmit={requestLogin}>
+            <form onSubmit={requestSignUp}>
               <div className="namediv">
                 <div className="namebox">
                   <input
