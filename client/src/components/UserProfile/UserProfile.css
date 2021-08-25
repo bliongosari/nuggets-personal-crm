@@ -6,6 +6,7 @@
   --secondary-blue: #114084;
   --tertiary-blue: #82b7dc;
   --fourth-blue: #DEECFF;
+  --fifth-blue: #E8F2FF;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
   --logo-font: "AbeeZee";
@@ -13,12 +14,12 @@
 }
 
 .user-profile {
-    margin-left: 140px;
+    margin-left: 60px;
 }
 
 .background {
     padding: 2vh;
-    background: var(--fourth-blue);
+    background: var(--fifth-blue);
     border-radius: 3vh;
     max-width: 60%;
     margin-top: 20px;
@@ -27,24 +28,23 @@
 }
 
 .user-image {
-    border-radius: 50%;
-    border-width: 5px;
+    /* border-radius: 10%;
+    border-width: 2px;
     border-style: solid;
-    border-color: var(--secondary-blue);
-    width: 25%;
+    border-color: var(--secondary-blue); */
+    width: 30%;
     padding: 5px;
     display: block;
     margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
-    fill: var(--tertiary-blue);
 }
 
 .user-full-name {
     font-family: var(--logo-font);
     color: var(--primary-blue);
-    margin-top: 5%;
-    font-size: 130%;
+    margin-top: 6.5%;
+    font-size: 120%;
     letter-spacing: 1.5%;
     text-align: center;
     padding-inline-start: 0%;
@@ -58,26 +58,28 @@
     margin-top: 30px;
     margin-left:22.5%;
     margin-right:auto;
+    margin-bottom: 50px;
     max-width: 60%;
 }
 
 .user-data-spec {
     font-family: var(--logo-font);
     color: var(--primary-black);
-    padding-left: 5%;
     margin-top: 5%;
-    font-size: 100%;
+    font-size: 90%;
     font-weight: bold;
     text-align: left;
+    font-family: "AbeeZee";
 }
 
 .user-data {
     font-family: var(--logo-font);
     color: var(--primary-blue);
     margin-top: 5%;
-    font-size: 100%;
+    font-size: 90%;
     font-weight: lighter;
     text-align: right;
+    font-family: "AbeeZee";
 }
 
 .button-container {
@@ -98,7 +100,7 @@
     text-align: center;
     border: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bolder;
     letter-spacing: 1.5px;
     cursor: pointer;
@@ -113,7 +115,7 @@
     text-align: center;
     border: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bolder;
     letter-spacing: 1.5px;
     cursor: pointer;
@@ -150,15 +152,14 @@
         margin-top: 15px;
         font-size: 150%;
     }
-}
 
-@media only screen and (max-width: 600px) {
-    .button-container {
-        margin-top: 30px;
-    }
-
-    .user-profile {
-        margin-left: 60px;
+    .user-data-spec .user-data {
+        font-size: 200%;
     }
 }
   
+@media screen and (max-width: 600px) {
+    .grid-container {
+        margin-bottom: 90px;
+    }
+}

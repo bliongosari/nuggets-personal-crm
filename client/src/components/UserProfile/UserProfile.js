@@ -1,11 +1,17 @@
-import React from "react";
+import {React, useState} from "react";
 import "./UserProfile.css";
 
 function UserProfile() {
+  const [editProfile, setEditProfile] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
+
+  const showEditProfile = () => setEditProfile(!editProfile);
+  const showChangePassword = () => setChangePassword(!changePassword);
+
   return (
     <div className="user-profile">
       <div className="background">
-        <img alt="User" src="../../person.svg" className="user-image"></img>
+        <img alt="User" src="../../user.svg" className="user-image"></img>
         <h1 className="user-full-name">User Full Name</h1>
       </div>
 
@@ -19,16 +25,28 @@ function UserProfile() {
       </div>
 
       <div className="button-container">
-        <button className="button">
+        <button className="button" onClick={showEditProfile}>
           <img alt="Edit" src="../../edit.svg" className="icon"></img>Edit Profile
         </button>
       </div>
 
       <div className="button-container">
-        <button className="button1">
+        <button className="button1" onClick={showChangePassword}>
           <img alt="Edit" src="../../edit.svg" className="icon"></img>Change Password
         </button>
       </div>
+
+      {editProfile && (
+        <div>
+
+        </div>
+      )}
+
+      {changePassword && (
+        <div>
+          
+        </div>
+      )}
       
     </div>
   );

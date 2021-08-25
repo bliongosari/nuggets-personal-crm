@@ -9,6 +9,8 @@
   --fifth-blue: #D2DEED;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
 }
 
 .navbar {
@@ -49,12 +51,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 20px;
 }
 
 .menu-button {
-  margin-left: 20px;
+  margin-top: 2px;
+  margin-left: 6px;
+  background-color: var(--primary-blue);
+  border: none;
+  cursor: pointer;
+  width: 25px;
 }
-
 
 .notif-button {
   margin-right: 20px;
@@ -65,9 +72,74 @@
   margin-right: 20px;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: var(--primary-white);
+  width: 160px;
+  box-shadow: 0px 3px 3px 0px var(--secondary-blue);
+  z-index: 1;
+  right: 0;
+  margin-top: 2px;
+  margin-right: 12px;
+  border-radius: 10px;
+}
+
+.dropdown-content a{
+  font-family: "Urbanist";
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  color: var(--primary-black);
+  padding: 5px 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-container {
+  display: grid;
+  justify-content: left;
+  margin-left: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.dropdown-container span {
+  padding-left: 13px;
+}
+
+.dropdown-container img {
+  height: 20px;
+  width: 20px;
+}
+hr {
+  width: 150px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.5;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  margin-top: 6px;
+  margin-left: 6px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid var(--primary-white);
+  display: block;
+}
+
 .sidebar {
   height: 84%;
-  width: 150px;
+  width: 60px;
   background-color: var(--fifth-blue);
   position: fixed;
   z-index: 1;
@@ -75,6 +147,22 @@
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
+  transition-delay: 2s;
+}
+
+.sidebar1 {
+  height: 84%;
+  width: 150px;
+  background-color: var(--fifth-blue);
+  overflow: hidden;
+  position: fixed;
+  z-index: 1;
+  top: 52.5px;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition-delay: 5s;
+  box-shadow: 0px 5px 5px 0px var(--primary-blue);
 }
 
 .sidebar-container {
@@ -84,14 +172,18 @@
   margin-left: 16.5px;
 }
 
-.sidebar-container span {
-  text-align: center;
-  align-items: center;
+.sidebar-container span{
+  text-align: left;
+  align-items: left;
   position: fixed;
   margin-top: 3px;
   margin-left: 20px;
-  color: var(--primary-blue);
-  font-weight: bold;
+  color: var(--primary-black);
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  font-family: "Urbanist";
+  display: inline-block;
+  transition-delay: 2s;
 }
 
 span:hover {
@@ -99,12 +191,7 @@ span:hover {
   transition-delay: 2s;
 }
 
-@media only screen and (max-width: 600px) {
-  .sidebar-container span {
-    display: none;
-  }
-
-  .sidebar {
-    width: 60px;
-  }
+.sidebar-container:hover {
+  border-radius: 20px;
+  margin-left: 10px;
 }
