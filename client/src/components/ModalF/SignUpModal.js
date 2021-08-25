@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
 
-export function sign_up(user) {
-  axios
-    .post("http://localhost:8080/api/user/sign-up", user)
-    .then((response) => console.log(response))
-    .catch((e) => console.log(e));
-}
-
+//export function
 export default function SignUpModal() {
   const [modal, setModal] = useState(false);
   const [email, setEmail] = useState("");
@@ -16,13 +10,25 @@ export default function SignUpModal() {
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState();
+  const [message, setMessage] = useState("");
+
+  const sign_up = (user) => {
+    axios
+      .post("http://localhost:8080/api/user/sign-up", user)
+      .then(function (response) {
+        console.log(response);
+        setMessage(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
   const requestLogin = async (e) => {
-    console.log("pressed");
     e.preventDefault();
     const user = {
       email,
@@ -55,6 +61,7 @@ export default function SignUpModal() {
           <div className="modal-content">
             <div className="headingcomp">
               <img alt="" src="../../person.svg" onClick={toggleModal}></img>
+              <h2> {message}</h2>
               <h2>CREATE ACCOUNT</h2>
             </div>
 

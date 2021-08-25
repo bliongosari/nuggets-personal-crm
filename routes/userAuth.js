@@ -4,6 +4,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
+const jwtdecode = require("jwt-decode");
 
 const regexPassword = new RegExp(/(?=.*\d)(?=.*[a-zA-Z]).{8,}/);
 const regexText = new RegExp(/[a-zA-Z ]+/);
@@ -35,10 +36,9 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
-router.get("/info", async (req, res) => {});
+router.get("/info", authenticateToken, async (req, res) => {});
 
 router.post("/sign-up", async (req, res) => {
-  console.log(req.body);
   if (
     !req.body.email ||
     !req.body.firstname ||
@@ -49,7 +49,7 @@ router.post("/sign-up", async (req, res) => {
     return res.status(400).json({ error: "Please fill all fields." });
   } else {
     const hashedpassword = await bcrypt.hash(req.body.password, 10);
-    console.log(req.body.email);
+    //console.log(req.body.email);
     User.find(
       {
         email: req.body.email,
@@ -74,7 +74,9 @@ router.post("/sign-up", async (req, res) => {
                 .json({ message: "Sign up failed. Try Again" });
             } else {
               const token = generateToken(newUser.email);
-              res.status(200).json({ message: "Successfully signed up" });
+              return res
+                .status(200)
+                .json({ message: "Successfully signed up" });
             }
           });
         }
