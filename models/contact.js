@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const contactSchema = new Schema({
+  user_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   full_name: {
     type: String,
     required: true,
@@ -16,9 +20,9 @@ const contactSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  tags: {
-    type: [Tag],
-  },
+  // tags: {
+  //   type: [Tag],
+  // },
   meeting_notes: {
     type: String,
   },

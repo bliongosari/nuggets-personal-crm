@@ -9,6 +9,7 @@ import Journal from "./components/Journal/Journal";
 import Contacts from "./components/Contacts/Contacts";
 import Events from "./components/Events/Events";
 import Footer from "./components/Footer/Footer";
+import Example from "./components/Example/Example";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/journal" component={Journal} />
           <Route exact path="/contacts" component={Contacts} />
           <Route exact path="/events" component={Events} />
+          <Route exact path="/example" component={Example} />
         </Switch>
         <Footer />
       </div>

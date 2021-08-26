@@ -1,26 +1,27 @@
 import React from "react";
-import "./Home.css";
+import "./Example.css";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
-import UserInfo from "../Examples/UserInfo";
-import Contact from "../Examples/Contact";
+import UserInfo from "./UserInfo";
+import Contact from "./Contact";
 
-function Home() {
+function Example() {
   const history = useHistory();
 
   const logout = async (e) => {
     Cookies.remove("token");
+
     history.push("/");
   };
 
   return (
-    <div className="home">
+    <div className="example">
       <UserInfo />
       <Contact />
-      <h1>This is home page</h1>
+      <h1>This is example page</h1>
       <button onClick={logout}>Log out....</button>
     </div>
   );
 }
 
-export default Home;
+export default Example;

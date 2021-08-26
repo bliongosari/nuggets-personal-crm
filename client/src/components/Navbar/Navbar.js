@@ -5,7 +5,6 @@ import SignUpModal from "../ModalF/SignUpModal";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function NavbarWelcome() {
   return (
@@ -22,7 +21,6 @@ function NavbarHome() {
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-  //const checkAuth = async () => {};
 
   useEffect(() => {
     axios({

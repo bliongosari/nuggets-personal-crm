@@ -5,36 +5,13 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
 const jwtdecode = require("jwt-decode");
+const auth = require("../middleware/auth");
 
 const regexPassword = new RegExp(/(?=.*\d)(?=.*[a-zA-Z]).{8,}/);
 const regexText = new RegExp(/[a-zA-Z ]+/);
 const regexEmail = new RegExp(/(\w\.?)+@[\w\.-]+\.\w+/);
 const regexDigit = new RegExp(/\d+/);
 const regexAntiJS = new RegExp(/[^;<>]+/);
-
-function generateToken(payload) {
-  const token = jwt.sign({ email: payload }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
-  });
-  return token;
-}
-
-const authenticateToken = (req, res, next) => {
-  let tokenPassed =
-    req.headers["x-access-token"] || req.headers["authorization"];
-  if (tokenPassed) {
-    const token = tokenPassed.split(" ")[1];
-
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-      if (err) {
-        return res.Status(403).json({ message: "Token invalid" });
-      }
-      next();
-    });
-  } else {
-    res.Status(401).json({ message: "No Token" });
-  }
-};
 
 router.get("/verifyToken", async (req, res) => {
   let tokenPassed =
@@ -53,7 +30,19 @@ router.get("/verifyToken", async (req, res) => {
   }
 });
 
-router.get("/info", authenticateToken, async (req, res) => {});
+router.get("/info", auth.authenticateToken, async (req, res) => {
+  try {
+    User.findOne({ _id: req.user.id }).then(function (userInfo) {
+      return res.status(200).json({
+        firstname: userInfo.firstname,
+        lastname: userInfo.lastname,
+        email: userInfo.email,
+      });
+    });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+});
 
 router.post("/sign-up", async (req, res) => {
   if (
@@ -66,7 +55,6 @@ router.post("/sign-up", async (req, res) => {
     return res.status(400).json({ error: "Please fill all fields." });
   } else {
     const hashedpassword = await bcrypt.hash(req.body.password, 10);
-    //console.log(req.body.email);
     User.find(
       {
         email: req.body.email,
@@ -90,7 +78,6 @@ router.post("/sign-up", async (req, res) => {
                 .status(400)
                 .json({ message: "Sign up failed. Try Again" });
             } else {
-              const token = generateToken(newUser.email);
               return res
                 .status(200)
                 .json({ message: "Successfully signed up" });
@@ -116,11 +103,10 @@ router.post("/login", async (req, res) => {
         bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
           if (err) throw err;
           if (isMatch) {
-            const token = generateToken(req.body.email);
+            const token = auth.generateToken(user._id);
             res.status(200).json({
               success: true,
               token: "Bearer " + token,
-              user: user,
               message: "Successfully logged in",
             });
           } else {

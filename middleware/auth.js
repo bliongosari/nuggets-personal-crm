@@ -1,25 +1,27 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  getUserData: function (req, res, next) {
-    const token =
-      req.body.token ||
-      req.query.token ||
-      req.headers["x-access-token"] ||
-      req.cookies.token;
-    if (!token) {
-      res.status(401).send("Unauthorized: No token provided");
-    } else {
-      jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
+  authenticateToken: function (req, res, next) {
+    let tokenPassed =
+      req.headers["x-access-token"] || req.headers["authorization"];
+    if (tokenPassed) {
+      const token = tokenPassed.split(" ")[1];
+
+      jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) {
-          res.status(401).send("Unauthorized: Invalid token");
-        } else {
-          req.email = decoded.email;
-          req.firstname = decoded.firstname;
-          req.lastname = decoded.lastname;
-          next();
+          return res.status(403).json({ message: "Token invalid" });
         }
+        req.user = user;
+        next();
       });
+    } else {
+      res.status(401).json({ message: "No Token" });
     }
+  },
+  generateToken: function (payload) {
+    const token = jwt.sign({ id: payload }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    return token;
   },
 };

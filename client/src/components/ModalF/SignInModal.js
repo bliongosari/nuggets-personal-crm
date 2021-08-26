@@ -3,7 +3,6 @@ import "./Modal.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { login, logout } from "../../redux/slices/userSlice";
 
 export default function SignInModal() {
@@ -12,13 +11,13 @@ export default function SignInModal() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const setTokenHeader = (token) => {
+    console.log("yes");
     if (token) {
-      axios.defaults.headers.common["Authorization"] = token;
+      axios.defaults.headers.common["X-ACCESS-TOKEN"] = Cookies.get("token");
     } else {
-      delete axios.defaults.headers.common["Authorization"];
+      delete axios.defaults.headers.common["X-ACCESS-TOKEN"];
     }
   };
 
@@ -28,11 +27,6 @@ export default function SignInModal() {
       .then(function (response) {
         setMessage(response.data.message);
         Cookies.set("token", response.data.token);
-        dispatch(
-          login(
-            response.data.user.firstname + " " + response.data.user.lastname
-          )
-        );
         setTokenHeader(response.data.token);
         history.push("/home");
       })

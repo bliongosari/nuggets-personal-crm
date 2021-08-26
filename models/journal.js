@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const journalSchema = new Schema({
+  user_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -16,7 +20,7 @@ const journalSchema = new Schema({
   },
   files: {
     type: [{}],
-  }
+  },
 });
 
 const Journal = mongoose.model("Journal", journalSchema);
