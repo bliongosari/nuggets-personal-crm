@@ -14,13 +14,13 @@
 }
 
 .navbar {
-  height: 8%;
+  height: 50px;
   width: 100%;
   background-color: var(--primary-blue);
   display: flex;
   flex-direction: row;
   position: absolute;
-  z-index: 100;
+  z-index: 2;
 }
 
 .title-welcome {
@@ -35,7 +35,6 @@
 
 .logo-welcome {
   margin-left: 5%;
-  z-index: 1000;
 }
 
 .title-home {
@@ -64,6 +63,7 @@
   border: none;
   cursor: pointer;
   width: 25px;
+  z-index: 10;
 }
 
 .notif-button {
@@ -161,11 +161,11 @@ hr {
 }
 
 .sidebar {
-  height: 86%;
+  height: 100%;
   width: 60px;
   background-color: var(--fifth-blue);
   position: absolute;
-  top: 8%;
+  top: 50px;
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
@@ -173,12 +173,12 @@ hr {
 }
 
 .sidebar1 {
-  height: 86%;
+  height: 100%;
   width: 150px;
   background-color: var(--fifth-blue);
   overflow: hidden;
   position: fixed;
-  top: 8%;
+  top: 50px;
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;

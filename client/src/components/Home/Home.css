@@ -12,7 +12,7 @@
 
 .home {
     margin-left: 60px;
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 .summary-container {
@@ -102,18 +102,19 @@
     letter-spacing: 1px;
     align-items: right;
     margin-bottom: auto;
+    right: 0;
 }
 
 .current-events img {
-    width: 2vh;
+    width: 3vh;
     margin-top: auto;
     margin-bottom: auto;
 }
 
 .line {
     width: 90%;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
 }
 
 .new-contacts {
@@ -191,18 +192,30 @@
 
 @media screen and (max-width:550px) {
     .next {
-        padding-left: 5px;
+        padding-left: 1px;
         transition: 0.2s ease;
     }
 
     .next:hover {
-        padding-left:8px;
+        padding-left: 2px;
         transition: 0.2s ease;
     }
     
     .square {
         margin-left: 20%;
         transition: 0.2s ease;
+    }
+
+    .new-contacts h2 {
+        padding-left: 0px;
+    }
+
+    .new-contacts h3 {
+        padding-left: 0px;
+    }
+
+    .current-events img {
+        width: 2vh;
     }
 }
 
@@ -221,11 +234,6 @@
         margin-left: 37%;
         transition: 0.2s ease;
     }
-
-    .current-events h3 {
-        font-size: 0.5vh;
-    }
-    
 }
 
 @media screen and (min-width:864px) and (max-width: 1080px) {
