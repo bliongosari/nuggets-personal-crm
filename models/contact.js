@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 const Tag = require("./tag");
 
 const contactSchema = new Schema({
+  user_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   full_name: {
     type: String,
     required: true,
@@ -19,7 +23,6 @@ const contactSchema = new Schema({
   },
   tags:
     [{type: Schema.ObjectId, ref: 'Tag'}],
-
   meeting_notes: {
     type: String,
   },

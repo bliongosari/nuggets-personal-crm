@@ -1,22 +1,27 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Welcome from "./components/Welcome/Welcome.js"
+import Welcome from "./components/Welcome/Welcome.js";
 import Home from "./components/Home/Home.js";
-import {NavbarWelcome, NavbarHome} from "./components/Navbar/Navbar.js";
+import { NavbarWelcome, NavbarHome } from "./components/Navbar/Navbar.js";
 import UserProfile from "./components/UserProfile/UserProfile";
 import Journal from "./components/Journal/Journal";
 import Contacts from "./components/Contacts/Contacts";
 import Events from "./components/Events/Events";
 import Footer from "./components/Footer/Footer";
+import Example from "./components/Example/Example";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Switch>
-          <Route exact path="/"><NavbarWelcome/></Route>
-          <Route path="/"><NavbarHome/></Route>
+          <Route exact path="/">
+            <NavbarWelcome />
+          </Route>
+          <Route path="/">
+            <NavbarHome />
+          </Route>
         </Switch>
         <Switch>
           <Route exact path="/" component={Welcome} />
@@ -25,6 +30,7 @@ function App() {
           <Route exact path="/journal" component={Journal} />
           <Route exact path="/contacts" component={Contacts} />
           <Route exact path="/events" component={Events} />
+          <Route exact path="/example" component={Example} />
         </Switch>
         <Footer />
       </div>

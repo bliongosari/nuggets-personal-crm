@@ -1,22 +1,52 @@
-import {React, useState} from "react";
-import "./Navbar.css";
-import SignInModal from "../ModalF/SignInModal"
-import SignUpModal from "../ModalF/SignUpModal"
-import { Link } from "react-router-dom";
 
+import React, { useState, useEffect } from "react";
+import "./Navbar.css";
+import SignInModal from "../ModalF/SignInModal";
+import SignUpModal from "../ModalF/SignUpModal";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavbarWelcome() {
   return (
     <div className="navbar">
-        <img alt="logo" src="../../logo.svg" className="logo-welcome"></img>
-        <h1 className="title-welcome">NUGGETS</h1>
-        <SignInModal/>
-        <SignUpModal/>
+      <img alt="logo" src="../../logo.svg" className="logo-welcome"></img>
+      <h1 className="title-welcome">NUGGETS</h1>
+      <SignInModal />
+      <SignUpModal />
     </div>
   );
 }
 
 function NavbarHome() {
+  const [auth, setAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const history = useHistory();
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:8080/api/user/verifyToken",
+      headers: {
+        "X-ACCESS-TOKEN": Cookies.get("token"),
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setLoading(false);
+          setAuth(true);
+        } else {
+          Cookies.remove("token");
+          history.push("/");
+        }
+      })
+      .catch((err) => {
+        Cookies.remove("token");
+        history.push("/");
+      });
+  }, []);
+  
   const [sidebar, setSidebar] = useState(false);
   const [dropdownUser, setdropdownUser] = useState(false);
   const [dropdownNotif, setdropdownNotif] = useState(false);
@@ -44,7 +74,6 @@ function NavbarHome() {
           <img alt="logo" src="../../logo.svg" className="logo-home"></img>
           <h1 className="title-home">NUGGETS</h1>
         </div>
-
         {/* Notifications Button */}
         <div className="dropdown">
           <img alt="notification" src="../../notification.svg" className="notif-button" onClick={showDropdownNotif}></img>
@@ -129,4 +158,4 @@ function NavbarHome() {
 }
 
 export default NavbarWelcome;
-export {NavbarWelcome, NavbarHome};
+export { NavbarWelcome, NavbarHome };

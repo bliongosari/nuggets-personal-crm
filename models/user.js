@@ -6,11 +6,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  first_name: {
+  firstname: {
     type: String,
     required: true,
   },
-  last_name: {
+  lastname: {
     type: String,
     required: true,
   },
