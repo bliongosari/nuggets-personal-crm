@@ -10,7 +10,6 @@ function Example() {
 
   const logout = async (e) => {
     Cookies.remove("token");
-
     history.push("/");
   };
 

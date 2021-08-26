@@ -18,27 +18,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-
 app.use("/api/", routes);
-
-// app.get("/", (req, res) => {
-//   res.send(
-//     "this is backend at " +
-//       process.env.NODE_ENV +
-//       "   mongo :   " +
-//       process.env.DB_KEY
-//   );
-// });
-
 app.use("/contacts", contactRoute);
 app.use("/journal", journalRoute);
 app.use("/event", eventRoute);
-
-// app.use(express.static(path.join(__dirname, "client/build")));
-
-// app.get("*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname, "client/build")));

@@ -2,8 +2,6 @@ import React from "react";
 import "./Home.css";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
-import UserInfo from "../Examples/UserInfo";
-import Contact from "../Examples/Contact";
 
 function Home() {
   const history = useHistory();
@@ -69,7 +67,9 @@ function Home() {
             <h2 className="square">C</h2>
             <h3>Contacts Name</h3>
           </div>
-          <button className="next"><img alt="next" src="../../next.svg" className="next"></img></button>
+          <button className="next">
+            <img alt="next" src="../../next.svg" className="next"></img>
+          </button>
         </div>
       </div>
     </div>

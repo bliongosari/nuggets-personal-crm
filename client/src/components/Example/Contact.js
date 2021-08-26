@@ -23,7 +23,7 @@ export default function Contact() {
       data: contact,
     })
       .then(function (res) {
-        if (res.data.status === 200) {
+        if (res.status === 200) {
           setContacts([...contacts, field]);
           setField("");
         }
