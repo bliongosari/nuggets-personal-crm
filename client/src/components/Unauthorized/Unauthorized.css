@@ -1,0 +1,17 @@
+.unauthorized {
+  margin: 0;
+  text-align: center;
+  font-family: Times;
+  font-size: 13px;
+  margin-top: 10vh;
+  padding: 10px;
+  font-weight: lighter;
+}
+
+.links {
+  font-family: Times;
+  font-size: 25px;
+  font-weight: lighter;
+  color: black;
+  text-decoration: none;
+}

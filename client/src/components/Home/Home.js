@@ -1,16 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { useHistory } from "react-router-dom";
-import Cookies from "js-cookie";
 
 function Home() {
-  const history = useHistory();
-
-  const logout = async (e) => {
-    Cookies.remove("token");
-    history.push("/");
-  };
-
   return (
     <div className="home">
       {/* Summary Table */}

@@ -10,27 +10,27 @@ import Contacts from "./components/Contacts/Contacts";
 import Events from "./components/Events/Events";
 import Footer from "./components/Footer/Footer";
 import Example from "./components/Example/Example";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import ProtectedNavbar from "./components/ProtectedRoute/ProtectedNavbar";
+import Unauthorized from "./components/Unauthorized/Unauthorized";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Switch>
-          <Route exact path="/">
-            <NavbarWelcome />
-          </Route>
-          <Route path="/">
-            <NavbarHome />
-          </Route>
+          <Route exact path="/" component={NavbarWelcome} />
+          <ProtectedNavbar path="/" component={NavbarHome} />
         </Switch>
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/user-profile" component={UserProfile} />
-          <Route exact path="/journal" component={Journal} />
-          <Route exact path="/contacts" component={Contacts} />
-          <Route exact path="/events" component={Events} />
-          <Route exact path="/example" component={Example} />
+          <Route exact path="/error" component={Unauthorized} />
+          <ProtectedRoute exact path="/home" component={Home} />
+          <ProtectedRoute path="/user-profile" component={UserProfile} />
+          <ProtectedRoute exact path="/journal" component={Journal} />
+          <ProtectedRoute exact path="/contacts" component={Contacts} />
+          <ProtectedRoute exact path="/events" component={Events} />
+          <ProtectedRoute exact path="/example" component={Example} />
         </Switch>
         <Footer />
       </div>

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import SignInModal from "../ModalF/SignInModal";
 import SignUpModal from "../ModalF/SignUpModal";
 import Cookies from "js-cookie";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -19,35 +18,10 @@ function NavbarWelcome() {
 }
 
 function NavbarHome() {
-  const [auth, setAuth] = useState(false);
-  const [loading, setLoading] = useState(true);
   const history = useHistory();
   const [sidebar, setSidebar] = useState(false);
   const [dropdownUser, setdropdownUser] = useState(false);
   const [dropdownNotif, setdropdownNotif] = useState(false);
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: "http://localhost:8080/api/user/verifyToken",
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          setLoading(false);
-          setAuth(true);
-        } else {
-          Cookies.remove("token");
-          history.push("/");
-        }
-      })
-      .catch((err) => {
-        Cookies.remove("token");
-        history.push("/");
-      });
-  }, []);
 
   const logout = async (e) => {
     Cookies.remove("token");
