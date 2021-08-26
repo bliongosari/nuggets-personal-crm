@@ -17,7 +17,7 @@ const contactSchema = new Schema({
     default: Date.now,
   },
   tags: {
-    type: [Tag],
+    type: [{}],
   },
   meeting_notes: {
     type: String,

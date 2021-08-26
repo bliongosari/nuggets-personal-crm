@@ -1,8 +1,26 @@
 const express = require("express");
 const passport = require("passport");
 const { Contact } = require("../models/Contact");
-
 const router = express.Router();
+
+// show contacts
+router.get("/", async (req, res) => {
+    const contacts = Contact.find();
+    contact
+        .then(contact=> {
+            res.json(contact)
+        }).catch(err=>{
+            console.log(err)
+        });
+});
+
+// show contact profile
+ router.get("/:id", async (req, res) => {
+    const contact = Contact.findById(req.params.id);
+    contact
+        .then(() => res.json(contact))
+        .catch((err) => next(err));
+});
 
 // create new contact
 router.post("/create", async (req, res) => {
