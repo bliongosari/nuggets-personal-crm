@@ -12,6 +12,7 @@
 
 .home {
     margin-left: 60px;
+    margin-top: 70px;
 }
 
 .summary-container {
@@ -30,7 +31,6 @@
     color: var(--primary-black);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
     width: 85%;
     text-align: center;
 }
@@ -62,13 +62,13 @@
     margin-top: 20px;
     width: 85%;
     justify-content: center;
+    padding-bottom: 10px;
 }
 
 .current-events-container {
     display: grid;
     grid-template-columns: 15% 45% 20% 10%;
     padding-left: 5%;
-    padding-bottom: 20px;
     transition: 0.2 ease;
 }
 
@@ -76,7 +76,7 @@
     font-family: "AbeeZee";
     font-weight: normal;
     color: var(--primary-blue);
-    font-size: 18px;
+    font-size: 2.5vh;
     letter-spacing: 1px;
     align-items: left;
     padding-left: 10px;
@@ -86,28 +86,35 @@
     font-family: "AbeeZee";
     font-weight: normal;
     color: var(--primary-blue);
-    font-size: 16px;
+    font-size: 2vh;
     letter-spacing: 1px;
     align-items: left;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .current-events h3 {
     font-family: "AbeeZee";
     font-weight: normal;
     color: var(--primary-blue);
-    font-size: 16px;
+    margin-top: auto;
+    font-size: 1.5vh;
     letter-spacing: 1px;
     align-items: right;
+    margin-bottom: auto;
 }
 
 .current-events img {
-    padding-top: 10px;
+    width: 2vh;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .line {
     width: 90%;
-    opacity: 0.5;
-  }
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 .new-contacts {
     background-color: white;
@@ -134,7 +141,7 @@
     font-family: "AbeeZee";
     font-weight: normal;
     color: var(--primary-blue);
-    font-size: 18px;
+    font-size: 2.5vh;
     letter-spacing: 1px;
     align-items: left;
     padding-left: 10px;
@@ -144,16 +151,18 @@
     font-family: "AbeeZee";
     font-weight: normal;
     color: var(--primary-white);
-    font-size: 20px;
+    font-size: 2.5vh;
     text-align: center;
     padding: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .new-contacts h3 {
     font-family: "AbeeZee";
     font-weight: normal;
     color: var(--primary-blue);
-    font-size: 13px;
+    font-size: 1.5vh;
     letter-spacing: 1px;
     text-align: center;
     padding-left: 10px;
@@ -170,7 +179,7 @@
     background-color: white;
     border: none;
     cursor: pointer;
-    width: 15px;
+    width: 2vh;
     padding-left: 10px;
     margin-bottom: 20px;
 }
@@ -178,6 +187,23 @@
 .next:hover {
     padding-left: 12px;
     transition: 0.2s ease;
+}
+
+@media screen and (max-width:550px) {
+    .next {
+        padding-left: 5px;
+        transition: 0.2s ease;
+    }
+
+    .next:hover {
+        padding-left:8px;
+        transition: 0.2s ease;
+    }
+    
+    .square {
+        margin-left: 20%;
+        transition: 0.2s ease;
+    }
 }
 
 @media screen and (min-width:550px) and (max-width: 864px) {
@@ -194,6 +220,10 @@
     .square {
         margin-left: 37%;
         transition: 0.2s ease;
+    }
+
+    .current-events h3 {
+        font-size: 0.5vh;
     }
     
 }

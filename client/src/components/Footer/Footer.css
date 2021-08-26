@@ -22,6 +22,8 @@
   bottom: 0;
   text-align: center;
   justify-content: center;
+  position: absolute;
+  z-index: 100;
 }
 
 .footerbar h1 {
@@ -30,11 +32,11 @@
   font-size: 90%;
   letter-spacing: 1.5%;
   font-weight: lighter;
-  margin-top: 15px;
+  margin-top: 12.5px;
 }
 
 .logo-footer {
-  margin-top: 15px;
+  margin-top: 12.5px;
   max-height: 15px;
   padding-left: 2px;
   padding-right: 2px;

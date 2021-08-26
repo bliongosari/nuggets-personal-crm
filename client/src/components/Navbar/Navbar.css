@@ -14,11 +14,13 @@
 }
 
 .navbar {
-  height: 25%;
+  height: 8%;
   width: 100%;
   background-color: var(--primary-blue);
   display: flex;
   flex-direction: row;
+  position: absolute;
+  z-index: 100;
 }
 
 .title-welcome {
@@ -33,6 +35,7 @@
 
 .logo-welcome {
   margin-left: 5%;
+  z-index: 1000;
 }
 
 .title-home {
@@ -65,7 +68,7 @@
 
 .notif-button {
   right: 0;
-  margin-top: 12.5px;
+  margin-top: 12.25px;
   margin-right: 20px;
   padding-right: 30px;
   height: 24px;
@@ -158,12 +161,11 @@ hr {
 }
 
 .sidebar {
-  height: 84%;
+  height: 86%;
   width: 60px;
   background-color: var(--fifth-blue);
-  position: fixed;
-  z-index: 1;
-  top: 52.5px;
+  position: absolute;
+  top: 8%;
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
@@ -171,13 +173,12 @@ hr {
 }
 
 .sidebar1 {
-  height: 84%;
+  height: 86%;
   width: 150px;
   background-color: var(--fifth-blue);
   overflow: hidden;
   position: fixed;
-  z-index: 1;
-  top: 52.5px;
+  top: 8%;
   left: 0;
   overflow-x: hidden;
   padding-top: 20px;
