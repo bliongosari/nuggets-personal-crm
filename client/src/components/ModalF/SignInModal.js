@@ -112,6 +112,7 @@ export default function SignInModal() {
                   value="CONTINUE "
                   id="submit"
                 ></input>
+
               </div>
 
               <div className="submit">

@@ -10,10 +10,14 @@ require("./config/database").establishDB();
 
 const app = express();
 const routes = require("./routes/index");
+const contactRoute = require("./routes/contactRoute");
+const journalRoute = require("./routes/journalRoute");
+const eventRoute = require("./routes/eventRoute");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
 
 app.use("/api/", routes);
 
@@ -25,6 +29,10 @@ app.use("/api/", routes);
 //       process.env.DB_KEY
 //   );
 // });
+
+app.use("/contacts", contactRoute);
+app.use("/journal", journalRoute);
+app.use("/event", eventRoute);
 
 // app.use(express.static(path.join(__dirname, "client/build")));
 
