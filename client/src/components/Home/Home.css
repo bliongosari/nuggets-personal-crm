@@ -192,18 +192,26 @@
 
 @media screen and (max-width:550px) {
     .next {
-        padding-left: 1px;
+        padding-left: 0.5px;
         transition: 0.2s ease;
     }
 
     .next:hover {
-        padding-left: 2px;
+        padding-left: 1px;
         transition: 0.2s ease;
     }
     
     .square {
         margin-left: 20%;
         transition: 0.2s ease;
+    }
+
+    .current-events h1 {
+        font-size: 2vh;
+    }
+
+    .new-contacts h1 {
+        font-size: 2vh;
     }
 
     .new-contacts h2 {

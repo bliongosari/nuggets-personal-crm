@@ -182,6 +182,7 @@
     margin-right: auto;
     margin-top: 2vh;
     width: 85%;
+    z-index: 1000;
 }
 
 .popup-header {
