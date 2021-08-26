@@ -4,6 +4,8 @@ import "./Home.css";
 function Home() {
   return (
     <div className="home">
+
+      {/* Summary Table */}
       <div className="summary summary-container">
         <div>
           <h1>(num)</h1>
@@ -19,6 +21,7 @@ function Home() {
         </div>
       </div>
 
+      {/* Events Table */}
       <div className="current-events">
         <h1>EVENTS IN THE NEXT 2 WEEKS</h1>
         <div className="current-events-container">
@@ -40,6 +43,7 @@ function Home() {
         </div>
       </div>
 
+      {/* Contacts Table */}
       <div className="new-contacts">
         <h1>RECENTLY ADDED CONTACTS</h1>
         <div className="new-contacts-container">
@@ -57,7 +61,6 @@ function Home() {
           </div>
           <button className="next"><img alt="next" src="../../next.svg" className="next"></img></button>
         </div>
-        
       </div>
     </div>
   );

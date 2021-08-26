@@ -38,12 +38,14 @@ function NavbarHome() {
   return (
     <div>
       <div className="navbar">
+        {/* Navigation Bar after Log in */}
         <button className="menu-button" onClick={showSidebar}><img alt="menu" src="../../menu.svg" className="menu-button"></img></button>
         <div className="logo-home">
           <img alt="logo" src="../../logo.svg" className="logo-home"></img>
           <h1 className="title-home">NUGGETS</h1>
         </div>
 
+        {/* Notifications Button */}
         <div className="dropdown">
           <img alt="notification" src="../../notification.svg" className="notif-button" onClick={showDropdownNotif}></img>
           {dropdownNotif && (
@@ -59,6 +61,7 @@ function NavbarHome() {
           )}
         </div>
         
+        {/* User Button */}
         <div className="dropdown">
           <img alt="user" src="../../user.svg" className="user-button" onClick={showDropdownUser}></img>
           {dropdownUser && (
@@ -78,6 +81,7 @@ function NavbarHome() {
         </div>
       </div>
 
+      {/* Collapse Sidebar */}
       {!sidebar && (
         <div className="sidebar">
           <div className="sidebar-container">
@@ -98,6 +102,7 @@ function NavbarHome() {
         </div>
       )}
 
+      {/* Expand Sidebar */}
       {sidebar && (
         <div>
           <div className="sidebar1">

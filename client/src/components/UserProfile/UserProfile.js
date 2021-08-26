@@ -10,11 +10,11 @@ function UserProfile() {
 
   return (
     <div className="user-profile">
+      {/* User profile page */}
       <div className="background">
         <img alt="User" src="../../user.svg" className="user-image"></img>
         <h1 className="user-full-name">USER FULL NAME</h1>
       </div>
-
       <div className="grid-container">
         <h1 className="user-data-spec">FIRST NAME:</h1>
         <h1 className="user-data">(first name)</h1>
@@ -24,18 +24,21 @@ function UserProfile() {
         <h1 className="user-data">(email address)</h1>
       </div>
 
+      {/* Edit profile button */}
       <div className="button-container">
         <button className="button" onClick={showEditProfile}>
           <img alt="Edit" src="../../edit.svg" className="icon"></img>Edit Profile
         </button>
       </div>
 
+      {/* Change password button */}
       <div className="button-container">
         <button className="button1" onClick={showChangePassword}>
           <img alt="Edit" src="../../edit.svg" className="icon"></img>Change Password
         </button>
       </div>
 
+      {/* Edit profile popup */}
       {editProfile && (
         <div className="popup">
           <div className="box">
@@ -56,6 +59,7 @@ function UserProfile() {
         </div>
       )}
 
+      {/* Change password popup */}
       {changePassword && (
         <div className="popup">
         <div className="box">
