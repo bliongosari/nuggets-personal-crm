@@ -53,13 +53,13 @@ export default function SignInModal() {
               <input type="text" placeholder="   PASSWORD" name="password" required></input>
             </div>
             
-            <div class="submit-div">
-                <input class="submit-btn" type="submit" value="CONTINUE " id="submit"></input>
+            <div className="submit-div">
+                <input className="submit-btn" type="submit" value="CONTINUE " id="submit"></input>
             </div>
 
             <div className="submit">
-              <div class="submit-div">
-                <input class="submit-btn" type="submit" value="FORGET PASSWORD" id="forget-password"></input>
+              <div className="submit-div">
+                <input className="submit-btn" type="submit" value="FORGET PASSWORD" id="forget-password"></input>
               </div>
             
               <div className="closebutton">

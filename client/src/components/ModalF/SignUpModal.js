@@ -73,8 +73,8 @@ export default function SignUpModal() {
                 <h2><input type="checkbox"></input> &nbsp; &nbsp; By creating an account, you agree to the Terms and Conditions</h2>
             </div>
 
-            <div class="submit-div">
-                <input class="submit-btn" type="submit" value="CREATE ACCOUNT" id="submit"></input>
+            <div className="submit-div">
+                <input className="submit-btn" type="submit" value="CREATE ACCOUNT" id="submit"></input>
             </div>
             
             <div className="closebutton">
