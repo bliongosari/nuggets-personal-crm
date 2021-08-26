@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200&display=swap");
+
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
+}
+
+.navbar {
+  height: 25%;
+  width: 100%;
+  background-color: var(--primary-blue);
+  display: flex;
+  flex-direction: row;
+}
+
+.appname h1 {
+  font-family: var(--logo-font);
+  color: var(--primary-white);
+  padding-left: 5%;
+  font-size: 170%;
+  letter-spacing: 3px;
+  font-weight: lighter;
+  margin-top: 1.5%;
+}
+
+.appname {
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.burger {
+  margin-left: 2%;
+  margin-top: 1.5%;
+}
+
+.burger img {
+  width: 130%;
+}
+
+.notif {
+  margin-right: 5%;
+  margin-top: 0.9%;
+  position: absolute;
+  top: 1%;
+  right: 7%;
+}
+
+.notif img {
+  width: 130%;
+}
+
+.profile {
+  margin-right: 5%;
+  margin-top: 0.9%;
+  position: absolute;
+  top: 1%;
+  right: 0;
+}
+
+.profile img {
+  width: 130%;
+}
+
+@media only screen and (max-width: 400px) {
+  .burger {
+    margin-top: 3%;
+    margin-left: 5%;
+  }
+
+  .burger img {
+    width: 110%;
+    margin-bottom: 5%;
+  }
+
+  .appname {
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    margin-bottom: 6%;
+  }
+
+  .appname h1 {
+    text-align: center;
+    margin-left: 0%;
+    margin-top: 4%;
+    font-size: 120%;
+  }
+
+  .notif {
+    margin-top: 1.5%;
+    right: 10%;
+    margin-right: 5%;
+  }
+
+  .notif img {
+    width: 100%;
+  }
+
+  .profile {
+    margin-top: 1.5%;
+    right: 0%;
+  }
+
+  .profile img {
+    width: 100%;
+  }
+}
