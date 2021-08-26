@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Tag = require("./tag");
 
 const contactSchema = new Schema({
   full_name: {
@@ -16,9 +17,9 @@ const contactSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  tags: {
-    type: [{}],
-  },
+  tags:
+    [{type: Schema.ObjectId, ref: 'Tag'}],
+
   meeting_notes: {
     type: String,
   },
