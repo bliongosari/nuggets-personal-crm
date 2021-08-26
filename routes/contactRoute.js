@@ -1,12 +1,11 @@
 const express = require("express");
 const passport = require("passport");
-const { Contact } = require("../models/Contact");
+const Contact = require("../models/contact");
 const router = express.Router();
 
 // show contacts
 router.get("/", async (req, res) => {
-    const contacts = Contact.find();
-    contact
+    Contact.find()
         .then(contact=> {
             res.json(contact)
         }).catch(err=>{
