@@ -287,11 +287,7 @@ body.active-modal {
   margin-top: 1%;
 }
 
-<<<<<<< Updated upstream
-@media only screen and (max-width: 500px) {
-=======
 @media only screen and (max-width: 550px) {
->>>>>>> Stashed changes
   .buttonss {
     margin-right: 5%;
     margin-top: 4%;
@@ -302,10 +298,6 @@ body.active-modal {
     width: 20%;
     margin-top: 4%;
     right: 25%;
-<<<<<<< Updated upstream
-    width: 20%;
-=======
->>>>>>> Stashed changes
   }
 
   .modal-content {
@@ -322,7 +314,7 @@ body.active-modal {
   }
 }
 
-@media only screen and (min-width: 500px) and (max-width: 880px) {
+@media only screen and (min-width: 550px) and (max-width: 880px) {
   .buttonss {
     margin-right: 5%;
     margin-top: 2%;
@@ -346,6 +338,20 @@ body.active-modal {
   .buttons {
     width: 20%;
     margin-top: 1.5%;
+    right: 25%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .buttonss {
+    margin-right: 5%;
+    margin-top: 1%;
+    width: 20%;
+  }
+
+  .buttons {
+    width: 20%;
+    margin-top: 1%;
     right: 25%;
   }
 }
