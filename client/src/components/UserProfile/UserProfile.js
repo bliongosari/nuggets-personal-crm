@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import { LoopCircleLoading } from "react-loadingg";
 import api from "../../config/axiosConfig.js";
+import Cookies from "js-cookie";
+
 const Loading = () => <LoopCircleLoading />;
 
 function UserProfile() {
@@ -20,6 +22,9 @@ function UserProfile() {
       api({
         method: "GET",
         url: "/api/user/info",
+        headers: {
+          "X-ACCESS-TOKEN": Cookies.get("token"),
+        },
       })
         .then((res) => {
           if (res.status === 200) {

@@ -14,8 +14,14 @@ export default function SignInModal() {
   const history = useHistory();
 
   const sign_in = (user) => {
-    api
-      .post("/api/user/login", user)
+    api({
+      method: "POST",
+      url: "/api/user/login",
+      data: user,
+      headers: {
+        "X-ACCESS-TOKEN": Cookies.get("token"),
+      },
+    })
       .then(function (response) {
         setMessage(response.data.message);
         Cookies.set("token", response.data.token);

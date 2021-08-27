@@ -94,7 +94,7 @@ function NavbarHome() {
                 </div>
                 <hr></hr>
                 <div className="dropdown-container">
-                  <Link to="/">
+                  <Link to="/" onClick={logout}>
                     <img alt="user" src="../../logout.svg"></img>
                     <span>Log out</span>
                   </Link>

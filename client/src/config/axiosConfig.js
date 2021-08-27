@@ -11,9 +11,6 @@ if (window.location.href.includes("localhost")) {
 
 const api = axios.create({
   baseURL: axiosURL,
-  headers: {
-    "X-ACCESS-TOKEN": Cookies.get("token"),
-  },
 });
 
 export default api;

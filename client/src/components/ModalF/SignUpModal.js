@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
+import api from "../../config/axiosConfig.js";
+import Cookies from "js-cookie";
 
 //export function
 export default function SignUpModal() {
@@ -13,8 +15,14 @@ export default function SignUpModal() {
   const [message, setMessage] = useState("");
 
   const sign_up = (user) => {
-    axios
-      .post("http://localhost:8080/api/user/sign-up", user)
+    api({
+      method: "POST",
+      url: "/api/user/sign-up",
+      data: user,
+      headers: {
+        "X-ACCESS-TOKEN": Cookies.get("token"),
+      },
+    })
       .then(function (response) {
         setMessage(response.data.message);
         setEmail("");

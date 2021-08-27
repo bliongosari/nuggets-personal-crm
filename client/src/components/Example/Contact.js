@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
+import Cookies from "js-cookie";
 
 export default function Contact() {
   const [field, setField] = useState("");
@@ -17,6 +18,9 @@ export default function Contact() {
       method: "POST",
       url: "/api/contacts/add",
       data: contact,
+      headers: {
+        "X-ACCESS-TOKEN": Cookies.get("token"),
+      },
     })
       .then(function (res) {
         if (res.status === 200) {
@@ -34,6 +38,9 @@ export default function Contact() {
     api({
       method: "GET",
       url: "/api/contacts/all",
+      headers: {
+        "X-ACCESS-TOKEN": Cookies.get("token"),
+      },
     })
       .then((res) => {
         if (res.status === 200) {
