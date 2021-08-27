@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Modal.css";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
-import { login, logout } from "../../redux/slices/userSlice";
+import api from "../../config/axiosConfig.js";
+//import { login, logout } from "../../redux/slices/userSlice";
 
 export default function SignInModal() {
   const [modal, setModal] = useState(false);
@@ -12,22 +12,12 @@ export default function SignInModal() {
   const [message, setMessage] = useState("");
   const history = useHistory();
 
-  const setTokenHeader = (token) => {
-    console.log("yes");
-    if (token) {
-      axios.defaults.headers.common["X-ACCESS-TOKEN"] = Cookies.get("token");
-    } else {
-      delete axios.defaults.headers.common["X-ACCESS-TOKEN"];
-    }
-  };
-
   const sign_in = (user) => {
-    axios
+    api
       .post("http://localhost:8080/api/user/login", user)
       .then(function (response) {
         setMessage(response.data.message);
         Cookies.set("token", response.data.token);
-        setTokenHeader(response.data.token);
         history.push("/home");
       })
       .catch(function (error) {
@@ -112,7 +102,6 @@ export default function SignInModal() {
                   value="CONTINUE "
                   id="submit"
                 ></input>
-
               </div>
 
               <div className="submit">

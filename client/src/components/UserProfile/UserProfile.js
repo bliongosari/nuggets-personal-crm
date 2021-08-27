@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
 import "./UserProfile.css";
 import { LoopCircleLoading } from "react-loadingg";
-
+import api from "../../config/axiosConfig.js";
 const Loading = () => <LoopCircleLoading />;
+
 function UserProfile() {
   const [editProfile, setEditProfile] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
@@ -17,13 +16,10 @@ function UserProfile() {
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      axios({
+    setTimeout(() => {
+      api({
         method: "GET",
-        url: "http://localhost:8080/api/user/info",
-        headers: {
-          "X-ACCESS-TOKEN": Cookies.get("token"),
-        },
+        url: "/api/user/info",
       })
         .then((res) => {
           if (res.status === 200) {
@@ -41,7 +37,7 @@ function UserProfile() {
         .catch((err) => {
           setFailed(true);
         });
-    }, 1000);
+    }, 500);
   });
 
   return loading ? (

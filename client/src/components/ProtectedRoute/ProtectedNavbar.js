@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
-import axios from "axios";
+import api from "../../config/axiosConfig.js";
 
 const ProtectedNavbar = ({ component: Component, ...rest }) => {
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState(false);
 
   const isAuthenticated = async () => {
-    axios({
+    api({
       method: "GET",
-      url: "http://localhost:8080/api/user/verifyToken",
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
+      url: "/api/user/verifyToken",
     })
       .then((res) => {
         if (res.status === 200) {

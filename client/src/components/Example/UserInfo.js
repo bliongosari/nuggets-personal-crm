@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
+import api from "../../config/axiosConfig.js";
+
 export default function UserInfo() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    axios({
+    api({
       method: "GET",
-      url: "http://localhost:8080/api/user/info",
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
+      url: "/api/user/info",
     })
       .then((res) => {
         if (res.status === 200) {
