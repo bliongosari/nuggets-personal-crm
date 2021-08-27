@@ -16,6 +16,7 @@ const regexAntiJS = new RegExp(/[^;<>]+/);
 router.get("/verifyToken", async (req, res) => {
   let tokenPassed =
     req.headers["x-access-token"] || req.headers["authorization"];
+
   if (tokenPassed) {
     const token = tokenPassed.split(" ")[1];
 

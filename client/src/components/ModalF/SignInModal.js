@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Modal.css";
+import axios from "axios";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import api from "../../config/axiosConfig.js";

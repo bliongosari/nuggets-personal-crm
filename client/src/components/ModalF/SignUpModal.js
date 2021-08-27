@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
-import api from "../../config/axiosConfig.js";
+
 //export function
 export default function SignUpModal() {
   const [modal, setModal] = useState(false);
@@ -13,8 +13,8 @@ export default function SignUpModal() {
   const [message, setMessage] = useState("");
 
   const sign_up = (user) => {
-    api
-      .post("/api/user/sign-up", user)
+    axios
+      .post("http://localhost:8080/api/user/sign-up", user)
       .then(function (response) {
         setMessage(response.data.message);
         setEmail("");

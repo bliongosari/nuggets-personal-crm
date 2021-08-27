@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
+import Cookies from "js-cookie";
 
 export default function UserInfo() {
   const [user, setUser] = useState(null);
@@ -10,6 +11,9 @@ export default function UserInfo() {
     api({
       method: "GET",
       url: "/api/user/info",
+      headers: {
+        "X-ACCESS-TOKEN": Cookies.get("token"),
+      },
     })
       .then((res) => {
         if (res.status === 200) {
