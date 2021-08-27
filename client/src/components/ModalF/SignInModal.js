@@ -18,9 +18,6 @@ export default function SignInModal() {
       method: "POST",
       url: "/api/user/login",
       data: user,
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
     })
       .then(function (response) {
         setMessage(response.data.message);

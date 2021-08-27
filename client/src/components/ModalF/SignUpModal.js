@@ -19,9 +19,6 @@ export default function SignUpModal() {
       method: "POST",
       url: "/api/user/sign-up",
       data: user,
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
     })
       .then(function (response) {
         setMessage(response.data.message);

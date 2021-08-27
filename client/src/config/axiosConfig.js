@@ -6,7 +6,7 @@ var axiosURL = "";
 if (window.location.href.includes("localhost")) {
   axiosURL = "http://localhost:8080";
 } else {
-  axiosURL = "https://nuggets-personal-crm.scm.azurewebsites.net";
+  axiosURL = "http://nuggets-personal-crm.azurewebsites.net";
 }
 
 const api = axios.create({
