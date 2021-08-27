@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import axios from "axios";
-
+import api from "../../config/axiosConfig.js";
 //export function
 export default function SignUpModal() {
   const [modal, setModal] = useState(false);
@@ -13,8 +13,8 @@ export default function SignUpModal() {
   const [message, setMessage] = useState("");
 
   const sign_up = (user) => {
-    axios
-      .post("http://localhost:8080/api/user/sign-up", user)
+    api
+      .post("/api/user/sign-up", user)
       .then(function (response) {
         setMessage(response.data.message);
         setEmail("");
@@ -154,9 +154,14 @@ export default function SignUpModal() {
               </div>
             </form>
             <div className="submit-div">
-                <input className="submit-btn" type="submit" value="CREATE ACCOUNT" id="submit"></input>
+              <input
+                className="submit-btn"
+                type="submit"
+                value="CREATE ACCOUNT"
+                id="submit"
+              ></input>
             </div>
-            
+
             <div className="closebutton">
               <img alt="" src="../../close.svg" onClick={toggleModal}></img>
             </div>

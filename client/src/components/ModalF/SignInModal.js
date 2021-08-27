@@ -14,7 +14,7 @@ export default function SignInModal() {
 
   const sign_in = (user) => {
     api
-      .post("http://localhost:8080/api/user/login", user)
+      .post("/api/user/login", user)
       .then(function (response) {
         setMessage(response.data.message);
         Cookies.set("token", response.data.token);
