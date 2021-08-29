@@ -13,6 +13,8 @@ import Example from "./components/Example/Example";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProtectedNavbar from "./components/ProtectedRoute/ProtectedNavbar";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
+import EditContact from "./components/Contacts/EditContact";
+import AddContact from "./components/Contacts/AddContact";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <ProtectedRoute path="/user-profile" component={UserProfile} />
           <ProtectedRoute exact path="/journal" component={Journal} />
           <ProtectedRoute exact path="/contacts" component={Contacts} />
+          <ProtectedRoute exact path="/editcontact" component={EditContact} />
+          <ProtectedRoute exact path="/addcontact" component={AddContact} />
           <ProtectedRoute exact path="/events" component={Events} />
           <ProtectedRoute exact path="/example" component={Example} />
         </Switch>
