@@ -158,14 +158,7 @@ export default function SignUpModal() {
                 ></input>
               </div>
             </form>
-            <div className="submit-div">
-              <input
-                className="submit-btn"
-                type="submit"
-                value="CREATE ACCOUNT"
-                id="submit"
-              ></input>
-            </div>
+            
 
             <div className="closebutton">
               <img alt="" src="../../close.svg" onClick={toggleModal}></img>
