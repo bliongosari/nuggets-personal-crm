@@ -36,3 +36,16 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@media only screen and (max-width: 550px) {
+  .main-content {
+    margin-top: 50%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .main-content {
+    margin-top: 70%;
+    font-size: 80%;
+  }
+}
