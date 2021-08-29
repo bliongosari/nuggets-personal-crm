@@ -296,25 +296,15 @@ body.active-modal {
 @media only screen and (max-width: 550px) {
   .buttonss {
     margin-right: 3%;
-<<<<<<< Updated upstream
     margin-top: 4.5%;
     width: 20%;
-=======
-    margin-top: 4%;
-    width: 19%;
->>>>>>> Stashed changes
     height: auto;
   }
 
   .buttons {
     width: 19%;
-<<<<<<< Updated upstream
     margin-top: 4.5%;
     right: 21%;
-=======
-    margin-top: 4%;
-    right: 20%;
->>>>>>> Stashed changes
     height: auto;
   }
 
