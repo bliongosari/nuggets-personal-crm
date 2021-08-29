@@ -93,25 +93,28 @@ function UserProfile() {
             </span>
             <img alt="User" src="../../user.svg" className="user-image"></img>
             <h1 className="popup-header">EDIT PROFILE</h1>
-            <input
-              className="popup-text"
-              type="text"
-              placeholder="ENTER A NEW FIRST NAME"
-            />
-            <input
-              className="popup-text"
-              type="text"
-              placeholder="ENTER A NEW LAST NAME"
-            />
-            <input
-              className="popup-text"
-              type="text"
-              placeholder="ENTER A NEW EMAIL ADDRESS"
-            />
+            <div className="popup-text">
+              <input
+                type="text"
+                placeholder="ENTER A NEW FIRST NAME"
+              />
+            </div>
+            <div className="popup-text">
+              <input
+                type="text"
+                placeholder="ENTER A NEW LAST NAME"
+              />
+            </div>
+            <div className="popup-text">
+              <input
+                type="text"
+                placeholder="ENTER A NEW EMAIL ADDRESS"
+              />
+            </div>
             <div className="centered-button">
               <button className="button" onClick={showEditProfile}>
                 <img alt="Edit" src="../../edit.svg" className="icon"></img>
-                Change Profile
+                CHANGE PROFILE
               </button>
             </div>
           </div>
@@ -127,25 +130,28 @@ function UserProfile() {
             </span>
             <img alt="User" src="../../user.svg" className="user-image"></img>
             <h1 className="popup-header">CHANGE PASSWORD</h1>
-            <input
-              className="popup-text"
-              type="text"
-              placeholder="ENTER CURRENT PASSWORD"
-            />
-            <input
-              className="popup-text"
-              type="text"
-              placeholder="ENTER A NEW PASSWORD"
-            />
-            <input
-              className="popup-text"
-              type="text"
-              placeholder="CONFIRM NEW PASSWORD"
-            />
+            <div className="popup-text">
+              <input
+                type="text"
+                placeholder="ENTER CURRENT PASSWORD"
+              />
+            </div>
+            <div className="popup-text">
+              <input
+                type="text"
+                placeholder="ENTER A NEW PASSWORD"
+              />
+            </div>
+            <div className="popup-text">
+              <input
+                type="text"
+                placeholder="CONFIRM NEW PASSWORD"
+              />
+            </div>
             <div className="centered-button">
               <button className="button" onClick={showChangePassword}>
                 <img alt="Edit" src="../../edit.svg" className="icon"></img>
-                Change Password
+                CHANGE PASSWORD
               </button>
             </div>
           </div>
