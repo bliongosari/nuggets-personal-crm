@@ -289,15 +289,17 @@ body.active-modal {
 
 @media only screen and (max-width: 550px) {
   .buttonss {
-    margin-right: 5%;
-    margin-top: 4%;
+    margin-right: 3%;
+    margin-top: 4.5%;
     width: 20%;
+    height: auto;
   }
 
   .buttons {
-    width: 20%;
-    margin-top: 4%;
-    right: 25%;
+    width: 19%;
+    margin-top: 4.5%;
+    right: 21%;
+    height: auto;
   }
 
   .modal-content {
@@ -319,12 +321,14 @@ body.active-modal {
     margin-right: 5%;
     margin-top: 2%;
     width: 20%;
+    height: auto;
   }
 
   .buttons {
     width: 20%;
     margin-top: 2%;
     right: 25%;
+    height: auto;
   }
 }
 
@@ -333,12 +337,14 @@ body.active-modal {
     margin-right: 5%;
     margin-top: 1.5%;
     width: 20%;
+    height: auto;
   }
 
   .buttons {
     width: 20%;
     margin-top: 1.5%;
     right: 25%;
+    height: auto;
   }
 }
 
@@ -347,11 +353,13 @@ body.active-modal {
     margin-right: 5%;
     margin-top: 1%;
     width: 20%;
+    height: auto;
   }
 
   .buttons {
     width: 20%;
     margin-top: 1%;
     right: 25%;
+    height: auto;
   }
 }
