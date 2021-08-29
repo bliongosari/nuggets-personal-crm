@@ -99,9 +99,9 @@ export default function SignInModal() {
                 ></input>
               </div>
 
-              <div class="submit-div">
+              <div className="submit-div">
                 <input
-                  class="submit-btn"
+                  className="submit-btn"
                   type="submit"
                   value="CONTINUE "
                   id="submit"
@@ -109,9 +109,9 @@ export default function SignInModal() {
               </div>
 
               <div className="submit">
-                <div class="submit-div">
+                <div className="submit-div">
                   <input
-                    class="submit-btn"
+                    className="submit-btn"
                     type="submit"
                     value="FORGET PASSWORD"
                     id="forget-password"
