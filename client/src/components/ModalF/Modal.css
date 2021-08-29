@@ -351,14 +351,14 @@ body.active-modal {
 @media only screen and (min-width: 1100px) {
   .buttonss {
     margin-right: 5%;
-    margin-top: 1%;
+    margin-top: 1.5%;
     width: 20%;
     height: auto;
   }
 
   .buttons {
     width: 20%;
-    margin-top: 1%;
+    margin-top: 1.5%;
     right: 25%;
     height: auto;
   }
