@@ -3,6 +3,7 @@ name: Deploy to Azure
 on:
   push:
     branches:
+      - azure-deploy
       - main
   pull_request:
     branches: [main]
