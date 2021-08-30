@@ -6,5 +6,6 @@ axios.defaults.baseURL = (
   ? "http://localhost:8080"
   : "http://nuggets-personal-crm.azurewebsites.net"
 );
+axios.defaults.headers.common = { "X-ACCESS-TOKEN": Cookies.get("token") };
 
 export default axios;
