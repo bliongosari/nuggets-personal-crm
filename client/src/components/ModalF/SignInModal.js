@@ -20,14 +20,14 @@ export default function SignInModal() {
       data: user,
       headers: { "X-ACCESS-TOKEN": Cookies.get("token") }
     })
-      .then(function (res) {
-        setMessage(res.data.message);
-        Cookies.set("token", res.data.token);
-        api.defaults.headers.common = { "X-ACCESS-TOKEN": res.data.token };
+      .then((response) => {
+        setMessage(response.data.message);
+        Cookies.set("token", response.data.token);
+        api.defaults.headers.common = { "X-ACCESS-TOKEN": response.data.token };
         history.push("/home");
       })
-      .catch(function (error) {
-        setMessage(error.response.data.message || "Incorrect Password");
+      .catch((error) => {
+        error && setMessage(error.response.data.message || "Incorrect Password");
       });
   };
 
