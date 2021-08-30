@@ -5,8 +5,7 @@ import { getContacts } from "./contactsAPI";
 
 function Contacts() {
   const query = useQuery('contacts', getContacts, { staleTime: Infinity });
-  console.log(query);
-return (
+  return (
     <div className="home">
 
       <div className="searchbar">
@@ -40,18 +39,18 @@ return (
           <h1>Contact</h1>
           <h1>Description</h1>
         </div>
-        <div className="current-contacts-container">
-          <img alt="events" src="../../events.svg"></img>
-          <h2>John Smith</h2>
-          <h3>Blablabla</h3>
-        </div>
-        <hr className="line"></hr>
-        <div className="current-contacts-container">
-          <img alt="events" src="../../events.svg"></img>
-          <h2>John Smith</h2>
-          <h3>Blablabla</h3>
-        </div>
-        <hr className="line"></hr>
+        {query.isLoading && <p> Loading ... </p>}
+        {query.isError && <p> ERROR COULD NOT REACH SERVER </p>}
+        {query.isSuccess && query.data.contacts.slice(0,2).map((contact) => (
+          <>
+            <div className="current-contacts-container">
+              <img alt="events" src="../../events.svg"></img>
+              <h2> {contact.full_name} </h2>
+              <h3>Blablabla</h3>
+            </div>
+            <hr className="line"></hr>
+          </>
+        ))}
         <div className="current-contacts-container">
           <img alt="events" src="../../events.svg"></img>
           <h2>John Smith</h2>
