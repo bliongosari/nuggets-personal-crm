@@ -41,21 +41,16 @@ function Contacts() {
         </div>
         {query.isLoading && <p> Loading ... </p>}
         {query.isError && <p> ERROR COULD NOT REACH SERVER </p>}
-        {query.isSuccess && query.data.contacts.slice(0,2).map((contact) => (
+        {query.isSuccess && query.data.contacts.slice(0,4).map((contact, index) => (
           <>
+            {index !== 0 && <hr className="line"></hr>}
             <div className="current-contacts-container">
               <img alt="events" src="../../events.svg"></img>
               <h2> {contact.full_name} </h2>
               <h3>Blablabla</h3>
             </div>
-            <hr className="line"></hr>
           </>
         ))}
-        <div className="current-contacts-container">
-          <img alt="events" src="../../events.svg"></img>
-          <h2>John Smith</h2>
-          <h3>Blablabla</h3>
-        </div>
         <div className="contacts-summary-container">
           <div className="summarytitle">
             <h2>Page 2 of 2</h2>
