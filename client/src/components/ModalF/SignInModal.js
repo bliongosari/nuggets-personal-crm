@@ -27,7 +27,7 @@ export default function SignInModal() {
         history.push("/home");
       })
       .catch(function (error) {
-        setMessage("Incorrect username or password");
+        setMessage(error.response.data.message || "Incorrect Password");
       });
   };
 
