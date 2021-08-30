@@ -11,9 +11,6 @@ const ProtectedNavbar = ({ component: Component, ...rest }) => {
     api({
       method: "GET",
       url: "/api/user/verifyToken",
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
     })
       .then((res) => {
         if (res.status === 200) {

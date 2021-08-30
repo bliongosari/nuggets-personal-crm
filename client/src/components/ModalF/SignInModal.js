@@ -18,14 +18,16 @@ export default function SignInModal() {
       method: "POST",
       url: "/api/user/login",
       data: user,
+      headers: { "X-ACCESS-TOKEN": Cookies.get("token") }
     })
-      .then(function (response) {
-        setMessage(response.data.message);
-        Cookies.set("token", response.data.token);
+      .then(function (res) {
+        setMessage(res.data.message);
+        Cookies.set("token", res.data.token);
+        api.defaults.headers.common = { "X-ACCESS-TOKEN": res.data.token };
         history.push("/home");
       })
       .catch(function (error) {
-        setMessage(error.response.data.message);
+        setMessage(error.res.data.message);
       });
   };
 

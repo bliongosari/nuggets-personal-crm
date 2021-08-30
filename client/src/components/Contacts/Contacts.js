@@ -1,7 +1,11 @@
 import React from "react";
+import { useQuery } from "react-query";
 import "./Contacts.css";
+import { getContacts } from "./contactsAPI";
 
 function Contacts() {
+  const query = useQuery('contacts', getContacts, { staleTime: Infinity });
+  console.log(query);
 return (
     <div className="home">
 

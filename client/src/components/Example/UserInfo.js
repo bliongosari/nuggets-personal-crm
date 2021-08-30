@@ -11,9 +11,6 @@ export default function UserInfo() {
     api({
       method: "GET",
       url: "/api/user/info",
-      headers: {
-        "X-ACCESS-TOKEN": Cookies.get("token"),
-      },
     })
       .then((res) => {
         if (res.status === 200) {

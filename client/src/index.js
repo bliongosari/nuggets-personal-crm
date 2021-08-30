@@ -8,16 +8,21 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import * as serviceWorker from "./serviceWorker";
+import { QueryClient, QueryClientProvider } from "react-query";
 
+const queryClient = new QueryClient();
 let persistor = persistStore(store);
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </PersistGate>
+      <QueryClientProvider client={queryClient}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </PersistGate>
+      </QueryClientProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
