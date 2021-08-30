@@ -27,12 +27,13 @@ export default function SignInModal() {
         history.push("/home");
       })
       .catch(function (error) {
-        setMessage(error.res.data.message);
+        setMessage("Incorrect username or password");
       });
   };
 
   const requestLogin = async (e) => {
     e.preventDefault();
+    setMessage("");
     const user = {
       email,
       password,
