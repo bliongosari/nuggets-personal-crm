@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Modal.css";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import api from "../../config/axiosConfig.js";
@@ -27,7 +26,7 @@ export default function SignInModal() {
         history.push("/home");
       })
       .catch((error) => {
-        error && setMessage(error.response.data.message || "Incorrect Password");
+        error.response && setMessage(error.response.data.message || "Incorrect Password");
       });
   };
 

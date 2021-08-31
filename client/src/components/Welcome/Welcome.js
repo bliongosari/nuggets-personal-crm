@@ -11,7 +11,7 @@ function Welcome() {
   const { isLoading, isError, isSuccess } = useQuery("auth", async () => {
     const { data } = await api.get("/api/user/verifyToken");
     return data;
-  });
+  }, { retry: false });
   const history = useHistory();
   if (isSuccess) history.push("/home");
   return (
