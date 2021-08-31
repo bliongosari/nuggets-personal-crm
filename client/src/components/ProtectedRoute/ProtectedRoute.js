@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import Cookies from "js-cookie";
 import { BlockLoading } from "react-loadingg";
-import api from "../../config/axiosConfig.js";
+import api from "../../config/axiosConfig";
 
 const BlockLoad = () => <BlockLoading />;
 
