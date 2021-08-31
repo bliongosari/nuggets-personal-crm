@@ -22,7 +22,6 @@ export default function SignInModal() {
       .then((response) => {
         setMessage(response.data.message);
         Cookies.set("token", response.data.token);
-        api.defaults.headers.common = { "X-ACCESS-TOKEN": response.data.token };
         history.push("/home");
       })
       .catch((error) => {

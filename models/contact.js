@@ -38,7 +38,7 @@ const contactSchema = new Schema({
   linkedin: {
     type: String,
   },
-  tweeter: {
+  twitter: {
     type: String,
   },
 });

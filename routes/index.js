@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const userAuth = require("./userAuth");
-const contacts = require("./contacts");
+const contacts = require("./contactRoute");
 const journalRoute = require("./journalRoute");
 const eventRoute = require("./eventRoute");
 
