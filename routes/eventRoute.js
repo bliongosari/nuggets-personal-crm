@@ -6,11 +6,19 @@ const router = express.Router();
 
 // show events
 router.get("/", auth.authenticateToken, async (req, res) => {
+    
     try {
+        const repeat_list = Event.schema.path("repeat").enumValues;
+        const alert_list = Event.schema.path("alert").enumValues;
         const events = await Event.find({ user_id: req.user.id });
         return res
           .status(200)
-          .json({ events: events, message: "Successfully retrieved" });
+          .json({ 
+            user: req.user,
+            repeat_list: repeat_list,
+            alert_list: alert_list,
+            events: events,
+            message: "Successfully retrieved" });
     } catch (e) {
         return res.status(401).json({ message: "No user" });
     }
@@ -19,16 +27,33 @@ router.get("/", auth.authenticateToken, async (req, res) => {
 // create a new event
 router.post("/create", auth.authenticateToken, async (req, res) => {
     try {
+        const repeat_list = Event.schema.path("repeat").enumValues;
+        const alert_list = Event.schema.path("alert").enumValues;
+        var repeat = req.body.repeat;
+        var alert = req.body.alert;
+        if(repeat_list.includes(repeat)) {
+            repeat = repeat_list[repeat];
+        }
+        else {
+            repeat = repeat_list[0];
+        }
+        if(alert_list.includes(alert)) {
+            alert= alert_list[alert];
+        }
+        else {
+            alert = alert_list[0];
+        }
+        
         const event = new Event({
-        event_name: req.name,
-        location: req. location,
-        type: req.type,
-        start_time: req.start_time,
-        end_time: req.end_time,
-        repeat: req.repeat,
-        end_repeat: req.end_repeat,
-        alert: req.alert,
-        notes: req.notes,
+            user_id: req.body.user_id,
+            event_name: req.body.event_name,
+            location: req.body.location,
+            type: req.body.type,
+            start_time: req.body.start_time,
+            end_time: req.body.end_time,
+            repeat: repeat,
+            alert: alert,
+            notes: req.body.notes,
     }); 
     await event.save();
     return res.status(200).json({ message: "Successfully added" });
@@ -42,8 +67,12 @@ router.post("/create", auth.authenticateToken, async (req, res) => {
 router.get("/delete/:id", auth.authenticateToken, async (req,res) => {
     try {
         const event = await Event.findOneAndDelete({_id: req.params.id })
-        .exec();
-        return res.status(200).json({ message: "Successfully deleted" });
+        const events = await Event.find({user_id: req.user.id});
+        
+        return res.status(200).json({ 
+            message: "Successfully deleted",
+            events: events,
+        });
     } catch (e) {
         console.log(e);
         return res.status(403).json({ message: "Failed to delete event. Try again." });
