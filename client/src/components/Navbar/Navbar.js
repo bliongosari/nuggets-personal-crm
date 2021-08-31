@@ -177,5 +177,4 @@ function NavbarHome() {
   );
 }
 
-export default NavbarWelcome;
 export { NavbarWelcome, NavbarHome };
