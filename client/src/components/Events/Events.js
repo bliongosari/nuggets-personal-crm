@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Events.css";
 
+
 export default function Event() {
   const [field, setField] = useState("");
   const [event_name, setEventName] = useState("");
@@ -18,11 +19,13 @@ export default function Event() {
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
   const [user, setUser] = useState(null);
+  const[repeat_list, setRepeatList] = useState([]);
+  const[alert_list, setAlertList] = useState([]);
 
 
   const addEvents = async (e) => {
     const event = {
-      user_id : user.id,
+      user_id: user.id,
       event_name: event_name,
       location: location,
       type: type,
@@ -41,6 +44,7 @@ export default function Event() {
         if (res.status === 200) {
           setevents([...events, field]);
           setField("");
+          refreshPage();
         }
         setMessage(res.data.message);
       })
@@ -49,6 +53,33 @@ export default function Event() {
       });
   };
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  let eventID = React.createRef();
+
+  function handleClick() {
+    deleteEvent(eventID.current.value);
+  }
+
+  
+  const deleteEvent = async (id) => {
+    api({
+      method: "GET",
+      url: "/api/events/delete/" + id,
+    })
+      .then(function (res) {
+        if (res.status === 200) {
+          refreshPage();
+          setField("");
+        }
+        setMessage(res.data.message);
+      })
+      .catch(function (error) {
+        setMessage(error.response.data.message);
+      });
+  };
 
   useEffect(() => {
     api({
@@ -57,6 +88,8 @@ export default function Event() {
     })
       .then((res) => {
         if (res.status === 200) {
+          setRepeatList(res.data.repeat_list);
+          setAlertList(res.data.alert_list);
           setUser(res.data.user);
           setevents(res.data.events);
           setLoading(false);
@@ -114,21 +147,34 @@ export default function Event() {
                 value={end_time}
                 type="Date" //change to time later
                 onChange={(e) => setEndTime(e.target.value)}
-                required="true" //change to time later
+                required="true" 
               />
               <br></br>
-
-              <label> Repeat: </label>
-              <input
-                value={repeat}
-                onChange={(e) => setRepeat(e.target.value)} // stored as string
-              /><br></br>
+              <label>Repeat</label>
+              <ul>
+                {repeat_list.map(repeat =>
+                  <li type="none">
+                    <input
+                    type="checkbox"
+                    onChange={(e) => setRepeat({repeat}.repeat)}>         
+                    </input>
+                    <label>{repeat}</label>
+                  </li>
+                )}
+              </ul>
 
               <label> Alert </label>
-              <input
-                value={isalert}
-                onChange={(e) => setAlert(e.target.value)} //stored as string
-              /><br></br>
+              <ul>
+                {alert_list.map(isalert =>
+                  <li type="none">
+                    <input
+                    type="checkbox"
+                    onChange={(e) => setAlert({isalert}.alert)}>         
+                    </input>
+                    <label>{isalert}</label>
+                  </li>
+                )}
+              </ul>
 
               <label> Notes </label><br></br>
               <input
@@ -139,10 +185,13 @@ export default function Event() {
               </form>
 
               <button onClick={addEvents}>ADD</button>
+
               {events.map((item, i) => (
                 <li key={i}>
-                  {item.preferred_name}
-                  <button style={{ margin: " 0 0 0 40px" }}> Delete</button>
+                  {item.event_name}
+                  <button style={{ margin: " 0 0 0 40px" }} ref = {eventID} 
+                  value={item._id}
+                  onClick={handleClick} > Delete</button>
                 </li>
               ))}
             </div>
