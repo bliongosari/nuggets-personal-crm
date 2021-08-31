@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Welcome from "./components/Welcome/Welcome.js";
 import Home from "./components/Home/Home.js";
@@ -18,27 +18,25 @@ import AddContact from "./components/Contacts/AddContact";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Switch>
-          <Route exact path="/" component={NavbarWelcome} />
-          <ProtectedNavbar path="/" component={NavbarHome} />
-        </Switch>
-        <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/error" component={Unauthorized} />
-          <ProtectedRoute exact path="/home" component={Home} />
-          <ProtectedRoute path="/user-profile" component={UserProfile} />
-          <ProtectedRoute exact path="/journal" component={Journal} />
-          <ProtectedRoute exact path="/contacts" component={Contacts} />
-          <ProtectedRoute exact path="/editcontact" component={EditContact} />
-          <ProtectedRoute exact path="/addcontact" component={AddContact} />
-          <ProtectedRoute exact path="/events" component={Events} />
-          <ProtectedRoute exact path="/example" component={Example} />
-        </Switch>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <div className="app">
+      <Switch>
+        <Route exact path="/" component={NavbarWelcome} />
+        <ProtectedNavbar path="/" component={NavbarHome} />
+      </Switch>
+      <Switch>
+        <Route exact path="/" component={Welcome} />
+        <Route exact path="/error" component={Unauthorized} />
+        <ProtectedRoute exact path="/home" component={Home} />
+        <ProtectedRoute path="/user-profile" component={UserProfile} />
+        <ProtectedRoute exact path="/journal" component={Journal} />
+        <ProtectedRoute exact path="/contacts" component={Contacts} />
+        <ProtectedRoute exact path="/editcontact" component={EditContact} />
+        <ProtectedRoute exact path="/addcontact" component={AddContact} />
+        <ProtectedRoute exact path="/events" component={Events} />
+        <ProtectedRoute exact path="/example" component={Example} />
+      </Switch>
+      <Footer />
+    </div>
   );
 }
 

@@ -10,7 +10,13 @@ import { persistStore } from "redux-persist";
 import * as serviceWorker from "./serviceWorker";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    }
+  }
+});
 let persistor = persistStore(store);
 
 ReactDOM.render(
