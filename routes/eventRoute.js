@@ -81,12 +81,62 @@ router.get("/delete/:id", auth.authenticateToken, async (req,res) => {
 
 //edit event
 router.post("/edit/:id", auth.authenticateToken, async(req,res) => {
-    try { 
-        const event = Event.findById(req.params.id);
-        return res.status(200).json({ message: "Successfully edited" });
+    try {
+        var event = await Event.findbyId(req.params.id);
+        var event_name= req.body.event_name;
+        if(event_name == '') {
+            event_name = event.event_name;
+        }
+        var location= req.body.location;
+        if(location == '') {
+            location = event.location;
+        }
+        var type= req.body.type;
+        if(type == '') {
+            type = event.type;
+        }
+        var start_time= req.body.start_time;
+        if(start_time == '') {
+            start_time= event.start_time;
+        }
+        var end_time= req.body.end_time;
+        if(end_time == '') {
+            end_time = event.end_time;
+        }
+        var repeat= req.body.repeat;
+        if(repeat == '') {
+            repeat= event.repeat;
+        }
+        var alert= req.body.alert;
+        if(alert == '') {
+            alert = event.alert;
+        }
+        var notes= req.body.notes;
+        if(notes == '') {
+            notes= event.notes;
+        }
+
+        var event = await Event.findOneAndUpdate( req.params.id, {
+            user_id: req.user.id,
+            event_name: event_name,
+            location: location,
+            type: type,
+            start_time: start_time,
+            end_time: end_time,
+            repeat: repeat,
+            alert: isalert,
+            notes: notes,
+        }, {new: true});
+        return res.status(200).json({ 
+            user: req.user,
+            message: "Successfully edited" });
     } catch (e) {
         console.log(e);
-        return res.status(403).json({ message: "Failed to edit event. Try again." });
+        return res
+        .status(403)
+        .json({ 
+            message: "Failed to edit event. Try again." 
+            });
     }
 });
 

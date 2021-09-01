@@ -19,7 +19,7 @@ const journalSchema = new Schema({
     default: Date.now,
   },
   files: {
-    type: [{}],
+    type: [Buffer],
   },
 });
 

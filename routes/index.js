@@ -9,7 +9,7 @@ const eventRoute = require("./eventRoute");
 
 router.use("/contacts", contacts);
 router.use("/user", userAuth);
-router.use("/journals", journalRoute);
+router.use("/journal", journalRoute);
 router.use("/events", eventRoute);
 
 
