@@ -5,15 +5,25 @@ import "./Events.css";
 
 
 export default function Event() {
+  const [allField, setAllFields] = useState({
+    event_name: '',
+    location: '',
+    type: '',
+    start_time: Date.now(),
+    end_time: Date.now(),
+    notes:''
+  });
+  const [editedField, setEditedFields] = useState({
+    event_name: '',
+    location: '',
+    type: '',
+    start_time: Date.now(),
+    end_time: Date.now(),
+    repeat: '',
+    alert: '',
+    notes:''
+  });
   const [field, setField] = useState("");
-  const [event_name, setEventName] = useState("");
-  const [location, setLocation] = useState("");
-  const [type, setType] = useState("");
-  const [start_time, setStartTime] = useState(Date.now());
-  const [end_time, setEndTime] = useState(Date.now());
-  const [repeat, setRepeat] = useState("");
-  const [isalert, setAlert] = useState("");
-  const [notes, setNotes] = useState("");
   const [events, setevents] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -21,19 +31,21 @@ export default function Event() {
   const [user, setUser] = useState(null);
   const[repeat_list, setRepeatList] = useState([]);
   const[alert_list, setAlertList] = useState([]);
+  const [repeat, setRepeat] = useState("");
+  const [isalert, setAlert] = useState("");
 
 
   const addEvents = async (e) => {
     const event = {
       user_id: user.id,
-      event_name: event_name,
-      location: location,
-      type: type,
-      start_time: start_time,
-      end_time: end_time,
+      event_name: allField['event_name'],
+      location: allField['location'],
+      type: allField['type'],
+      start_time: allField['start_time'],
+      end_time: allField['end_time'],
       repeat: repeat,
       alert: isalert,
-      notes: notes,
+      notes: allField['notes'],
     };
     api({
       method: "POST",
@@ -52,6 +64,15 @@ export default function Event() {
         setMessage(error.response.data.message);
       });
   };
+
+  const changeHandler = e => {
+    setAllFields({...allField, [e.target.name]: e.target.value})
+  }
+
+  function handleEdit() {
+    editevent(eventID.current.value);
+    setEditedFields({editedField: [{}]});
+  }
 
   function refreshPage() {
     window.location.reload(false);
@@ -73,6 +94,37 @@ export default function Event() {
         if (res.status === 200) {
           refreshPage();
           setField("");
+        }
+        setMessage(res.data.message);
+      })
+      .catch(function (error) {
+        setMessage(error.response.data.message);
+      });
+  };
+
+  const editevent = async (id) => {
+    alert(id);
+    const event = {
+      user_id: user.id,
+      event_name: editedField['event_name'],
+      location: editedField['location'],
+      type: editedField['type'],
+      start_time: editedField['start_time'],
+      end_time: editedField['end_time'],
+      repeat: editedField['repeat'],
+      alert: editedField['isalert'],
+      notes: editedField['notes'],
+    };
+    api({
+      method: "POST",
+      url: "/api/events/edit/" + id,
+      data: event,
+    })
+      .then(function (res) {
+        if (res.status === 200) {
+          setevents([...events, field]);
+          setField("");
+          refreshPage();
         }
         setMessage(res.data.message);
       })
@@ -118,35 +170,35 @@ export default function Event() {
               <label style={{ color: "red" }}> {message}</label>
               <label> Event Name: </label><br></br>
               <input
-                value = {event_name}
-                onChange={(e) => setEventName(e.target.value)}
+                name="event_name"
+                onChange={changeHandler}
                 required="true"
                /><br></br>
               <label> Location: </label><br></br>
               <input
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                name="location"
+                onChange={changeHandler}
                 required="false"
               /><br></br>
               <label> Type: </label><br></br>
               <input
-                value={type}
-                onChange={(e) => setType(e.target.value)}
+                name="type"
+                onChange={changeHandler}
                 required="false"
               />
               <br></br>
               <label> Time: </label><br></br>
               <input
-                value={start_time}
-                onChange={(e) => setStartTime(e.target.value)}
+                onChange={changeHandler}
                 required="true"
+                name="start_time"
                 type="Date" //change to time later
               />
               <p>to</p>
               <input
-                value={end_time}
+                name="end_time"
                 type="Date" //change to time later
-                onChange={(e) => setEndTime(e.target.value)}
+                onChange={changeHandler}
                 required="true" 
               />
               <br></br>
@@ -156,6 +208,7 @@ export default function Event() {
                   <li type="none">
                     <input
                     type="checkbox"
+                    name="repeat"
                     onChange={(e) => setRepeat({repeat}.repeat)}>         
                     </input>
                     <label>{repeat}</label>
@@ -178,12 +231,12 @@ export default function Event() {
 
               <label> Notes </label><br></br>
               <input
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
+                name="note"
+                onChange={changeHandler}
                 required="false"
               /><br></br>
               </form>
-
+                      
               <button onClick={addEvents}>ADD</button>
 
               {events.map((item, i) => (
