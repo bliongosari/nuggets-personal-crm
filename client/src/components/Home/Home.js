@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-
+import EventsSummary from "./EventsSummary";
 function Home() {
   return (
     <div className="home">
@@ -20,27 +20,7 @@ function Home() {
         </div>
       </div>
 
-      {/* Events Table */}
-      <div className="current-events">
-        <h1>EVENTS IN THE NEXT 2 WEEKS</h1>
-        <div className="current-events-container">
-          <img alt="events" src="../../events.svg"></img>
-          <h2>Meeting</h2>
-          <h3>DD/MM/YYYY</h3>
-        </div>
-        <hr className="line"></hr>
-        <div className="current-events-container">
-          <img alt="events" src="../../events.svg"></img>
-          <h2>Meeting</h2>
-          <h3>DD/MM/YYYY</h3>
-        </div>
-        <hr className="line"></hr>
-        <div className="current-events-container">
-          <img alt="events" src="../../events.svg"></img>
-          <h2>Meeting</h2>
-          <h3>DD/MM/YYYY</h3>
-        </div>
-      </div>
+      <EventsSummary />
 
       {/* Contacts Table */}
       <div className="new-contacts">

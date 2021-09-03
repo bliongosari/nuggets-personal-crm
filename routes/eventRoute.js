@@ -17,6 +17,35 @@ router.get("/", auth.authenticateToken, async (req, res) => {
   }
 });
 
+// show recent events
+router.get("/top10", auth.authenticateToken, async (req, res) => {
+  try {
+    const events = await Event.find({ user_id: req.user.id });
+    // console.log(events);
+    var endDate = new Date();
+    endDate.setDate(endDate.getDate() + 14);
+    var filteredEvents = events.filter((event) => {
+      var date = new Date(event.start);
+      var date2 = new Date(event.end);
+      var curDate = new Date();
+      return (
+        (date >= curDate && date <= endDate) ||
+        (date2 >= curDate && date2 <= endDate)
+      );
+    });
+    const sortedEvents = filteredEvents.sort(
+      (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
+    );
+
+    return res.status(200).json({
+      events: (sortedEvents.reverse()).slice(0, 10);,
+      message: "Successfully retrieved",
+    });
+  } catch (e) {
+    return res.status(403).json({ message: "Error in retrieving data" });
+  }
+});
+
 // create a new event
 router.post("/create", auth.authenticateToken, async (req, res) => {
   const start = new Date(req.body.start);
