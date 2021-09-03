@@ -38,7 +38,7 @@ router.get("/top10", auth.authenticateToken, async (req, res) => {
     );
 
     return res.status(200).json({
-      events: (sortedEvents.reverse()).slice(0, 10);,
+      events: sortedEvents.reverse().slice(0, 10),
       message: "Successfully retrieved",
     });
   } catch (e) {

@@ -1,4 +1,4 @@
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
 //import events from "./AllEvents";
 import "./CalendarEvents.css";
@@ -10,6 +10,23 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 
 const localizer = momentLocalizer(moment);
+
+let allViews = Object.keys(Views).map((k) => Views[k]);
+
+const eventStyleGetter = (event, start, end, isSelected) => {
+  var style = {
+    backgroundColor: "#1c1c1c",
+    borderRadius: "0px",
+    opacity: 0.7,
+    color: "white",
+    border: "0px",
+    paddingLeft: "10px",
+    borderRadius: "10px",
+  };
+  return {
+    style: style,
+  };
+};
 
 const customStyles = {
   content: {
@@ -80,9 +97,11 @@ function CalendarEvents(props) {
         timeslots={8}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500 }}
+        style={{ height: 550 }}
         onSelectSlot={(start, end) => handleSelect(start, end)}
         onSelectEvent={(event) => openEventModal(event)}
+        popup
+        eventPropGetter={eventStyleGetter}
       />
       <Modal
         isOpen={modalIsOpen}
