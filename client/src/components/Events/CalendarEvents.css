@@ -9,6 +9,7 @@
   --logo-font: "AbeeZee";
   --button-font: "Urbanist";
 }
+
 .calendarEvents {
   margin: 80px 20px 0px 80px;
   padding: 10px 5px 20px 5px;
@@ -51,12 +52,17 @@
 }
 
 .exitBtn {
-  right: 5px;
+  right: 10px;
   position: absolute;
   background-color: white;
   border: none;
-  font-size: 25px;
+  font-size: 35px;
   color: var(--primary-blue);
+}
+
+.exitBtn:hover {
+  font-size: 40px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
