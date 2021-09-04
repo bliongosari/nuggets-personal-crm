@@ -9,7 +9,7 @@ module.exports = {
 
       jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if (err) {
-          return res.status(403).json({ message: "Token invalid" });
+          return res.status(401).json({ message: "Token invalid" });
         }
         req.user = user;
         next();
@@ -20,7 +20,7 @@ module.exports = {
   },
   generateToken: function (payload) {
     const token = jwt.sign({ id: payload }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
     return token;
   },

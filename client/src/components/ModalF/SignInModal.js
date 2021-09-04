@@ -17,7 +17,7 @@ export default function SignInModal() {
       method: "POST",
       url: "/api/user/login",
       data: user,
-      headers: { "X-ACCESS-TOKEN": Cookies.get("token") }
+      headers: { "X-ACCESS-TOKEN": Cookies.get("token") },
     })
       .then((response) => {
         setMessage(response.data.message);
@@ -25,7 +25,8 @@ export default function SignInModal() {
         history.push("/home");
       })
       .catch((error) => {
-        error.response && setMessage(error.response.data.message || "Incorrect Password");
+        error.response &&
+          setMessage(error.response.data.message || "Incorrect Password");
       });
   };
 
@@ -81,6 +82,7 @@ export default function SignInModal() {
               <div className="emailbox">
                 <input
                   type="text"
+                  pattern="(\w\.?)+@[\w\.-]+\.\w+"
                   placeholder="   EMAIL ADDRESS"
                   name="email"
                   value={email}
@@ -91,7 +93,7 @@ export default function SignInModal() {
 
               <div className="emailbox">
                 <input
-                  type="text"
+                  type="password"
                   placeholder="   PASSWORD"
                   name="password"
                   value={password}

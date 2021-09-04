@@ -88,8 +88,11 @@ export default function SignUpModal() {
               <div className="namediv">
                 <div className="namebox">
                   <input
-                    type="text"
-                    placeholder="  FIRST NAME"
+                    type="firstname"
+                    placeholder="  FIRST NAME   | Must only be alphabetical characters"
+                    pattern="[a-zA-Z ]+"
+                    oninvalid="this.setCustomValidity('Please enter only alphabetical characters')"
+                    oninput=" this.setCustomValidity('')"
                     name="firstname"
                     value={firstname}
                     required
@@ -99,9 +102,12 @@ export default function SignUpModal() {
 
                 <div className="namebox">
                   <input
-                    type="text"
+                    type="lastname"
+                    pattern="[a-zA-Z ]+"
+                    oninvalid="this.setCustomValidity('Please enter only alphabetical characters')"
+                    oninput=" this.setCustomValidity('')"
                     value={lastname}
-                    placeholder="  LAST NAME"
+                    placeholder="  LAST NAME   | Must only be alphabetical characters"
                     name="lastname"
                     required
                     onChange={(e) => setLastname(e.target.value)}
@@ -111,9 +117,10 @@ export default function SignUpModal() {
 
               <div className="emailbox">
                 <input
-                  type="text"
+                  type="email"
+                  pattern="(\w\.?)+@[\w\.-]+\.\w+"
                   value={email}
-                  placeholder="  EMAIL ADDRESS"
+                  placeholder="  EMAIL ADDRESS  | Must be in the format of name@domain."
                   name="email"
                   required
                   onChange={(e) => setEmail(e.target.value)}
@@ -122,9 +129,12 @@ export default function SignUpModal() {
 
               <div className="emailbox">
                 <input
-                  type="text"
-                  placeholder="  CREATE PASSWORD"
+                  type="password"
+                  placeholder="  CREATE PASSWORD  | Must contain atleast 8 characters with one digit, and one character"
                   name="password"
+                  pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}"
+                  oninvalid="this.setCustomValidity('Must contain atleast one alphabet character, one numerical digit (0-9), and at least 8 characters')"
+                  oninput="this.setCustomValidity('')"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -133,9 +143,12 @@ export default function SignUpModal() {
 
               <div className="emailbox">
                 <input
-                  type="text"
+                  type="password"
                   placeholder="  CONFIRM PASSWORD"
                   name="confirm-password"
+                  pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}"
+                  oninvalid="this.setCustomValidity('Must contain atleast one alphabet character, one numerical digit (0-9), and at least 8 characters')"
+                  oninput="this.setCustomValidity('')"
                   required
                   value={passwordConfirmation}
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -158,7 +171,6 @@ export default function SignUpModal() {
                 ></input>
               </div>
             </form>
-            
 
             <div className="closebutton">
               <img alt="" src="../../close.svg" onClick={toggleModal}></img>

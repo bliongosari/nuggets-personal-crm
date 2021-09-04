@@ -53,6 +53,17 @@ router.post("/sign-up", async (req, res) => {
     !req.body.passwordConfirmation
   ) {
     return res.status(400).json({ error: "Please fill all fields." });
+  }
+  if (
+    regexEmail.test(req.body.email) == false ||
+    regexPassword.test(req.body.password) == false ||
+    regexText.test(req.body.firstname) == false ||
+    regexText.test(req.body.lastname) == false
+  ) {
+    return res.render("user/sign-up", {
+      success: false,
+      message: "Please match the fields as requested",
+    });
   } else {
     const hashedpassword = await bcrypt.hash(req.body.password, 10);
     User.find(
