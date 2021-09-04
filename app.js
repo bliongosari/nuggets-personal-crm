@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const path = require("path");
+const rateLimit = require("express-rate-limit");
 
 require("dotenv").config();
 require("./config/database").establishDB();
@@ -16,6 +17,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use("/api/", routes);
+
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // every 1 minute
+  max: 60,
+});
+app.use("/api/", apiLimiter);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(path.join(__dirname, "client/build")));

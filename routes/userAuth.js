@@ -32,7 +32,7 @@ router.get("/verifyToken", async (req, res) => {
 });
 
 router.get("/info", auth.authenticateToken, async (req, res) => {
-  var id = sanitize(req.body.id);
+  var id = sanitize(req.user.id);
   try {
     User.findOne({ _id: id }).then(function (userInfo) {
       return res.status(200).json({
