@@ -6,7 +6,7 @@ const eventSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true,
   },
-  event_name: {
+  title: {
     type: String,
     required: true,
   },
@@ -16,11 +16,11 @@ const eventSchema = new Schema({
   type: {
     type: String,
   },
-  start_time: {
+  start: {
     type: Date,
     required: true,
   },
-  end_time: {
+  end: {
     type: Date,
     required: true,
   },
