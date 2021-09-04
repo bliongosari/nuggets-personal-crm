@@ -32,8 +32,9 @@ router.get("/verifyToken", async (req, res) => {
 });
 
 router.get("/info", auth.authenticateToken, async (req, res) => {
+  var id = sanitize(req.body.id);
   try {
-    User.findOne({ _id: req.user.id }).then(function (userInfo) {
+    User.findOne({ _id: id }).then(function (userInfo) {
       return res.status(200).json({
         firstname: userInfo.firstname,
         lastname: userInfo.lastname,

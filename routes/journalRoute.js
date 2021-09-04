@@ -3,9 +3,11 @@ const passport = require("passport");
 const Journal = require("../models/journal");
 const router = express.Router();
 const auth = require("../middleware/auth");
+const sanitize = require("mongo-sanitize");
 
 // show journals
 router.get("/", auth.authenticateToken, async (req, res) => {
+  var user_id = sanitize(req.body.user_id);
   try {
     const journals = await Journal.find({ user_id: req.user.id });
     return res.status(200).json({

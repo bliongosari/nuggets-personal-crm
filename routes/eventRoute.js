@@ -97,8 +97,9 @@ router.get("/delete/:id", auth.authenticateToken, async (req, res) => {
 //edit event
 router.post("/edit/:id", auth.authenticateToken, async (req, res) => {
   try {
-    var event = await Event.findbyId(req.params.id);
-    var title = req.body.title;
+    var eventID = sanitize(req.params.id);
+    var event = await Event.findbyId(eventID);
+    var title = sanitize(req.body.title);
     if (title == "") {
       title = event.title;
     }
