@@ -3,6 +3,7 @@ const passport = require("passport");
 const Event = require("../models/event");
 const auth = require("../middleware/auth");
 const router = express.Router();
+const sanitize = require("mongo-sanitize");
 
 // show events
 router.get("/", auth.authenticateToken, async (req, res) => {
@@ -101,39 +102,40 @@ router.post("/edit/:id", auth.authenticateToken, async (req, res) => {
     if (title == "") {
       title = event.title;
     }
-    var location = req.body.location;
+    var location = sanitize(req.body.location);
     if (location == "") {
       location = event.location;
     }
-    var type = req.body.type;
+    var type = sanitize(req.body.type);
     if (type == "") {
       type = event.type;
     }
-    var start = req.body.start;
+    var start = sanitize(req.body.start);
     if (start == "") {
       start = event.start;
     }
-    var end = req.body.end;
+    var end = sanitize(req.body.end);
     if (end == "") {
       end = event.end;
     }
-    var repeat = req.body.repeat;
+    var repeat = sanitize(req.body.repeat);
     if (repeat == "") {
       repeat = event.repeat;
     }
-    var alert = req.body.alert;
+    var alert = sanitize(req.body.alert);
     if (alert == "") {
       alert = event.alert;
     }
-    var notes = req.body.notes;
+    var notes = sanitize(req.body.notes);
     if (notes == "") {
       notes = event.notes;
     }
-
+    var id = sanitize(req.params.id);
+    var user_id = sanitize(req.user.id);
     var event = await Event.findOneAndUpdate(
-      req.params.id,
+      id,
       {
-        user_id: req.user.id,
+        user_id: user_id,
         title: title,
         location: location,
         type: type,

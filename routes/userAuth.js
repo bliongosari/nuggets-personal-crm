@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const router = express.Router();
 const jwtdecode = require("jwt-decode");
 const auth = require("../middleware/auth");
+const sanitize = require("mongo-sanitize");
 
 const regexPassword = new RegExp(/(?=.*\d)(?=.*[a-zA-Z]).{8,}/);
 const regexText = new RegExp(/[a-zA-Z ]+/);
@@ -65,10 +66,14 @@ router.post("/sign-up", async (req, res) => {
       message: "Please match the fields as requested",
     });
   } else {
-    const hashedpassword = await bcrypt.hash(req.body.password, 10);
+    var email = sanitize(req.body.email);
+    var password = sanitize(req.body.password);
+    var firstname = sanitize(req.body.firstname);
+    var lastname = sanitize(req.body.lastname);
+    const hashedpassword = await bcrypt.hash(password, 10);
     User.find(
       {
-        email: req.body.email,
+        email: email,
       },
       (err, previousUsers) => {
         if (err) {
@@ -80,8 +85,8 @@ router.post("/sign-up", async (req, res) => {
         } else {
           const newUser = new User();
           newUser.email = req.body.email;
-          newUser.firstname = req.body.firstname;
-          newUser.lastname = req.body.lastname;
+          newUser.firstname = firstname;
+          newUser.lastname = lastname;
           newUser.password = hashedpassword;
           newUser.save((err, user) => {
             if (err) {
@@ -104,8 +109,9 @@ router.post("/login", async (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({ error: "Please fill all fields." });
   } else {
+    var email = sanitize(req.body.email);
     User.findOne({
-      email: req.body.email,
+      email: email,
     })
       .then((user) => {
         if (!user) {
