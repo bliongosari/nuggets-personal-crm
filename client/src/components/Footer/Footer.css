@@ -17,12 +17,11 @@
   background-color: var(--primary-blue);
   display: flex;
   flex-direction: row;
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   text-align: center;
   justify-content: center;
-  position: absolute;
 }
 
 .footerbar h1 {
