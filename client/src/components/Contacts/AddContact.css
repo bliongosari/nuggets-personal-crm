@@ -131,7 +131,7 @@
   background: var(--primary-white);
   border-color: var(--primary-blue);
   width: 90%;
-  padding: 0;
+  padding: 0.3%;
   margin-bottom: 0.8%;
   display: inline-flexbox;
   margin-right: 1%;
@@ -153,7 +153,43 @@
 }
 
 .formatbtn img {
-  width: 50%;
+  height: 100%;
+}
+
+.tagsinput {
+  display: flex;
+  flex-direction: row;
+}
+
+.tagsinput input {
+  background: var(--primary-white);
+  border-color: var(--primary-blue);
+  width: 85%;
+  padding: 0.3%;
+  margin-bottom: 0.8%;
+  display: inline-flexbox;
+  margin-right: 1%;
+}
+
+.tagsbtn {
+  font-family: var(--button-font);
+  border-radius: 10px;
+  width: 9%;
+  background-color: var(--primary-blue);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  margin-top: 0%;
+}
+
+.tagsbtn h2 {
+  font-family: var(--button-font);
+  font-size: 80%;
+  color: white;
 }
 
 .details {
@@ -174,7 +210,7 @@
   background: var(--primary-white);
   border-color: var(--primary-blue);
   width: 95%;
-  padding: 0;
+  padding: 0.3%;
   margin-bottom: 0.8%;
 }
 

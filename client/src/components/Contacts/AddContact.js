@@ -62,10 +62,10 @@ return (
 
         <div className="detailss">
           <h2>Tags:</h2>
-          <div className="detailssinput">
+          <div className="tagsinput">
             <input></input>
-            <button className="formatbtn">
-              <img alt="plus" src="../../palette.svg"></img>
+            <button className="tagsbtn">
+              <h2>add tags</h2>
             </button>
           </div>
           

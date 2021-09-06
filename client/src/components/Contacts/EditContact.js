@@ -1,5 +1,5 @@
 import React from "react";
-import "./EditContact.css";
+import "./AddContact.css";
 
 function EditContact() {
 return (
@@ -62,10 +62,10 @@ return (
 
         <div className="detailss">
           <h2>Tags:</h2>
-          <div className="detailssinput">
+          <div className="tagsinput">
             <input></input>
-            <button className="formatbtn">
-              <img alt="plus" src="../../palette.svg"></img>
+            <button className="tagsbtn">
+              <h2>add tags</h2>
             </button>
           </div>
           
@@ -108,14 +108,13 @@ return (
 
         <div className="addcontacts">
           <button className="addbtn">
-            <img alt="plus" src="../../whiteadd.svg"></img>
-            <h1>Save changes </h1>
+            <img alt="plus" src="../../edit.svg"></img>
+            <h1>Save Changes </h1>
           </button>
         </div>
 
         <div className="addcontacts">
           <button className="addbtn">
-            <img alt="plus" src="../../whiteadd.svg"></img>
             <h1>Cancel</h1>
           </button>
         </div>
