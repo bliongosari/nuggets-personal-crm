@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import "./AddContact.css";
 
 function AddContact() {
+const [tags, setTags] = useState(false);
+
+const toggleTags = () => {
+  setTags(!tags);
+};
+
+ if(tags) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
 return (
     <div className="home">
 
@@ -64,9 +76,78 @@ return (
           <h2>Tags:</h2>
           <div className="tagsinput">
             <input></input>
-            <button className="tagsbtn">
+            <button onClick={toggleTags} className="tagsbtn">
               <h2>add tags</h2>
             </button>
+
+            {tags && (
+              <div className="modal">
+                <div onClick={toggleTags} className="overlay"></div>
+
+                
+
+                <div className="modal-content">
+                  <div className="color-title">
+                    <h2>Color</h2>
+                    <hr></hr>
+                  </div>
+
+                  <div className="closebutton">
+                    <img alt="" src="../../close.svg" onClick={toggleTags}></img>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">None</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Red</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Green</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Blue</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Yellow</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Pink</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Purple</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Orange</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Cyan</label>
+                  </div>
+
+                  <div className="color-options">
+                    <input type="checkbox"></input>
+                    <label class="container">Navy Blue</label>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           
         </div>
