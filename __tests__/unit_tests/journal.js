@@ -40,20 +40,4 @@ describe("Testing  journal controller", () => {
     await journal_controller.getAll(req, res);
     expect(res.statusCode).toEqual(401);
   });
-
-  test("Testing correct id for user info", async () => {
-    req = {
-      user: { id: "61250cf49eb2e4127ae7d334" },
-    };
-    await auth_controller.getInfo(req, res);
-    expect(res.statusCode).toEqual(200);
-  });
-
-  test("Testing wrong id for user info", async () => {
-    req = {
-      user: { id: "aaaa" },
-    };
-    await auth_controller.getInfo(req, res);
-    expect(res.statusCode).toEqual(401);
-  });
 });

@@ -96,30 +96,28 @@ const login = async (req, res) => {
     return res.status(400).json({ error: "Please fill all fields." });
   } else {
     var email = sanitize(req.body.email);
-    User.findOne({
-      email: email,
-    })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ message: "Email not found" });
+    try {
+      const userAll = await User.find({ email: email });
+      const user = userAll[0];
+      bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+        if (err) {
+          console.log("error");
+          return res.status(111).json({ message: "Password incorrect" });
         }
-        bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
-          if (err) throw err;
-          if (isMatch) {
-            const token = auth.generateToken(user._id);
-            res.status(200).json({
-              success: true,
-              token: "Bearer " + token,
-              message: "Successfully logged in",
-            });
-          } else {
-            return res
-              .status(400)
-              .json({ passwordincorrect: "Password incorrect" });
-          }
-        });
-      })
-      .catch((err) => res.status(401).json({ message: err }));
+        if (isMatch) {
+          const token = auth.generateToken(user._id);
+          return res.status(200).json({
+            success: true,
+            token: "Bearer " + token,
+            message: "Successfully logged in",
+          });
+        } else {
+          return res.status(400).json({ message: "Password incorrect" });
+        }
+      });
+    } catch (err) {
+      return res.status(400).json({ message: "Email not found" });
+    }
   }
 };
 
