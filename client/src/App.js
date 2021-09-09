@@ -15,6 +15,7 @@ import ProtectedNavbar from "./components/ProtectedRoute/ProtectedNavbar";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
 import EditContact from "./components/Contacts/EditContact";
 import AddContact from "./components/Contacts/AddContact";
+import ContactProfile from "./components/Contacts/ContactProfile"
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <ProtectedRoute exact path="/addcontact" component={AddContact} />
         <ProtectedRoute exact path="/events" component={Events} />
         <ProtectedRoute exact path="/example" component={Example} />
+        <ProtectedRoute exact path="/contactprofile" component={ContactProfile} />
       </Switch>
       <Footer />
     </div>
