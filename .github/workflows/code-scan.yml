@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "Code Scanning"
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   code-ql-analysis:
-    name: Analyze
+    name: CodeQL scanning
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -34,7 +34,7 @@ jobs:
 
   njsscan-analysis:
     runs-on: ubuntu-latest
-    name: njsscan code scanning
+    name: Njsscan scanning
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
