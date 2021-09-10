@@ -60,11 +60,11 @@ const createEvent = async (req, res) => {
       alert: req.body.alert || "None",
       notes: req.body.notes,
     });
-    await event.save();
-    console.log(event);
-    return res.status(200).json({ message: "Successfully added" });
+    const savedEvent = await event.save();
+    return res
+      .status(200)
+      .json({ message: "Successfully added", event: savedEvent });
   } catch (e) {
-    console.log(e);
     return res.status(403).json({ message: "Failed to add event. Try again." });
   }
 };
