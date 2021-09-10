@@ -10,7 +10,9 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build --prefix client",
-    "test": "jest"
+    "jest-install": "npm install jest",
+    "test": "concurrently \"npm run jest-install\" \"jest\"",
+    "uninstall-jest": "npm uninstall jest"
   },
   "repository": {
     "type": "git",
