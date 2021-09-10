@@ -11,3 +11,7 @@ exports.establishDB = () => {
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.log(err));
 };
+
+exports.closeDB = () => {
+  mongoose.disconnect();
+};

@@ -26,6 +26,8 @@ jobs:
       - name: npm install, build, and test
         env:
           CI: false
+          DB_KEY: ${{ env.DB_KEY }}
+          JWT_SECRET: ${{ env.JWT_SECRET }}
         run: |
           npm install
           npm run client-install
