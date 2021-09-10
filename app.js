@@ -7,7 +7,6 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 
 require("dotenv").config();
-require("./config/database").establishDB();
 
 const app = express();
 const routes = require("./routes/index");
@@ -39,9 +38,5 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 app.use(express.json());
-
-PORT = process.env.PORT || 8080;
-
-app.listen(PORT, () => console.log("Backend on port " + PORT));
 
 module.exports = app;
