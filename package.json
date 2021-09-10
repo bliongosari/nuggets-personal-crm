@@ -34,7 +34,6 @@
     "passport": "^0.4.1"
   },
   "devDependencies": {
-    "jest": "^27.1.1",
     "supertest": "^6.1.6"
   }
 }
