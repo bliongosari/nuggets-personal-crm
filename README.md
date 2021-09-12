@@ -2,7 +2,7 @@
 
 **Deployment**
 
-URL: https://nuggets-personal-crm.scm.azurewebsites.net/
+URL: https://nuggets-personal-crm.azurewebsites.net/
 
 Automatic deployment on every commit to main and pull requests to main.
 
