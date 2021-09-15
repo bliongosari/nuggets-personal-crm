@@ -91,6 +91,12 @@
     line-height: 35px;
     margin-top: -8%;
   }
+  .edit-title {
+    font-size: 20px;
+    margin-left: 30%;
+    line-height: 35px;
+    margin-top: -8%;
+  }
   input {
     width: 100%;
     color: var(--secondary-blue);

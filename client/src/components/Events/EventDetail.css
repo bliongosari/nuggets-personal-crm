@@ -1,0 +1,57 @@
+  :root {
+    --primary-blue: #3466aa;
+    --secondary-blue: #114084;
+    --tertiary-blue: #82b7dc;
+    --fourth-blue: #deecff;
+    --fifth-blue: #e8f2ff;
+    --primary-black: #1c1c1c;
+    --primary-white: #f1f1f1;
+    --logo-font: "AbeeZee";
+    --button-font: "Urbanist";
+  }
+  .event-details {
+    margin-top: 10%;
+    color: var(--secondary-blue);
+    font-family: var(--button-font);
+    letter-spacing: 0.8px;
+    line-height: 25px;
+    font-size: 13px;
+  }
+  .detail-title {
+    font-size: 20px;
+    margin-left: 30%;
+    line-height: 35px;
+    margin-top: -8%;
+  }
+  .delete-btn {
+    margin-left: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    color:white;
+    background-color: var(--primary-blue);
+    font-family: var(--button-font);
+    width: 150px;
+    border: 0px;
+    border-radius: 3px;
+    padding: 7px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  .delete-btn:hover {
+    text-decoration: underline;
+  }
+  .edit-btn {
+    cursor: pointer;
+    color:white;
+    background-color: var(--primary-blue);
+    font-family: var(--button-font);
+    width: 150px;
+    border: 0px;
+    border-radius: 3px;
+    padding: 7px;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  .edit-btn:hover {
+    text-decoration: underline;
+  }

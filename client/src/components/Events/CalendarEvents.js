@@ -127,7 +127,6 @@ function CalendarEvents(props) {
         <button className="exitBtn" onClick={() => setEventModal(false)}>
           &times;
         </button>
-        <h2> Event Details </h2>
         <div>
           <EventDetail event={eventID} />
         </div>
