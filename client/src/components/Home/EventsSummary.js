@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Home.css";
+import { Link } from "react-router-dom";
+
 
 function EventsSummary() {
   const [events, setEvents] = useState([]);
+  const [curEvents, setCurEvents] = useState([]);
+  const [noEvents, setNoEvents] = useState(false);
+  const [curIndex, setCurIndex] = useState(0);
   useEffect(() => {
     api({
       method: "GET",
@@ -17,7 +22,11 @@ function EventsSummary() {
             allEvents[index].start = new Date(event.start).toDateString();
             allEvents[index].end = new Date(event.end).toDateString();
           });
+          if (allEvents.length == 0){
+            setNoEvents(true);
+          }
           setEvents(allEvents);
+          setCurEvents(allEvents.slice(0,3));
         } else {
           //setFailed(true);
         }
@@ -27,10 +36,33 @@ function EventsSummary() {
       });
   }, []);
 
+  const back = ()=> {
+    if (curIndex == 0) {
+    }
+    else {
+    setCurEvents(events.slice(curIndex-3, curIndex));
+    setCurIndex(curIndex-3);
+    }
+  }
+
+  const next = () => {
+    if (curIndex <= events.length - 3){
+   setCurEvents(events.slice(curIndex+3, curIndex+6));
+   setCurIndex(curIndex+3);
+    }
+  }
+
   return (
     <div className="current-events">
-      <h1>EVENTS IN THE NEXT 2 WEEKS</h1>
-      {events.map((event) => (
+      <div className ="current-events-title">
+      <span>EVENTS IN THE NEXT 2 WEEKS</span>
+      </div>
+      {noEvents ? (
+        <div className = "no-events-container"> <h3> No events in the next 2 weeks!</h3></div>
+      ): (
+        <div>
+      {curEvents.map((event) => (
+        // <Link to={{ pathname: `product/${event.id}`, state: { product } }}>
         <div>
           <div className="current-events-container">
             <img alt="events" src="../../events.svg"></img>
@@ -41,7 +73,15 @@ function EventsSummary() {
           </div>
           <hr className="line"></hr>
         </div>
+        // </Link>
       ))}
+      <div className = "eventsBtns">
+      <button onClick = {back} className="previous1 round">&#8249;</button>
+      <span> {curIndex/3 + 1}/{Math.ceil(events.length/3)}</span>
+      <button onClick ={next} className="next1 round">&#8250;</button>
+      </div>
+      </div>
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import "./Contacts.css";
 import { getContacts } from "./contactsAPI";
+import { Link } from "react-router-dom";
 
 function Contacts() {
   const query = useQuery('contacts', getContacts, { staleTime: Infinity });
@@ -14,10 +15,12 @@ function Contacts() {
       </div>
 
       <div className="addcontacts">
+      <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
         <button className="addbtn">
           <img alt="plus" src="../../whiteadd.svg"></img>
           <h1>ADD NEW CONTACT</h1>
         </button>
+        </Link>
       </div>
       
       <div className="contactssummary">
