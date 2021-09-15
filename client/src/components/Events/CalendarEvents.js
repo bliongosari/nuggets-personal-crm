@@ -36,12 +36,13 @@ const customStyles = {
     height: "580px",
     width: "325px",
     borderRadius: "12px",
-    textAlign: "center",
+    textAlign: "left",
     bottom: "auto",
     marginRight: "-50%",
     marginBottom: "10px",
     transform: "translate(-50%, -50%)",
     zIndex: "100",
+    backgroundColor: "#f1f1f1",
   },
 };
 
@@ -112,9 +113,9 @@ function CalendarEvents(props) {
         <button className="exitBtn" onClick={() => setIsOpen(false)}>
           &times;
         </button>
-        <h2> Add an Event</h2>
         <div>
           <EventForm />
+          <button onClick={() => setIsOpen(false)} className= "cancel-button">CANCEL</button>
         </div>
       </Modal>
       <Modal

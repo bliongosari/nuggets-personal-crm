@@ -84,6 +84,8 @@ function EventForm() {
     <div>
       {flag && (failed ? <FailedMsg /> : <SuccessMsg />)}
       <div className="addevents">
+        <h2 className="add-title">Add a new event</h2>
+        <h3 className = "add-details">Event Details</h3>
         <form>
           <label style={{ color: "red" }}> {message}</label>
           <label> Event Name: </label>
@@ -102,8 +104,7 @@ function EventForm() {
             required={true}
             name="start"
             type="Date" //change to time later
-          />
-          <p>to</p>
+          /> to
           <input
             value={allField["end"]}
             name="end"
@@ -112,24 +113,23 @@ function EventForm() {
             required={true}
           />
           <br></br>
-          <label>Repeat</label>
-          <ul>
+          <label className="repeat">Repeat</label>
             <select
               name="repeat"
               value={allField["repeat"]}
               onChange={changeHandler}
+              className="dragdown"
             >
               {repeat_list.map((repeat) => (
                 <option name={repeat} value={repeat}>
                   {repeat}
                 </option>
               ))}
-            </select>
-          </ul>
-
-          <label>Alert</label>
-          <ul>
+            </select> 
+          <br></br>
+          <label className="alert">Alert</label>
             <select
+              className="dragdown"
               name="alert"
               value={allField["alert"]}
               onChange={changeHandler}
@@ -140,14 +140,15 @@ function EventForm() {
                 </option>
               ))}
             </select>
-          </ul>
+            <br></br>
           <label> Notes </label>
           <br></br>
-          <input name="note" onChange={changeHandler} required={false} />
+          <input className="notes" name="note" onChange={changeHandler} required={false} />
           <br></br>
         </form>
 
-        <button onClick={addEvents}>ADD</button>
+        <button onClick={addEvents} className= "add-button">ADD</button>
+        
       </div>
     </div>
   );

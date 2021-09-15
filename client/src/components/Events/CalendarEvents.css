@@ -52,9 +52,10 @@
 }
 
 .exitBtn {
+  cursor: pointer;
   right: 10px;
   position: absolute;
-  background-color: white;
+  background-color: var(--primary-white);
   border: none;
   font-size: 35px;
   color: var(--primary-blue);
@@ -63,6 +64,29 @@
 .exitBtn:hover {
   font-size: 40px;
   cursor: pointer;
+}
+.addevent {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 0.5px;
+}
+
+.cancel-button {
+  cursor: pointer;
+  color:white;
+  background-color: var(--primary-blue);
+  font-family: var(--button-font);
+  width: 150px;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 27%;
+  margin-top: 10px;
+}
+.cancel-button:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 600px) {
