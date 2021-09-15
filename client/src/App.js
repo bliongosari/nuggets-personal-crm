@@ -35,7 +35,8 @@ function App() {
         <ProtectedRoute exact path="/addcontact" component={AddContact} />
         <ProtectedRoute exact path="/events" component={Events} />
         <ProtectedRoute exact path="/example" component={Example} />
-        <ProtectedRoute exact path="/contactprofile" component={ContactProfile} />
+        <ProtectedRoute exact path="/contact/:name" component={ContactProfile} />
+
       </Switch>
       <Footer />
     </div>

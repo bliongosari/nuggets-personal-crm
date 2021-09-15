@@ -89,6 +89,10 @@
   text-decoration: underline;
 }
 
+.popup-btn span {
+  color: white;
+}
+
 @media screen and (max-width: 600px) {
   .popup-btn {
   }

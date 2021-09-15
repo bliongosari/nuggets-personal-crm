@@ -15,6 +15,20 @@ router.get("/all", auth.authenticateToken, async (req, res) => {
   }
 });
 
+router.get("/recent", auth.authenticateToken, async (req, res) => {
+  try {
+    const contacts = await Contact.find({ user_id: req.user.id });
+    const sortedContacts = contacts.sort(
+      (obj1, obj2) => new Date(obj2.createdOn) - new Date(obj1.createdOn)
+    );
+    return res
+      .status(200)
+      .json({ contacts: sortedContacts.slice(0, 9), message: "Successfully retrieved" });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+});
+
 // get contact profile
 router.get("/:id", auth.authenticateToken, async (req, res) => {
   const contact = Contact.findById(req.params.id);

@@ -12,7 +12,6 @@ router.use("/user", userAuth);
 router.use("/journal", journalRoute);
 router.use("/events", eventRoute);
 
-
 router.get("/", (req, res) => {
   return res.send("api page");
 });

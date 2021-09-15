@@ -1,6 +1,9 @@
 const express = require("express");
 const passport = require("passport");
 const User = require("../models/user");
+const Journal = require("../models/journal");
+const Events = require("../models/event");
+const Contact = require("../models/contact");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
@@ -23,6 +26,20 @@ router.get("/info", auth.authenticateToken, userController.getInfo);
 router.post("/sign-up", userController.signUp);
 
 router.post("/login", userController.login);
+
+router.get("/numDetails", auth.authenticateToken, async (req, res) => {
+        try {
+          const contacts = await Contact.find({ user_id: req.user.id });
+          const events = await Events.find({ user_id: req.user.id });
+          const journal = await Journal.find({ user_id: req.user.id });
+          return res
+            .status(200)
+            .json({ contacts: contacts.length, events: events.length, journal: journal.length, message: "Successfully retrieved" });
+        } catch (e) {
+            console.log(e);
+          return res.status(401).json({ message: "Error" });
+        }
+})
 
 router.post("/logout", async (req, res) => {});
 
