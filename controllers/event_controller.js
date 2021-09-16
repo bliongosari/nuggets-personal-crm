@@ -93,7 +93,7 @@ const deleteEvent = async (req, res) => {
 const editEvent = async (req, res) => {
   try {
     var eventID = sanitize(req.params.id);
-    var event = await Event.findbyId(eventID);
+    var event = await Event.findOne({ _id: eventID});
     var title = sanitize(req.body.title);
     if (title == "") {
       title = event.title;
@@ -126,19 +126,17 @@ const editEvent = async (req, res) => {
     if (notes == "") {
       notes = event.notes;
     }
-    var id = sanitize(req.params.id);
-    var user_id = sanitize(req.user.id);
-    var event = await Event.findOneAndUpdate(
-      id,
+    console.log(eventID)
+    event = await Event.findOneAndUpdate(
+      {_id: eventID},
       {
-        user_id: user_id,
         title: title,
         location: location,
         type: type,
         start: start,
         end: end,
         repeat: repeat,
-        alert: isalert,
+        alert: alert,
         notes: notes,
       },
       { new: true }

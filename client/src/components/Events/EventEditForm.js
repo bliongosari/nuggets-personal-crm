@@ -5,16 +5,16 @@ import "./Events.css";
 import { Alert } from "react-bootstrap";
 import { props } from "bluebird";
 
-function EventEditForm() {
+function EventEditForm(props) {
   const [allField, setAllFields] = useState({
-    title: "",
-    location: "",
-    type: "",
-    start: Date.now(),
-    end: Date.now(),
-    notes: "",
-    repeat: "",
-    alert: "",
+    title: props.event.title,
+    location: props.event.location,
+    type: props.event.type,
+    start: props.event.start,
+    end: props.event.end,
+    notes: props.event.notes,
+    repeat: props.event.repeat,
+    alert: props.event.alert,
   });
 
   const [field, setField] = useState("");
@@ -27,7 +27,7 @@ function EventEditForm() {
   const editEvents = async (e) => {
     api({
       method: "POST",
-      url: "/api/events/edit",
+      url: "/api/events/edit/" + props.event._id,
       data: allField,
     })
       .then(function (res) {
@@ -91,11 +91,15 @@ function EventEditForm() {
           <label style={{ color: "red" }}> {message}</label>
           <label> Event Name: </label>
           <br></br>
-          <input name="title" onChange={changeHandler} placeholder="hello"/>
+          <input name="title" onChange={changeHandler} placeholder={props.event.title}/>
+          <br></br>
+          <label> Location: </label>
+          <br></br>
+          <input name="location" onChange={changeHandler} required={false} placeholder={props.event.location}/>
           <br></br>
           <label> Type: </label>
           <br></br>
-          <input name="type" onChange={changeHandler} />
+          <input name="type" onChange={changeHandler} placeholder={props.event.type}/>
           <br></br>
           <label> Time: </label>
           <br></br>
@@ -142,7 +146,7 @@ function EventEditForm() {
             <br></br>
           <label> Notes </label>
           <br></br>
-          <input className="notes" name="note" onChange={changeHandler} required={false} />
+          <input className="notes" name="note" onChange={changeHandler} required={false} placeholder={props.event.notes}/>
           <br></br>
         </form>
 
