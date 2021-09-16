@@ -328,14 +328,6 @@
   left: 50%;
 }
 
-.color-options label {
-  font-family: var(--button-font);
-  color: var(--secondary-blue);
-  letter-spacing: 2.5px;
-  font-size: 100%;
-  left: 10%;
-}
-
 .color-title hr {
   width: 100%;
   color: var(--secondary-blue);
@@ -349,16 +341,6 @@
   margin: auto;
 }
 
-.color-options label {
-  color: var(--primary-blue);
-  font-family: var(--button-font);
-  font-weight: bold;
-  letter-spacing: 1.5px;
-  padding-left: 0;
-  margin-left: 0;
-  font-size: 90%;
-}
-
 .color-options {
   display: flex;
   flex-direction: row;
@@ -370,6 +352,17 @@
 .color-options input {
   background-color: var(--primary-blue);
   margin-top: 2%;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.color-options label {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.5px;
+  font-size: 100%;
+  font-weight: bold;
+  /* left: 10%; */
 }
 
 .closebutton {

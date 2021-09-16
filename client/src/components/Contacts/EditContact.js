@@ -145,6 +145,13 @@ return (
                     <input type="checkbox"></input>
                     <label class="container">Navy Blue</label>
                   </div>
+
+                  <div className="addcontacts">
+                    <button className="addbtn">
+                      <img alt="plus" src="../../whiteadd.svg"></img>
+                      <h1>Add Tags </h1>
+                    </button>
+                  </div>
                 </div>
               </div>
             )}

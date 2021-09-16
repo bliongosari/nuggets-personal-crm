@@ -143,7 +143,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  width: 85%;
+  width: 95%;
   justify-content: center;
   padding-bottom: 10px;
 }
@@ -157,7 +157,7 @@
 
 .current-contacts-headings {
   display: grid;
-  grid-template-columns: 15% 45% 25% 10%;
+  grid-template-columns: 15% 45% 25% 15%;
   padding-left: 3.5%;
   transition: 0.2 ease;
   background-color: rgba(52, 102, 170, 0.1);

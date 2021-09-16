@@ -84,8 +84,6 @@ return (
               <div className="modal">
                 <div onClick={toggleTags} className="overlay"></div>
 
-                
-
                 <div className="modal-content">
                   <div className="color-title">
                     <h2>Color</h2>
@@ -145,6 +143,13 @@ return (
                     <input type="checkbox"></input>
                     <label class="container">Navy Blue</label>
                   </div>
+
+                   <div className="addcontacts">
+                    <button className="addbtn">
+                      <img alt="plus" src="../../whiteadd.svg"></img>
+                      <h1>Add Tags </h1>
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
@@ -196,7 +201,6 @@ return (
 
         <div className="addcontacts">
           <button className="addbtn">
-            <img alt="plus" src="../../whiteadd.svg"></img>
             <h1>Cancel</h1>
           </button>
         </div>
