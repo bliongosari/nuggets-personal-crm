@@ -92,6 +92,10 @@ function EventForm() {
           <br></br>
           <input name="title" onChange={changeHandler} required={true} />
           <br></br>
+          <label> Location: </label>
+          <br></br>
+          <input name="location" onChange={changeHandler} required={false} />
+          <br></br>
           <label> Type: </label>
           <br></br>
           <input name="type" onChange={changeHandler} required={false} />

@@ -32,7 +32,7 @@ function EventDetail(props) {
   };
 
   const openEventModal = event => {
-    setEventID(props.event._id);
+    setEventID(props.event);
     setEventModal(true);
   };
   
@@ -62,7 +62,7 @@ function EventDetail(props) {
       });
   };
 
-  const editEvent = async () => {
+  /*const editEvent = async () => {
     api({
       method: "GET",
       url: "/api/events/edit/" + props.event._id,
@@ -78,13 +78,15 @@ function EventDetail(props) {
       .catch(function (error) {
         alert("Failed to Edit");
       });
-  };
+  };*/
 
   return (
     <div>
       <div className="event-details">
         <h2 className="detail-title"> Event Details </h2>  
-        <h3> Event Name: <br></br> {props.event.title}</h3>
+        <h3> Event Name: {props.event.title}</h3>
+        <h3> Location: {props.event.location}</h3>
+        <h3> Type: {props.event.type}</h3>
         <h3> Alert: {props.event.alert}</h3>
         <h3> Date start: {start} </h3>
         <h3> Date end: {end} </h3>
@@ -104,7 +106,7 @@ function EventDetail(props) {
           &times;
         </button>
         <div>
-          <EventEditForm event={props.event._id} />
+          <EventEditForm event={props.event} />
         </div>
       </Modal>
     </div>
