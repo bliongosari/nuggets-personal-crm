@@ -76,7 +76,7 @@
 
 .contactssummary {
   margin-left: 7.5%;
-  width: 84.5%;
+  width: 84%;
   display: flex;
   flex-direction: row;
   background: var(--primary-white);
@@ -150,7 +150,7 @@
 
 .current-contacts-container {
   display: grid;
-  grid-template-columns: 15% 45% 20% 10%;
+  grid-template-columns: 15% 45% 25% 10%;
   padding-left: 5%;
   transition: 0.2 ease;
 }
@@ -278,7 +278,7 @@
   }
 
   .addbtn h1 {
-    font-size: 50%;
+    font-size: 30%;
     width: 100%;
     margin-top: 6%;
   }
