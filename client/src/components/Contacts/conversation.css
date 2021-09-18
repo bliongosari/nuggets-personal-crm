@@ -1,0 +1,133 @@
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --fourth-blue: #deecff;
+  --fifth-blue: #e8f2ff;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+
+  padding: 0;
+}
+
+body {
+  background: #fff;
+}
+
+.containerdiv {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 90%;
+  background: #f1f1f1;
+  border-radius: 10px;
+  word-break: break-all;
+  border: 0.5px solid var(--secondary-blue);
+}
+
+.formtitle h1 {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  font-size: 2.2vh;
+  letter-spacing: 3px;
+  align-items: left;
+  font-weight: bolder;
+  padding: 2%;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.details {
+  margin-left: 0%;
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.details h2 {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2px;
+  font-size: 100%;
+  padding: 0;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+}
+
+.custom-select h2 {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2px;
+  font-size: 100%;
+  padding: 0;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+}
+
+.details input {
+  background: var(--primary-white);
+  border-color: var(--primary-blue);
+  width: 100%;
+  padding: 0.5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.formtitle hr {
+  width: 100%;
+  color: var(--secondary-blue);
+  border-style: solid;
+  margin-bottom: 2%;
+}
+
+.details option {
+  margin-bottom: 2%;
+  width: 100%;
+  padding-bottom: 2%;
+}
+
+.formbutton {
+  display: flex;
+  flex-direction: row;
+}
+
+.eventbtn {
+  font-family: var(--logo-font);
+  border-radius: 10px;
+  height: 100%;
+  width: 60%;
+  background-color: var(--primary-blue);
+  text-align: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin: 1%;
+}
+
+.eventbtn h1 {
+  font-size: 85%;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
+}
+
+.detailss {
+  margin-left: 0%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
