@@ -9,15 +9,14 @@ function Contacts() {
   return (
     <div className="home">
 
-      <div className="searchbar">
+      <div className="searchbarr">
         <img alt="search" src="../../searchbar.svg"></img>
         <input type="text" placeholder="SEARCH CONTACTS"></input>
       </div>
 
       <div className="addcontacts">
       <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
-        <button className="addbtn">
-          <img alt="plus" src="../../whiteadd.svg"></img>
+        <button className="newcontactbtn">
           <h1>ADD NEW CONTACT</h1>
         </button>
         </Link>
@@ -37,21 +36,25 @@ function Contacts() {
       </div>
 
       {/* Contacts Table */}
-      <div className="current-contacts">
-        <div className="current-contacts-headings">
+      <div className="current-contacts-headingss">
           <h1>Avatar</h1>
           <h1>Contact</h1>
           <h1>Description</h1>
-        </div>
+      </div>
+
+      <div className="current-contacts-table">
         {query.isLoading && <p> Loading ... </p>}
         {query.isError && <p> ERROR COULD NOT REACH SERVER </p>}
         {query.isSuccess && query.data.contacts.slice(0,4).map((contact, index) => (
           <div key={contact._id}>
             {index !== 0 && <hr className="line"></hr>}
             <div className="current-contacts-container">
-              <img alt="events" src="../../events.svg"></img>
-              <h2> {contact.full_name} </h2>
-              <h3>Blablabla</h3>
+              <div className="contactdetails">
+                 <img alt="events" src="../../events.svg"></img>
+                <h2> {contact.full_name} </h2>
+                <h3>Blablabla</h3>
+              </div>
+             
             </div>
           </div>
         ))}
