@@ -3,6 +3,7 @@ import "./ContactProfile.css";
 import Tabs from './tabs';
 
 
+
 function ContactProfile(props) {
   const { contact } = props.location.state;
   
@@ -100,6 +101,7 @@ function ContactProfile(props) {
             <div className="contactfunctionality">
                 <Tabs/>
             </div>
+
         
         </div>
         
