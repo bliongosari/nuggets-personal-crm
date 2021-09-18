@@ -27,12 +27,13 @@ function Contacts() {
         <div className="summarytitle">
           <h1>(num) Contacts</h1>
         </div>
-        <div className="summarybutton">
+        <div className="sortbutton">
           <button className="sortbtn">
+            <img alt="plus" src="../../sort.svg"></img>
             <h1>SORT</h1>
-            <img alt="sort" src="../../sort.svg"></img>
-        </button>
+          </button>
         </div>
+        
       </div>
 
       {/* Contacts Table */}

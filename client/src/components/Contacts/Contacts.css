@@ -77,8 +77,6 @@
 .contactssummary {
   margin-left: 7.5%;
   width: 84%;
-  display: flex;
-  flex-direction: row;
   background: var(--primary-white);
   padding: 0.5%;
   margin-top: 2%;
@@ -86,41 +84,45 @@
   padding-top: 0.3%;
   padding-bottom: 0.3%;
   position: relative;
+  display: grid;
+  grid-template-columns: 85% 15%;
+  transition: 0.2 ease;
 }
 
 .summarytitle {
   margin-left: 1.5%;
 }
 
-.summarybutton {
-  right: 12%;
-  position: fixed;
-  margin-top: 0.2%;
-}
 .contactssummary h1 {
   font-size: 90%;
   color: var(--secondary-blue);
   letter-spacing: 1.2px;
 }
+
+.sortbutton {
+  padding: 0.5%;
+  width: 40%;
+  padding-top: 2%;
+}
+
 .sortbtn {
   font-family: var(--button-font);
   border-radius: 10px;
-  width: 150%;
+  width: 50%;
   background-color: rgba(52, 102, 170, 0.1);
   opacity: 100%;
   text-align: center;
-  padding: 0%;
+  padding: 1%;
   padding-top: 2%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   border-width: 0.1px;
   margin-top: 2.5%;
   border: none;
 }
+
 .sortbtn h1 {
   margin-top: 4%;
-  font-size: 100%;
+  font-size: 60%;
   letter-spacing: 2px;
   opacity: 100%;
   color: black;
@@ -145,7 +147,7 @@
   margin-top: 30px;
   width: 95%;
   justify-content: center;
-  padding-bottom: 10px;
+  margin-bottom: 15%;
 }
 
 .current-contacts-container {
