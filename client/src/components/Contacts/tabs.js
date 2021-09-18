@@ -1,5 +1,13 @@
-import { useState } from "react";
+import { useState, render } from "react";
 import "./tabs.css";
+import LifeEvent from "./lifeevent";
+import Conversation from "./conversation";
+import Reminder from "./reminder";
+import Task from "./task";
+import Document from "./document";
+import Media from "./media";
+
+
 
 function Tabs() {
   const [toggleState, setToggleState] = useState(1);
@@ -7,6 +15,8 @@ function Tabs() {
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  const [active, setActive] = useState(false)
 
   return (
     <div className="container">
@@ -28,17 +38,21 @@ function Tabs() {
           <hr />
           <h3>Log what happens to the life of (contact name) for your future reference.</h3>
           <div className="addlifeevent">
-            <button className="addbtn">
+            <button className="addbtn" onClick={() => setActive("lifeevent")}>
                 <h1>Add life event</h1>
             </button>
           </div>
+
+            <div className="contactfunctionalitydeet">
+                {active === "lifeevent" && <LifeEvent/>}
+            </div>
         </div>
 
         <div className={toggleState === 2 ? "content  active-content" : "content"}>
             <div className = "subcontent">
                 <div className="eventreminder">
                     <h1> &nbsp; Reminders or Notes</h1>
-                    <button className="eventbtn">
+                    <button className="eventbtn" onClick={() => setActive("reminder")}>
                         <h1>Add reminder</h1>
                     </button>
                 </div>
@@ -51,7 +65,7 @@ function Tabs() {
             <div className = "subcontent">
                 <div className="eventreminder">
                     <h1> &nbsp; Task</h1>
-                    <button className="eventbtn">
+                    <button className="eventbtn" onClick={() => setActive("task")}>
                         <h1>Add task</h1>
                     </button>
                 </div>
@@ -64,7 +78,7 @@ function Tabs() {
             <div className = "subcontent">
                 <div className="eventreminder">
                     <h1> &nbsp; Phone calls</h1>
-                    <button className="eventbtn">
+                    <button className="eventbtn" onClick={() => setActive("call")}>
                         <h1>Add calls</h1>
                     </button>
                 </div>
@@ -72,13 +86,19 @@ function Tabs() {
                     <h3>All phone calls with this person will show up here</h3>
                 </div>
             </div>
+
+            <div className="contactfunctionalitydeet">
+               {active === "call" && <Conversation/>}
+                {active === "reminder" && <Reminder/>}
+                {active === "task" && <Task/>}
+            </div>
         </div>
 
         <div className={toggleState === 3 ? "content  active-content" : "content"}>
           <div className = "subcontent">
                 <div className="eventreminder">
                     <h1> &nbsp; Photos</h1>
-                    <button className="eventbtn">
+                    <button className="eventbtn" onClick={() => setActive("photo")}>
                         <h1>Upload photos</h1>
                     </button>
                 </div>
@@ -91,13 +111,18 @@ function Tabs() {
             <div className = "subcontent">
                 <div className="eventreminder">
                     <h1> &nbsp; Documents</h1>
-                    <button className="eventbtn">
+                    <button className="eventbtn" onClick={() => setActive("documents")}>
                         <h1>Upload documents</h1>
                     </button>
                 </div>
                 <div className="eventreminder-content">
                     <h3>All documents regarding this person will show up here</h3>
                 </div>
+            </div>
+
+            <div className="contactfunctionalitydeet">
+                {active === "photo" && <Media/>}
+                {active === "documents" && <Document/>}
             </div>
         </div>
       </div>

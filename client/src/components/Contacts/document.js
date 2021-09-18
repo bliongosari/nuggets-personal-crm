@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "./conversation.css";
 
-function Media() {
+function Document() {
 
   return (
     <div className="containerdiv">
 
         <div className="contacts-form">
             <div className="formtitle">
-                <h1>Upload new photo</h1>
+                <h1>Upload new document</h1>
                 <hr></hr>
             </div>
 
@@ -24,7 +24,7 @@ function Media() {
         
             <div className="detailss">
                  <button className="eventbtn">
-                    <h1>Attach images</h1>
+                    <h1>Attach files</h1>
                 </button>
                 <button className="eventbtn">
                     <h1>Cancel</h1>
@@ -39,4 +39,4 @@ function Media() {
   );
 }
 
-export default Media;
+export default Document;

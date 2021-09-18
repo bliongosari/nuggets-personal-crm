@@ -196,3 +196,13 @@ button {
   padding-bottom: 5%;
   padding-top: 2%;
 }
+
+.contactfunctionalitydeet {
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-left: 4%;
+  margin-bottom: 2%;
+}
