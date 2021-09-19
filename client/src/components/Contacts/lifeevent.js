@@ -3,7 +3,7 @@ import "./lifeevent.css";
 
 function LifeEvent() {
   return (
-    <div className="containerdiv">
+    <div className="containerdivv">
 
         <div className="contacts-form">
             <div className="formtitle">

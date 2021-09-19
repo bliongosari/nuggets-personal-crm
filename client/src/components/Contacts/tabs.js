@@ -112,7 +112,7 @@ function Tabs() {
                 <div className="eventreminder">
                     <h1> &nbsp; Documents</h1>
                     <button className="eventbtn" onClick={() => setActive("documents")}>
-                        <h1>Upload documents</h1>
+                        <h1>Upload document</h1>
                     </button>
                 </div>
                 <div className="eventreminder-content">
