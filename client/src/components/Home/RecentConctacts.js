@@ -85,8 +85,8 @@ function RecentConctacts() {
           </Link>
           ))}
           {max ? (
-          <button className="before" onClick ={moveLeft}>
-          <img alt="before" src="../../before.svg" className="next"></img>
+          <button className="next" onClick ={moveLeft}>
+          <img alt="before" src="../../next.svg" className="next"></img>
         </button>
           ) : (
               <div>
@@ -97,9 +97,13 @@ function RecentConctacts() {
           )} 
           </div>
         )}
-        <h3 className="page-number">Page {currentIndex/3 + 1}/{total}</h3>
+        
       </div>
     )
 }
 
 export default RecentConctacts
+
+
+// make the arrow button cyclic
+//<h4 className="page-number">Page {currentIndex/3 + 1}/{total}</h4>

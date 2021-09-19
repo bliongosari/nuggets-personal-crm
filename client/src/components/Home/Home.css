@@ -108,6 +108,7 @@
 
 .line1 {
   width: 95%;
+  margin-top: 0;
 }
 
 .new-contacts {
@@ -191,7 +192,7 @@
   padding-left: 10px;
 }
 
-#page-number {
+.page-number {
   font-family: "AbeeZee";
   font-weight: normal;
   color: var(--primary-blue);
@@ -227,6 +228,11 @@
 }
 
 .next:hover {
+  padding-left: 12px;
+  transition: 0.2s ease;
+}
+
+.before:hover {
   padding-left: 12px;
   transition: 0.2s ease;
 }
@@ -288,7 +294,18 @@ span {
   }
 
   .next:hover {
-    padding-left: 1px;
+    padding-left: 3px;
+    width: 2.3vh;
+    transition: 0.2s ease;
+  }
+
+  .before {
+    padding-left: 3px;
+    transition: 0.2s ease;
+  }
+
+  .before:hover {
+    padding-left:0.5px;
     transition: 0.2s ease;
   }
 
@@ -350,12 +367,26 @@ span {
 
 @media screen and (min-width: 550px) and (max-width: 864px) {
   .next {
-    padding-left: 20px;
+    padding-left: 8px;
+    width: 3vh;
     transition: 0.2s ease;
   }
 
   .next:hover {
-    padding-left: 22px;
+    padding-left: 10px;
+    width: 3.3vh;
+    transition: 0.2s ease;
+  }
+
+  .before {
+    padding-left: 10px;
+    width: 3.1vh;
+    transition: 0.2s ease;
+  }
+
+  .before:hover {
+    padding-left: 8px;
+    width: 3vh;
     transition: 0.2s ease;
   }
 
@@ -387,12 +418,26 @@ span {
 
 @media screen and (min-width: 864px) and (max-width: 1080px) {
   .next {
-    padding-left: 35px;
+    padding-left: 15px;
+    width: 4vh;
     transition: 0.2s ease;
   }
 
   .next:hover {
-    padding-left: 37px;
+    padding-left: 20px;
+    width: 5vh;
+    transition: 0.2s ease;
+  }
+
+  .before {
+    padding-left: 20px;
+    width: 5vh;
+    transition: 0.2s ease;
+  }
+
+  .before:hover {
+    padding-left: 15px;
+    width: 4vh;
     transition: 0.2s ease;
   }
 
@@ -412,12 +457,26 @@ span {
 
 @media screen and (min-width: 1080px) and (max-width: 1920px) {
   .next {
-    padding-left: 55px;
+    padding-left: 15px;
+    width: 4.5vh;
     transition: 0.2s ease;
   }
 
   .next:hover {
-    padding-left: 57px;
+    padding-left: 18px;
+    width: 4.8vh;
+    transition: 0.2s ease;
+  }
+
+  .before {
+    padding-left: 15px;
+    width: 4.5vh;
+    transition: 0.2s ease;
+  }
+
+  .before:hover {
+    padding-left: 15px;
+    width: 4.8vh;
     transition: 0.2s ease;
   }
 
