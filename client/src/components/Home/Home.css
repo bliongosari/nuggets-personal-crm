@@ -61,17 +61,10 @@
   margin-right: auto;
   margin-top: 30px;
   width: 85%;
+  max-height: 290px;
   justify-content: center;
   padding-bottom: 10px;
   padding: 15px;
-}
-
-.current-events-container {
-  display: grid;
-  grid-template-columns: 15% 45% 20% 10%;
-  padding-left: 5%;
-  transition: 0.2 ease;
-  margin-top: 15px;
 }
 
 .current-events-title span {
@@ -84,39 +77,37 @@
   padding-left: 10px;
 }
 
-.current-events h2 {
+.current-contacts-r h4 {
   font-family: "AbeeZee";
   font-weight: normal;
-  color: var(--primary-blue);
-  font-size: 2vh;
+  color: var(--primary-black);
+  font-size: 2.15vh;
   letter-spacing: 1px;
   align-items: left;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.current-events h3 {
+.current-contacts-r h5 {
   font-family: "AbeeZee";
   font-weight: normal;
-  color: var(--primary-blue);
-  margin-top: auto;
-  font-size: 2vh;
+  color: var(--primary-black);
+  margin-top: 0;
+  font-size: 2.15vh;
   letter-spacing: 1px;
   align-items: right;
-  margin-bottom: auto;
+  margin-bottom: 0;
   right: 0;
 }
 
 .current-events img {
-  width: 3vh;
+  width: 2vh;
   margin-top: auto;
   margin-bottom: auto;
 }
 
-.line {
-  width: 90%;
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
+.line1 {
+  width: 95%;
 }
 
 .new-contacts {
@@ -200,6 +191,16 @@
   padding-left: 10px;
 }
 
+#page-number {
+  font-family: "AbeeZee";
+  font-weight: normal;
+  color: var(--primary-blue);
+  font-size: 1.5vh;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-right: 15px;
+}
+
 .square {
   background: var(--primary-blue);
   display: inline-block;
@@ -223,7 +224,6 @@
   width: 2vh;
   padding-left: 10px;
   margin-bottom: 20px;
-  transform: rotate(180deg);
 }
 
 .next:hover {
@@ -266,7 +266,7 @@
 }
 
 .eventsBtns {
-  margin-right: 10px;
+  margin-right: 15px;
   text-align: end;
   height: 30px;
 }
@@ -299,26 +299,52 @@ span {
 
   .current-events h1 {
     font-size: 2vh;
+    transition: 0.2s ease;
   }
 
   .current-events h3 {
-    font-size: 1.5vh;
+    font-size: 2vh;
+    transition: 0.2s ease;
+  }
+
+  .line1 {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
+  .current-events {
+    max-height: 250px;
+    transition: 0.2s ease;
+  }
+
+  .current-contacts-r h4 {
+    font-size: 1.75vh;
+    transition: 0.2s ease;
+  }
+
+  .current-contacts-r h5 {
+    font-size: 1.75vh;
+    transition: 0.2s ease;
   }
 
   .new-contacts span {
     font-size: 2vh;
+    transition: 0.2s ease;
   }
 
   .new-contacts h2 {
     padding-left: 0px;
+    transition: 0.2s ease;
   }
 
   .new-contacts h3 {
     padding-left: 0px;
+    transition: 0.2s ease;
   }
 
   .current-events img {
     width: 2vh;
+    transition: 0.2s ease;
   }
 }
 
@@ -337,6 +363,26 @@ span {
     margin-left: 37%;
     transition: 0.2s ease;
   }
+
+  .line1 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .current-events {
+    max-height: 270px;
+    transition: 0.2s ease;
+  }
+
+  .current-contacts-r h4 {
+    font-size: 1.75vh;
+    transition: 0.2s ease;
+  }
+
+  .current-contacts-r h5 {
+    font-size: 1.75vh;
+    transition: 0.2s ease;
+  }
 }
 
 @media screen and (min-width: 864px) and (max-width: 1080px) {
@@ -353,6 +399,14 @@ span {
   .square {
     margin-left: 42%;
     transition: 0.2s ease;
+  }
+
+  .current-contacts-r h4 {
+    font-size: 1.75vh;
+  }
+
+  .current-contacts-r h5 {
+    font-size: 1.75vh;
   }
 }
 

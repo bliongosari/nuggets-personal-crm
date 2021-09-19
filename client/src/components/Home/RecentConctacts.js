@@ -86,7 +86,7 @@ function RecentConctacts() {
           ))}
           {max ? (
           <button className="before" onClick ={moveLeft}>
-          <img alt="next" src="../../next.svg" className="next"></img>
+          <img alt="before" src="../../before.svg" className="next"></img>
         </button>
           ) : (
               <div>
@@ -95,9 +95,9 @@ function RecentConctacts() {
           </button>
           </div>
           )} 
-        </div>
+          </div>
         )}
-        <h3>Page {currentIndex/3 + 1}/{total}</h3>
+        <h3 className="page-number">Page {currentIndex/3 + 1}/{total}</h3>
       </div>
     )
 }
