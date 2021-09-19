@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./ContactProfile.css";
 import Tabs from './tabs';
 
@@ -6,6 +6,18 @@ import Tabs from './tabs';
 
 function ContactProfile(props) {
   const { contact } = props.location.state;
+  const [reminders, setReminders] = useState(false);
+
+    
+    const toggleReminders = () => {
+    setReminders(!reminders);
+    };
+
+    if(reminders) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
   
 
   return (
@@ -25,7 +37,38 @@ function ContactProfile(props) {
                 <div className="lastactivity">
                     <h1>Last contacted: </h1>
                     <h1>Tags:</h1>
+                    <button onClick={toggleReminders} className="reminderbtn">
+                        <h2>Set reminder to contact</h2>
+                    </button>
                 </div>
+
+               {reminders && (
+              <div className="modal1">
+                <div onClick={toggleReminders} className="overlay"></div>
+
+                <div className="modal-content">
+                  <div className="modal-title">
+                    <h2>Stay in touch</h2>
+                    <hr></hr>
+                  </div>
+
+                  <div className="closebutton">
+                    <img alt="" src="../../close.svg" onClick={toggleReminders}></img>
+                  </div>
+
+                  <div className="modal-body">
+                    <label>Remind me via notifications every</label>
+                    <input type></input> <label>&nbsp; &nbsp;&nbsp;days</label>
+                  </div>
+
+                   <div className="addcontacts">
+                    <button className="addbtn">
+                      <h1>Add reminders </h1>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
             </div>
         </div>
 

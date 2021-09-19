@@ -230,3 +230,135 @@
 .detailsbutton {
   margin-bottom: 20%;
 }
+
+.modal1,
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+  z-index: 10;
+  top: 0%;
+  left: 0%;
+  position: fixed;
+}
+
+.modal1 {
+  z-index: 99;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: var(--fifth-blue);
+  padding: 1% 1%;
+  border-radius: 30px;
+  width: 60%;
+  height: auto;
+  z-index: 10;
+}
+
+.modal-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-title h2 {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.5px;
+  font-size: 120%;
+  padding: 0;
+  margin-top: 0%;
+  margin-bottom: 1.5%;
+  text-align: center;
+  left: 50%;
+}
+
+.modal-body label {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.5px;
+  font-size: 100%;
+  left: 10%;
+}
+
+.modal-title hr {
+  width: 100%;
+  color: var(--secondary-blue);
+  border-style: solid;
+  margin-bottom: 2%;
+}
+
+.modal-content {
+  text-align: left;
+  justify-content: left;
+  margin: auto;
+}
+
+.modal-body label {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 1.5px;
+  font-size: 90%;
+  padding: 0;
+  margin-top: 0%;
+  margin-bottom: 1.5%;
+  text-align: center;
+  left: 50%;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body input {
+  background-color: var(--primary-white);
+  margin-top: 0%;
+  width: 5%;
+  margin-left: 3%;
+  margin-bottom: 1.5%;
+}
+
+.closebutton {
+  right: 20px;
+  top: 10px;
+  position: absolute;
+}
+
+.closebutton img {
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+  margin-right: 10%;
+}
+
+.reminderbtn {
+  font-family: var(--button-font);
+  border-radius: 10px;
+  width: 20%;
+  background-color: var(--primary-blue);
+  text-align: center;
+  position: inherit;
+  justify-content: center;
+  padding: 1%;
+  margin-top: 2%;
+}
+
+.reminderbtn h2 {
+  font-family: var(--button-font);
+  font-size: 80%;
+  color: white;
+}
