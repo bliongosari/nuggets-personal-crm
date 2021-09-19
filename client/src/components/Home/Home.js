@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
+import { LoopCircleLoading } from "react-loadingg";
 import EventsSummary from "./EventsSummary";
 import RecentContacts from "./RecentConctacts";
 import api from "../../config/axiosConfig.js";
 import { Link } from "react-router-dom";
 
+const Loading = () => <LoopCircleLoading />;
+
 function Home() {
+  const [loading, setLoading] = useState(true);
   const [numContacts, setNumContacts] = useState(0);
   const [numEvents, setNumEvents] = useState(0);
   const [numJournal, setNumJournal] = useState(0);
@@ -21,6 +25,7 @@ function Home() {
           setNumContacts(res.data.contacts);
           setNumEvents(res.data.events);
           setNumJournal(res.data.journal);
+          setLoading(false);
         } else {
           //setFailed(true);
         }
@@ -31,7 +36,11 @@ function Home() {
   }, []);
 
 
-  return (
+  return loading ? (
+    <div>
+      <Loading />
+    </div>
+  ) : (
     <div className="home">
       {/* Summary Table */}
       <div className="summary summary-container">
