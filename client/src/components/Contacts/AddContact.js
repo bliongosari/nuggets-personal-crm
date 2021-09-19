@@ -20,17 +20,10 @@ return (
       <div className="pagetitle">
         <h1>Add a new contact</h1>
       </div>
-
-      {/* <div className="addcontacts">
-        <button className="addbtn">
-          <img alt="plus" src="../../whiteadd.svg"></img>
-          <h1>ADD NEW CONTACT</h1>
-        </button>
-      </div> */}
       
 
       {/* Form */}
-      <div className="contacts-form">
+      <div className="contacts-details-form">
         <div className="formtitle">
           <h1>Personal Details</h1>
           <hr></hr>
@@ -56,7 +49,7 @@ return (
           <input></input>
         </div>
 
-        <div className="detailss">
+        <div className="detail2">
           <h2>Birthday:</h2>
           <div className="detailssinput">
             <input></input>
@@ -72,7 +65,7 @@ return (
           <input></input>
         </div>
 
-        <div className="detailss">
+        <div className="detail2">
           <h2>Tags:</h2>
           <div className="tagsinput">
             <input></input>
@@ -194,7 +187,6 @@ return (
 
         <div className="addcontacts">
           <button className="addbtn">
-            <img alt="plus" src="../../whiteadd.svg"></img>
             <h1>Add Contact </h1>
           </button>
         </div>

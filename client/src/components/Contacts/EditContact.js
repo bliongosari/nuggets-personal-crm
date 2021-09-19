@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./AddContact.css";
 
-function AddContact() {
+function EditContact() {
 const [tags, setTags] = useState(false);
 
 const toggleTags = () => {
@@ -20,17 +20,10 @@ return (
       <div className="pagetitle">
         <h1>Edit existing contact</h1>
       </div>
-
-      {/* <div className="addcontacts">
-        <button className="addbtn">
-          <img alt="plus" src="../../whiteadd.svg"></img>
-          <h1>ADD NEW CONTACT</h1>
-        </button>
-      </div> */}
       
 
       {/* Form */}
-      <div className="contacts-form">
+      <div className="contacts-details-form">
         <div className="formtitle">
           <h1>Personal Details</h1>
           <hr></hr>
@@ -56,7 +49,7 @@ return (
           <input></input>
         </div>
 
-        <div className="detailss">
+        <div className="detail2">
           <h2>Birthday:</h2>
           <div className="detailssinput">
             <input></input>
@@ -72,7 +65,7 @@ return (
           <input></input>
         </div>
 
-        <div className="detailss">
+        <div className="detail2">
           <h2>Tags:</h2>
           <div className="tagsinput">
             <input></input>
@@ -83,8 +76,6 @@ return (
             {tags && (
               <div className="modal">
                 <div onClick={toggleTags} className="overlay"></div>
-
-                
 
                 <div className="modal-content">
                   <div className="color-title">
@@ -146,7 +137,7 @@ return (
                     <label class="container">Navy Blue</label>
                   </div>
 
-                  <div className="addcontacts">
+                   <div className="addcontacts">
                     <button className="addbtn">
                       <img alt="plus" src="../../whiteadd.svg"></img>
                       <h1>Add Tags </h1>
@@ -196,8 +187,7 @@ return (
 
         <div className="addcontacts">
           <button className="addbtn">
-            <img alt="plus" src="../../pencil.svg"></img>
-            <h1>Save Changes</h1>
+            <h1>Save changes </h1>
           </button>
         </div>
 
@@ -212,4 +202,4 @@ return (
   );
 }
 
-export default AddContact;
+export default EditContact;

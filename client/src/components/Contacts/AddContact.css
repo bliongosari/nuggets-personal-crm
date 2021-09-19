@@ -32,7 +32,7 @@
   font-family: var(--logo-font);
 }
 
-.contacts-form {
+.contacts-details-form {
   background: var(--primary-white);
   border-radius: 5px;
   border: rgba(52, 102, 170, 0.1);
@@ -41,7 +41,7 @@
   justify-content: center;
   margin-left: 7.5%;
   margin-bottom: 5%;
-  padding-bottom: 3%;
+  padding: 2%;
 }
 
 .formtitle h1 {
@@ -108,11 +108,11 @@
   margin-top: 2.5%;
 }
 
-.detailss {
-  margin-left: 3%;
+.detail2 {
+  margin-left: 0%;
 }
 
-.detailss h2 {
+.detail2 h2 {
   font-family: var(--button-font);
   color: var(--secondary-blue);
   letter-spacing: 2px;
@@ -130,7 +130,7 @@
 .detailssinput input {
   background: var(--primary-white);
   border-color: var(--primary-blue);
-  width: 90%;
+  width: 95%;
   padding: 0.3%;
   margin-bottom: 0.8%;
   display: inline-flexbox;
@@ -164,7 +164,7 @@
 .tagsinput input {
   background: var(--primary-white);
   border-color: var(--primary-blue);
-  width: 85%;
+  width: 95%;
   padding: 0.3%;
   margin-bottom: 0.8%;
   display: inline-flexbox;
@@ -181,7 +181,7 @@
   flex-direction: row;
   justify-content: center;
   padding: 0;
-  padding-top: 0.5%;
+  padding-top: 0.8%;
   padding-bottom: 0.5%;
   margin-top: 0%;
 }
@@ -220,7 +220,7 @@
   width: 100%;
   background-color: var(--primary-blue);
   text-align: center;
-  padding: 1%;
+  padding: 4%;
   display: flex;
   flex-direction: row;
   padding-top: 1%;

@@ -48,13 +48,10 @@ function Contacts() {
         {query.isSuccess && query.data.contacts.slice(0,4).map((contact, index) => (
           <div key={contact._id}>
             {index !== 0 && <hr className="line"></hr>}
-            <div className="current-contacts-container">
-              <div className="contactdetails">
-                 <img alt="events" src="../../events.svg"></img>
+            <div className="current-contacts-r">
+                <img alt="events" src="../../events.svg"></img>
                 <h2> {contact.full_name} </h2>
-                <h3>Blablabla</h3>
-              </div>
-             
+                <h2>Blablabla</h2>
             </div>
           </div>
         ))}
@@ -62,17 +59,20 @@ function Contacts() {
           <div className="summarytitle">
             <h2>Page 2 of 2</h2>
           </div>
-          <div className="navbutton">
-            <button className="backbtn">
+          <div className="navpagedir">
+            <button className="navpagebutton">
               <img alt="back" src="../../back.svg"></img>
               <h1>Back</h1>
             </button>
+          </div>
 
-            <button className="backbtn">
+          <div className="navpagedir">
+            <button className="navpagebutton">
+              <img alt="back" src="../../nextt.svg"></img>
               <h1>Next</h1>
-              <img alt="next" src="../../nextt.svg"></img>
             </button>
           </div>
+
         </div>
       </div>
 

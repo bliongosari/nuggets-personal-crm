@@ -97,14 +97,15 @@
 
 .sortbutton {
   padding: 0.5%;
-  width: 40%;
+  width: 50%;
   padding-top: 2%;
+  position: relative;
 }
 
 .sortbtn {
   font-family: var(--button-font);
   border-radius: 10px;
-  width: 50%;
+  width: 30%;
   background-color: rgba(52, 102, 170, 0.1);
   opacity: 100%;
   text-align: center;
@@ -179,26 +180,27 @@
   margin-bottom: 15%;
 }
 
-.current-contacts-container {
+hr {
+  border: 1px solid var(--secondary-blue);
+  width: 100%;
+  margin-bottom: 0%;
+}
+
+.current-contacts-r {
   padding-left: 2%;
   transition: 0.2 ease;
   display: grid;
   grid-template-columns: 20% 40% 40%;
+  padding-top: 3%;
+  padding-bottom: 1%;
 }
 
-.contactdetails img {
-  width: 3vh;
-  padding-left: 5%;
-  margin-left: 0%;
+.current-contacts-r img {
+  width: 2.8vh;
+  margin-left: 5%;
 }
 
-.contactdetails {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 20% 40% 40%;
-}
-
-.contactdetails h2 {
+.current-contacts-r h2 {
   font-family: "AbeeZee";
   font-weight: normal;
   color: black;
@@ -206,86 +208,64 @@
   letter-spacing: 1px;
   align-items: left;
   margin-top: 0;
-}
-/* 
-.current-contacts-table h2 {
-  font-family: "AbeeZee";
-  font-weight: normal;
-  color: black;
-  font-size: 2vh;
-  letter-spacing: 1px;
-  align-items: left;
-  margin-top: 0;
-}
-
-.current-contacts-table h3 {
-  font-family: "AbeeZee";
-  font-weight: normal;
-  color: black;
-  margin-top: auto;
-  font-size: 2vh;
-  letter-spacing: 1px;
-  align-items: right;
-  margin-bottom: auto;
-  right: 0;
-}
-
-.current-contacts-table img {
-  width: 3vh;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.line {
-  width: 93%;
-  margin-top: 1.5vh;
-  margin-bottom: 1.5vh;
+  width: 50%;
+  margin-left: 5%;
 }
 
 .contacts-summary-container {
   display: flex;
   flex-direction: row;
+  margin-top: 5%;
+  margin-bottom: 3%;
 }
 
 .summarytitle {
   width: 50%;
-  margin-right: 5%;
 }
 
 .summarytitle h2 {
   margin-left: 1%;
-  margin-top: 5%;
+  font-family: "AbeeZee";
+  font-weight: normal;
+  color: black;
+  font-size: 2vh;
+  letter-spacing: 1px;
+  align-items: left;
+  margin-bottom: 3%;
 }
 
-.navbutton {
+.navpagedir {
   display: flex;
   flex-direction: row;
-  right: 10%;
-  position: fixed;
-  margin-top: 1.3%;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-top: 1.5%;
+  margin-left: 5%;
 }
 
-.backbtn {
+.navpagebutton {
   display: flex;
   flex-direction: row;
-  border: none;
-  margin-right: 5%;
+  padding: 10%;
+  right: 0;
+  position: relative;
 }
 
-.backbtn h1 {
-  margin-top: 13%;
+.navpagebutton h1 {
   font-size: 100%;
   letter-spacing: 2px;
   opacity: 100%;
   color: black;
   text-align: center;
   justify-content: center;
+  margin-top: 8%;
 }
 
-.backbtn img {
+.navpagebutton img {
   padding: 0.5%;
   margin-right: 1%;
-} */
+}
+
 /* @media screen and (max-width: 420px) {
   .searchbar img {
     width: 30%;
