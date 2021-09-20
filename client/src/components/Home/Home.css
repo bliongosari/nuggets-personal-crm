@@ -78,7 +78,16 @@
   padding-left: 10px;
 }
 
-.current-contacts-r h4 {
+.current-contacts-home {
+  padding-left: 2%;
+  transition: 0.2 ease;
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+
+.current-contacts-home h4 {
   font-family: "AbeeZee";
   font-weight: normal;
   color: var(--primary-black);
@@ -89,7 +98,7 @@
   margin-bottom: 0;
 }
 
-.current-contacts-r h5 {
+.current-contacts-home h5 {
   font-family: "AbeeZee";
   font-weight: normal;
   color: var(--primary-black);
@@ -335,12 +344,12 @@ span {
     transition: 0.2s ease;
   }
 
-  .current-contacts-r h4 {
+  .current-contacts-home h4 {
     font-size: 1.75vh;
     transition: 0.2s ease;
   }
 
-  .current-contacts-r h5 {
+  .current-contacts-home h5 {
     font-size: 1.75vh;
     transition: 0.2s ease;
   }
@@ -406,12 +415,12 @@ span {
     transition: 0.2s ease;
   }
 
-  .current-contacts-r h4 {
+  .current-contacts-home h4 {
     font-size: 1.75vh;
     transition: 0.2s ease;
   }
 
-  .current-contacts-r h5 {
+  .current-contacts-home h5 {
     font-size: 1.75vh;
     transition: 0.2s ease;
   }
@@ -447,11 +456,11 @@ span {
     transition: 0.2s ease;
   }
 
-  .current-contacts-r h4 {
+  .current-contacts-home h4 {
     font-size: 1.75vh;
   }
 
-  .current-contacts-r h5 {
+  .current-contacts-home h5 {
     font-size: 1.75vh;
   }
 }

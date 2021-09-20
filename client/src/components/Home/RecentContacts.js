@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Home.css"
 import { Link } from "react-router-dom";
-
+import Icon from '@mui/material/Icon';
 
 function RecentConctacts() {
   const [contacts, setContacts] = useState([]);

@@ -6,6 +6,7 @@ import RecentContacts from "./RecentContacts";
 import api from "../../config/axiosConfig.js";
 import { Link } from "react-router-dom";
 
+
 const Loading = () => <LoopCircleLoading />;
 
 function Home() {

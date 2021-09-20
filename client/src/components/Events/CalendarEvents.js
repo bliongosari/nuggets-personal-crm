@@ -15,7 +15,7 @@ let allViews = Object.keys(Views).map((k) => Views[k]);
 
 const eventStyleGetter = (event, start, end, isSelected) => {
   var style = {
-    backgroundColor: "#1c1c1c",
+    backgroundColor: "#114084",
     borderRadius: "0px",
     opacity: 0.7,
     color: "white",
