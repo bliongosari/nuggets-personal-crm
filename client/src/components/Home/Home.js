@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { LoopCircleLoading } from "react-loadingg";
 import EventsSummary from "./EventsSummary";
-import RecentContacts from "./RecentConctacts";
+import RecentContacts from "./RecentContacts";
 import api from "../../config/axiosConfig.js";
 import { Link } from "react-router-dom";
 
