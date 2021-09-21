@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 //import Cookies from "js-cookie";
 import api from "../../config/axiosConfig.js";
 import "./Journal.css";
-
+import AddJournal from "./AddJournal";
+import moment from "moment";
+import Modal from "react-modal";
 
 export default function Journal() {
   const [allField, setAllFields] = useState({
@@ -17,33 +19,29 @@ export default function Journal() {
   });
   const [field, setField] = useState("");
   const [journals, setJournals] = useState([]);
+  const [dates, setDates] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [eventModal, setEventModal] = useState(false);
 
-
-  const addjournal = async (e) => {
-    const journal = {
-      title: allField['title'],
-      description: allField['description'],
-      files: allField['files'],
-    };
-    api({
-      method: "POST",
-      url: "/api/journal/create",
-      data: journal,
-    })
-      .then(function (res) {
-        if (res.status === 200) {
-          setJournals([...journals, field]);
-          setField("");
-          refreshPage();
-        }
-        setMessage(res.data.message);
-      })
-      .catch(function (error) {
-        setMessage(error.response.data.message);
-      });
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      height: "580px",
+      width: "325px",
+      borderRadius: "12px",
+      textAlign: "left",
+      bottom: "auto",
+      marginRight: "-50%",
+      marginBottom: "10px",
+      transform: "translate(-50%, -50%)",
+      zIndex: "100",
+      backgroundColor: "#f1f1f1",
+    },
   };
 
   const changeHandler = e => {
@@ -83,6 +81,7 @@ export default function Journal() {
       .then(function (res) {
         if (res.status === 200) {
           setJournals([...journals, field]);
+          setDates([...dates, field]);
           setField("");
           refreshPage();
         }
@@ -118,6 +117,7 @@ export default function Journal() {
       .then((res) => {
         if (res.status === 200) {
           setJournals(res.data.journals);
+          setDates(res.data.dates);
           setLoading(false);
         } else {
           setFailed(true);
@@ -138,65 +138,50 @@ export default function Journal() {
           {loading ? (
             <h1> Loading.... </h1>
           ) : (
-            <div class="addjournal">
-              <h1> Add a new journal </h1>
-              <form>
-              <label style={{ color: "red" }}> {message}</label>
-              <label> Title: </label><br></br>
-              <input
-                name="title"
-                onChange={changeHandler}
-                required="true"
-               /><br></br>
-
-              <label> Description: </label><br></br>
-              <input
-                name="description"
-                onChange={changeHandler}
-                required="false"
-              /><br></br>
-
-              <label> Attach Files: </label><br></br>
-              <input
-                name="files"
-                onChange={changeHandler}
-                required="false"
-              />
-              <br></br>
-              </form>
-                      
-              <button onClick={addjournal}>POST</button>
-
-              {journals.map((item, i) => (
-                <li key={i}>
-                  {item.title}
-                  <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
-                  value={item._id}
-                  onClick={handleDelete} > Delete</button>
-                  <form>
-                    <label>Title</label><br></br>
-                    <input 
-                    placeholder={item.title}
-                    name="title"
-                    defaultValue={item.title}
-                    onChange={editHandler}/><br></br>
-                    <label>Description</label><br></br>
-                    <input 
-                    placeholder={item.description}
-                    name="description"
-                    defaultValue={item.description}
-                    onChange={editHandler}/>
-                    <br></br>
-                  </form>
-                  <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
-                  value={item._id}
-                  onClick={handleEdit} > Edit</button>
-                </li>
-              ))}
+            <div className="journals">
+              <div className="upload">
+                <button onClick={() => setIsOpen(true)} className="upload-btn">
+                  &#65291;
+                  <span> UPLOAD A JOURNAL</span>
+                </button>
+              </div>
+              <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={() => setIsOpen(false)}
+                ariaHideApp={false}
+              >
+                <button className="exitBtn" onClick={() => setIsOpen(false)}>
+                  &times;
+                </button>
+                <div>
+                  <AddJournal/>
+                  <button onClick={() => setIsOpen(false)} className= "cancel-btn">CANCEL</button>
+                </div>
+              </Modal>
+              <div className="journal-details">
+                {journals.map((item, i) => (
+                  <ul>
+                    <li key={i}>
+                      <div className="journalDate">
+                        {dates[i]}
+                      </div>
+                      <br></br>
+                      {item.title}<br></br>
+                      {item.description}
+                      <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
+                      value={item._id}
+                      onClick={handleDelete} > Delete</button>
+                      <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
+                      value={item._id}
+                      onClick={handleEdit} > Edit</button>
+                    </li>
+                  </ul>
+                ))}
+              </div>
             </div>
           )}
         </div>
       )}
     </div>
-  );
+  )
 }
