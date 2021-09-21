@@ -13,16 +13,19 @@ import Checkbox from '@mui/material/Checkbox';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { LoopCircleLoading } from "react-loadingg";
+import Icon from '@mui/material/Icon';
 const Loading = () => <LoopCircleLoading />;
 
 // change when have tags from backend
 const tagsQueried = [
-  'All',
-  'Friends',
-  'Colleagues',
-  'Family',
-  'Childhood',
+  { name: "All", color: "pink"},
+  { name: 'Friends', color: "red"},
+  { name: 'Colleagues', color: "blue"},
+  { name: 'Family', color: "green"},
+  { name: 'Childhood', color: "purple"},
+  { name: 'Others', color: "grey"},
 ];
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -37,7 +40,7 @@ const MenuProps = {
 
 function Contacts() {
   const query = useQuery("contacts", getContacts, { staleTime: Infinity });
-  const [tags, setTags] = useState(["All"]);
+  const [tags, setTags] = useState([tagsQueried[0]]);
   const [page, setPage] = useState(1);
   const [sorting, setSorting] = useState("Sort by: Date: Last to First")
   const [currentShow, setCurrentShow] = useState(0);
@@ -58,6 +61,21 @@ function Contacts() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+  const renderTags = (tags) => {
+    let result = ""
+    let tags1 = tags.filter((tag) => tag.name !== "undefined" )
+    for (var i=0; i< tags1.length; i++) {
+      if (i !== 0){
+        result += ", " + tags1[i].name 
+
+      }
+      else {
+      result += tags1[i].name
+      }
+    }
+    console.log(result);
+    return result;
+  }
 
   const handleSearch = (e) => {
     setSearchedValue(e.target.value);
@@ -99,14 +117,14 @@ function Contacts() {
         return filteredData;
       case "Sort by: Contact: A-Z":
         filteredData = data.sort(function(a, b) {
-          var orderBool =a.full_name.toLowerCase() > b.full_name.toLowerCase();
+          var orderBool =a.full_name.toLowerCase() < b.full_name.toLowerCase();
           return orderBool ? 1 : -1;
       });
       return filteredData;
 
       case "Sort by: Contact: Z-A":
         filteredData = data.sort(function(a, b) {
-          var orderBool = a.full_name.toLowerCase() < b.full_name.toLowerCase();
+          var orderBool = a.full_name.toLowerCase() > b.full_name.toLowerCase();
           return orderBool ? 1 : -1;
       });
       return filteredData;
@@ -157,13 +175,14 @@ function Contacts() {
           value={tags}
           onChange={handleChange}
           style = {{height: "30px", fontSize: "12px", color: "#114084"}}
-          renderValue={(selected) => selected.join(', ')}
+          renderValue={(selected) => renderTags(selected)}
           MenuProps={MenuProps}
         >
           {tagsQueried.map((name) => (
             <MenuItem key={name} value={name} style = {{height: "30px", paddingLeft: "5px", color: "#114084"}}>
-              <Checkbox style ={{color:"#114084"}} checked={tags.indexOf(name) > -1} />
-              <ListItemText style ={{color:"#114084"}} primary={name} />
+              <Checkbox style ={{color:"#114084"}} checked={tags.includes(name)} />
+              <Icon style ={{fontSize: "13px", color: name.color, marginRight: "5px"}}>circle </Icon>
+              <ListItemText style ={{color:"#114084"}} primary={name.name} />
             </MenuItem>
           ))}
         </Select>
@@ -213,7 +232,7 @@ function Contacts() {
         ))}
       <div style = {{height: "50px", display: "flex", textAlign: "center", alignItems:"center", justifyContent: "center", marginTop: "30px", marginRight: "20px"}}>
         <Stack spacing={4}>
-         <Pagination count={query.data.contacts.length/6 || 1} page={page || 1} onChange={handlePageChange} />
+         <Pagination count={Math.ceil(query.data.contacts.length/6)|| 1} page={page || 1} onChange={handlePageChange} />
         </Stack>
       </div>
       </div>

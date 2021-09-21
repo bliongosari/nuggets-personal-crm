@@ -3,6 +3,36 @@ import { useMutation, useQueryClient } from "react-query";
 import "./AddContact.css";
 import { addContact } from "./contactsAPI";
 import api from "../../config/axiosConfig";
+import DatePicker from "react-datepicker";
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import "react-datepicker/dist/react-datepicker.css";
+import Icon from '@mui/material/Icon';
+
+const tagsQueried = [
+  { name: 'Friends', color: "red"},
+  { name: 'Colleagues', color: "blue"},
+  { name: 'Family', color: "green"},
+  { name: 'Childhood', color: "purple"},
+  { name: 'Others', color: "grey"},
+];
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      color: "#114084",
+    },
+  },
+};
+
 
 function AddContact() {
 
@@ -26,6 +56,7 @@ function AddContact() {
   };
 
   const [full_name, setFullName] = useState("");
+  const [image, setImage] = useState("");
   const [preferred_name, setPrefName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [relationship, setRelationship] = useState("");
@@ -35,22 +66,40 @@ function AddContact() {
   const [phone_number, setPhoneNumber] = useState("");
   const [linkedin, setLinkedIn] = useState("");
   const [twitter, setTwitter] = useState("");
+  const [tags, setTags] = useState([]);
 
-  const [tags, setTags] = useState(false);
+  const handleBirthdayChange = (date) => {
+    setBirthday(date.target.value);
+  }
 
-  const toggleTags = () => {
-    setTags(!tags);
+  const handleImageChange = (image) => {
+    setImage(image)
+  }
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setTags(
+      typeof value === 'string' ? value.split(',') : value,
+    );
   };
 
-  if(tags) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
+  const renderTags = (tags) => {
+    let result = ""
+    for (var i=0; i< tags.length; i++) {
+      if (i !== 0){
+        result += ", " + tags[i].name 
+
+      }
+      else {
+      result += tags[i].name
+      }
+    }
+    return result;
   }
 
   return (
     <div className="home">
-
       <div className="pagetitle">
         <h1>Add a new contact</h1>
       </div>
@@ -69,7 +118,7 @@ function AddContact() {
 
         <div className="attachimage">
           <button className="attachbtn">
-            <h1>Attach Image</h1>
+            <input type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
           </button>
         </div>
 
@@ -86,12 +135,14 @@ function AddContact() {
         <div className="detail2">
           <h2>Birthday:</h2>
           <div className="detailssinput">
-          <input type="text" onChange={(e) => setBirthday(e.target.value)} />
-            <button className="formatbtn">
-              <img alt="plus" src="../../calendarr.svg"></img>
-            </button>
+          <input
+            value={birthday}
+            onChange={handleBirthdayChange}
+            required={true}
+            name="birthday"
+            type="Date" 
+          />
           </div>
-          
         </div>
 
         <div className="details">
@@ -101,86 +152,26 @@ function AddContact() {
 
         <div className="detail2">
           <h2>Tags:</h2>
-          <div className="tagsinput">
-            <input></input>
-            <button onClick={toggleTags} className="tagsbtn">
-              <h2>add tags</h2>
-            </button>
+          <FormControl style={{width: "100%", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0"}}>
+        <Select
+          displayEmpty
+          multiple
+          value={tags}
+          onChange={handleChange}
+          style = {{height: "30px", border: "none", fontSize: "12px", color: "#114084"}}
+          renderValue={(selected) => renderTags(selected)}
+          MenuProps={MenuProps}
+        >
+          {tagsQueried.map((name) => (
+            <MenuItem key={name} value={name} style = {{height: "30px", paddingLeft: "5px", color: "#114084"}}>
+              <Checkbox style ={{color:"#114084"}} checked={tags.indexOf(name) > -1} />
+              <Icon style ={{fontSize: "13px", color: name.color, marginRight: "5px"}}>circle </Icon>
+              <ListItemText style ={{color:"#114084"}} primary={ name.name} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
-            {tags && (
-              <div className="modal">
-                <div onClick={toggleTags} className="overlay"></div>
-
-                <div className="modal-content">
-                  <div className="color-title">
-                    <h2>Color</h2>
-                    <hr></hr>
-                  </div>
-
-                  <div className="closebutton">
-                    <img alt="" src="../../close.svg" onClick={toggleTags}></img>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">None</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Red</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Green</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Blue</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Yellow</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Pink</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Purple</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Orange</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Cyan</label>
-                  </div>
-
-                  <div className="color-options">
-                    <input type="checkbox"></input>
-                    <label class="container">Navy Blue</label>
-                  </div>
-
-                  <div className="addcontacts">
-                    <button className="addbtn">
-                      <img alt="plus" src="../../whiteadd.svg"></img>
-                      <h1>Add Tags </h1>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
           
         </div>
 
