@@ -51,7 +51,7 @@ function Tabs() {
         <div className={toggleState === 2 ? "content  active-content" : "content"}>
             <div className = "subcontent">
                 <div className="eventreminder">
-                    <h1> &nbsp; Reminders or Notes</h1>
+                    <h1> Reminders or Notes</h1>
                     <button className="eventbtn" onClick={() => setActive("reminder")}>
                         <h1>Add reminder</h1>
                     </button>
@@ -64,7 +64,7 @@ function Tabs() {
             <hr/>
             <div className = "subcontent">
                 <div className="eventreminder">
-                    <h1> &nbsp; Task</h1>
+                    <h1>Task</h1>
                     <button className="eventbtn" onClick={() => setActive("task")}>
                         <h1>Add task</h1>
                     </button>
@@ -77,7 +77,7 @@ function Tabs() {
             <hr/>
             <div className = "subcontent">
                 <div className="eventreminder">
-                    <h1> &nbsp; Phone calls</h1>
+                    <h1> Phone calls</h1>
                     <button className="eventbtn" onClick={() => setActive("call")}>
                         <h1>Add calls</h1>
                     </button>
