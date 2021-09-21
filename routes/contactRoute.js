@@ -37,21 +37,22 @@ router.get("/:id", auth.authenticateToken, async (req, res) => {
       .catch((err) => next(err));
 });
 
-// create new contact
-router.post("/create", auth.authenticateToken, async (req, res) => {
+// add new contact
+router.post("/add", auth.authenticateToken, async (req, res) => {
   try {
     const contact = new Contact({
-      full_name: req.full_name,
-      preferred_name: req.preferred_name,
-      birthday: req.birthday,
-      relationship: req.relationship,
-      tags: req.tags,
-      meeting_notes: req.meeting_notes,
-      description: req.description,
-      email: req.email,
-      phone_number: req.phone_number,
-      linkedin: req.linkedin,
-      twitter: req.twitter
+      user_id: req.user.id,
+      full_name: req.body.full_name,
+      preferred_name: req.body.preferred_name,
+      birthday: req.body.birthday,
+      relationship: req.body.relationship,
+      tags: req.body.tags,
+      meeting_notes: req.body.meeting_notes,
+      description: req.body.description,
+      email: req.body.email,
+      phone_number: req.body.phone_number,
+      linkedin: req.body.linkedin,
+      twitter: req.body.twitter
     });
     await contact.save();
     return res.status(200).json({ message: "Successfully added" });
