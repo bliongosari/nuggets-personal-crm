@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Home.css"
 import { Link } from "react-router-dom";
-
+import Icon from '@mui/material/Icon';
 
 function RecentConctacts() {
   const [contacts, setContacts] = useState([]);
@@ -85,8 +85,8 @@ function RecentConctacts() {
           </Link>
           ))}
           {max ? (
-          <button className="before" onClick ={moveLeft}>
-          <img alt="next" src="../../next.svg" className="next"></img>
+          <button className="next" onClick ={moveLeft}>
+          <img alt="before" src="../../next.svg" className="next"></img>
         </button>
           ) : (
               <div>
@@ -95,11 +95,15 @@ function RecentConctacts() {
           </button>
           </div>
           )} 
-        </div>
+          </div>
         )}
-        <h3>Page {currentIndex/3 + 1}/{total}</h3>
+        
       </div>
     )
 }
 
 export default RecentConctacts
+
+
+// make the arrow button cyclic
+//<h4 className="page-number">Page {currentIndex/3 + 1}/{total}</h4>

@@ -22,6 +22,7 @@
   bottom: 0;
   text-align: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .footerbar h1 {

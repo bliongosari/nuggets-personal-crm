@@ -5,6 +5,7 @@ import SignUpModal from "../ModalF/SignUpModal";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ClickAwayListener } from '@mui/material';
 
 function NavbarWelcome() {
   return (
@@ -62,6 +63,7 @@ function NavbarHome() {
             onClick={showDropdownNotif}
           ></img>
           {dropdownNotif && (
+            <ClickAwayListener onClickAway={() => {setdropdownNotif(false)}}>
             <div>
               <div className="arrow-up2"></div>
               <div className="dropdown-content">
@@ -71,6 +73,7 @@ function NavbarHome() {
                 {/* <hr></hr> */}
               </div>
             </div>
+            </ClickAwayListener>
           )}
         </div>
 
@@ -83,6 +86,7 @@ function NavbarHome() {
             onClick={showDropdownUser}
           ></img>
           {dropdownUser && (
+            <ClickAwayListener onClickAway={() => {setdropdownUser(false)}}>
             <div>
               <div className="arrow-up"></div>
               <div className="dropdown-content">
@@ -101,6 +105,7 @@ function NavbarHome() {
                 </div>
               </div>
             </div>
+            </ClickAwayListener>
           )}
         </div>
       </div>
@@ -138,6 +143,7 @@ function NavbarHome() {
 
       {/* Expand Sidebar */}
       {sidebar && (
+        <ClickAwayListener onClickAway={() => {setSidebar(false)}}>
         <div>
           <div className="sidebar1">
             <div className="sidebar-container">
@@ -172,6 +178,7 @@ function NavbarHome() {
             </div>
           </div>
         </div>
+        </ClickAwayListener>
       )}
     </div>
   );

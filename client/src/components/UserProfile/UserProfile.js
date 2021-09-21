@@ -61,11 +61,11 @@ function UserProfile() {
 
       <div className="grid-container">
         <h1 className="user-data-spec">FIRST NAME:</h1>
-        <h1 className="user-data">{user.firstname}</h1>
+        <h2 className="user-data">{user.firstname}</h2>
         <h1 className="user-data-spec">LAST NAME:</h1>
-        <h1 className="user-data">{user.lastname}</h1>
+        <h2 className="user-data">{user.lastname}</h2>
         <h1 className="user-data-spec">EMAIL ADDRESS:</h1>
-        <h1 className="user-data">{user.email}</h1>
+        <h2 className="user-data">{user.email}</h2>
       </div>
 
       {/* Edit profile button */}

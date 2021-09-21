@@ -91,6 +91,9 @@
   justify-content: center;
   margin-top: 1%;
 }
+.attachbtn:hover {
+  background-color: var(--secondary-blue);
+}
 
 .attachbtn h1 {
   font-size: 75%;
@@ -151,7 +154,9 @@
   padding-bottom: 0.5%;
   margin-top: 0%;
 }
-
+.formatbtn:hover {
+  background-color: var(--secondary-blue)
+}
 .formatbtn img {
   height: 100%;
 }
@@ -184,6 +189,10 @@
   padding-top: 0.8%;
   padding-bottom: 0.5%;
   margin-top: 0%;
+}
+
+.tagsbtn:hover {
+  background-color: var(--secondary-blue)
 }
 
 .tagsbtn h2 {
@@ -256,6 +265,10 @@
   padding-top: 1%;
   justify-content: center;
   margin-top: 5%;
+}
+
+.addbtn:hover {
+  background-color: var(--secondary-blue)
 }
 .addbtn h1 {
   margin-top: 3%;
