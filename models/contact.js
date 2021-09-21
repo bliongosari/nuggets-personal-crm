@@ -29,6 +29,9 @@ const contactSchema = new Schema({
   description: {
     type: String,
   },
+  alert: {
+    type: Number,
+  },
   email: {
     type: String,
   },

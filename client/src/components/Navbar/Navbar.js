@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import SignInModal from "../ModalF/SignInModal";
 import SignUpModal from "../ModalF/SignUpModal";
@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ClickAwayListener } from '@mui/material';
+import api from "../../config/axiosConfig.js";
 
 function NavbarWelcome() {
   return (
@@ -18,11 +19,37 @@ function NavbarWelcome() {
   );
 }
 
+
+
 function NavbarHome() {
   const history = useHistory();
   const [sidebar, setSidebar] = useState(false);
   const [dropdownUser, setdropdownUser] = useState(false);
   const [dropdownNotif, setdropdownNotif] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    api({
+      method: "GET",
+      url: "/api/user/notifications/",
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data.contactsNotif);
+          console.log(res.data.eventsNotif);
+          setNotifications([...res.data.contactsNotif, ...res.data.eventsNotif]);
+
+        } else {
+          console.log("error")
+          //setFailed(true);
+        }
+      })
+      .catch((err) => {
+        console.log("error2")
+        //setFailed(true);
+      });
+  }, []);
+
 
   const logout = async (e) => {
     Cookies.remove("token");
@@ -68,7 +95,16 @@ function NavbarHome() {
               <div className="arrow-up2"></div>
               <div className="dropdown-content">
                 <div className="dropdown-container">
+                  {notifications.length > 0 ? 
+                  notifications.map((notif) => (
+                    notif.title !== "undefined" ? 
+                    <span style = {{fontSize: "10px"}}>{notif.title} {new Date(notif.start).toDateString()} {notif.alert}</span> : 
+                    <span>Contact {notif.full_name} </span>
+                    // add x button to remove notification 
+                  ))
+                  :
                   <span>No Notification</span>
+                }
                 </div>
                 {/* <hr></hr> */}
               </div>

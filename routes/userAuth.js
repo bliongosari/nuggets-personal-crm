@@ -41,6 +41,31 @@ router.get("/numDetails", auth.authenticateToken, async (req, res) => {
         }
 })
 
+
+router.get("/notifications", auth.authenticateToken, async (req, res) => {
+  try {
+    const contacts = await Contact.find({ user_id: req.user.id });
+    const events = await Events.find({ user_id: req.user.id });
+    let editedContacts = [];
+    for (var i =0; i < contacts.length; i++) {
+      if (typeof contacts[i].alert !== "undefined"){
+        editedContacts.push(contacts[i])
+      }
+    }
+    let editedEvents = [];
+    for (var i =0; i < events.length; i++) {
+      if (events[i].alert !== "None" ){
+        editedEvents.push(events[i])
+      }
+    }
+    return res
+      .status(200)
+      .json({ contactsNotif: editedContacts, eventsNotif: editedEvents });
+  } catch (e) {
+    return res.status(403).json({ message: "Error" });
+  }
+})
+
 router.post("/logout", async (req, res) => {});
 
 module.exports = router;
