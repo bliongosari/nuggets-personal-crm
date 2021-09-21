@@ -40,10 +40,10 @@
   padding: 0.7%;
 }
 
-.newcontactbtn {
+.newcontactbtnn {
   font-family: var(--button-font);
   border-radius: 10px;
-  width: 70%;
+  width: 100%;
   background-color: var(--primary-blue);
   text-align: center;
   padding: 4%;
@@ -53,7 +53,7 @@
   margin-top: 5%;
 }
 
-.newcontactbtn h1 {
+.newcontactbtnn h1 {
   font-size: 85%;
   letter-spacing: 2px;
   color: white;
@@ -63,7 +63,7 @@
 }
 
 .addcontacts {
-  width: 20%;
+  width: 100%;
   justify-content: center;
   margin: auto;
   margin-top: 1.6%;
@@ -266,17 +266,90 @@ hr {
   margin-right: 1%;
 }
 
-/* @media screen and (max-width: 420px) {
-  .searchbar img {
+@media screen and (max-width: 300px) {
+  .searchbarr img {
     width: 30%;
     padding-right: 3%;
   }
 
-  .searchbar {
+  .searchbarr {
     width: 94%;
   }
 
-  .searchbar input {
+  .searchbarr input {
+    font-size: 70%;
+  }
+
+  .addcontacts {
+    width: auto;
+    margin-top: 0;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 0;
+  }
+
+  .newcontactbtnn {
+    width: 100%;
+  }
+
+  .newcontactbtnn h1 {
+    font-size: 60%;
+    margin-top: 6%;
+  }
+
+  .sortbutton {
+    right: 15%;
+    margin-top: 5.5%;
+    width: 15%;
+    padding-top: 0.8%;
+  }
+
+  .sortbutton h1 {
+    font-size: 80%;
+  }
+
+  .sortbutton img {
+    width: 20%;
+  }
+
+  .current-contacts-headingss h1 {
+    font-size: 50%;
+    padding-left: 2%;
+    margin-bottom: 5%;
+  }
+
+  .current-contacts-r h2 {
+    font-size: 75%;
+  }
+
+  .current-contacts-r img {
+    width: 30%;
+  }
+
+  .contacts-summary-container {
+    margin-top: 8%;
+  }
+
+  .navpagebutton {
+    margin-top: 0;
+  }
+
+  .navpagebutton h1 {
+    font-size: 80%;
+  }
+}
+
+@media screen and (min-width: 301px) and (max-width: 420) {
+  .searchbarr img {
+    width: 30%;
+    padding-right: 3%;
+  }
+
+  .searchbarr {
+    width: 94%;
+  }
+
+  .searchbarr input {
     font-size: 80%;
   }
 
@@ -288,13 +361,13 @@ hr {
     margin-top: 0;
   }
 
-  .newcontactbtn h1 {
+  .newcontactbtnn h1 {
     font-size: 30%;
     width: 90%;
     margin-top: 6%;
   }
 
-  .newcontactbtn img {
+  .newcontactbtnn img {
     width: 20%;
     margin-left: 6%;
     margin-right: 5%;
@@ -302,36 +375,32 @@ hr {
     padding-top: 0;
   }
 
-  .summarybutton {
+  .sortbutton {
     right: 15%;
     margin-top: 5.5%;
     width: 15%;
     padding-top: 0.8%;
   }
 
-  .summarybutton h1 {
+  .sortbutton h1 {
     font-size: 80%;
   }
 
-  .summarybutton img {
+  .sortbutton img {
     width: 20%;
   }
 
-  .current-contacts-headings h1 {
+  .current-contacts-headingss h1 {
     font-size: 50%;
     padding-left: 2%;
     margin-bottom: 5%;
   }
 
-  .current-contacts-container h2 {
+  .current-contacts-r h2 {
     font-size: 75%;
   }
 
-  .current-contacts-container h3 {
-    font-size: 75%;
-  }
-
-  .current-contacts-container img {
+  .current-contacts-r img {
     width: 30%;
   }
 
@@ -339,65 +408,62 @@ hr {
     margin-top: 8%;
   }
 
-  .navbutton {
+  .navpagebutton {
     margin-top: 0;
+    margin-left: 0%;
   }
 
-  .backbtn h1 {
-    font-size: 80%;
+  .navpagebutton h1 {
+    font-size: 60%;
   }
 }
 
 @media screen and (max-width: 650px) {
-  .searchbar img {
+  .searchbarr img {
     width: 5%;
     padding-right: 3%;
   }
 
-  .searchbar {
+  .searchbarr {
     width: 94%;
   }
 
-  .searchbar input {
+  .searchbarr input {
     font-size: 90%;
   }
 
-  .newcontactbtn {
+  .newcontactbtnn {
     width: 80%;
     margin-top: 15%;
   }
 
-  .newcontactbtn h1 {
+  .newcontactbtnn h1 {
     font-size: 75%;
   }
 
-  .newcontactbtn img {
+  .newcontactbtnn img {
     width: 20%;
     margin-left: 6%;
     margin-right: 5%;
     margin-top: 4%;
   }
 
-  .summarybutton {
+  .sortbutton {
     right: 15%;
     margin-top: 0.5%;
   }
 
-  .current-contacts-headings h1 {
+  .current-contacts-headingss h1 {
     font-size: 80%;
     padding-left: 2%;
     margin-bottom: 5%;
   }
 
-  .current-contacts-container h2 {
+  .current-contacts-r h2 {
     font-size: 75%;
   }
 
-  .current-contacts-container h3 {
-    font-size: 75%;
-  }
-
-  .current-contacts-container img {
+  .current-contacts-r img {
     width: 30%;
   }
 
@@ -405,21 +471,21 @@ hr {
     margin-top: 8%;
   }
 
-  .navbutton {
+  .navpagebutton {
     margin-top: 0;
   }
 
-  .backbtn h1 {
+  .navpagebutton h1 {
     font-size: 80%;
   }
 }
 
 @media screen and (min-width: 650px) and (max-width: 1150px) {
-  .navbutton {
+  .navpagebutton {
     margin-top: 1.7%;
   }
 
-  .backbtn h1 {
+  .navpagebutton h1 {
     font-size: 75%;
   }
-} */
+}
