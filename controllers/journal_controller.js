@@ -8,8 +8,25 @@ const sanitize = require("mongo-sanitize");
 const getAll = async (req, res) => {
   try {
     const journals = await Journal.find({ user_id: req.user.id });
+    const parsedDates = [];
+    var months = [ "January", "February", "March", "April", "May", "June", 
+                  "July", "August", "September", "October", "November", "December" ];
+    var i=0;
+    journals.sort(function compare(a, b) {
+      var dateA = new Date(a.createdOn);
+      var dateB = new Date(b.createdOn);
+      return dateB - dateA;
+    });
+    
+    for(i=0; i<journals.length;i++) {
+      var date = "";
+      date += journals[i].createdOn.getDate() + " " + months[journals[i].createdOn.getMonth()] + " "
+            + journals[i].createdOn.getFullYear();
+      parsedDates[i] = date;
+    }
     return res.status(200).json({
       journals: journals,
+      dates: parsedDates,
       user: req.user,
       message: "Successfully retrieved",
     });

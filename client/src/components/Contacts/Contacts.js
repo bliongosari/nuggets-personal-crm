@@ -155,9 +155,9 @@ function Contacts() {
         placeholder="SEARCH CONTACTS"></input>
       </div>
 
-      <div className="addcontacts">
+      <div className="addcontactsdiv">
         <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
-          <button className="newcontactbtnn">
+          <button className="addnewbtn">
             <h1>ADD NEW CONTACT</h1>
           </button>
         </Link>
