@@ -2,23 +2,39 @@ import React, {useState} from "react";
 import { useMutation, useQueryClient } from "react-query";
 import "./AddContact.css";
 import { addContact } from "./contactsAPI";
+import api from "../../config/axiosConfig";
 
 function AddContact() {
-  const queryClient = useQueryClient();
 
+  const addContact = async (contact) => {
+    console.log(contact);
+    api({
+      method: "POST",
+      url: "/api/contacts/add",
+      data: contact,
+    })
+      .then(function (res) {
+        if (res.status === 200) {
+          console.log("SUCCESS!");
+        } else {
+          console.log("FAIL");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
-  const [fullName, setFullName] = useState("");
-  const [prefName, setPrefName] = useState("");
+  const [full_name, setFullName] = useState("");
+  const [preferred_name, setPrefName] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [relation, setRelation] = useState("");
-  const [howWeMet, setHowWeMet] = useState("");
+  const [relationship, setRelationship] = useState("");
+  const [meeting_notes, setHowWeMet] = useState("");
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [linkedIn, setLinkedIn] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [linkedin, setLinkedIn] = useState("");
   const [twitter, setTwitter] = useState("");
-
-  
 
   const [tags, setTags] = useState(false);
 
@@ -80,7 +96,7 @@ function AddContact() {
 
         <div className="details">
           <h2>Relationship</h2>
-          <input type="text" onChange={(e) => setRelation(e.target.value)} />
+          <input type="text" onChange={(e) => setRelationship(e.target.value)} />
         </div>
 
         <div className="detail2">
@@ -205,18 +221,19 @@ function AddContact() {
 
         <div className="addcontacts">
           <button className="addbtn" onClick={(e) => {
-            console.log({
-              fullName,
-              prefName,
+            addContact({
+              full_name: "Sommething for now",
+              preferred_name,
               birthday,
-              relation,
-              howWeMet,
+              relationship,
+              // tags,
+              meeting_notes,
               description,
               email,
-              phoneNumber,
-              linkedIn,
+              phone_number,
+              linkedin,
               twitter,
-            })
+            });
           }}
           >
             <h1>Add Contact</h1>
