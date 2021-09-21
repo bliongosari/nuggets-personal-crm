@@ -40,7 +40,7 @@
   padding: 0.7%;
 }
 
-.newcontactbtnn {
+.addnewbtn {
   font-family: var(--button-font);
   border-radius: 10px;
   width: 100%;
@@ -56,7 +56,7 @@
   background: var(--secondary-blue);
 }
 
-.newcontactbtnn h1 {
+.addnewbtn h1 {
   font-size: 85%;
   letter-spacing: 2px;
   color: white;
@@ -65,8 +65,8 @@
   justify-content: center;
 }
 
-.addcontacts {
-  width: 100%;
+.addcontactsdiv {
+  width: 20%;
   justify-content: center;
   margin: auto;
   margin-top: 1.6%;
@@ -289,25 +289,6 @@ hr {
     font-size: 70%;
   }
 
-  .addcontacts {
-    width: auto;
-    margin-top: 0;
-    margin: auto;
-    margin-bottom: 5%;
-    margin-top: 0;
-  }
-
-  .newcontactbtnn {
-    width: 180%;
-    margin-top: 25%;
-    margin-bottom: 20%;
-  }
-
-  .newcontactbtnn h1 {
-    font-size: 60%;
-    margin-top: 6%;
-  }
-
   .sortbutton {
     right: 15%;
     margin-top: 5.5%;
@@ -317,6 +298,12 @@ hr {
 
   .sortbutton h1 {
     font-size: 80%;
+  }
+
+  .addcontactsdiv {
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
 
   .sortbutton img {
@@ -353,9 +340,13 @@ hr {
     display: grid;
     grid-template-columns: 15% 25% 30% 30%;
   }
+
+  .current-contacts-table {
+    margin-bottom: 30%;
+  }
 }
 
-@media screen and (min-width: 321px) and (max-width: 470px) {
+@media screen and (min-width: 321px) and (max-width: 500px) {
   .searchbarr img {
     width: 10%;
     padding-right: 3%;
@@ -369,32 +360,10 @@ hr {
     font-size: 80%;
   }
 
-  .addcontacts {
-    width: 100%;
-    margin-top: 0;
-    margin: auto;
-    margin-bottom: 5%;
-    margin-top: 0;
-  }
-
-  .newcontactbtnn h1 {
-    font-size: 60%;
-    margin-top: 5%;
-    padding-left: 55%;
-    padding-right: 55%;
-  }
-
-  .newcontactbtnn img {
-    width: 20%;
-    margin-left: 6%;
-    margin-right: 5%;
-    margin-top: 1%;
-    padding-top: 0;
-  }
-
-  .newcontactbtnn {
-    width: 150%;
-    margin-top: 15%;
+  .addcontactsdiv {
+    width: 30%;
+    margin-top: 4%;
+    margin-bottom: 4%;
   }
 
   .sortbutton {
@@ -445,7 +414,7 @@ hr {
   }
 }
 
-@media screen and (min-width: 471px) and (max-width: 650px) {
+@media screen and (min-width: 500px) and (max-width: 650px) {
   .searchbarr img {
     width: 5%;
     padding-right: 3%;
@@ -457,22 +426,6 @@ hr {
 
   .searchbarr input {
     font-size: 90%;
-  }
-
-  .newcontactbtnn {
-    width: 100%;
-    margin-top: 15%;
-  }
-
-  .newcontactbtnn h1 {
-    font-size: 75%;
-  }
-
-  .newcontactbtnn img {
-    width: 20%;
-    margin-left: 6%;
-    margin-right: 5%;
-    margin-top: 4%;
   }
 
   .sortbutton {
