@@ -8,3 +8,7 @@ export const getContacts = async () => {
   })
   return data;
 }
+
+export const addContact = async (contact) => {
+  await api.post("/api/contacts/add", contact);
+}

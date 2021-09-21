@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import "./Contacts.css";
 import { getContacts } from "./contactsAPI";
@@ -36,7 +36,7 @@ const MenuProps = {
 };
 
 function Contacts() {
-  const query = useQuery('contacts', getContacts, { staleTime: Infinity });
+  const query = useQuery("contacts", getContacts, { staleTime: Infinity });
   const [tags, setTags] = useState(["All"]);
   const [page, setPage] = useState(1);
   const [sorting, setSorting] = useState("Sort by: Date: Last to First")
@@ -138,10 +138,10 @@ function Contacts() {
       </div>
 
       <div className="addcontacts">
-      <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
-        <button className="newcontactbtn">
-          <h1>ADD NEW CONTACT</h1>
-        </button>
+        <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
+          <button className="newcontactbtn">
+            <h1>ADD NEW CONTACT</h1>
+          </button>
         </Link>
       </div>
       

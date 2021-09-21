@@ -37,8 +37,8 @@ router.get("/:id", auth.authenticateToken, async (req, res) => {
       .catch((err) => next(err));
 });
 
-// create new contact
-router.post("/create", auth.authenticateToken, async (req, res) => {
+// add new contact
+router.post("/add", auth.authenticateToken, async (req, res) => {
   try {
     const contact = new Contact({
       full_name: req.full_name,
