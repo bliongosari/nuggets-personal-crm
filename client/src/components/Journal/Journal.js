@@ -163,11 +163,11 @@ export default function Journal() {
                   <ul>
                     <li key={i}>
                       <div className="journalDate">
-                        {dates[i]}
+                        <h1> {dates[i]} </h1>
                       </div>
                       <br></br>
-                      {item.title}<br></br>
-                      {item.description}
+                      <h2>{item.title}<br></br>
+                      {item.description} </h2>
                       <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
                       value={item._id}
                       onClick={handleDelete} > Delete</button>
