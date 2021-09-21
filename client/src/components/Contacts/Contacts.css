@@ -53,7 +53,7 @@
   margin-top: 5%;
 }
 .newcontactbtn:hover {
- background: var(--secondary-blue)
+  background: var(--secondary-blue);
 }
 
 .newcontactbtnn h1 {
@@ -204,7 +204,6 @@ hr {
   text-decoration: underline;
 }
 
-
 .current-contacts-r img {
   width: 2.8vh;
   margin-left: 5%;
@@ -276,9 +275,9 @@ hr {
   margin-right: 1%;
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
   .searchbarr img {
-    width: 30%;
+    width: 10%;
     padding-right: 3%;
   }
 
@@ -299,7 +298,9 @@ hr {
   }
 
   .newcontactbtnn {
-    width: 100%;
+    width: 180%;
+    margin-top: 25%;
+    margin-bottom: 20%;
   }
 
   .newcontactbtnn h1 {
@@ -347,11 +348,16 @@ hr {
   .navpagebutton h1 {
     font-size: 80%;
   }
+
+  .current-contacts-headingss {
+    display: grid;
+    grid-template-columns: 15% 25% 30% 30%;
+  }
 }
 
-@media screen and (min-width: 301px) and (max-width: 420) {
+@media screen and (min-width: 321px) and (max-width: 470px) {
   .searchbarr img {
-    width: 30%;
+    width: 10%;
     padding-right: 3%;
   }
 
@@ -364,7 +370,7 @@ hr {
   }
 
   .addcontacts {
-    width: 40%;
+    width: 100%;
     margin-top: 0;
     margin: auto;
     margin-bottom: 5%;
@@ -372,9 +378,10 @@ hr {
   }
 
   .newcontactbtnn h1 {
-    font-size: 30%;
-    width: 90%;
-    margin-top: 6%;
+    font-size: 60%;
+    margin-top: 5%;
+    padding-left: 55%;
+    padding-right: 55%;
   }
 
   .newcontactbtnn img {
@@ -383,6 +390,11 @@ hr {
     margin-right: 5%;
     margin-top: 1%;
     padding-top: 0;
+  }
+
+  .newcontactbtnn {
+    width: 150%;
+    margin-top: 15%;
   }
 
   .sortbutton {
@@ -404,6 +416,11 @@ hr {
     font-size: 50%;
     padding-left: 2%;
     margin-bottom: 5%;
+  }
+
+  .current-contacts-headingss {
+    display: grid;
+    grid-template-columns: 15% 25% 30% 30%;
   }
 
   .current-contacts-r h2 {
@@ -428,7 +445,7 @@ hr {
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (min-width: 471px) and (max-width: 650px) {
   .searchbarr img {
     width: 5%;
     padding-right: 3%;
@@ -443,7 +460,7 @@ hr {
   }
 
   .newcontactbtnn {
-    width: 80%;
+    width: 100%;
     margin-top: 15%;
   }
 
@@ -464,7 +481,7 @@ hr {
   }
 
   .current-contacts-headingss h1 {
-    font-size: 80%;
+    font-size: 70%;
     padding-left: 2%;
     margin-bottom: 5%;
   }
