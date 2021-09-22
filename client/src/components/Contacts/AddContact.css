@@ -42,7 +42,7 @@
   width: 85%;
   justify-content: center;
   margin-left: 7.5%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
   padding: 2%;
 }
 
@@ -159,7 +159,7 @@
   margin-top: 0%;
 }
 .formatbtn:hover {
-  background-color: var(--secondary-blue)
+  background-color: var(--secondary-blue);
 }
 .formatbtn img {
   height: 100%;
@@ -196,7 +196,7 @@
 }
 
 .tagsbtn:hover {
-  background-color: var(--secondary-blue)
+  background-color: var(--secondary-blue);
 }
 
 .tagsbtn h2 {
@@ -251,7 +251,6 @@
   justify-content: center;
 }
 
-
 .addbtn {
   font-family: var(--button-font);
   border-radius: 10px;
@@ -267,7 +266,7 @@
 }
 
 .addbtn:hover {
-  background-color: var(--secondary-blue)
+  background-color: var(--secondary-blue);
 }
 .addbtn h1 {
   margin-top: 3%;
@@ -388,4 +387,42 @@
   height: auto;
   margin-top: 10%;
   margin-right: 10%;
+}
+
+@media screen and (min-width: 701px) and (max-width: 1000px) {
+  .pagetitle h1 {
+    margin-top: 10%;
+  }
+
+  .details {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .contacts-details-form {
+    margin-bottom: 15%;
+  }
+
+  .addcontacts {
+    padding: 0%;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 700px) {
+  .pagetitle {
+    padding-top: 10%;
+  }
+
+  .contacts-details-form {
+    margin-bottom: 15%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .pagetitle {
+    padding-top: 20%;
+  }
+
+  .contacts-details-form {
+    margin-bottom: 25%;
+  }
 }
