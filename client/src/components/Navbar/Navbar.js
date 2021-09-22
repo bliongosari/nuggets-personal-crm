@@ -125,7 +125,7 @@ function NavbarHome() {
             <ClickAwayListener onClickAway={() => {setdropdownUser(false)}}>
             <div>
               <div className="arrow-up"></div>
-              <div className="dropdown-content">
+              <div className="dropdown-content1">
                 <div className="dropdown-container">
                   <Link to="/user-profile">
                     <img alt="user" src="../../person-blue.svg"></img>

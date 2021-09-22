@@ -12,7 +12,6 @@
 
 .home {
   margin-left: 60px;
-  margin-top: 80px;
 }
 
 .summary-container {
@@ -33,7 +32,7 @@
   margin-right: auto;
   width: 85%;
   text-align: center;
-  margin-top: 95px;
+  margin-top: 70px;
 }
 
 .summary h1 {
@@ -62,7 +61,6 @@
   margin-right: auto;
   margin-top: 30px;
   width: 85%;
-  max-height: 290px;
   justify-content: center;
   padding-bottom: 10px;
   padding: 15px;
@@ -340,7 +338,6 @@ span {
   }
 
   .current-events {
-    max-height: 250px;
     transition: 0.2s ease;
   }
 
@@ -411,7 +408,6 @@ span {
   }
 
   .current-events {
-    max-height: 270px;
     transition: 0.2s ease;
   }
 

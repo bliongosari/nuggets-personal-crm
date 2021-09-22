@@ -24,7 +24,7 @@ body.active-modal {
 
 .overlay {
   background: rgba(49, 49, 49, 0.8);
-  z-index: 10;
+  z-index: 3;
 }
 
 .modal {
@@ -42,7 +42,7 @@ body.active-modal {
   border-radius: 30px;
   width: 60%;
   height: auto;
-  z-index: 10;
+  z-index: 3;
 }
 
 .btn {
