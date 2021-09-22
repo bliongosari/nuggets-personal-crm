@@ -82,9 +82,7 @@ function EventEditForm(props) {
   ];
 
   return (
-    <div>
-      {flag && (failed ? <FailedMsg /> : <SuccessMsg />)}
-      <div className="addevents">
+    <div className="addevents">
         <h2 className="edit-title">Edit an event</h2>
         <h3 className = "add-details">Event Details</h3>
         <form>
@@ -163,7 +161,6 @@ function EventEditForm(props) {
 
         <button onClick={editEvents} className= "add-button">ADD</button>
         
-      </div>
     </div>
   );
 }

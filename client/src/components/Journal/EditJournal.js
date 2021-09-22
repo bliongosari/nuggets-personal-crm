@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //import Cookies from "js-cookie";
 import api from "../../config/axiosConfig.js";
-import "./Journal.css";
+import "./NewJournal.css";
 import { Alert } from "react-bootstrap";
 import { props } from "bluebird";
 
@@ -17,6 +17,7 @@ function EditJournal(props) {
     const [loading, setLoading] = useState(true);
     const [failed, setFailed] = useState(false);
     const [flag, setFlag] = useState(false);
+    const [JournalModal, setJournalModal] = useState(false);
     const editJournal = async (e) => {
         api({
           method: "POST",
@@ -52,26 +53,35 @@ function EditJournal(props) {
       }
       return (
         <div>
-        {flag && (failed ? <FailedMsg /> : <SuccessMsg />)}
-            <div className="addjournal">
-            <h2 className="edit-title">Edit journal</h2>
-            <h3 className="journal-detail-title"> Journal Details </h3>
-                <form>
-                <label>Title</label><br></br>
-                <input 
-                name="title"
+          <div className="journalentryform">
+            <div className="formtitlee">
+              <h1>Journal Details</h1>
+              <hr></hr>
+            </div>
+            <form>
+              <div className="detailstitle">
+                <h2>Title:</h2>
+                <input name="title"
                 onChange={changeHandler}
-                placeholder={props.journal.title}
-                /><br></br>
-                <label>Description</label><br></br>
-                <input 
-                name="description"
-                onChange={changeHandler}
-                placeholder={props.journal.description}/>
-                <br></br>
-                </form>
-                <button className="save-btn" 
-                onClick={editJournal}> Save Changes</button>
+                placeholder={props.journal.title}></input>
+              </div>
+              <div className="detailsdesc">
+                <h2>Description:</h2>
+                <input name="description"
+                  onChange={changeHandler}
+                  placeholder={props.journal.description}></input>
+              </div>
+              <div className="addjournal">
+                <button className="addjbtn">
+                  <h1>Attach Files </h1>
+                </button>
+              </div>
+              <div className="addjournal">
+                <button onClick={editJournal} className="addjbtn">
+                  <h1>Save changes </h1>
+                </button>
+              </div>
+              </form>
             </div>
         </div>
       );

@@ -33,16 +33,14 @@ export default function Journal() {
       top: "50%",
       left: "50%",
       right: "auto",
-      height: "580px",
-      width: "325px",
+      maxWidth: "1000",
+      minWidth:"90%",
       borderRadius: "12px",
-      textAlign: "left",
       bottom: "auto",
       marginRight: "-50%",
       marginBottom: "10px",
       transform: "translate(-50%, -50%)",
       zIndex: "100",
-      backgroundColor: "#f1f1f1",
     },
   };
 
@@ -52,39 +50,13 @@ export default function Journal() {
 
   let journalID = React.createRef();
 
-  function handleDelete() {
-    deletejournal(journalID.current.value);
+  function handleDelete(item) {
+    deletejournal(item);
   }
 
   const handleEdit = (item) => {
     setJournalID(item);
     setJournalModal(true);
-  };
-  
-  const editjournal = async (id) => {
-    alert(id);
-    const journal = {
-      title: editedField['title'],
-      description: editedField['description'],
-      files: editedField['files'],
-    };
-    api({
-      method: "POST",
-      url: "/api/journal/edit/" + id,
-      data: journal,
-    })
-      .then(function (res) {
-        if (res.status === 200) {
-          setJournals([...journals, field]);
-          setDates([...dates, field]);
-          setField("");
-          refreshPage();
-        }
-        setMessage(res.data.message);
-      })
-      .catch(function (error) {
-        setMessage(error.response.data.message);
-      });
   };
 
   const deletejournal = async (id) => {
@@ -140,20 +112,20 @@ export default function Journal() {
                   <span> UPLOAD A JOURNAL</span>
                 </button>
               </div>
-              {/* <Modal
+              <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={() => setIsOpen(false)}
                 ariaHideApp={false}
                 style={formStyle}
               >
-                <button className="exitBtn" onClick={() => setIsOpen(false)}>
-                  &times;
-                </button>
-                <div>
-                  <AddJournal/>
-                  <button onClick={() => setIsOpen(false)} className= "cancel-btn">CANCEL</button>
+                <div className="pagetitlee">
+                  <h1>Add a new journal</h1>
+                  <button className="exit-Btn" onClick={() => setIsOpen(false)}>
+                      &times;
+                  </button>
                 </div>
-              </Modal> */}
+                  <AddJournal/>
+              </Modal>
               <div className="journal-details">
                 {journals.map((item, i) => (
                   <ul>
@@ -177,7 +149,7 @@ export default function Journal() {
                         className="delete-journal-btn" 
                         ref = {journalID} 
                         value={item._id}
-                        onClick={handleDelete} > Delete</button>
+                        onClick={() => handleDelete(item._id)} > Delete</button>
                       </div>
                     </li>
                   </ul>
@@ -186,15 +158,17 @@ export default function Journal() {
               <Modal
                 isOpen={JournalModal}
                 onRequestClose={() => setJournalModal(false)}
-                style={formStyle}
                 ariaHideApp={false}
+                style={formStyle}
+                dialogClassName="JournalModal"
               >
-                <button className="exitBtn" onClick={() => setJournalModal(false)}>
-                  &times;
-                </button>
-                <div>
-                  <EditJournal journal={journal} />
+                <div className="pagetitlee">
+                  <h1>Edit existing journal</h1>
+                    <button className="exit-Btn" onClick={() => setJournalModal(false)}>
+                    &times;
+                    </button>
                 </div>
+                <EditJournal journal={journal} /> 
               </Modal>
             </div>
           )}

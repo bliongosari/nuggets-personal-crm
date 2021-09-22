@@ -51,58 +51,43 @@ function AddJournal() {
         window.location.reload(false);
     }
     return (
-        <div class="addjournal">
-            <h2 className="add-title">Add a new journal</h2>
-            <h3 className="journal-detail-title"> Journal Details </h3>
+      <div>
+          <div className="journalentryform">
             <form>
-            <label style={{ color: "red" }}> {message}</label>
-            <label> Title: </label><br></br>
-            <input
-            name="title"
-            onChange={changeHandler}
-            required="true"
-            /><br></br>
+            <div className="formtitlee">
+              <h1>Journal Details</h1>
+              <hr></hr>
+            </div>
 
-        <div className="journalentryform">
-          <div className="formtitlee">
-            <h1>Journal Details</h1>
-            <hr></hr>
+            <div className="detailstitle">
+              <h2>Title:</h2>
+              <input name="title"
+                onChange={changeHandler}
+                required="true"></input>
+            </div>
+
+            <div className="detailsdesc">
+              <h2>Description:</h2>
+              <input name="description"
+                onChange={changeHandler}
+                required="false"></input>
+            </div>
+
+            <div className="addjournal">
+              <button className="addjbtn">
+                <h1>Attach Files </h1>
+              </button>
+            </div>
+
+            <div className="addjournal">
+              <button onClick={addjournal} className="addjbtn">
+                <h1>Post journal </h1>
+              </button>
+            </div>
+            </form>
           </div>
-
-          <div className="detailstitle">
-            <h2>Title:</h2>
-            <input name="title"
-            onChange={changeHandler}
-            required="true"></input>
-          </div>
-
-          <div className="detailsdesc">
-          <h2>Description:</h2>
-          <input name="description"
-            onChange={changeHandler}
-            required="false"></input>
-        </div>
-
-        <div className="addjournal">
-          <button className="addjbtn">
-            <h1>Attach Files </h1>
-          </button>
-        </div>
-
-        <div className="addjournal">
-          <button onClick={addjournal} className="addjbtn">
-            <h1>Post journal </h1>
-          </button>
-        </div>
-
-        <div className="addjournal">
-          <button className="addjbtn">
-            <h1>Cancel</h1>
-          </button>
-        </div>
-        
-      </div>
       </div>
     );
 }
+
 export default AddJournal;
