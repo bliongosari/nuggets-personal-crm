@@ -7,6 +7,16 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ClickAwayListener } from '@mui/material';
 import api from "../../config/axiosConfig.js";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
 
 function NavbarWelcome() {
   return (
@@ -94,19 +104,81 @@ function NavbarHome() {
             <div>
               <div className="arrow-up2"></div>
               <div className="dropdown-content">
-                <div className="dropdown-container">
+                <List style={{ width: '100%'}}>
                   {notifications.length > 0 ? 
                   notifications.map((notif) => (
                     notif.title !== "undefined" ? 
-                    <span style = {{fontSize: "10px"}}>{notif.title} {new Date(notif.start).toDateString()} {notif.alert}</span> : 
-                    <span>Contact {notif.full_name} </span>
-                    // add x button to remove notification 
+                    <div>
+                      {/* add onClick={openEvent} to the clicked event */}
+                      <Button>
+                        <ListItem alignItems="flex-start">
+                          <ListItemAvatar>
+                              <img alt="Event" src="/../../events.svg" className="avatarimg"/>
+                          </ListItemAvatar>
+                          <Stack direction="row" spacing={1}>
+                            <ListItemText
+                              primary={notif.title}
+                              secondary={
+                                <React.Fragment>
+                                  <Typography
+                                    sx={{ display: 'inline' }}
+                                    component="span"
+                                    variant="body2"
+                                    color="text.primary"
+                                  >
+                                    {new Date(notif.start).toDateString()}
+                                  </Typography>
+                                  {<br></br>}{notif.alert}
+                                </React.Fragment>
+                              }
+                            />
+                            {/* add onClick={deleteNotif} to the clicked event */}
+                            <IconButton aria-label="delete" size="small">
+                              <DeleteIcon fontSize="inherit"/>
+                            </IconButton>
+                          </Stack>
+                        </ListItem>
+                      </Button>
+                      <Divider variant="offset" component="li" />
+                    </div> :
+                    <div>
+                    {/* add onClick={openEvent} to the clicked event */}
+                    <Button>
+                      <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                            <img alt="Event" src="/../../contacts.svg" className="avatarimg"/>
+                        </ListItemAvatar>
+                        <Stack direction="row" spacing={1}>
+                          <ListItemText
+                            primary="Contact"
+                            secondary={
+                              <React.Fragment>
+                                <Typography
+                                  sx={{ display: 'inline' }}
+                                  component="span"
+                                  variant="body2"
+                                  color="text.primary"
+                                >
+                                  {notif.full_name}
+                                </Typography>
+                                {<br></br>}{notif.alert}
+                              </React.Fragment>
+                            }
+                          />
+                          {/* add onClick={deleteNotif} to the clicked event */}
+                          <IconButton aria-label="delete" size="small">
+                            <DeleteIcon fontSize="inherit"/>
+                          </IconButton>
+                        </Stack>
+                      </ListItem>
+                    </Button>
+                    <Divider variant="offset" component="li" />
+                  </div>
                   ))
                   :
                   <span>No Notification</span>
                 }
-                </div>
-                {/* <hr></hr> */}
+                </List>
               </div>
             </div>
             </ClickAwayListener>
@@ -132,7 +204,7 @@ function NavbarHome() {
                     <span>View Profile</span>
                   </Link>
                 </div>
-                <hr></hr>
+                <Divider variant="offset"/>
                 <div className="dropdown-container">
                   <Link to="/" onClick={logout}>
                     <img alt="user" src="../../logout.svg"></img>

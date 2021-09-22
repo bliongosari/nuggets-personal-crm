@@ -95,7 +95,7 @@
 .dropdown-content {
   position: absolute;
   background-color: var(--primary-white);
-  width: 250px;
+  width: 280px;
   box-shadow: 0px 3px 3px 0px var(--secondary-blue);
   z-index: 1;
   right: 0;
@@ -150,9 +150,18 @@
   padding-left: 13px;
 }
 
+.dropdown-container span:hover {
+  text-decoration: underline;
+}
+
 .dropdown-container img {
   height: 20px;
   width: 20px;
+}
+
+.avatarimg {
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 hr {
