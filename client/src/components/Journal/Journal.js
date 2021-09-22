@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //import Cookies from "js-cookie";
 import api from "../../config/axiosConfig.js";
 import "./Journal.css";
-import AddJournal from "./AddJournal";
+
 import moment from "moment";
 import Modal from "react-modal";
 
@@ -145,7 +145,7 @@ export default function Journal() {
                   <span> UPLOAD A JOURNAL</span>
                 </button>
               </div>
-              <Modal
+              {/* <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={() => setIsOpen(false)}
                 ariaHideApp={false}
@@ -157,7 +157,7 @@ export default function Journal() {
                   <AddJournal/>
                   <button onClick={() => setIsOpen(false)} className= "cancel-btn">CANCEL</button>
                 </div>
-              </Modal>
+              </Modal> */}
               <div className="journal-details">
                 {journals.map((item, i) => (
                   <ul>

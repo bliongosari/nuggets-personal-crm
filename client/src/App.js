@@ -16,6 +16,8 @@ import Unauthorized from "./components/Unauthorized/Unauthorized";
 import EditContact from "./components/Contacts/EditContact";
 import AddContact from "./components/Contacts/AddContact";
 import ContactProfile from "./components/Contacts/ContactProfile"
+import AddJournal from "./components/Journal/AddJournal";
+import EditJournal from "./components/Journal/EditJournal";
 
 function App() {
   return (
@@ -36,7 +38,8 @@ function App() {
         <ProtectedRoute exact path="/events" component={Events} />
         <ProtectedRoute exact path="/example" component={Example} />
         <ProtectedRoute exact path="/contact/:name" component={ContactProfile} />
-
+        <ProtectedRoute exact path="/addjournal" component={AddJournal} />
+        <ProtectedRoute exact path="/editjournal" component={EditJournal} />
       </Switch>
       <Footer />
     </div>

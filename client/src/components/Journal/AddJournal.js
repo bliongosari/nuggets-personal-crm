@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //import Cookies from "js-cookie";
 import api from "../../config/axiosConfig.js";
-import "./Journal.css";
+import "./NewJournal.css";
 import { Alert } from "react-bootstrap";
 
 function AddJournal() {
@@ -51,35 +51,52 @@ function AddJournal() {
         window.location.reload(false);
     }
     return (
-        <div class="addjournal">
-            <h1> Add a new journal </h1>
-            <form>
-            <label style={{ color: "red" }}> {message}</label>
-            <label> Title: </label><br></br>
-            <input
-            name="title"
-            onChange={changeHandler}
-            required="true"
-            /><br></br>
+      <div className="home">
 
-            <label> Description: </label><br></br>
-            <input
-            name="description"
-            onChange={changeHandler}
-            required="false"
-            /><br></br>
-
-            <label> Attach Files: </label><br></br>
-            <input
-            name="files"
-            onChange={changeHandler}
-            required="false"
-            />
-            <br></br>
-            </form>
-                    
-            <button onClick={addjournal} className ="post-btn">&#65291;POST</button>
+        <div className="pagetitlee">
+          <h1>Add a new journal</h1>
         </div>
+
+        <div className="journalentryform">
+          <div className="formtitlee">
+            <h1>Journal Details</h1>
+            <hr></hr>
+          </div>
+
+          <div className="detailstitle">
+            <h2>Title:</h2>
+            <input name="title"
+            onChange={changeHandler}
+            required="true"></input>
+          </div>
+
+          <div className="detailsdesc">
+          <h2>Description:</h2>
+          <input name="description"
+            onChange={changeHandler}
+            required="false"></input>
+        </div>
+
+        <div className="addjournal">
+          <button className="addjbtn">
+            <h1>Attach Files </h1>
+          </button>
+        </div>
+
+        <div className="addjournal">
+          <button onClick={addjournal} className="addjbtn">
+            <h1>Post journal </h1>
+          </button>
+        </div>
+
+        <div className="addjournal">
+          <button className="addjbtn">
+            <h1>Cancel</h1>
+          </button>
+        </div>
+        
+      </div>
+      </div>
     );
 }
 export default AddJournal;
