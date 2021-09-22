@@ -79,7 +79,7 @@ const deleteJournal = async (req, res) => {
 
 const editJournal = async (req, res) => {
   try {
-    const journal = Journal.findById(req.params.id);
+    const journal = Journal.findOne({_id: req.params.id});
     return res.status(200).json({
       user: req.user,
       journal: journal,
@@ -95,21 +95,19 @@ const editJournal = async (req, res) => {
 
 const postEditedJournal = async (req, res) => {
   try {
-    console.log("before: " + (await Journal.find({ user_id: req.user.id })));
-
-    var journal = await Journal.findbyId(req.params.id);
-    var title = req.body.title;
+    var journal = await Journal.findOne({_id: req.params.id});
+    var title = sanitize(req.body.title);
     if (title == "") {
       title = journal.title;
     }
-    var description = req.body.description;
+    var description = sanitize(req.body.description);
     if (description == "") {
       description = journal.description;
     }
-    var files = req.body.files;
+    var files = sanitize(req.body.files);
 
     journal = await Journal.findOneAndUpdate(
-      req.params.id,
+      {_id: req.params.id},
       {
         title: title,
         description: description,
@@ -117,7 +115,6 @@ const postEditedJournal = async (req, res) => {
       },
       { new: true }
     );
-    console.log("after: " + (await Journal.find({ user_id: req.user.id })));
     return res.status(200).json({
       user: req.user,
       message: "Successfully edited",

@@ -51,52 +51,43 @@ function AddJournal() {
         window.location.reload(false);
     }
     return (
-      <div className="home">
+      <div>
+          <div className="journalentryform">
+            <form>
+            <div className="formtitlee">
+              <h1>Journal Details</h1>
+              <hr></hr>
+            </div>
 
-        <div className="pagetitlee">
-          <h1>Add a new journal</h1>
-        </div>
+            <div className="detailstitle">
+              <h2>Title:</h2>
+              <input name="title"
+                onChange={changeHandler}
+                required="true"></input>
+            </div>
 
-        <div className="journalentryform">
-          <div className="formtitlee">
-            <h1>Journal Details</h1>
-            <hr></hr>
+            <div className="detailsdesc">
+              <h2>Description:</h2>
+              <input name="description"
+                onChange={changeHandler}
+                required="false"></input>
+            </div>
+
+            <div className="addjournal">
+              <button className="addjbtn">
+                <h1>Attach Files </h1>
+              </button>
+            </div>
+
+            <div className="addjournal">
+              <button onClick={addjournal} className="addjbtn">
+                <h1>Post journal </h1>
+              </button>
+            </div>
+            </form>
           </div>
-
-          <div className="detailstitle">
-            <h2>Title:</h2>
-            <input name="title"
-            onChange={changeHandler}
-            required="true"></input>
-          </div>
-
-          <div className="detailsdesc">
-          <h2>Description:</h2>
-          <input name="description"
-            onChange={changeHandler}
-            required="false"></input>
-        </div>
-
-        <div className="addjournal">
-          <button className="addjbtn">
-            <h1>Attach Files </h1>
-          </button>
-        </div>
-
-        <div className="addjournal">
-          <button onClick={addjournal} className="addjbtn">
-            <h1>Post journal </h1>
-          </button>
-        </div>
-
-        <div className="addjournal">
-          <button className="addjbtn">
-            <h1>Cancel</h1>
-          </button>
-        </div>
-        
-      </div>
       </div>
     );
 }
+
 export default AddJournal;

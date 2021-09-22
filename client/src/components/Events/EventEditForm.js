@@ -82,24 +82,28 @@ function EventEditForm(props) {
   ];
 
   return (
-    <div>
-      {flag && (failed ? <FailedMsg /> : <SuccessMsg />)}
-      <div className="addevents">
+    <div className="addevents">
         <h2 className="edit-title">Edit an event</h2>
         <h3 className = "add-details">Event Details</h3>
         <form>
           <label style={{ color: "red" }}> {message}</label>
           <label> Event Name: </label>
           <br></br>
-          <input name="title" onChange={changeHandler} placeholder={props.event.title}/>
+          <input name="title" 
+                onChange={changeHandler} 
+                placeholder={props.event.title}/>
           <br></br>
           <label> Location: </label>
           <br></br>
-          <input name="location" onChange={changeHandler} required={false} placeholder={props.event.location}/>
+          <input name="location" 
+                onChange={changeHandler}
+                placeholder={props.event.location} />
           <br></br>
           <label> Type: </label>
           <br></br>
-          <input name="type" onChange={changeHandler} placeholder={props.event.type}/>
+          <input name="type" 
+                onChange={changeHandler}
+                placeholder={props.event.type} />
           <br></br>
           <label> Time: </label>
           <br></br>
@@ -107,12 +111,12 @@ function EventEditForm(props) {
             value={allField["start"]}
             onChange={changeHandler}
             name="start"
-            type="Date" //change to time later
+            type="datetime-local" 
           /> to
           <input
             value={allField["end"]}
             name="end"
-            type="Date" //change to time later
+            type="datetime-local"
             onChange={changeHandler}
           />
           <br></br>
@@ -146,13 +150,17 @@ function EventEditForm(props) {
             <br></br>
           <label> Notes </label>
           <br></br>
-          <input className="notes" name="note" onChange={changeHandler} required={false} placeholder={props.event.notes}/>
+          <input className="notes" 
+                name="note" 
+                onChange={changeHandler} 
+                placeholder={props.event.notes}
+                required={false} 
+                />
           <br></br>
         </form>
 
         <button onClick={editEvents} className= "add-button">ADD</button>
         
-      </div>
     </div>
   );
 }

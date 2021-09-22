@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 //import Cookies from "js-cookie";
 import api from "../../config/axiosConfig.js";
 import "./Journal.css";
-
+import AddJournal from "./AddJournal";
+import EditJournal from "./EditJournal";
 import moment from "moment";
 import Modal from "react-modal";
 
@@ -24,32 +25,24 @@ export default function Journal() {
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [eventModal, setEventModal] = useState(false);
+  const [JournalModal, setJournalModal] = useState(false);
+  const [journal, setJournalID] = useState(null);
 
-  const customStyles = {
+  const formStyle = {
     content: {
       top: "50%",
       left: "50%",
       right: "auto",
-      height: "580px",
-      width: "325px",
+      maxWidth: "1000",
+      minWidth:"90%",
       borderRadius: "12px",
-      textAlign: "left",
       bottom: "auto",
       marginRight: "-50%",
       marginBottom: "10px",
       transform: "translate(-50%, -50%)",
       zIndex: "100",
-      backgroundColor: "#f1f1f1",
     },
   };
-
-  const changeHandler = e => {
-    setAllFields({...allField, [e.target.name]: e.target.value})
-  }
-  const editHandler = e => {
-    setEditedFields({...editedField, [e.target.name]: e.target.value})
-  }
 
   function refreshPage() {
     window.location.reload(false);
@@ -57,39 +50,13 @@ export default function Journal() {
 
   let journalID = React.createRef();
 
-  function handleDelete() {
-    deletejournal(journalID.current.value);
+  function handleDelete(item) {
+    deletejournal(item);
   }
 
-  function handleEdit() {
-    editjournal(journalID.current.value);
-    setEditedFields({editedField: [{}]});
-  }
-  
-  const editjournal = async (id) => {
-    alert(id);
-    const journal = {
-      title: editedField['title'],
-      description: editedField['description'],
-      files: editedField['files'],
-    };
-    api({
-      method: "POST",
-      url: "/api/journal/edit/" + id,
-      data: journal,
-    })
-      .then(function (res) {
-        if (res.status === 200) {
-          setJournals([...journals, field]);
-          setDates([...dates, field]);
-          setField("");
-          refreshPage();
-        }
-        setMessage(res.data.message);
-      })
-      .catch(function (error) {
-        setMessage(error.response.data.message);
-      });
+  const handleEdit = (item) => {
+    setJournalID(item);
+    setJournalModal(true);
   };
 
   const deletejournal = async (id) => {
@@ -145,39 +112,64 @@ export default function Journal() {
                   <span> UPLOAD A JOURNAL</span>
                 </button>
               </div>
-              {/* <Modal
+              <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={() => setIsOpen(false)}
                 ariaHideApp={false}
+                style={formStyle}
               >
-                <button className="exitBtn" onClick={() => setIsOpen(false)}>
-                  &times;
-                </button>
-                <div>
-                  <AddJournal/>
-                  <button onClick={() => setIsOpen(false)} className= "cancel-btn">CANCEL</button>
+                <div className="pagetitlee">
+                  <h1>Add a new journal</h1>
+                  <button className="exit-Btn" onClick={() => setIsOpen(false)}>
+                      &times;
+                  </button>
                 </div>
-              </Modal> */}
+                  <AddJournal/>
+              </Modal>
               <div className="journal-details">
                 {journals.map((item, i) => (
                   <ul>
                     <li key={i}>
                       <div className="journalDate">
-                        {dates[i]}
+                        <h1> {dates[i]} </h1>
                       </div>
                       <br></br>
-                      {item.title}<br></br>
-                      {item.description}
-                      <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
-                      value={item._id}
-                      onClick={handleDelete} > Delete</button>
-                      <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
-                      value={item._id}
-                      onClick={handleEdit} > Edit</button>
+                      <div  className="journalTitle">
+                        <h2> {item.title} </h2>
+                      </div>
+                      <br></br>
+                      <h2>{item.description} </h2>
+                      <div className="journal-btns">
+                        <button className= "edit-journal-btn" 
+                        ref = {journalID} 
+                        value={item}
+                        onClick={() => handleEdit(item)} > Edit</button>
+
+                        <button
+                        className="delete-journal-btn" 
+                        ref = {journalID} 
+                        value={item._id}
+                        onClick={() => handleDelete(item._id)} > Delete</button>
+                      </div>
                     </li>
                   </ul>
                 ))}
               </div>
+              <Modal
+                isOpen={JournalModal}
+                onRequestClose={() => setJournalModal(false)}
+                ariaHideApp={false}
+                style={formStyle}
+                dialogClassName="JournalModal"
+              >
+                <div className="pagetitlee">
+                  <h1>Edit existing journal</h1>
+                    <button className="exit-Btn" onClick={() => setJournalModal(false)}>
+                    &times;
+                    </button>
+                </div>
+                <EditJournal journal={journal} /> 
+              </Modal>
             </div>
           )}
         </div>
