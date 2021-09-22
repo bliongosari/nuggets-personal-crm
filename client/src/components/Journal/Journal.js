@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Journal.css";
 import AddJournal from "./AddJournal";
+import EditJournal from "./EditJournal";
 import moment from "moment";
 import Modal from "react-modal";
 
@@ -24,9 +25,10 @@ export default function Journal() {
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [eventModal, setEventModal] = useState(false);
+  const [JournalModal, setJournalModal] = useState(false);
+  const [journal, setJournalID] = useState(null);
 
-  const customStyles = {
+  const formStyle = {
     content: {
       top: "50%",
       left: "50%",
@@ -44,13 +46,6 @@ export default function Journal() {
     },
   };
 
-  const changeHandler = e => {
-    setAllFields({...allField, [e.target.name]: e.target.value})
-  }
-  const editHandler = e => {
-    setEditedFields({...editedField, [e.target.name]: e.target.value})
-  }
-
   function refreshPage() {
     window.location.reload(false);
   }
@@ -61,10 +56,10 @@ export default function Journal() {
     deletejournal(journalID.current.value);
   }
 
-  function handleEdit() {
-    editjournal(journalID.current.value);
-    setEditedFields({editedField: [{}]});
-  }
+  const handleEdit = (item) => {
+    setJournalID(item);
+    setJournalModal(true);
+  };
   
   const editjournal = async (id) => {
     alert(id);
@@ -149,6 +144,7 @@ export default function Journal() {
                 isOpen={modalIsOpen}
                 onRequestClose={() => setIsOpen(false)}
                 ariaHideApp={false}
+                style={formStyle}
               >
                 <button className="exitBtn" onClick={() => setIsOpen(false)}>
                   &times;
@@ -166,18 +162,40 @@ export default function Journal() {
                         <h1> {dates[i]} </h1>
                       </div>
                       <br></br>
-                      <h2>{item.title}<br></br>
-                      {item.description} </h2>
-                      <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
-                      value={item._id}
-                      onClick={handleDelete} > Delete</button>
-                      <button style={{ margin: " 0 0 0 40px" }} ref = {journalID} 
-                      value={item._id}
-                      onClick={handleEdit} > Edit</button>
+                      <div  className="journalTitle">
+                        <h2> {item.title} </h2>
+                      </div>
+                      <br></br>
+                      <h2>{item.description} </h2>
+                      <div className="journal-btns">
+                        <button className= "edit-journal-btn" 
+                        ref = {journalID} 
+                        value={item}
+                        onClick={() => handleEdit(item)} > Edit</button>
+
+                        <button
+                        className="delete-journal-btn" 
+                        ref = {journalID} 
+                        value={item._id}
+                        onClick={handleDelete} > Delete</button>
+                      </div>
                     </li>
                   </ul>
                 ))}
               </div>
+              <Modal
+                isOpen={JournalModal}
+                onRequestClose={() => setJournalModal(false)}
+                style={formStyle}
+                ariaHideApp={false}
+              >
+                <button className="exitBtn" onClick={() => setJournalModal(false)}>
+                  &times;
+                </button>
+                <div>
+                  <EditJournal journal={journal} />
+                </div>
+              </Modal>
             </div>
           )}
         </div>

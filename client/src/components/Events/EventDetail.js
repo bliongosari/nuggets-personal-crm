@@ -39,9 +39,12 @@ function EventDetail(props) {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   useEffect(() => {
-    console.log(props.event);
-    setStart(new Date(props.event.start).toLocaleDateString("en-US"));
-    setEnd(new Date(props.event.end).toLocaleDateString("en-US"));
+    var startDate = new Date(props.event.start).toLocaleDateString('en-US');
+    startDate += " " + new Date(props.event.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    setStart(startDate);
+    var endDate = new Date(props.event.end).toLocaleDateString('en-US');
+    endDate += " " + new Date(props.event.end).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    setEnd(endDate);
   }, []);
 
   const deleteEvent = async () => {
@@ -62,29 +65,11 @@ function EventDetail(props) {
       });
   };
 
-  /*const editEvent = async () => {
-    api({
-      method: "GET",
-      url: "/api/events/edit/" + props.event._id,
-    })
-      .then(function (res) {
-        if (res.status === 200) {
-          window.location.reload(false);
-          alert("Sucessfully Edited");
-        } else {
-          alert("Failed to Edit");
-        }
-      })
-      .catch(function (error) {
-        alert("Failed to Edit");
-      });
-  };*/
-
   return (
     <div>
       <div className="event-details">
         <h2 className="detail-title"> Event Details </h2>  
-        <h3> Event Name: {props.event.title}</h3>
+        <h3 className="event-name"> Event Name: {props.event.title}</h3>
         <h3> Location: {props.event.location}</h3>
         <h3> Type: {props.event.type}</h3>
         <h3> Alert: {props.event.alert}</h3>

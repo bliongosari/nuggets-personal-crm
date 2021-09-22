@@ -52,7 +52,8 @@ function AddJournal() {
     }
     return (
         <div class="addjournal">
-            <h1> Add a new journal </h1>
+            <h2 className="add-title">Add a new journal</h2>
+            <h3 className="journal-detail-title"> Journal Details </h3>
             <form>
             <label style={{ color: "red" }}> {message}</label>
             <label> Title: </label><br></br>

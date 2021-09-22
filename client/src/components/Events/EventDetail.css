@@ -17,6 +17,9 @@
     line-height: 25px;
     font-size: 13px;
   }
+  .event-name {
+      margin-top: 10px;
+  }
   .detail-title {
     font-size: 20px;
     line-height: 35px;
@@ -24,13 +27,13 @@
     border-bottom: 2px solid var(--primary-blue);
   }
   .delete-btn {
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
     cursor: pointer;
     color:white;
     background-color: var(--primary-blue);
     font-family: var(--button-font);
-    width: 150px;
+    width: 170px;
     border: 0px;
     border-radius: 3px;
     padding: 7px;
@@ -42,11 +45,13 @@
     text-decoration: underline;
   }
   .edit-btn {
+    margin-top: 20px;
+    margin-left: 50px;
     cursor: pointer;
     color:white;
     background-color: var(--primary-blue);
     font-family: var(--button-font);
-    width: 150px;
+    width: 170px;
     border: 0px;
     border-radius: 3px;
     padding: 7px;
