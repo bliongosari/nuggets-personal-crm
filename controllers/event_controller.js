@@ -126,7 +126,6 @@ const editEvent = async (req, res) => {
     if (notes == "") {
       notes = event.notes;
     }
-    console.log(eventID)
     event = await Event.findOneAndUpdate(
       {_id: eventID},
       {

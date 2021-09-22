@@ -107,12 +107,12 @@ function EventForm() {
             onChange={changeHandler}
             required={true}
             name="start"
-            type="Date" //change to time later
+            type="datetime-local" //change to time later
           /> to
           <input
             value={allField["end"]}
             name="end"
-            type="Date" //change to time later
+            type="datetime-local" //change to time later
             onChange={changeHandler}
             required={true}
           />

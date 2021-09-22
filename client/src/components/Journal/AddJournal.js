@@ -51,11 +51,17 @@ function AddJournal() {
         window.location.reload(false);
     }
     return (
-      <div className="home">
-
-        <div className="pagetitlee">
-          <h1>Add a new journal</h1>
-        </div>
+        <div class="addjournal">
+            <h2 className="add-title">Add a new journal</h2>
+            <h3 className="journal-detail-title"> Journal Details </h3>
+            <form>
+            <label style={{ color: "red" }}> {message}</label>
+            <label> Title: </label><br></br>
+            <input
+            name="title"
+            onChange={changeHandler}
+            required="true"
+            /><br></br>
 
         <div className="journalentryform">
           <div className="formtitlee">

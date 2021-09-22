@@ -1,105 +1,214 @@
 :root {
-    --primary-blue: #3466aa;
-    --secondary-blue: #114084;
-    --tertiary-blue: #82b7dc;
-    --fourth-blue: #deecff;
-    --fifth-blue: #d2deed;
-    --primary-black: #1c1c1c;
-    --primary-white: #f1f1f1;
-    --logo-font: "AbeeZee";
-    --button-font: "Urbanist";
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --fourth-blue: #deecff;
+  --fifth-blue: #d2deed;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
 }
 .journals {
-    margin: 80px 20px 0px 80px;
-    padding: 10px 5px 20px 5px;
+  margin: 80px 20px 0px 80px;
+  padding: 10px 5px 20px 5px;
 }
 
 .journal-details {
-    width: 80%;
-    margin-left: 10%;
+  width: 90%;
+  margin: auto;
 }
 .journal-details ul {
-    vertical-align: middle;
-    padding: 10px;
-    list-style-type: none;
+  vertical-align: middle;
+  padding: 10px;
+  list-style-type: none;
 }
 .journal-details li {
-    vertical-align: middle;
-    min-height: 100px;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 7px;
-    background-color: var(--primary-white);
+  vertical-align: middle;
+  min-height: 100px;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 7px;
+  background-color: var(--primary-white);
 }
 .journalDate {
+  font-size: 100%;
+  border-bottom: 2px solid var(--primary-blue);
+  padding-bottom: 1%;
+  padding-left: 2.5%;
+}
+
+.journalDate h1 {
+  font-size: 100%;
+  font-family: var(--logo-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2px;
+  font-weight: bolder;
+  padding-left: 0.3%;
+  padding-top: 0.2%;
+}
+
+.journal-details h2 {
+  font-size: 100%;
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.3px;
+  padding-left: 0.7%;
+  padding-bottom: 1.5%;
+  padding-top: 0;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-btn {
+  width: 150px;
+  padding: 5px;
+  background: var(--primary-blue);
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--button-font);
+  font-weight: bolder;
+  font-size: 70%;
+}
+
+.upload-btn span {
+  margin-left: 10px;
+  color: white;
+}
+
+.upload-btn:hover {
+  background: var(--secondary-blue);
+  text-decoration: none;
+}
+.cancel-btn {
+  cursor: pointer;
+  color: white;
+  background-color: var(--primary-blue);
+  font-family: var(--button-font);
+  width: 150px;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 27%;
+  margin-top: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.cancel-btn:hover {
+  text-decoration: underline;
+}
+.post-btn {
+  cursor: pointer;
+  color: white;
+  background-color: var(--primary-blue);
+  font-family: var(--button-font);
+  width: 150px;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 27%;
+  margin-top: 20px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.post-btn:hover {
+  text-decoration: underline;
+}
+input[name="description"] {
+    height: 300px;
+    vertical-align: top;
+}
+
+form {
+  background-color: var(--primary-white);
+  margin-top: 10px;  
+}
+
+.addjournal {
+    margin-top: 10%;
+    color: var(--secondary-blue);
+    font-family: var(--button-font);
+    letter-spacing: 0.8px;
+    font-weight: bold;
+    line-height: 25px;
+    font-size: 13px;
+  }
+  .add-details {
+    border-bottom: 2px solid var(--primary-blue);
+    margin-top: -5%;
+    line-height: 35px;
+    font-size: 17px;
+  }
+  .add-title {
+    font-size: 20px;
+    margin-left: 20%;
+    line-height: 35px;
+    margin-top: -8%;
+  }
+  .edit-title {
+    font-size: 20px;
+    margin-left: 30%;
+    line-height: 35px;
+    margin-top: -8%;
+  }
+  .journalTitle {
+      font-size: 20px;
+      font-weight: bolder;
+  }
+  .journal-btns {
+      width: 100px;
+      margin-left: auto;
+      margin-right: 10px;
+  }
+  .edit-journal-btn {
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  .delete-journal-btn {
+      margin-left: 10px;
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  .delete-journal-btn:hover {
+      text-decoration: none;
+  }
+  .edit-journal-btn:hover {
+    text-decoration: none;
+}
+.journal-detail-title {
+    margin-top: 10px;
     font-size: 18px;
     border-bottom: 2px solid var(--primary-blue);
-    padding-bottom: 10px;
 }
-.upload {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.upload-btn {
-    width: 250px;
-    height: 40px;
-    background: var(--primary-blue);
-    color: white;
-    border-radius: 10px;
-    border: none;
-    margin: 5px;
+.save-btn {
     cursor: pointer;
-    font-family: var(--button-font);
-    font-weight: bolder;
-    font-size: 15px;
-}
-  
-  .upload-btn span {
-    margin-left: 10px;
     color: white;
-  }
-  
-  .upload-btn:hover {
-    background: var(--secondary-blue);
-    text-decoration: none;
-  }
-  .cancel-btn {
-    cursor: pointer;
-    color:white;
     background-color: var(--primary-blue);
     font-family: var(--button-font);
     width: 150px;
     border: 0px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 8px;
     letter-spacing: 1px;
     font-weight: bold;
     margin-left: 27%;
-    margin-top: 10px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-  .cancel-btn:hover {
-    text-decoration: underline;
-  }
-  .post-btn {
-    cursor: pointer;
-    color:white;
-    background-color: var(--primary-blue);
-    font-family: var(--button-font);
-    width: 150px;
-    border: 0px;
-    border-radius: 3px;
+    margin-top: 25px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+  input {
+    width: 100%;
+    color: var(--secondary-blue);
+    border: 1px solid var(--primary-blue);
     padding: 5px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    margin-left: 27%;
-    margin-top: 10px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-  .post-btn:hover {
-    text-decoration: underline;
-  }
-
-  @media screen and (max-width: 600px) {
   }
