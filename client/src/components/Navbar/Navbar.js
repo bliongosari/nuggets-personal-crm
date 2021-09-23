@@ -245,7 +245,9 @@ function NavbarHome() {
           <span className="close-icon" onClick={showConfirmation}>
             <img alt="close" src="../../close.svg"></img>
           </span>
-          <h1 className="logout-header">Are you sure you want to log out?</h1>
+          <h1 className="logout-header"> Confirmation </h1>
+          <Divider variant="offset"/>
+          <h2 className="logout-header2">Are you sure you want to log out?</h2>
           <div className="logout-button">
             <button className="button" onClick={logout}>
               <img alt="Log out" src="../../logout-white.svg" className="icon"></img>
