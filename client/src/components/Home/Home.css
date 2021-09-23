@@ -209,11 +209,14 @@
   margin-right: 15px;
 }
 
+
 .square {
   background: var(--primary-blue);
   display: inline-block;
-  width: 30px;
-  margin-left: 30%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .next {

@@ -73,8 +73,8 @@ function RecentConctacts() {
             {current.map((contact) => (
         <Link to={{ pathname: `contact/${contact.full_name}`, state: { contact: contact } }} style={{ textDecoration: 'none' }}>
           <div className ="eachContact">
-            <h2 className="square">{contact.preferred_name[0]}</h2>
-            <h3>{contact.preferred_name}</h3>
+              <h2 className="square"> {contact.preferred_name[0] || contact.full_name[0]}</h2>
+            <h3>{contact.preferred_name || contact.full_name}</h3>
           </div>
           </Link>
           ))}

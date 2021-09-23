@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import SignInModal from "../ModalF/SignInModal";
 import SignUpModal from "../ModalF/SignUpModal";
+import EventDetail from "../Events/EventDetail";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -19,6 +20,24 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    height: "580px",
+    width: "325px",
+    borderRadius: "12px",
+    textAlign: "left",
+    bottom: "auto",
+    marginRight: "-50%",
+    marginBottom: "10px",
+    transform: "translate(-50%, -50%)",
+    zIndex: "100",
+    backgroundColor: "#f1f1f1",
+  },
+};
 
 function NavbarWelcome() {
   return (
@@ -39,7 +58,10 @@ function NavbarHome() {
   const [dropdownUser, setdropdownUser] = useState(false);
   const [dropdownNotif, setdropdownNotif] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [pastNotifications, setPastNotifications] = useState([]);
   const [confirmation, setConfirmation] = useState(false);
+  const [eventDetail, setEventDetail] = useState(false);
+  const [notifSelected, setNotifSelected] = useState({});
 
   useEffect(() => {
     api({
@@ -48,10 +70,9 @@ function NavbarHome() {
     })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.contactsNotif);
           console.log(res.data.eventsNotif);
-          setNotifications([...res.data.contactsNotif, ...res.data.eventsNotif]);
-
+          setPastNotifications([...res.data.pastNotif]);
+          setNotifications([...res.data.eventsNotif]);
         } else {
           console.log("error")
           //setFailed(true);
@@ -78,6 +99,62 @@ function NavbarHome() {
   const showDropdownNotif = () => {
     setdropdownNotif(!dropdownNotif);
   };
+  const closeEventDetail = () => {
+    setEventDetail(false);
+    setdropdownNotif(true);
+  }
+  const openEvent = (notif) => {
+    setNotifSelected(notif);
+    setEventDetail(true);
+    if (!notif.notification_opened) {
+      api({
+        method: "POST",
+        url: "/api/events/open-notif/" + notif._id
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            arrayEditOpened(notifications, notif);
+          } else {
+            console.log("error")
+          }
+        })
+        .catch((err) => {
+          console.log("error2")
+          //setFailed(true);
+        });
+    }
+  }
+
+  const deleteNotif = (notif) => {
+    api({
+      method: "POST",
+      url: "/api/events/delete-notif/" + notif._id
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          let currentNotif = arrayRemove(notifications, notif);
+          setNotifications([...currentNotif]);
+        } else {
+          console.log("error")
+        }
+      })
+      .catch((err) => {
+        console.log("error2")
+        //setFailed(true);
+      });
+  }
+
+  function arrayRemove(arr, item) { 
+    return arr.filter(function(ele){ 
+        return ele !== item; 
+    });
+  }
+
+  function arrayEditOpened(arr, item) { 
+    let index = arr.findIndex((itm => itm._id === item._id));
+    arr[index].notification_opened = true;
+  }
+
 
   const showConfirmation = () => setConfirmation(!confirmation);
 
@@ -96,9 +173,23 @@ function NavbarHome() {
     padding: 2
   };
 
+  const modal_events = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    height:'460px',
+    width: '325px',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: '#f1f1f1',
+    borderRadius: '30px',
+    boxShadow: 24,
+    padding: 2
+  };
+
   return (
     <div>
       <div className="navbar">
+        
         {/* Navigation Bar after Log in */}
         <button className="menu-button" onClick={showSidebar}>
           <img alt="menu" src="../../menu.svg" className="menu-button"></img>
@@ -107,7 +198,6 @@ function NavbarHome() {
           <img alt="logo" src="../../logo.svg" className="logo-home"></img>
           <h1 className="title-home">NUGGETS</h1>
         </div>
-
         {/* Notifications Button */}
         <div className="dropdown">
           <img
@@ -119,21 +209,38 @@ function NavbarHome() {
           {dropdownNotif && (
             <ClickAwayListener onClickAway={() => {setdropdownNotif(false)}}>
             <div>
+
+            <Modal
+              open={eventDetail}
+              onClose={() => closeEventDetail()}
+              ariaHideApp={false}
+              >
+              <Box sx={modal_events}>
+                <span className="close-icon" onClick={() => closeEventDetail()}>
+                  <img alt="close" src="../../close.svg"></img>
+                </span>
+                <EventDetail event = {notifSelected}/>
+              </Box>
+            </Modal>
+              
               <div className="arrow-up2"></div>
-              <div className="dropdown-content">
+              <div className="dropdown-content" style = {{maxHeight: "650px", overflowY: "scroll"}}>
                 <List style={{ width: '100%'}}>
-                  {notifications.length > 0 ? 
-                  notifications.map((notif) => (
+                  
+                {( pastNotifications.length <= 0 && notifications.length <= 0) 
+                &&  <span>No Notification</span>}
+                {pastNotifications.length > 0 &&
+                  pastNotifications.map((notif) => (
                     notif.title !== "undefined" ? 
                     <div>
-                      {/* add onClick={openEvent} to the clicked event */}
                       <Button>
-                        <ListItem alignItems="flex-start">
-                          <ListItemAvatar>
+                        <ListItem alignItems="flex-start" style ={{ border: "1px solid red", padding: "0", width: "270px"}}>
+                          <ListItemAvatar onClick = {() => openEvent(notif)}>
                               <img alt="Event" src="/../../events.svg" className="avatarimg"/>
                           </ListItemAvatar>
-                          <Stack direction="row" spacing={1}>
+                          <Stack direction="row" spacing={1} padding>
                             <ListItemText
+                             onClick = {() => openEvent(notif)}
                               primary={notif.title}
                               secondary={
                                 <React.Fragment>
@@ -149,8 +256,76 @@ function NavbarHome() {
                                 </React.Fragment>
                               }
                             />
-                            {/* add onClick={deleteNotif} to the clicked event */}
-                            <IconButton aria-label="delete" size="small">
+                            <IconButton onClick = {() => deleteNotif(notif)} style = {{zIndex: "2"}} aria-label="delete" size="small">
+                              <DeleteIcon fontSize="inherit"/>
+                            </IconButton>
+                          </Stack>
+                        </ListItem>
+                      </Button>
+                      <Divider variant="offset" component="li" />
+                    </div> :
+                    <div>
+                    {/* add onClick={openEvent} to the clicked event */}
+                    <Button>
+                      <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                            <img alt="Event" src="/../../contacts.svg" className="avatarimg"/>
+                        </ListItemAvatar>
+                        <Stack direction="row" spacing={1}>
+                          <ListItemText
+                            primary="Contact"
+                            secondary={
+                              <React.Fragment>
+                                <Typography
+                                  sx={{ display: 'inline' }}
+                                  component="span"
+                                  variant="body2"
+                                  color="text.primary"
+                                >
+                                  {notif.full_name}
+                                </Typography>
+                                {<br></br>}{notif.alert}
+                              </React.Fragment>
+                            }
+                          />
+                          {/* add onClick={deleteNotif} to the clicked event */}
+                          <IconButton aria-label="delete" size="small">
+                            <DeleteIcon fontSize="inherit"/>
+                          </IconButton>
+                        </Stack>
+                      </ListItem>
+                    </Button>
+                    <Divider variant="offset" component="li" />
+                  </div>
+                  ))}
+                  {notifications.length > 0 && 
+                  notifications.map((notif) => (
+                    notif.title !== "undefined" ? 
+                    <div>
+                      <Button>
+                        <ListItem alignItems="flex-start" style ={{ border: notif.notification_opened ? "1px solid grey" : "1px solid green", padding: "0", width: "270px"}}>
+                          <ListItemAvatar onClick = {() => openEvent(notif)}>
+                              <img alt="Event" src="/../../events.svg" className="avatarimg"/>
+                          </ListItemAvatar>
+                          <Stack direction="row" spacing={1} padding>
+                            <ListItemText
+                             onClick = {() => openEvent(notif)}
+                              primary={notif.title}
+                              secondary={
+                                <React.Fragment>
+                                  <Typography
+                                    sx={{ display: 'inline' }}
+                                    component="span"
+                                    variant="body2"
+                                    color="text.primary"
+                                  >
+                                    {new Date(notif.start).toDateString()}
+                                  </Typography>
+                                  {<br></br>}{notif.alert}
+                                </React.Fragment>
+                              }
+                            />
+                            <IconButton onClick = {() => deleteNotif(notif)} style = {{zIndex: "2"}} aria-label="delete" size="small">
                               <DeleteIcon fontSize="inherit"/>
                             </IconButton>
                           </Stack>
@@ -192,8 +367,6 @@ function NavbarHome() {
                     <Divider variant="offset" component="li" />
                   </div>
                   ))
-                  :
-                  <span>No Notification</span>
                 }
                 </List>
               </div>
@@ -256,6 +429,8 @@ function NavbarHome() {
           </div>
         </Box>
       </Modal>
+
+
 
       {/* Collapse Sidebar */}
       {!sidebar && (
@@ -327,6 +502,8 @@ function NavbarHome() {
         </div>
         </ClickAwayListener>
       )}
+      <div> 
+      </div>
     </div>
   );
 }

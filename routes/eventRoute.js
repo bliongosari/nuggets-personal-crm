@@ -21,4 +21,8 @@ router.get("/delete/:id", auth.authenticateToken, eventController.deleteEvent);
 //edit event
 router.post("/edit/:id", auth.authenticateToken, eventController.editEvent);
 
+router.post('/delete-notif/:id', auth.authenticateToken, eventController.deleteNotif);
+
+router.post('/open-notif/:id', auth.authenticateToken, eventController.openNotif);
+
 module.exports = router;
