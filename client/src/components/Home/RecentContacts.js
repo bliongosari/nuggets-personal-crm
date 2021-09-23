@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Home.css"
 import { Link } from "react-router-dom";
-import Icon from '@mui/material/Icon';
 
 function RecentConctacts() {
   const [contacts, setContacts] = useState([]);
@@ -10,28 +9,27 @@ function RecentConctacts() {
   const [currentIndex, setIndex] = useState(0);
   const [max, setMax] = useState(false);
   const [noContacts, setNoContacts] = useState(false);
-  const [total, setTotal] = useState(3);
 
   const moveRight = () => {
-    if (currentIndex == 6){
+    if (currentIndex === 6){
         setMax(true);
     }  
     else {
         setCurrent(contacts.slice(currentIndex+3, currentIndex+6))
         setIndex(currentIndex+3);
-        if (currentIndex == 3){
+        if (currentIndex === 3){
             setMax(true);
         }
     }
   }
   const moveLeft = () => {
-    if (currentIndex == 0){
+    if (currentIndex === 0){
         setMax(false);
     }
     else {
     setIndex(currentIndex-3);
     setCurrent(contacts.slice(currentIndex, currentIndex+3))
-    if (currentIndex == 3){
+    if (currentIndex === 3){
         setMax(false);
     }
     }
@@ -47,10 +45,6 @@ function RecentConctacts() {
           let recent = res.data.contacts;
           if (recent.length == 0){
               setNoContacts(true);
-              setTotal(1);
-          }
-          else {
-              setTotal(3);
           }
           setContacts(recent);
           setCurrent(recent.slice(0,3));
@@ -103,7 +97,3 @@ function RecentConctacts() {
 }
 
 export default RecentConctacts
-
-
-// make the arrow button cyclic
-//<h4 className="page-number">Page {currentIndex/3 + 1}/{total}</h4>

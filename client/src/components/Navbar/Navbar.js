@@ -17,6 +17,8 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 
 function NavbarWelcome() {
   return (
@@ -37,6 +39,7 @@ function NavbarHome() {
   const [dropdownUser, setdropdownUser] = useState(false);
   const [dropdownNotif, setdropdownNotif] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [confirmation, setConfirmation] = useState(false);
 
   useEffect(() => {
     api({
@@ -67,17 +70,30 @@ function NavbarHome() {
   };
 
   const showSidebar = () => setSidebar(!sidebar);
+
   const showDropdownUser = () => {
     setdropdownUser(!dropdownUser);
-    if (dropdownNotif) {
-      setdropdownNotif(!dropdownNotif);
-    }
   };
+
   const showDropdownNotif = () => {
     setdropdownNotif(!dropdownNotif);
-    if (dropdownUser) {
-      setdropdownUser(!dropdownUser);
-    }
+  };
+
+  const showConfirmation = () => setConfirmation(!confirmation);
+
+  const modal_logout = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    height:'30%',
+    width: '70%',
+    maxWidth: '400px',
+    maxHeight: '200px',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: '#f1f1f1',
+    borderRadius: '30px',
+    boxShadow: 24,
+    padding: 2
   };
 
   return (
@@ -91,6 +107,7 @@ function NavbarHome() {
           <img alt="logo" src="../../logo.svg" className="logo-home"></img>
           <h1 className="title-home">NUGGETS</h1>
         </div>
+
         {/* Notifications Button */}
         <div className="dropdown">
           <img
@@ -206,10 +223,10 @@ function NavbarHome() {
                 </div>
                 <Divider variant="offset"/>
                 <div className="dropdown-container">
-                  <Link to="/" onClick={logout}>
+                  <button className="logout" onClick={showConfirmation}>
                     <img alt="user" src="../../logout.svg"></img>
                     <span>Log out</span>
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -217,6 +234,26 @@ function NavbarHome() {
           )}
         </div>
       </div>
+
+      {/* Logout confirmation popup */}
+      <Modal
+        open={confirmation}
+        onClose={showConfirmation}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+        <Box sx={modal_logout}>
+          <span className="close-icon" onClick={showConfirmation}>
+            <img alt="close" src="../../close.svg"></img>
+          </span>
+          <h1 className="logout-header">Are you sure you want to log out?</h1>
+          <div className="logout-button">
+            <button className="button" onClick={logout}>
+              <img alt="Log out" src="../../logout-white.svg" className="icon"></img>
+              Log out
+            </button>
+          </div>
+        </Box>
+      </Modal>
 
       {/* Collapse Sidebar */}
       {!sidebar && (
@@ -242,9 +279,9 @@ function NavbarHome() {
             </Link>
           </div>
           <div className="sidebar-container">
-            <Link to="/" onClick={logout}>
+            <button onClick={showConfirmation}>
               <img alt="" src="../../logout.svg"></img>
-            </Link>
+            </button>
           </div>
         </div>
       )}
@@ -279,10 +316,10 @@ function NavbarHome() {
               </Link>
             </div>
             <div className="sidebar-container">
-              <Link to="/" onClick={logout}>
+              <button onClick={showConfirmation}>
                 <img alt="" src="../../logout.svg"></img>
                 <span>Log out</span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
