@@ -40,21 +40,7 @@ const eventSchema = new Schema({
     type: Date,
   },
   alert: {
-    type: String,
-    enum: [
-      "None",
-      "At time of event",
-      "5 minutes before",
-      "10 minutes before",
-      "15 minutes before",
-      "20 minutes before",
-      "1 hour before",
-      "2 hours before",
-      "1 day before",
-      "2 days before",
-      "1 week before",
-    ],
-    default: "None",
+    type: Date,
   },
   notes: {
     type: String,
