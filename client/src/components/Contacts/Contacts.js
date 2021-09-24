@@ -102,29 +102,29 @@ function Contacts() {
     }
   }
 
-  const filter = (data) =>  {
+  const filter = (data, key) =>  {
     let filteredData = data;
-    switch(sorting) {
-      case "Sort by: Date: Newest to Oldest":
+    switch(key) {
+      case "Sort by: Date: Oldest to Newest":
         filteredData = data.sort(
           (obj1, obj2) => new Date(obj1.createdOn) - new Date(obj2.createdOn)
         );
         return filteredData;
 
-      case "Sort by: Date: Oldest to Newest":
+      case "Sort by: Date: Newest to Oldest":
         filteredData = data.sort(
           (obj1, obj2) => new Date(obj2.createdOn) - new Date(obj1.createdOn)
         );
         return filteredData;
 
-      case "Sort by: Contact: A-Z":
+      case "Sort by: Contact: Z-A":
         filteredData = data.sort(function(a, b) {
           var orderBool =a.full_name.toLowerCase() < b.full_name.toLowerCase();
           return orderBool ? 1 : -1;
-      });
+        });
       return filteredData;
 
-      case "Sort by: Contact: Z-A":
+      case "Sort by: Contact: A-Z":
         filteredData = data.sort(function(a, b) {
           var orderBool = a.full_name.toLowerCase() > b.full_name.toLowerCase();
           return orderBool ? 1 : -1;
@@ -140,7 +140,7 @@ function Contacts() {
 
   const handleSortChange = (e) => {
     setSorting(e.target.value);
-    query.data.contacts = filter(query.data.contacts)
+    query.data.contacts = filter(query.data.contacts, e.target.value);
   };
 
   return (
@@ -196,9 +196,7 @@ function Contacts() {
             style = {{height: "30px" ,fontSize: "11px", color: "#114084"}}
             onChange={handleSortChange}
           >
-            <MenuItem value="Sort by: Date: Newest to Oldest">
-              Sort by: Date: Newest to Oldest
-            </MenuItem>
+            <MenuItem value={"Sort by: Date: Newest to Oldest"}>Sort by: Date: Newest to Oldest</MenuItem>
             <MenuItem value={"Sort by: Date: Oldest to Newest"}>Sort by: Date: Oldest to Newest</MenuItem>
             <MenuItem value={"Sort by: Contact: A-Z"}>Sort by: Contact: A-Z</MenuItem>
             <MenuItem value={"Sort by: Contact: Z-A"}>Sort by: Contact: Z-A</MenuItem>
