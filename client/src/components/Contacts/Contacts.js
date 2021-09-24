@@ -39,15 +39,23 @@ const MenuProps = {
 };
 
 function Contacts() {
-  const query = useQuery("contacts", getContacts, { staleTime: Infinity });
   const [tags, setTags] = useState([tagsQueried[0]]);
   const [page, setPage] = useState(1);
-  const [sorting, setSorting] = useState("Sort by: Date: Newest to Oldest")
+  const [sorting, setSorting] = useState("")
   const [currentShow, setCurrentShow] = useState(0);
   const [searchedValue, setSearchedValue] = useState("");
   const [searchedData, setSearchedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false)
   const [temp, setTemp] =useState([]);
+  const query = useQuery("contacts", getContacts, {
+    staleTime: Infinity,
+    onSuccess: (data) => {
+      if (!sorting) {
+        const method = "Sort by: Date: Newest to Oldest";
+        data.contacts = filter(data.contacts, method);
+      }
+    }
+  });
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -103,6 +111,7 @@ function Contacts() {
   }
 
   const filter = (data, key) =>  {
+    setSorting(key);
     let filteredData = data;
     switch(key) {
       case "Sort by: Date: Oldest to Newest":
@@ -139,7 +148,6 @@ function Contacts() {
   }
 
   const handleSortChange = (e) => {
-    setSorting(e.target.value);
     query.data.contacts = filter(query.data.contacts, e.target.value);
   };
 
