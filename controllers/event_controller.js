@@ -49,8 +49,8 @@ const getTop10 = async (req, res) => {
 const createEvent = async (req, res) => {
   const start = new Date(req.body.start);
   const end = new Date(req.body.end);
+  const alertTime = getAlert(start, req.body.alert);
   try {
-    const alertTime = getAlert(start, req.body.alert);
     const event = new Event({
       user_id: req.user.id,
       title: req.body.title,
@@ -70,40 +70,6 @@ const createEvent = async (req, res) => {
     return res.status(403).json({ message: "Failed to add event. Try again." });
   }
 };
-
-const deleteNotif = async (req, res) => {
-  try {
-    var eventID = sanitize(req.params.id);
-    await Event.findOneAndUpdate(
-      {_id: eventID},
-      {
-        notification_deleted: true
-      }
-    );
-    return res.status(200).json({
-      message: "Successfully edited",
-    });
-  } catch (e) {
-    return res.status(401).json({ message: "No user" });
-  }
-}
-
-const openNotif = async (req, res) => {
-  try {
-    var eventID = sanitize(req.params.id);
-    await Event.findOneAndUpdate(
-      {_id: eventID},
-      {
-        notification_opened: true
-      }
-    );
-    return res.status(200).json({
-      message: "Successfully opened",
-    });
-  } catch (e) {
-    return res.status(401).json({ message: "No user" });
-  }
-}
 
 const deleteEvent = async (req, res) => {
   try {
@@ -190,6 +156,40 @@ const editEvent = async (req, res) => {
     });
   }
 };
+
+const deleteNotif = async (req, res) => {
+  try {
+    var eventID = sanitize(req.params.id);
+    await Event.findOneAndUpdate(
+      {_id: eventID},
+      {
+        notification_deleted: true
+      }
+    );
+    return res.status(200).json({
+      message: "Successfully edited",
+    });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+}
+
+const openNotif = async (req, res) => {
+  try {
+    var eventID = sanitize(req.params.id);
+    await Event.findOneAndUpdate(
+      {_id: eventID},
+      {
+        notification_opened: true
+      }
+    );
+    return res.status(200).json({
+      message: "Successfully opened",
+    });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+}
 
 function getAlert(start, alert) {
   var alertTime = new Date(0);

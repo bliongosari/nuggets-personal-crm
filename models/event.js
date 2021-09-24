@@ -42,14 +42,6 @@ const eventSchema = new Schema({
   alert: {
     type: Date,
   },
-  notification_deleted: {
-    type: Boolean,
-    default: false
-  },
-  notification_opened: {
-    type: Boolean,
-    default: false
-  },
   notes: {
     type: String,
   },
