@@ -82,6 +82,48 @@
   margin-right: 10px;
 }
 
+.logout {
+  padding-left: 8px;
+  padding-bottom: 8px;
+}
+
+.logout img {
+  padding-top: 4px;
+}
+
+.logout-header {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: var(--primary-blue);
+  text-align: center;
+  font-family: "Urbanist";
+  line-height: 25px;
+}
+
+.logout-header2 {
+  padding-top:15px;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: var(--primary-blue);
+  text-align: center;
+  font-family: "Urbanist";
+  line-height: 25px;
+}
+
+.logout-button {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .dropdown {
   position: absolute;
   display: inline-block;

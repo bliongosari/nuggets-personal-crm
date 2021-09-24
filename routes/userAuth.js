@@ -53,14 +53,23 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
       }
     }
     let editedEvents = [];
+    let eventsOutstanding = []
     for (var i =0; i < events.length; i++) {
       if (events[i].alert <= Date.now() && events[i].start >= Date.now() && events[i].alert != new Date(0)){
         editedEvents.push(events[i])
       }
     }
+
+    const sortedEvents = editedEvents.sort(
+      (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
+    );
+
+    const sortedOutstandingEvents = eventsOutstanding.sort(
+      (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
+    );
     return res
       .status(200)
-      .json({ contactsNotif: editedContacts, eventsNotif: editedEvents });
+      .json({ pastNotif: sortedOutstandingEvents.reverse(), eventsNotif: sortedEvents.reverse() });
   } catch (e) {
     return res.status(403).json({ message: "Error" });
   }

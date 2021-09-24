@@ -3,6 +3,9 @@ import "./UserProfile.css";
 import { LoopCircleLoading } from "react-loadingg";
 import api from "../../config/axiosConfig.js";
 import Cookies from "js-cookie";
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
 
 const Loading = () => <LoopCircleLoading />;
 
@@ -45,6 +48,20 @@ function UserProfile() {
     }, 500);
   });
 
+  const modal_box = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    height:'60%',
+    width: '80%',
+    maxWidth: '400px',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: '#f1f1f1',
+    borderRadius: '30px',
+    boxShadow: 24,
+    padding: 2
+  };
+
   return loading ? (
     <div>
       <Loading />
@@ -85,10 +102,12 @@ function UserProfile() {
       </div>
 
       {/* Edit profile popup */}
-      {editProfile && (
-        <div className="popup">
-          <div className="box">
-            <span className="close-icon" onClick={showEditProfile}>
+      <Modal open={editProfile}
+        onClose={showEditProfile}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+        <Box sx={modal_box}>
+          <span className="close-icon" onClick={showEditProfile}>
               <img alt="close" src="../../close.svg"></img>
             </span>
             <img alt="User" src="../../user.svg" className="user-image"></img>
@@ -117,15 +136,16 @@ function UserProfile() {
                 CHANGE PROFILE
               </button>
             </div>
-          </div>
-        </div>
-      )}
+        </Box>
+      </Modal>
 
       {/* Change password popup */}
-      {changePassword && (
-        <div className="popup">
-          <div className="box">
-            <span className="close-icon" onClick={showChangePassword}>
+      <Modal open={changePassword}
+        onClose={showChangePassword}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+        <Box sx={modal_box}>
+          <span className="close-icon" onClick={showChangePassword}>
               <img alt="close" src="../../close.svg"></img>
             </span>
             <img alt="User" src="../../user.svg" className="user-image"></img>
@@ -154,9 +174,8 @@ function UserProfile() {
                 CHANGE PASSWORD
               </button>
             </div>
-          </div>
-        </div>
-      )}
+        </Box>
+      </Modal>
     </div>
   );
 }
