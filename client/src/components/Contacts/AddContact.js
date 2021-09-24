@@ -37,7 +37,7 @@ const MenuProps = {
 function AddContact() {
 
   const addContact = async (contact) => {
-    console.log(contact);
+    // console.log(contact);
     api({
       method: "POST",
       url: "/api/contacts/add",
@@ -45,7 +45,7 @@ function AddContact() {
     })
       .then(function (res) {
         if (res.status === 200) {
-          console.log("SUCCESS!");
+          window.location.replace("../contacts");
         } else {
           console.log("FAIL");
         }
@@ -89,10 +89,9 @@ function AddContact() {
     for (var i=0; i< tags.length; i++) {
       if (i !== 0){
         result += ", " + tags[i].name 
-
       }
       else {
-      result += tags[i].name
+        result += tags[i].name
       }
     }
     return result;
@@ -213,7 +212,7 @@ function AddContact() {
         <div className="addcontacts">
           <button className="addbtn" onClick={(e) => {
             addContact({
-              full_name: "Sommething for now",
+              full_name,
               preferred_name,
               birthday,
               relationship,
