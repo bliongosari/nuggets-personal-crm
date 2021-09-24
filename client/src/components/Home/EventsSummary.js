@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 
 function EventsSummary() {
@@ -21,7 +22,7 @@ function EventsSummary() {
             allEvents[index].start = new Date(event.start).toDateString();
             allEvents[index].end = new Date(event.end).toDateString();
           });
-          if (allEvents.length === 0){
+          if (allEvents.length == 0){
             setNoEvents(true);
           }
           setEvents(allEvents);
@@ -36,7 +37,7 @@ function EventsSummary() {
   }, []);
 
   const back = ()=> {
-    if (curIndex === 0) {
+    if (curIndex == 0) {
     }
     else {
     setCurEvents(events.slice(curIndex-3, curIndex));

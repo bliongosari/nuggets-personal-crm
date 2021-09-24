@@ -216,12 +216,6 @@
     transition: 0.1s ease;
 }
 
-.close-icon:hover {
-    width: 3.5vh;
-    height: 3.5vh;
-    transition: 0.1s ease;
-}
-
 .centered-button {
     margin-top: 6vh;
     display: flex;

@@ -60,9 +60,7 @@ body.active-modal {
   margin-right: 5%;
   padding: 5px;
 }
-.btn:hover {
-  background: #5096c7;
-}
+
 .buttonss {
   display: flex;
   flex-direction: row;

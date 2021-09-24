@@ -38,10 +38,6 @@ const contactSchema = new Schema({
   phone_number: {
     type: Number,
   },
-  notification_deleted: {
-    type: Boolean,
-    default: false
-  },
   linkedin: {
     type: String,
   },

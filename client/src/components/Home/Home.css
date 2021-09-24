@@ -32,6 +32,7 @@
   margin-right: auto;
   width: 85%;
   text-align: center;
+  margin-top: 70px;
 }
 
 .summary h1 {
@@ -209,14 +210,11 @@
   margin-right: 15px;
 }
 
-
 .square {
   background: var(--primary-blue);
   display: inline-block;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  width: 30px;
+  margin-left: 30%;
 }
 
 .next {
