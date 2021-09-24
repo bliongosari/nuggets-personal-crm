@@ -51,8 +51,7 @@ function Contacts() {
     staleTime: Infinity,
     onSuccess: (data) => {
       if (!sorting) {
-        const method = "Sort by: Date: Newest to Oldest";
-        data.contacts = filter(data.contacts, method);
+        data.contacts = filter(data.contacts, "Sort by: Date: Newest to Oldest");
       }
     }
   });
@@ -70,15 +69,14 @@ function Contacts() {
     );
   };
   const renderTags = (tags) => {
-    let result = ""
-    let tags1 = tags.filter((tag) => tag.name !== "undefined" )
+    let result = "";
+    let tags1 = tags.filter((tag) => tag.name !== "undefined" );
     for (var i=0; i< tags1.length; i++) {
-      if (i !== 0){
+      if (i !== 0) {
         result += ", " + tags1[i].name 
-
       }
       else {
-      result += tags1[i].name
+        result += tags1[i].name
       }
     }
     console.log(result);
