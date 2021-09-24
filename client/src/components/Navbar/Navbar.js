@@ -232,6 +232,7 @@ function NavbarHome() {
                 {pastNotifications.length > 0 &&
                   pastNotifications.map((notif) => (
                     notif.title !== "undefined" ? 
+                    // passed events labeled red
                     <div>
                       <Button>
                         <ListItem alignItems="flex-start" style ={{ border: "1px solid red", padding: "0", width: "270px"}}>
@@ -252,7 +253,7 @@ function NavbarHome() {
                                   >
                                     {new Date(notif.start).toDateString()}
                                   </Typography>
-                                  {<br></br>}{notif.alert}
+                                  {<br></br>} Alert at: {notif.alert}
                                 </React.Fragment>
                               }
                             />
@@ -284,7 +285,7 @@ function NavbarHome() {
                                 >
                                   {notif.full_name}
                                 </Typography>
-                                {<br></br>}{notif.alert}
+                                {<br></br>}Alert at: {notif.alert}
                               </React.Fragment>
                             }
                           />
@@ -301,6 +302,7 @@ function NavbarHome() {
                   {notifications.length > 0 && 
                   notifications.map((notif) => (
                     notif.title !== "undefined" ? 
+                    // passed events labeled grey for not opened green for opened
                     <div>
                       <Button>
                         <ListItem alignItems="flex-start" style ={{ border: notif.notification_opened ? "1px solid grey" : "1px solid green", padding: "0", width: "270px"}}>
@@ -319,9 +321,9 @@ function NavbarHome() {
                                     variant="body2"
                                     color="text.primary"
                                   >
-                                    {new Date(notif.start).toTimeString()}
+                                    {new Date(notif.start).toDateString()}
                                   </Typography>
-                                  {notif.type}
+                                  {<br></br>} Alert at: {notif.alert}
                                 </React.Fragment>
                               }
                             />
