@@ -319,9 +319,9 @@ function NavbarHome() {
                                     variant="body2"
                                     color="text.primary"
                                   >
-                                    {new Date(notif.start).toTimeString()}
+                                    {new Date(notif.start).toDateString()}
                                   </Typography>
-                                  {notif.type}
+                                  {<br></br>}{notif.alert}
                                 </React.Fragment>
                               }
                             />

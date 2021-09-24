@@ -4,7 +4,6 @@ const Event = require("../models/event");
 const auth = require("../middleware/auth");
 const router = express.Router();
 const sanitize = require("mongo-sanitize");
-const MS_PER_MINUTE = 60000;
 
 const getAll = async (req, res) => {
   try {
@@ -50,7 +49,6 @@ const createEvent = async (req, res) => {
   const start = new Date(req.body.start);
   const end = new Date(req.body.end);
   try {
-    const alertTime = getAlert(start, req.body.alert);
     const event = new Event({
       user_id: req.user.id,
       title: req.body.title,
@@ -59,7 +57,7 @@ const createEvent = async (req, res) => {
       start: start,
       end: end,
       repeat: req.body.repeat || "Never",
-      alert: alertTime,
+      alert: req.body.alert || "None",
       notes: req.body.notes,
     });
     const savedEvent = await event.save();
@@ -156,10 +154,7 @@ const editEvent = async (req, res) => {
     }
     var alert = sanitize(req.body.alert);
     if (alert == "") {
-      alert = getAlert(start, event.start - event.alert);
-    }
-    else {
-      alert = getAlert(start, req.body.alert);
+      alert = event.alert;
     }
     var notes = sanitize(req.body.notes);
     if (notes == "") {
@@ -190,29 +185,6 @@ const editEvent = async (req, res) => {
     });
   }
 };
-
-function getAlert(start, alert) {
-  var alertTime = new Date(0);
-  if(alert == "None") {
-    return alertTime
-  }
-  else if(alert == "At time of the event") {
-    alertTime = new Date(start);
-  }
-  else if(alert.includes("minute")) {
-    alertTime = new Date(start - parseInt(alert.split(" ")[0]) * MS_PER_MINUTE);
-  }
-  else if(alert.includes("hour")) {
-    alertTime = new Date(start - parseInt(alert.split(" ")[0]) * MS_PER_MINUTE * 60);
-  }
-  else if(alert.includes("day")) {
-    alertTime = new Date(start - parseInt(alert.split(" ")[0]) * MS_PER_MINUTE * 60 * 24);
-  }
-  else if(alert.includes("week")) {
-    alertTime = new Date(start - parseInt(alert.split(" ")[0]) * MS_PER_MINUTE * 60 * 24 * 7);
-  }
-  return alertTime;
-}
 
 module.exports.editEvent = editEvent;
 module.exports.deleteEvent = deleteEvent;

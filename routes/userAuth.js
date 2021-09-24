@@ -55,7 +55,7 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     let editedEvents = [];
     let eventsOutstanding = []
     for (var i =0; i < events.length; i++) {
-      if (events[i].alert <= Date.now() && events[i].start >= Date.now() && events[i].alert != new Date(0)){
+      if (events[i].alert !== "None" ){
         editedEvents.push(events[i])
       }
     }
