@@ -156,6 +156,41 @@ const editEvent = async (req, res) => {
     });
   }
 };
+
+const deleteNotif = async (req, res) => {
+  try {
+    var eventID = sanitize(req.params.id);
+    await Event.findOneAndUpdate(
+      {_id: eventID},
+      {
+        notification_deleted: true
+      }
+    );
+    return res.status(200).json({
+      message: "Successfully edited",
+    });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+}
+
+const openNotif = async (req, res) => {
+  try {
+    var eventID = sanitize(req.params.id);
+    await Event.findOneAndUpdate(
+      {_id: eventID},
+      {
+        notification_opened: true
+      }
+    );
+    return res.status(200).json({
+      message: "Successfully opened",
+    });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+}
+
 function getAlert(start, alert) {
   var alertTime = new Date(0);
   if(alert == "None") {
@@ -184,3 +219,5 @@ module.exports.deleteEvent = deleteEvent;
 module.exports.createEvent = createEvent;
 module.exports.getAll = getAll;
 module.exports.getTop10 = getTop10;
+module.exports.deleteNotif = deleteNotif;
+module.exports.openNotif = openNotif;
