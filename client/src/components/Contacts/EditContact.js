@@ -13,6 +13,7 @@ import Checkbox from '@mui/material/Checkbox';
 import "react-datepicker/dist/react-datepicker.css";
 import Icon from '@mui/material/Icon';
 import "./AddContact.css";
+import { useHistory } from "react-router-dom";
 
 const tagsQueried = [
   { name: 'Friends', color: "red"},
@@ -36,18 +37,19 @@ const MenuProps = {
 
 function EditContact(props) {
   const { contact } = props.location.state;
-  const [full_name, setFullName] = useState("");
+  const [full_name, setFullName] = useState(contact.full_name);
   const [image, setImage] = useState("");
-  const [preferred_name, setPrefName] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [relationship, setRelationship] = useState("");
-  const [meeting_notes, setHowWeMet] = useState("");
-  const [description, setDescription] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [linkedin, setLinkedIn] = useState("");
-  const [twitter, setTwitter] = useState("");
+  const [preferred_name, setPrefName] = useState(contact.preferred_name);
+  const [birthday, setBirthday] = useState(contact.birthday);
+  const [relationship, setRelationship] = useState(contact.relationship);
+  const [meeting_notes, setHowWeMet] = useState(contact.meeting_notes);
+  const [description, setDescription] = useState(contact.description);
+  const [email, setEmail] = useState(contact.email);
+  const [phone_number, setPhoneNumber] = useState(contact.phone_number);
+  const [linkedin, setLinkedIn] = useState(contact.linkedin);
+  const [twitter, setTwitter] = useState(contact.twitter);
   const [tags, setTags] = useState([]);
+  const history = useHistory();
 
   const handleBirthdayChange = (date) => {
     setBirthday(date.target.value);
@@ -212,7 +214,7 @@ function EditContact(props) {
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn">
+          <button className="addbtn" onClick={() => history.push(`/contact/${contact.full_name}`)}>
             <h1>Cancel</h1>
           </button>
         </div>
