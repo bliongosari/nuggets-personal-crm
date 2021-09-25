@@ -6,6 +6,7 @@ export const getContacts = async () => {
   return data;
 }
 
+// TODO: refactor to use this api function
 export const addContact = async (contact) => {
   await api({
     method: "POST",
@@ -20,3 +21,9 @@ export const deleteContact = async (contact) => {
   // TODO: Account for contact deletion failure
   window.location.replace("../contacts");
 }
+
+export const editContact = async (contact) => {
+  await api.put(`/api/contacts/edit/${contact._id}`, contact);
+  // TODO: Account for contact edit failure
+  window.location.replace("../contacts");
+};

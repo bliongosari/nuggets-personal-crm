@@ -75,9 +75,11 @@ router.delete("/delete/:id", auth.authenticateToken, async (req,res) => {
 });
 
 // edit contact
-router.post("/edit/:id", auth.authenticateToken, async(req,res) => {
+router.put("/edit/:id", auth.authenticateToken, async(req, res) => {
   try {
-    const contact = Contact.findById(req.params.id);
+    const contact = await Contact.findById(req.params.id);
+    Object.keys(req.body).forEach((key) => {contact[key] = req.body[key]})
+    await contact.save();
     return res.status(200).json({ message: "Successfully edited" });
   } catch (e) {
     console.log(e);

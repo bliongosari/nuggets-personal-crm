@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { addContact } from "./contactsAPI";
+import { addContact, editContact } from "./contactsAPI";
 import api from "../../config/axiosConfig";
 import DatePicker from "react-datepicker";
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -103,19 +103,19 @@ function EditContact(props) {
 
         <div className="details">
           <h2>Full Name:</h2>
-          <input type="text" value={contact.full_name} onChange={(e) => setFullName(e.target.value)} />
+          <input type="text" value={full_name} onChange={(e) => setFullName(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Preferred Name:</h2>
-          <input type="text" value={contact.preferred_name} onChange={(e) => setPrefName(e.target.value)} />
+          <input type="text" value={preferred_name} onChange={(e) => setPrefName(e.target.value)} />
         </div>
 
         <div className="detail2">
           <h2>Birthday:</h2>
           <div className="detailssinput">
           <input
-            value={contact.birthday}
+            value={birthday}
             onChange={handleBirthdayChange}
             required={true}
             name="birthday"
@@ -126,7 +126,7 @@ function EditContact(props) {
 
         <div className="details">
           <h2>Relationship</h2>
-          <input type="text" value={contact.relationship} onChange={(e) => setRelationship(e.target.value)} />
+          <input type="text" value={relationship} onChange={(e) => setRelationship(e.target.value)} />
         </div>
 
         <div className="detail2">
@@ -156,12 +156,12 @@ function EditContact(props) {
 
         <div className="details">
           <h2>How we met:</h2>
-          <input type="text" value={contact.meeting_notes} onChange={(e) => setHowWeMet(e.target.value)} />
+          <input type="text" value={meeting_notes} onChange={(e) => setHowWeMet(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Description:</h2>
-          <input type="text" value={contact.description} onChange={(e) => setDescription(e.target.value)} />
+          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
 
         <div className="formtitle">
@@ -171,26 +171,42 @@ function EditContact(props) {
 
         <div className="details">
           <h2>Email Address:</h2>
-          <input type="text" value={contact.email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Phone Number:</h2>
-          <input type="text" value={contact.phone_number} onChange={(e) => setPhoneNumber(e.target.value)} />
+          <input type="text" value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>LinkedIn:</h2>
-          <input type="text" value={contact.linkedin} onChange={(e) => setLinkedIn(e.target.value)} />
+          <input type="text" value={linkedin} onChange={(e) => setLinkedIn(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Tweeter:</h2>
-          <input type="text" value={contact.twitter} onChange={(e) => setTwitter(e.target.value)} />
+          <input type="text" value={twitter} onChange={(e) => setTwitter(e.target.value)} />
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn" onClick={() => console.log(contact)}>
+          <button className="addbtn" onClick={(e) => {
+            editContact({
+              ...contact,
+              full_name,
+              preferred_name,
+              birthday,
+              relationship,
+              // tags,
+              meeting_notes,
+              description,
+              email,
+              phone_number,
+              linkedin,
+              twitter,
+            });
+          }}
+          >
             <h1>Save Changes</h1>
           </button>
         </div>
