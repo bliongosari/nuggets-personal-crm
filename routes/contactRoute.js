@@ -63,25 +63,25 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
 });
 
 // delete contact
-router.get("/delete/:id", auth.authenticateToken, async (req,res) => {
+router.delete("/delete/:id", auth.authenticateToken, async (req,res) => {
   try {
-      const contact = await Contact.findOneAndDelete({_id: req.params.id })
-      .exec();
-      return res.status(200).json({ message: "Successfully deleted" });
+    const contact = await Contact.findOneAndDelete({ _id: req.params.id })
+    .exec();
+    return res.status(200).json({ message: "Successfully deleted" });
   } catch (e) {
-      console.log(e);
-      return res.status(403).json({ message: "Failed to delete contact. Try again." });
+    console.log(e);
+    return res.status(403).json({ message: "Failed to delete contact. Try again." });
   }
 });
 
 // edit contact
 router.post("/edit/:id", auth.authenticateToken, async(req,res) => {
   try {
-      const contact = Contact.findById(req.params.id);
-      return res.status(200).json({ message: "Successfully edited" });
+    const contact = Contact.findById(req.params.id);
+    return res.status(200).json({ message: "Successfully edited" });
   } catch (e) {
-      console.log(e);
-      return res.status(403).json({ message: "Failed to edit contact. Try again." });
+    console.log(e);
+    return res.status(403).json({ message: "Failed to edit contact. Try again." });
   }
 });
 
