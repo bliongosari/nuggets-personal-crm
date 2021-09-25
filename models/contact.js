@@ -23,6 +23,9 @@ const contactSchema = new Schema({
   },
   tags:
     [{type: Schema.ObjectId, ref: 'Tag'}],
+  relationship: {
+    type: String,
+  },
   meeting_notes: {
     type: String,
   },

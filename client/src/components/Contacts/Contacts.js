@@ -224,7 +224,7 @@ function Contacts() {
       <div className="current-contacts-table">
         
         {query.data.contacts.slice(currentShow,currentShow+6).map((contact, index) => (
-          <Link to={{ pathname: `contact/${contact.full_name}`, state: { contact: contact } }} style={{ textDecoration: 'none' }}>
+          <Link to={{ pathname: `contact/${contact.full_name}`, state: { contact } }} style={{ textDecoration: 'none' }}>
           <div key={contact._id}>
             {index !== 0 && <hr className="line"></hr>}
             <div className="current-contacts-r">

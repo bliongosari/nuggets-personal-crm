@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import "./ContactProfile.css";
 import { deleteContact } from "./contactsAPI";
 import Tabs from './tabs';
@@ -126,9 +127,11 @@ function ContactProfile(props) {
 
                     <div className="detailsbutton">
                         <div className="editcontact">
-                            <button className="editbtn">
-                                <h1>Edit Contact</h1>
-                            </button>
+                            <Link to={{ pathname: `/editcontact`, state: { contact } }} style={{ textDecoration: 'none' }}>
+                                <button className="editbtn">
+                                    <h1>Edit Contact</h1>
+                                </button>
+                            </Link>
                         </div>
 
                         <div className="editcontact">
