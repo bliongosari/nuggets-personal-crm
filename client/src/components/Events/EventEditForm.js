@@ -159,7 +159,7 @@ function EventEditForm(props) {
           <br></br>
         </form>
 
-        <button onClick={editEvents} className= "add-button">ADD</button>
+        <button onClick={editEvents} className= "add-button">Save Changes</button>
         
     </div>
   );
