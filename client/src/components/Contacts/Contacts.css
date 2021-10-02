@@ -13,6 +13,7 @@
 .home {
   margin-left: 60px;
   margin-top: 80px;
+  overflow-x: hidden;
 }
 
 .searchbarr {
