@@ -52,6 +52,7 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 5%;
+  box-shadow: 5px 5px 5px #888888;
 }
 .newcontactbtn:hover {
   background: var(--secondary-blue);
@@ -303,7 +304,7 @@ hr {
 
   .addcontactsdiv {
     width: 50%;
-    margin-top: 5%;
+    margin-top: 0%;
     margin-bottom: 5%;
   }
 
