@@ -23,10 +23,7 @@ function ContactProfile(props) {
 
     return (
         <div className="home">
-            <div className="searchbar">
-                <img alt="search" src="../../searchbar.svg"></img>
-                <input type="text" placeholder="SEARCH CONTACTS"></input>
-            </div>
+            
 
             <div className="profileheader">
                 <div className="profpic">
@@ -86,6 +83,8 @@ function ContactProfile(props) {
                         </div>
                         <div className="current-contacts-container">
                             <h2>Birthday:</h2>
+                        </div>
+                        <div className="current-contacts-container">
                             <h3>{contact.birthday || "-"}</h3>
                         </div>
                         <div className="current-contacts-container">
@@ -102,6 +101,8 @@ function ContactProfile(props) {
                         </div>
                         <div className="current-contacts-container">
                             <h2>Description:</h2>
+                        </div>
+                        <div className="current-contacts-container">
                             <h3>{contact.description || "-"}</h3>
                         </div>
                     </div>
@@ -109,18 +110,26 @@ function ContactProfile(props) {
                     <div className="current-contactss">
                         <div className="current-contacts-container">
                             <h2>Email Address:</h2>
+                        </div>
+                        <div className="current-contacts-container">
                             <h3>{contact.email || "-"}</h3>
                         </div>
                         <div className="current-contacts-container">
                             <h2>Phone Number:</h2>
+                        </div>
+                        <div className="current-contacts-container">
                             <h3>{contact.phone_number || "-"}</h3>
                         </div>
                         <div className="current-contacts-container">
                             <h2>LinkedIn:</h2>
+                        </div>
+                         <div className="current-contacts-container">
                             <h3>{contact.linkedin || "-"}</h3>
                         </div>
                         <div className="current-contacts-container">
                             <h2>Twitter:</h2>
+                        </div>
+                        <div className="current-contacts-container">
                             <h3>{contact.twitter || "-"}</h3>
                         </div>
                     </div>

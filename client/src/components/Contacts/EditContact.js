@@ -98,7 +98,7 @@ function EditContact(props) {
         </div>
 
         <div className="attachimage">
-          <button className="attachbtn">
+          <button className="attachhbtn">
             <input type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
           </button>
         </div>

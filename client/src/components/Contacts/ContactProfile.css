@@ -10,6 +10,35 @@
   --button-font: "Urbanist";
 }
 
+.addbtn {
+  font-family: var(--button-font);
+  border-radius: 10px;
+  width: 13%;
+  background-color: var(--primary-blue);
+  text-align: center;
+  padding: 0.5%;
+  margin-top: 0%;
+  box-shadow: 5px 5px 5px #888888;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addbtn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
+
+.addbtn h1 {
+  font-size: 75%;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
+  padding: 2%;
+  padding-top: 0;
+}
+
 .editbtn {
   font-family: var(--button-font);
   border-radius: 10px;
@@ -18,10 +47,15 @@
   text-align: center;
   padding: 0.5%;
   margin-top: 0.7%;
-
+  box-shadow: 5px 5px 5px #888888;
   justify-content: center;
+  cursor: pointer;
 }
 
+.editbtn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
 .editbtn h1 {
   font-size: 75%;
   letter-spacing: 2px;
@@ -355,8 +389,14 @@
   justify-content: center;
   padding: 1%;
   margin-top: 2%;
+  box-shadow: 5px 5px 5px #888888;
+  cursor: pointer;
 }
 
+.reminderbtn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
 .reminderbtn h2 {
   font-family: var(--button-font);
   font-size: 80%;

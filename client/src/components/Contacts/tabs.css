@@ -181,6 +181,13 @@ button {
   justify-content: center;
   margin-left: 30%;
   margin-top: 2%;
+  box-shadow: 5px 5px 5px #888888;
+  cursor: pointer;
+}
+
+.eventbtn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
 }
 
 .eventbtn h1 {
