@@ -59,7 +59,15 @@ body.active-modal {
   margin-left: 0%;
   margin-right: 5%;
   padding: 5px;
+  box-shadow: 5px 5px 5px #888888;
+  cursor: pointer;
 }
+
+.btn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
+
 .btn:hover {
   background: #5096c7;
 }
@@ -142,6 +150,13 @@ body.active-modal {
   padding: 7px;
   text-align: center;
   justify-content: center;
+  box-shadow: 5px 5px 5px darkgrey;
+  cursor: pointer;
+}
+
+.continue-btn:hover {
+  background-color: var(--primary-blue);
+  cursor: pointer;
 }
 
 .logInGoogle {
@@ -353,7 +368,7 @@ body.active-modal {
   }
 }
 
-@media only screen and (min-width: 1100px) and (max-width: 1200px){
+@media only screen and (min-width: 1100px) and (max-width: 1200px) {
   .buttonss {
     max-width: 150px;
     height: auto;
@@ -369,7 +384,6 @@ body.active-modal {
 }
 
 @media only screen and (min-width: 1200px) {
-
   .buttonss {
     max-width: 150px;
     height: auto;
