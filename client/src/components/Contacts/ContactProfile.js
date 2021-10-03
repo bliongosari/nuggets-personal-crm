@@ -9,12 +9,23 @@ import Tabs from './tabs';
 function ContactProfile(props) {
     const { contact } = props.location.state;
     const [reminders, setReminders] = useState(false);
+    const [info, setInfo] = useState(false);
     
     const toggleReminders = () => {
         setReminders(!reminders);
     };
 
+    const toggleInfo = () => {
+        setInfo(!info);
+    };
+
     if(reminders) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
+
+    if(info) {
         document.body.classList.add('active-modal')
     } else {
         document.body.classList.remove('active-modal')
@@ -23,7 +34,9 @@ function ContactProfile(props) {
 
     return (
         <div className="home">
-            
+           <div className="backdiv">
+                <a href="/contacts">Back to all contacts</a>
+            </div> 
 
             <div className="profileheader">
                 <div className="profpic">
@@ -45,25 +58,25 @@ function ContactProfile(props) {
                     <div onClick={toggleReminders} className="overlay"></div>
 
                     <div className="modal-content">
-                    <div className="modal-title">
-                        <h2>Stay in touch</h2>
-                        <hr></hr>
-                    </div>
+                        <div className="modal-title">
+                            <h2>Stay in touch</h2>
+                            <hr></hr>
+                        </div>
 
-                    <div className="closebutton">
-                        <img alt="" src="../../close.svg" onClick={toggleReminders}></img>
-                    </div>
+                        <div className="closebutton">
+                            <img alt="" src="../../close.svg" onClick={toggleReminders}></img>
+                        </div>
 
-                    <div className="modal-body">
-                        <label>Remind me via notifications every</label>
-                        <input type></input> <label>&nbsp; &nbsp;&nbsp;days</label>
-                    </div>
+                        <div className="modal-body">
+                            <label>Remind me via notifications every</label>
+                            <input type></input> <label>&nbsp; &nbsp;&nbsp;days</label>
+                        </div>
 
-                    <div className="addcontacts">
-                        <button className="addbtn">
-                        <h1>Add reminders </h1>
-                        </button>
-                    </div>
+                        <div className="addcontacts">
+                            <button className="addbtn">
+                            <h1>Add reminders </h1>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 )}
@@ -136,6 +149,87 @@ function ContactProfile(props) {
 
                     <div className="detailsbutton">
                         <div className="editcontact">
+                            <button onClick={toggleInfo} className="editbtn">
+                                <h1>View Information</h1>
+                            </button>
+                            {info && (
+                               <div className="modal1">
+                                <div onClick={toggleInfo} className="overlay"></div>
+
+                                <div className="modal-content">
+                                    <div className="modal-titlee">
+                                        <h2>Contact Information</h2>
+                                        <hr></hr>
+                                    </div>
+
+                                    <div className="closebutton">
+                                        <img alt="" src="../../close.svg" onClick={toggleInfo}></img>
+                                    </div>
+
+                                    <div className="modal-bodyy">
+                                        <div className="curr-contacts">
+                                            <h1>Personal Information</h1>
+                                            <div className="curr-contacts-container">
+                                                <h2>Full Name:</h2>
+                                                <h3>{contact.full_name || "-"}</h3>
+                                            </div>
+
+                                            <div className="curr-contacts-container">
+                                                <h2>Preferred Name:</h2>
+                                                <h3>{contact.preferred_name || "-"}</h3>
+                                            </div>
+                                            <div className="curr-contacts-container">
+                                                <h2>Birthday:</h2>
+                                                <h3>{contact.birthday || "-"}</h3>
+                                            </div>
+    
+                                            <div className="curr-contacts-container">
+                                                <h2>Relationship:</h2>
+                                                <h3>{contact.relationship || "-" }</h3>
+                                            </div>
+                                            <div className="curr-contacts-container">
+                                                <h2>Tags</h2>
+                                                <h3>{contact.tags[0] || "-"}</h3>
+                                            </div>
+                                            <div className="curr-contacts-container">
+                                                <h2>How we met:</h2>
+                                                <h3>{contact.meetDetails|| "-"}</h3>
+                                            </div>
+                                            <div className="curr-contacts-container">
+                                                <h2>Description:</h2>
+                                                <h3>{contact.description || "-"}</h3>
+                                            </div>
+                                        </div>
+
+                                        <div className="curr-contacts">
+                                            <h1>Communication</h1>
+                                            <div className="curr-contacts-container">
+                                                <h2>Email Address:</h2>
+                                                <h3>{contact.email || "-"}</h3>
+                                            </div>
+                                            
+                                            <div className="curr-contacts-container">
+                                                <h2>Phone Number:</h2>
+                                                <h3>{contact.phone_number || "-"}</h3>
+                                            </div>
+                                            
+                                            <div className="curr-contacts-container">
+                                                <h2>LinkedIn:</h2>
+                                                 <h3>{contact.linkedin || "-"}</h3>
+                                            </div>
+                                            
+                                            <div className="curr-contacts-container">
+                                                <h2>Twitter:</h2>
+                                                <h3>{contact.twitter || "-"}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            )}
+                        </div>
+                        <div className="editcontact">
                             <Link to={{ pathname: `/editcontact`, state: { contact } }} style={{ textDecoration: 'none' }}>
                                 <button className="editbtn">
                                     <h1>Edit Contact</h1>
@@ -148,6 +242,8 @@ function ContactProfile(props) {
                                 <h1>Delete Contact</h1>
                             </button>
                         </div>
+
+                        
                     </div>
                 
 
