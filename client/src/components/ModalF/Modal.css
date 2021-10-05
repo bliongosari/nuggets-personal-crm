@@ -266,6 +266,10 @@ body.active-modal {
   flex-direction: row;
 }
 
+.modal-content form {
+  background-color: var(--fifth-blue);
+}
+
 .namebox {
   margin-top: 0%;
   margin-bottom: 0%;
