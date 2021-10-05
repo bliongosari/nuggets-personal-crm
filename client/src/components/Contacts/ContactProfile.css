@@ -751,6 +751,11 @@
   .addcontacts {
     width: 50%;
   }
+
+  .profpic h1 {
+    font-size: 70%;
+    overflow-wrap: break-word;
+  }
 }
 
 @media screen and (min-width: 401px) and (max-width: 700px) {
@@ -870,6 +875,11 @@
 
   .addcontacts {
     width: 50%;
+  }
+
+  .profpic h1 {
+    font-size: 80%;
+    overflow-wrap: break-word;
   }
 }
 
