@@ -92,7 +92,7 @@ function UserProfile() {
               <img alt="close" src="../../close.svg"></img>
             </span>
             <img alt="User" src="../../user.svg" className="user-image"></img>
-            <h1 className="popup-header">EDIT PROFILE</h1>
+            <h1 className="popup-header">Edit Profile</h1>
             <div className="popup-text">
               <input
                 type="text"

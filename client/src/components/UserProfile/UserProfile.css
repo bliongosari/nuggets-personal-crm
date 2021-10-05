@@ -5,8 +5,8 @@
   --primary-blue: #3466aa;
   --secondary-blue: #114084;
   --tertiary-blue: #82b7dc;
-  --fourth-blue: #DEECFF;
-  --fifth-blue: #E8F2FF;
+  --fourth-blue: #deecff;
+  --fifth-blue: #e8f2ff;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
   --logo-font: "AbeeZee";
@@ -14,241 +14,244 @@
 }
 
 .user-profile {
-    margin-left: 60px;
-    margin-top: 80px;
+  margin-left: 2%;
+  margin-top: 7%;
 }
 
 .background {
-    padding: 2vh;
-    background: var(--fifth-blue);
-    border: solid;
-    border-color: var(--primary-blue);
-    border-radius: 3.5vh;
-    border-width: 0.5px;
-    max-width: 85%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+  padding: 4vh;
+  background: var(--fourth-blue);
+  border: solid;
+  border-color: var(--primary-blue);
+  border-radius: 3.5vh;
+  border-width: 0.5px;
+  max-width: 85%;
+  height: 100%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .user-image {
-    /* border-radius: 10%;
+  /* border-radius: 10%;
     border-width: 2px;
     border-style: solid;
     border-color: var(--secondary-blue); */
-    width: 30%;
-    padding: 5px;
-    display: block;
-    margin-top: 5%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 30%;
+  padding-top: 0.5%;
+  display: block;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .user-full-name {
-    font-family: var(--logo-font);
-    color: var(--primary-blue);
-    margin-top: 6.5%;
-    font-size: 3vh;
-    letter-spacing: 0.1vh;
-    text-align: center;
-    padding-inline-start: 0%;
-    font-weight: 300;
+  font-family: var(--logo-font);
+  color: var(--primary-blue);
+  margin-top: 6.5%;
+  font-size: 3vh;
+  letter-spacing: 0.1vh;
+  text-align: center;
+  padding-inline-start: 0%;
+  font-weight: 300;
 }
 
 .grid-container {
-    display: grid;
-    grid-column-gap: 5% 5%;
-    grid-template-columns: 45% 45%;
-    row-gap: 3px;
-    margin-top: 2vh;
-    margin-left:auto;
-    margin-right:auto;
-    max-width: 85%;
+  display: grid;
+  grid-column-gap: 5% 5%;
+  grid-template-columns: 45% 45%;
+  row-gap: 3px;
+  margin-top: 2vh;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 85%;
 }
 
 .user-data-spec {
-    font-family: var(--logo-font);
-    color: var(--primary-black);
-    margin-top: 5%;
-    font-size: 90%;
-    font-weight: bold;
-    text-align: left;
-    font-family: "AbeeZee";
-    font-weight: 300;
-    line-height: 20px;
-    padding-left: 18.5%;
+  font-family: var(--logo-font);
+  color: var(--primary-black);
+  margin-top: 5%;
+  font-size: 90%;
+  font-weight: bold;
+  text-align: left;
+  font-family: "AbeeZee";
+  font-weight: 300;
+  line-height: 20px;
+  padding-left: 18.5%;
 }
 
 .user-data {
-    font-family: var(--logo-font);
-    color: var(--primary-blue);
-    margin-top: 5%;
-    font-size: 90%;
-    font-weight: lighter;
-    text-align: right;
-    font-family: "AbeeZee";
+  font-family: var(--logo-font);
+  color: var(--primary-blue);
+  margin-top: 5%;
+  font-size: 90%;
+  font-weight: lighter;
+  text-align: right;
+  font-family: "AbeeZee";
 }
 
 .button-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 20% 80%;
-    text-align: center;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .button {
-    font-family: var(--button-font);
-    background-color: var(--primary-blue);
-    border-radius: 30px;
-    color: white;
-    padding: 10px 10px;
-    text-align: center;
-    border: none;
-    display: inline-block;
-    font-size: 1.75vh;
-    font-weight: bolder;
-    letter-spacing: 1.5px;
-    cursor: pointer;
+  font-family: var(--button-font);
+  background-color: var(--primary-blue);
+  border-radius: 30px;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 1.75vh;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .button1 {
-    font-family: var(--button-font);
-    background-color: var(--primary-blue);
-    border-radius: 30px;
-    color: white;
-    padding: 10px 10px;
-    text-align: center;
-    border: none;
-    display: inline-block;
-    font-size: 1.75vh;
-    font-weight: bolder;
-    letter-spacing: 1.5px;
-    cursor: pointer;
+  font-family: var(--button-font);
+  background-color: var(--primary-blue);
+  border-radius: 30px;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  font-size: 1.75vh;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .button:hover {
-    background-color: var(--secondary-blue);
-    opacity: 70%;
+  background-color: var(--secondary-blue);
 }
 
 .button1:hover {
-    background-color: var(--secondary-blue);
-    opacity: 70%;
+  background-color: var(--secondary-blue);
 }
 
 .icon {
-    float: left;
-    padding-right: 7px;
-    width: 20px;
+  float: left;
+  padding-right: 7px;
+  width: 20px;
 }
 
 .popup {
-    position: fixed;
-    background: rgba(49, 49, 49, 0.8);
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: 99;
+  position: fixed;
+  background: rgba(49, 49, 49, 0.8);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 99;
 }
-   
+
 .box {
-    position: relative;
-    width: 400px;
-    margin: 0 auto;
-    height: auto;
-    margin-top: calc(100vh - 85vh - 20px);
-    background: var(--primary-white);
-    border-radius: 25px;
-    padding: 2vh;
-    overflow: visible;
-    padding-bottom: 20px;
+  position: fixed;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--primary-white);
+  border-radius: 25px;
+  padding: 2vh;
+  overflow: visible;
+  padding-bottom: 20px;
+  background: var(--fifth-blue);
+  padding: 1% 1%;
+  border-radius: 30px;
 }
 
 .popup-text {
-    padding-top: 0.5vh;
-    opacity: 50%;
-    color: var(--primary-black);
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2vh;
-    width: 85%;
+  padding-top: 0.5vh;
+  opacity: 50%;
+  color: var(--primary-black);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+  width: 85%;
 }
 
 .popup-text input {
-    font-family: var(--logo-font);
-    font-size: 1.5vh;
-    letter-spacing: 1.5px;
-    font-weight: lighter;
-    width: 100%;
-    height: 45%;
-    padding: 1px;
-    border-color: var(--primary-blue);
-    background-color: var(--primary-white);
-    border-radius: 0;
-    border-style: solid;
-    padding: 4px;
+  font-family: var(--logo-font);
+  font-size: 1.5vh;
+  letter-spacing: 1.5px;
+  font-weight: lighter;
+  width: 100%;
+  height: 45%;
+  padding: 1%;
+  background-color: var(--primary-white);
+  border-radius: 0;
+  border: solid 2px var(--secondary-blue);
 }
 
 .popup-header {
-    font-size: 3vh;
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: var(--primary-blue);
-    text-align: center;
-    font-family: "AbeeZee";
-    line-height: 20px;
-    padding-bottom: 20px;
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.5px;
+  font-size: 2.7vh;
+  padding: 0;
+  margin-top: 2.5%;
+  margin-bottom: 1.5%;
+  text-align: center;
+  left: 50%;
 }
-   
+
 .close-icon {
-    cursor: pointer;
-    position: absolute; 
-    right: 0;
-    margin-right: 20px;
-    width: 3vh;
-    height: 3vh;
-    color: var(--primary-blue);
-    transition: 0.1s ease;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  width: 3vh;
+  height: 3vh;
+  color: var(--primary-blue);
+  transition: 0.1s ease;
 }
 
 .centered-button {
-    margin-top: 6vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 20% 80%;
-    text-align: center;
-    margin-bottom: 20px;
+  margin-top: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 600px) {
-    .background {
-        max-height: 250px;
-    }
-  
-    .user-image {
-        margin-top: 15px;
-        max-width: 100px;
-        max-height: 100px;
-    }
+  .background {
+    max-height: 250px;
+  }
 
-    .user-full-name {
-        margin-top: 15px;
-        font-size: 150%;
-    }
+  .user-image {
+    margin-top: 15px;
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .user-full-name {
+    margin-top: 15px;
+    font-size: 150%;
+  }
 }
-  
-@media screen and (max-width: 600px) {
-    .grid-container {
-        margin-bottom: 40px;
-    }
 
-    .popup-text {
-        font-size: 1.5vh;
-    }
+@media screen and (max-width: 600px) {
+  .grid-container {
+    margin-bottom: 40px;
+  }
+
+  .popup-text {
+    font-size: 1.5vh;
+  }
 }
