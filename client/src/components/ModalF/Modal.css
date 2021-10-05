@@ -7,6 +7,8 @@
   --tertiary-blue: #82b7dc;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
+  --fourth-blue: #deecff;
+  --fifth-blue: #e8f2ff;
   --logo-font: "AbeeZee";
   --button-font: "Urbanist";
 }
@@ -59,7 +61,7 @@ body.active-modal {
   margin-left: 0%;
   margin-right: 5%;
   padding: 5px;
-  box-shadow: 5px 5px 5px #888888;
+  box-shadow: 3px 3px 3px #888888;
   cursor: pointer;
 }
 
@@ -155,7 +157,7 @@ body.active-modal {
 }
 
 .continue-btn:hover {
-  background-color: var(--primary-blue);
+  background-color: var(--secondary-blue);
   cursor: pointer;
 }
 
@@ -185,6 +187,13 @@ body.active-modal {
   padding: 5px;
   text-align: center;
   justify-content: center;
+  box-shadow: 3px 3px 3px darkgrey;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
 }
 
 .submit-div {
@@ -238,7 +247,7 @@ body.active-modal {
   font-size: 55%;
   letter-spacing: 2px;
   font-weight: lighter;
-  width: 78.5%;
+  width: 80.5%;
   height: 45%;
   padding: 1px;
   border-color: var(--primary-blue);
