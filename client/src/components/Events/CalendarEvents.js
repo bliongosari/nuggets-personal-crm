@@ -15,13 +15,8 @@ let allViews = Object.keys(Views).map((k) => Views[k]);
 
 const eventStyleGetter = (event, start, end, isSelected) => {
   var style = {
-    backgroundColor: "#114084",
     borderRadius: "0px",
-    opacity: 0.7,
-    color: "white",
-    border: "0px",
     paddingLeft: "10px",
-    borderRadius: "10px",
   };
   return {
     style: style,
@@ -45,6 +40,13 @@ const customStyles = {
     backgroundColor: "#f1f1f1",
   },
 };
+
+const ColoredDateCellWrapper = ({ children }) =>
+  React.cloneElement(React.Children.only(children), {
+    style: {
+      backgroundColor: 'lightblue'
+    },
+  })
 
 function CalendarEvents(props) {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -98,10 +100,13 @@ function CalendarEvents(props) {
         timeslots={8}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 550 }}
+        style={{ height: 700, marginBottom: "50px" }}
         onSelectSlot={(start, end) => handleSelect(start, end)}
         onSelectEvent={(event) => openEventModal(event)}
         popup
+        components={{
+          timeSlotWrapper: ColoredDateCellWrapper,
+        }}
         eventPropGetter={eventStyleGetter}
       />
       <Modal

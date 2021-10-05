@@ -13,7 +13,7 @@ function EventEditForm(props) {
     start: props.event.start,
     end: props.event.end,
     notes: props.event.notes,
-    repeat: props.event.repeat,
+    // repeat: props.event.repeat,
     alert: props.event.alert,
   });
 
@@ -119,7 +119,7 @@ function EventEditForm(props) {
             type="datetime-local"
             onChange={changeHandler}
           />
-          <br></br>
+          {/* <br></br>
           <label className="repeat">Repeat</label>
             <select
               name="repeat"
@@ -132,7 +132,7 @@ function EventEditForm(props) {
                   {repeat}
                 </option>
               ))}
-            </select> 
+            </select>  */}
           <br></br>
           <label className="alert">Alert</label>
             <select

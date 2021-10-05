@@ -116,7 +116,7 @@ function EventForm() {
             onChange={changeHandler}
             required={true}
           />
-          <br></br>
+          {/* 
           <label className="repeat">Repeat</label>
             <select
               name="repeat"
@@ -129,7 +129,7 @@ function EventForm() {
                   {repeat}
                 </option>
               ))}
-            </select> 
+            </select>  */}
           <br></br>
           <label className="alert">Alert</label>
             <select

@@ -371,8 +371,12 @@ function NavbarHome() {
                   ))
                 }
                 </List>
+                <div style = {{display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <span class ="seeAll" style ={{textAlign: "center", marginBottom: "5px"}}> <a href ="\notifications"> See All </a> </span>
+                </div>
               </div>
             </div>
+
             </ClickAwayListener>
           )}
         </div>

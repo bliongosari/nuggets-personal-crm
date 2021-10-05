@@ -13,6 +13,9 @@
   --button-font: "Urbanist";
 }
 
+.seeAll:hover {
+  text-decoration: underline;
+}
 .navbar {
   height: 50px;
   width: 100%;

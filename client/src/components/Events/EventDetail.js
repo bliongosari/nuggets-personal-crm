@@ -75,7 +75,7 @@ function EventDetail(props) {
         <h3> Alert: {props.event.alert}</h3>
         <h3> Date start: {start} </h3>
         <h3> Date end: {end} </h3>
-        <h3> Repeat: {props.event.repeat} </h3>
+        {/* <h3> Repeat: {props.event.repeat} </h3> */}
         <h3> Alert: {props.event.alert} </h3>
         <button className="edit-btn" onClick={openEventModal}> Edit Event </button>
         <button className="delete-btn" onClick={deleteEvent}> Delete Event </button>
