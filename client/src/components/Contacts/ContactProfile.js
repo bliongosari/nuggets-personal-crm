@@ -86,64 +86,45 @@ function ContactProfile(props) {
             <div className="contactcontent">
                 <div className="contactdetails">
                     <div className="current-contacts">
-                        <div className="current-contacts-container">
+                        <div className="curr-contacts-container">
                             <h2>Full Name:</h2>
+                        </div>
+                        <div className="curr-contacts-container">
                             <h3>{contact.full_name || "-"}</h3>
                         </div>
-                        <div className="current-contacts-container">
+
+                        <div className="curr-contacts-container">
                             <h2>Preferred Name:</h2>
+                        </div>
+                        <div className="curr-contacts-container">
                             <h3>{contact.preferred_name || "-"}</h3>
                         </div>
-                        <div className="current-contacts-container">
+                        <div className="curr-contacts-container">
                             <h2>Birthday:</h2>
-                        </div>
-                        <div className="current-contacts-container">
                             <h3>{contact.birthday || "-"}</h3>
                         </div>
-                        <div className="current-contacts-container">
+
+                        <div className="curr-contacts-container">
                             <h2>Relationship:</h2>
+                        </div>
+                        <div className="curr-contacts-container">
                             <h3>{contact.relationship || "-" }</h3>
                         </div>
-                        <div className="current-contacts-container">
+                        <div className="curr-contacts-container">
                             <h2>Tags</h2>
                             <h3>{contact.tags[0] || "-"}</h3>
                         </div>
-                        <div className="current-contacts-container">
+                        <div className="curr-contacts-container">
                             <h2>How we met:</h2>
+                        </div>
+                        <div className="curr-contacts-container">
                             <h3>{contact.meetDetails|| "-"}</h3>
                         </div>
-                        <div className="current-contacts-container">
+                        <div className="curr-contacts-container">
                             <h2>Description:</h2>
                         </div>
-                        <div className="current-contacts-container">
+                        <div className="curr-contacts-container">
                             <h3>{contact.description || "-"}</h3>
-                        </div>
-                    </div>
-
-                    <div className="current-contactss">
-                        <div className="current-contacts-container">
-                            <h2>Email Address:</h2>
-                        </div>
-                        <div className="current-contacts-container">
-                            <h3>{contact.email || "-"}</h3>
-                        </div>
-                        <div className="current-contacts-container">
-                            <h2>Phone Number:</h2>
-                        </div>
-                        <div className="current-contacts-container">
-                            <h3>{contact.phone_number || "-"}</h3>
-                        </div>
-                        <div className="current-contacts-container">
-                            <h2>LinkedIn:</h2>
-                        </div>
-                         <div className="current-contacts-container">
-                            <h3>{contact.linkedin || "-"}</h3>
-                        </div>
-                        <div className="current-contacts-container">
-                            <h2>Twitter:</h2>
-                        </div>
-                        <div className="current-contacts-container">
-                            <h3>{contact.twitter || "-"}</h3>
                         </div>
                     </div>
 
@@ -166,59 +147,59 @@ function ContactProfile(props) {
                                         <img alt="" src="../../close.svg" onClick={toggleInfo}></img>
                                     </div>
 
-                                    <div className="modal-bodyy">
-                                        <div className="curr-contacts">
+                                    <div className="modalbodyy">
+                                        <div className="currr-contacts">
                                             <h1>Personal Information</h1>
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Full Name:</h2>
                                                 <h3>{contact.full_name || "-"}</h3>
                                             </div>
 
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Preferred Name:</h2>
                                                 <h3>{contact.preferred_name || "-"}</h3>
                                             </div>
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Birthday:</h2>
                                                 <h3>{contact.birthday || "-"}</h3>
                                             </div>
     
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Relationship:</h2>
                                                 <h3>{contact.relationship || "-" }</h3>
                                             </div>
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Tags</h2>
                                                 <h3>{contact.tags[0] || "-"}</h3>
                                             </div>
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>How we met:</h2>
                                                 <h3>{contact.meetDetails|| "-"}</h3>
                                             </div>
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Description:</h2>
                                                 <h3>{contact.description || "-"}</h3>
                                             </div>
                                         </div>
 
-                                        <div className="curr-contacts">
+                                        <div className="currr-contacts">
                                             <h1>Communication</h1>
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Email Address:</h2>
                                                 <h3>{contact.email || "-"}</h3>
                                             </div>
                                             
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Phone Number:</h2>
                                                 <h3>{contact.phone_number || "-"}</h3>
                                             </div>
                                             
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>LinkedIn:</h2>
                                                  <h3>{contact.linkedin || "-"}</h3>
                                             </div>
                                             
-                                            <div className="curr-contacts-container">
+                                            <div className="currr-contacts-container">
                                                 <h2>Twitter:</h2>
                                                 <h3>{contact.twitter || "-"}</h3>
                                             </div>
