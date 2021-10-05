@@ -159,9 +159,12 @@ function Contacts() {
       <div className="addcontactsdiv">
         <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
           <button className="addnewbtn">
-            <h1>ADD NEW CONTACT</h1>
+           
+            <h1> &#65291; &nbsp; ADD NEW CONTACT</h1>
           </button>
         </Link>
+
+
       </div>
       
       <div className="contactssummary">
