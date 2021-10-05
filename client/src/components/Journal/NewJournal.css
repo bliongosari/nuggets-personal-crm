@@ -84,21 +84,23 @@
   width: 100%;
   background-color: var(--primary-blue);
   text-align: center;
-  padding: 1%;
+  padding: 3%;
   display: flex;
   flex-direction: row;
-  padding-top: 1%;
+  padding-top: 3%;
   justify-content: center;
   margin-top: 5%;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .addjbtn:hover {
   background-color: var(--secondary-blue);
+  cursor: pointer;
 }
 .addjbtn h1 {
   margin-top: 1%;
   padding: 2.7%;
-  font-size: 85%;
+  font-size: 90%;
   letter-spacing: 2px;
   color: white;
   font-weight: bolder;

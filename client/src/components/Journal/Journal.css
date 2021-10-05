@@ -10,20 +10,21 @@
   --button-font: "Urbanist";
 }
 .journals {
-  margin: 80px 20px 80px 80px;
+  margin: 5% 2% 2% 2%;
   padding: 10px 5px 20px 5px;
+  margin-left: 5%;
 }
 .JournalModal {
   max-width: 1000px;
   background-color: red;
-  color:red;
+  color: red;
 }
 
 .pagetitlee {
   display: flex;
 }
 
-.pagetitlee h1{
+.pagetitlee h1 {
   margin-top: 30px;
   width: 100%;
   height: 40px;
@@ -97,8 +98,8 @@
 }
 
 .upload-btn {
-  width: 150px;
-  padding: 5px;
+  width: 18%;
+  padding: 1%;
   background: var(--primary-blue);
   color: white;
   border-radius: 10px;
@@ -107,6 +108,7 @@
   font-family: var(--button-font);
   font-weight: bolder;
   font-size: 70%;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .upload-btn span {
@@ -157,90 +159,90 @@
   text-decoration: underline;
 }
 input[name="description"] {
-    height: 300px;
-    vertical-align: top;
+  height: 300px;
+  vertical-align: top;
 }
 
 form {
   background-color: var(--primary-white);
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 
 .addjournal {
-    margin-top: 10%;
-    color: var(--secondary-blue);
-    font-family: var(--button-font);
-    letter-spacing: 0.8px;
-    font-weight: bold;
-    line-height: 25px;
-    font-size: 13px;
-  }
-  .add-details {
-    border-bottom: 2px solid var(--primary-blue);
-    margin-top: -5%;
-    line-height: 35px;
-    font-size: 17px;
-  }
-  .add-title {
-    font-size: 20px;
-    margin-left: 20%;
-    line-height: 35px;
-    margin-top: -8%;
-  }
-  .edit-title {
-    font-size: 20px;
-    margin-left: 30%;
-    line-height: 35px;
-    margin-top: -8%;
-  }
-  .journalTitle {
-      font-size: 20px;
-      font-weight: bolder;
-  }
-  .journal-btns {
-      width: 100px;
-      margin-left: auto;
-      margin-right: 10px;
-  }
-  .edit-journal-btn {
-      text-decoration: underline;
-      cursor: pointer;
-  }
-  .delete-journal-btn {
-      margin-left: 10px;
-      text-decoration: underline;
-      cursor: pointer;
-  }
-  .delete-journal-btn:hover {
-      text-decoration: none;
-  }
-  .edit-journal-btn:hover {
-    text-decoration: none;
+  margin-top: 10%;
+  color: var(--secondary-blue);
+  font-family: var(--button-font);
+  letter-spacing: 0.8px;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 13px;
+}
+.add-details {
+  border-bottom: 2px solid var(--primary-blue);
+  margin-top: -5%;
+  line-height: 35px;
+  font-size: 17px;
+}
+.add-title {
+  font-size: 20px;
+  margin-left: 20%;
+  line-height: 35px;
+  margin-top: -8%;
+}
+.edit-title {
+  font-size: 20px;
+  margin-left: 30%;
+  line-height: 35px;
+  margin-top: -8%;
+}
+.journalTitle {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.journal-btns {
+  width: 100px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+.edit-journal-btn {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.delete-journal-btn {
+  margin-left: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.delete-journal-btn:hover {
+  text-decoration: none;
+}
+.edit-journal-btn:hover {
+  text-decoration: none;
 }
 .journal-detail-title {
-    margin-top: 10px;
-    font-size: 18px;
-    border-bottom: 2px solid var(--primary-blue);
+  margin-top: 10px;
+  font-size: 18px;
+  border-bottom: 2px solid var(--primary-blue);
 }
 .save-btn {
-    cursor: pointer;
-    color: white;
-    background-color: var(--primary-blue);
-    font-family: var(--button-font);
-    width: 150px;
-    border: 0px;
-    border-radius: 3px;
-    padding: 8px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    margin-left: 27%;
-    margin-top: 25px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
+  color: white;
+  background-color: var(--primary-blue);
+  font-family: var(--button-font);
+  width: 150px;
+  border: 0px;
+  border-radius: 3px;
+  padding: 8px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin-left: 27%;
+  margin-top: 25px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-  input {
-    width: 100%;
-    color: var(--secondary-blue);
-    border: 1px solid var(--primary-blue);
-    padding: 5px;
-  }
+input {
+  width: 100%;
+  color: var(--secondary-blue);
+  border: 1px solid var(--primary-blue);
+  padding: 5px;
+}
