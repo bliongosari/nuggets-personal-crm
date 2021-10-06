@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 //import Cookies from "js-cookie";
 import api from "../../config/axiosConfig.js";
+import { useQuery } from "react-query";
 import "./Journal.css";
 import AddJournal from "./AddJournal";
 import EditJournal from "./EditJournal";
 import moment from "moment";
 import Modal from "react-modal";
+import { LoopCircleLoading } from "react-loadingg";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+const Loading = () => <LoopCircleLoading />;
+
 
 export default function Journal() {
   const [allField, setAllFields] = useState({
@@ -28,13 +36,21 @@ export default function Journal() {
   const [JournalModal, setJournalModal] = useState(false);
   const [journal, setJournalID] = useState(null);
 
+  const [page, setPage] = useState(1);
+  const [sorting, setSorting] = useState("")
+  const [currentShow, setCurrentShow] = useState(0);
+  const [searchedValue, setSearchedValue] = useState("");
+  const [searchedData, setSearchedData] = useState([]);
+  const [isSearching, setIsSearching] = useState(false)
+  const [temp, setTemp] =useState([]);
+
   const formStyle = {
     content: {
       top: "50%",
       left: "50%",
       right: "auto",
-      maxWidth: "1000",
-      minWidth:"90%",
+      maxWidth: "90%",
+      minWidth: "50%",
       borderRadius: "12px",
       bottom: "auto",
       marginRight: "-50%",
@@ -44,6 +60,16 @@ export default function Journal() {
     },
   };
 
+  function parseDates(journals) {
+    let parsedDates = [];
+    var i=0;
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    for(i=0; i<journals.length;i++) {
+      var date = new Date(journals[i].createdOn);
+      parsedDates[i] = date.toLocaleDateString('en-US', options);
+    }
+    setDates(parsedDates);
+  }
   function refreshPage() {
     window.location.reload(false);
   }
@@ -85,6 +111,7 @@ export default function Journal() {
         if (res.status === 200) {
           setJournals(res.data.journals);
           setDates(res.data.dates);
+          setSorting("Sort by: Date: Newest to Oldest");
           setLoading(false);
         } else {
           setFailed(true);
@@ -95,10 +122,127 @@ export default function Journal() {
       });
   }, []);
 
+  const query = useQuery("journals", journals, {
+    staleTime: Infinity,
+    onSuccess: (journals) => {
+      if (!sorting) {
+        journals = filter(journals, "Sort by: Date: Newest to Oldest");
+      }
+    }
+  });
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    setCurrentShow((value-1)*6);
+  }
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+  };
+
+  const handleSearch = (e) => {
+    setSearchedValue(e.target.value);
+    setIsSearching(true)
+    if (e.target.value.length > 0){
+      if (isSearching) {
+        let value = (e.target.value).toLowerCase();
+        let result = [];
+        result = temp.filter((data) => {
+          return data.full_name.toLowerCase().search(value) !== -1;
+          });
+          if (result){
+            query.data.journals = result;
+          }
+      }
+      else {
+        setTemp(query.data.journals);
+      }
+    }
+    else {
+      query.data.journals = temp;
+      setIsSearching(false)
+    }
+  }
+
+  const filter = (data, key) =>  {
+    setSorting(key);
+    let filteredData = data;
+    switch(key) {
+      case "Sort by: Date: Oldest to Newest":
+        filteredData = data.sort(
+          (obj1, obj2) => new Date(obj1.createdOn) - new Date(obj2.createdOn)
+        );
+        return filteredData;
+
+      case "Sort by: Date: Newest to Oldest":
+        filteredData = data.sort(
+          (obj1, obj2) => new Date(obj2.createdOn) - new Date(obj1.createdOn)
+        );
+        return filteredData;
+
+      case "Sort by: Title: Z-A":
+        filteredData = data.sort(function(a, b) {
+          var orderBool =a.title.toLowerCase() < b.title.toLowerCase();
+          return orderBool ? 1 : -1;
+        });
+      return filteredData;
+      case "Sort by: Title: A-Z":
+        filteredData = data.sort(function(a, b) {
+          var orderBool = a.title.toLowerCase() > b.title.toLowerCase();
+          return orderBool ? 1 : -1;
+      });
+      return filteredData;
+      default:
+        filteredData = data.sort(
+          (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
+        );
+        return filteredData;
+    }
+  }
+
+  const handleSortChange = (e) => {
+    setSorting(e.target.value);
+    if(e.target.value=="Sort by: Title: A-Z") {
+      journals.sort(function(a, b) {
+          var orderBool = a.title.toLowerCase() > b.title.toLowerCase();
+          return orderBool ? 1 : -1;
+      });
+      setJournals(journals);
+      parseDates(journals);
+      return journals;
+    }
+    if(e.target.value=="Sort by: Title: Z-A") {
+      journals.sort(function(a, b) {
+        var orderBool =a.title.toLowerCase() < b.title.toLowerCase();
+        return orderBool ? 1 : -1;
+      });
+      setJournals(journals);
+      parseDates(journals);
+      return journals;
+    }
+    if(e.target.value=="Sort by: Date: Oldest to Newest") {
+      journals.sort(
+        (obj1, obj2) => new Date(obj1.createdOn) - new Date(obj2.createdOn)
+      );
+      setJournals(journals);
+      parseDates(journals);
+      return journals;
+    }
+    if(e.target.value=="Sort by: Date: Newest to Oldest") {
+      journals.sort(
+        (obj1, obj2) => new Date(obj2.createdOn) - new Date(obj1.createdOn)
+      );
+      setJournals(journals);
+      parseDates(journals);
+      return journals;
+    }
+  };
 
   return (
     <div>
-      {failed ? (
+      
+    {failed ? (
         <h1> Failed to get journal data</h1>
       ) : (
         <div>
@@ -112,6 +256,25 @@ export default function Journal() {
                   <span> UPLOAD A JOURNAL</span>
                 </button>
               </div>
+              <div className="sortJournal">
+                <button type="button" autocomplete="off" readonly="readonly" role="button" 
+                id="sort-by-button" aria-controls="sort-by-dropdown"></button>
+               <FormControl>
+                    <Select
+                      renderValue={(selected) => selected}
+                      value={sorting}
+                      className="sort-by-button"
+                      style={{color: "#114084", fontSize: "12px"}}
+                      onChange={handleSortChange}
+                    >
+                      <MenuItem value="Sort by: Date: Newest to Oldest">Sort by: Date: Newest to Oldest</MenuItem>
+                      <MenuItem value="Sort by: Date: Oldest to Newest">Sort by: Date: Oldest to Newest</MenuItem>
+                      <MenuItem value="Sort by: Title: A-Z">Sort by: Title: A-Z</MenuItem>
+                      <MenuItem value="Sort by: Title: Z-A">Sort by: Title: Z-A</MenuItem>
+                    </Select>
+               </FormControl>
+              </div>
+              
               <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={() => setIsOpen(false)}
@@ -139,19 +302,20 @@ export default function Journal() {
                       </div>
                       <br></br>
                       <h2>{item.description} </h2>
-                      <div className="journal-btns">
-                        <button className= "edit-journal-btn" 
-                        ref = {journalID} 
-                        value={item}
-                        onClick={() => handleEdit(item)} > Edit</button>
-
-                        <button
-                        className="delete-journal-btn" 
-                        ref = {journalID} 
-                        value={item._id}
-                        onClick={() => handleDelete(item._id)} > Delete</button>
-                      </div>
+                      
                     </li>
+                    <div className="journal-btns">
+                      <button className= "edit-journal-btn" 
+                      ref = {journalID} 
+                      value={item}
+                      onClick={() => handleEdit(item)} > Edit</button>
+
+                      <button
+                      className="delete-journal-btn" 
+                      ref = {journalID} 
+                      value={item._id}
+                      onClick={() => handleDelete(item._id)} > Delete</button>
+                    </div>
                   </ul>
                 ))}
               </div>
