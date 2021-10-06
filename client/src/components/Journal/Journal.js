@@ -11,6 +11,9 @@ import { LoopCircleLoading } from "react-loadingg";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
 
 const Loading = () => <LoopCircleLoading />;
 
@@ -124,11 +127,6 @@ export default function Journal() {
 
   const query = useQuery("journals", journals, {
     staleTime: Infinity,
-    onSuccess: (journals) => {
-      if (!sorting) {
-        journals = filter(journals, "Sort by: Date: Newest to Oldest");
-      }
-    }
   });
 
   const handlePageChange = (event, value) => {
@@ -164,43 +162,7 @@ export default function Journal() {
       setIsSearching(false)
     }
   }
-
-  const filter = (data, key) =>  {
-    setSorting(key);
-    let filteredData = data;
-    switch(key) {
-      case "Sort by: Date: Oldest to Newest":
-        filteredData = data.sort(
-          (obj1, obj2) => new Date(obj1.createdOn) - new Date(obj2.createdOn)
-        );
-        return filteredData;
-
-      case "Sort by: Date: Newest to Oldest":
-        filteredData = data.sort(
-          (obj1, obj2) => new Date(obj2.createdOn) - new Date(obj1.createdOn)
-        );
-        return filteredData;
-
-      case "Sort by: Title: Z-A":
-        filteredData = data.sort(function(a, b) {
-          var orderBool =a.title.toLowerCase() < b.title.toLowerCase();
-          return orderBool ? 1 : -1;
-        });
-      return filteredData;
-      case "Sort by: Title: A-Z":
-        filteredData = data.sort(function(a, b) {
-          var orderBool = a.title.toLowerCase() > b.title.toLowerCase();
-          return orderBool ? 1 : -1;
-      });
-      return filteredData;
-      default:
-        filteredData = data.sort(
-          (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
-        );
-        return filteredData;
-    }
-  }
-
+  
   const handleSortChange = (e) => {
     setSorting(e.target.value);
     if(e.target.value=="Sort by: Title: A-Z") {
@@ -290,7 +252,7 @@ export default function Journal() {
                   <AddJournal/>
               </Modal>
               <div className="journal-details">
-                {journals.map((item, i) => (
+                {journals.slice(currentShow,currentShow+6).map((item, i) => (
                   <ul>
                     <li key={i}>
                       <div className="journalDate">
@@ -318,6 +280,11 @@ export default function Journal() {
                     </div>
                   </ul>
                 ))}
+              </div>
+              <div style = {{height: "50px", display: "flex", textAlign: "center", alignItems:"center", justifyContent: "center", marginTop: "30px", marginRight: "20px"}}>
+                <Stack spacing={4}>
+                <Pagination count={Math.ceil(journals.length/6)|| 1} page={page || 1} onChange={handlePageChange} />
+                </Stack>
               </div>
               <Modal
                 isOpen={JournalModal}
