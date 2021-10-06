@@ -9,15 +9,21 @@ function AddJournal() {
         title: "",
         description:"",
         createdOn: Date.now(),
-        files: "",
+        files: [],
     });
     const [field, setField] = useState("");
     const [journal, setjournal] = useState([]);
+    const files = [];
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(true);
     const [failed, setFailed] = useState(false);
     const [flag, setFlag] = useState(false);
 
+    const handleSubmit = async(e) => {
+      allField["files"] = files;
+      addjournal(e);
+    };
+    
     const addjournal = async (e) => {
         api({
             method: "POST",
@@ -44,7 +50,12 @@ function AddJournal() {
     const FailedMsg = () => <Alert variant="danger">Failed to add</Alert>;
 
     const changeHandler = (e) => {
-        setAllFields({ ...allField, [e.target.name]: e.target.value });
+        if(e.target.name == "files") {
+          files.push(e.target.value);
+        }
+        else{ 
+          setAllFields({ ...allField, [e.target.name]: e.target.value });
+        }
     };
 
     function refreshPage() {
@@ -74,14 +85,10 @@ function AddJournal() {
             </div>
 
             <div className="addjournal">
-              <button className="addjbtn">
-                <h1>Attach Files </h1>
-              </button>
-            </div>
-
-            <div className="addjournal">
-              <button onClick={addjournal} className="addjbtn">
-                <h1>Post journal </h1>
+              <label for="files[0][uploaded]" class="addjbtn">ATTACH FILES</label>
+              <input type="file" name="files" id="files" onChange={changeHandler}/>
+              <button onClick={handleSubmit} className="addjbtn">
+                <h1>+ POST </h1>
               </button>
             </div>
             </form>

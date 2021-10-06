@@ -18,7 +18,7 @@ import AddContact from "./components/Contacts/AddContact";
 import ContactProfile from "./components/Contacts/ContactProfile"
 import AddJournal from "./components/Journal/AddJournal";
 import EditJournal from "./components/Journal/EditJournal";
-
+import Notifications from "./components/Navbar/Notifications.js"
 function App() {
   return (
     <div className="app">
@@ -40,6 +40,7 @@ function App() {
         <ProtectedRoute exact path="/contact/:name" component={ContactProfile} />
         <ProtectedRoute exact path="/addjournal" component={AddJournal} />
         <ProtectedRoute exact path="/editjournal" component={EditJournal} />
+        <ProtectedRoute exact path="/notifications" component={Notifications} />
       </Switch>
       <Footer />
     </div>

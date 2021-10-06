@@ -428,8 +428,8 @@ function NavbarHome() {
           <Divider variant="offset"/>
           <h2 className="logout-header2">Are you sure you want to log out?</h2>
           <div className="logout-button">
-            <button className="button" onClick={logout}>
-              <img alt="Log out" src="../../logout-white.svg" className="icon"></img>
+            <button className="butttonn" onClick={logout}>
+              {/* <img alt="Log out" src="../../logout-white.svg" className="icon"></img> */}
               Log out
             </button>
           </div>

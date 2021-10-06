@@ -4,25 +4,24 @@ const Journal = require("../models/journal");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const sanitize = require("mongo-sanitize");
+const BSON = require('bson');
+const newBSON = new BSON();
 
 const getAll = async (req, res) => {
   try {
     const journals = await Journal.find({ user_id: req.user.id });
     const parsedDates = [];
-    var months = [ "January", "February", "March", "April", "May", "June", 
-                  "July", "August", "September", "October", "November", "December" ];
     var i=0;
     journals.sort(function compare(a, b) {
       var dateA = new Date(a.createdOn);
       var dateB = new Date(b.createdOn);
       return dateB - dateA;
     });
-    
+    var i=0;
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     for(i=0; i<journals.length;i++) {
-      var date = "";
-      date += journals[i].createdOn.getDate() + " " + months[journals[i].createdOn.getMonth()] + " "
-            + journals[i].createdOn.getFullYear();
-      parsedDates[i] = date;
+      var date = new Date(journals[i].createdOn);
+      parsedDates[i] = date.toLocaleDateString('en-US', options);
     }
     return res.status(200).json({
       journals: journals,
@@ -45,7 +44,6 @@ const createNew = async (req, res) => {
       description: req.body.description,
       files: req.body.files,
     });
-    console.log(journal);
     await journal.save();
     return res.status(200).json({
       message: "Successfully added",
@@ -105,6 +103,9 @@ const postEditedJournal = async (req, res) => {
       description = journal.description;
     }
     var files = sanitize(req.body.files);
+    if(files.length < 1) {
+      files = journal.files;
+    }
 
     journal = await Journal.findOneAndUpdate(
       {_id: req.params.id},
@@ -115,6 +116,7 @@ const postEditedJournal = async (req, res) => {
       },
       { new: true }
     );
+    //console.log("NEW: " +journal);
     return res.status(200).json({
       user: req.user,
       message: "Successfully edited",

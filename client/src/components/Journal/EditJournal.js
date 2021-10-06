@@ -11,6 +11,7 @@ function EditJournal(props) {
         description: props.journal.title,
         files: props.journal.files,
     });
+    const oldFiles = props.journal.files;
     const [field, setField] = useState("");
     const [journals, setjournals] = useState([]);
     const [message, setMessage] = useState("");
@@ -18,6 +19,7 @@ function EditJournal(props) {
     const [failed, setFailed] = useState(false);
     const [flag, setFlag] = useState(false);
     const [JournalModal, setJournalModal] = useState(false);
+    const files =[];
     const editJournal = async (e) => {
         api({
           method: "POST",
@@ -41,11 +43,20 @@ function EditJournal(props) {
           });
       };
     
+      const handleSubmit = async(e) => {
+        allField["files"] = files;
+        editJournal(e);
+      };
       const SuccessMsg = () => <Alert variant="success">Sucessfully Edited</Alert>;
       const FailedMsg = () => <Alert variant="danger">Failed to edit</Alert>;
     
       const changeHandler = (e) => {
-        setAllFields({ ...allField, [e.target.name]: e.target.value });
+        if(e.target.name == "files") {
+          files.push(e.target.value);
+        }
+        else{ 
+          setAllFields({ ...allField, [e.target.name]: e.target.value });
+        }
       };
     
       function refreshPage() {
@@ -56,7 +67,6 @@ function EditJournal(props) {
           <div className="journalentryform">
             <div className="formtitlee">
               <h1>Journal Details</h1>
-              <hr></hr>
             </div>
             <form>
               <div className="detailstitle">
@@ -72,13 +82,12 @@ function EditJournal(props) {
                   placeholder={props.journal.description}></input>
               </div>
               <div className="addjournal">
-                <button className="addjbtn">
-                  <h1>Attach Files </h1>
-                </button>
+                <label for="files" class="addjbtn">ATTACH FILES</label>
+                <input type="file" name="files" id="files" onChange={changeHandler}/>
               </div>
               <div className="addjournal">
-                <button onClick={editJournal} className="addjbtn">
-                  <h1>Save changes </h1>
+                <button onClick={handleSubmit} className="addjbtn">
+                  <h1>SAVE CHANGES </h1>
                 </button>
               </div>
               </form>
