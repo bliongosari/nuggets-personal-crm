@@ -129,6 +129,7 @@ const deleteEvent = async (req, res) => {
 const editEvent = async (req, res) => {
   try {
     var eventID = sanitize(req.params.id);
+    var changes = {}
     var event = await Event.findOne({ _id: eventID});
     var title = sanitize(req.body.title);
     if (title == "") {
@@ -142,13 +143,13 @@ const editEvent = async (req, res) => {
     if (type == "") {
       type = event.type;
     }
-    var start = sanitize(req.body.start);
+    var start = new Date(sanitize(req.body.start));
     if (start == "") {
-      start = event.start;
+      start = (event.start);
     }
-    var end = sanitize(req.body.end);
+    var end = new Date(sanitize(req.body.end));
     if (end == "") {
-      end = event.end;
+      end = (event.end);
     }
     var repeat = sanitize(req.body.repeat);
     if (repeat == "") {
@@ -161,20 +162,21 @@ const editEvent = async (req, res) => {
     else {
       alert = getAlert(start, req.body.alert);
     }
+
     var notes = sanitize(req.body.notes);
     if (notes == "") {
       notes = event.notes;
     }
+
     event = await Event.findOneAndUpdate(
       {_id: eventID},
       {
         title: title,
         location: location,
         type: type,
-        start: start,
-        end: end,
-        repeat: repeat,
-        alert: alert,
+        start: new Date(start),
+        end: new Date(end),
+        alert: new Date(alert),
         notes: notes,
       },
       { new: true }

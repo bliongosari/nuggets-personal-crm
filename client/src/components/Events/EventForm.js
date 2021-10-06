@@ -24,6 +24,13 @@ function EventForm() {
   const [flag, setFlag] = useState(false);
 
   const addEvents = async (e) => {
+    if (new Date(allField.start) > new Date(allField.end)){
+      setMessage("End date must be after start date")
+    }
+    else if (allField.title === "" || !allField.title){
+      setMessage("Event name must not be empty")
+    } 
+    else {
     api({
       method: "POST",
       url: "/api/events/create",
@@ -34,6 +41,7 @@ function EventForm() {
           setevents([...events, field]);
           setField("");
           refreshPage();
+          setMessage("")
         } else {
           setFailed(true);
         }
@@ -44,6 +52,8 @@ function EventForm() {
         setFlag(true);
         setFailed(true);
       });
+            
+    }
   };
 
   const SuccessMsg = () => <Alert variant="success">Sucessfully Added</Alert>;
@@ -86,8 +96,9 @@ function EventForm() {
       <div className="addevents">
         <h2 className="add-title">Add a new event</h2>
         <h3 className = "add-details">Event Details</h3>
+
         <form>
-          <label style={{ color: "red" }}> {message}</label>
+          <h5 style={{ textAlign:"center", color: "red" }}> {message}</h5>
           <label> Event Name: </label>
           <br></br>
           <input name="title" onChange={changeHandler} required={true} />

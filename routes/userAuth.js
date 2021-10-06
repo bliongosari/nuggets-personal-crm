@@ -27,6 +27,63 @@ router.post("/sign-up", userController.signUp);
 
 router.post("/login", userController.login);
 
+router.get('/verify/:id', userController.verify);
+
+router.post("/edit", auth.authenticateToken, async (req, res) => {
+  try {
+    var firstname = sanitize(req.body.firstname);
+    var lastname = sanitize(req.body.lastname);
+    var id = sanitize(req.user.id);
+    var changes = {
+      firstname: firstname,
+      lastname: lastname
+    }
+    await User.findByIdAndUpdate(id, changes);
+    return res.status(200).json({
+      message: "Successfully edited",
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(403).json({
+      message: "Failed to edit event. Try again.",
+    });
+  }
+});
+
+router.post("/changePassword", auth.authenticateToken, async (req, res) => {
+  try {
+    var password = sanitize(req.body.password);
+    var old = sanitize(req.body.oldPassword);
+    var id = sanitize(req.user.id);
+    const hashedpassword = await bcrypt.hash(password, 10);
+    var changes = {
+      password: hashedpassword
+    }
+    const user = await User.findById(id);
+    //const user = userAll[0];
+    bcrypt.compare(old, user.password, async (err, isMatch) => {
+      if (err) {
+        return res.status(111).json({ message: "Failed to change password. Try again." });
+      }
+    if (isMatch) {
+      await User.findByIdAndUpdate(id, changes);
+      return res.status(200).json({
+        message: "Successfully changed",
+      });
+    }
+    else {
+      return res.status(111).json({ message: "Password incorrect" });
+    }
+  });
+  } catch (e) {
+    console.log(e);
+    return res.status(403).json({
+      message: "Failed to change password. Try again.",
+    });
+  }
+});
+
+
 router.get("/numDetails", auth.authenticateToken, async (req, res) => {
         try {
           const contacts = await Contact.find({ user_id: req.user.id });

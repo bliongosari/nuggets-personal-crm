@@ -7,12 +7,24 @@ const router = express.Router();
 const jwtdecode = require("jwt-decode");
 const auth = require("../middleware/auth");
 const sanitize = require("mongo-sanitize");
-
+const os = require('os');
 const regexPassword = new RegExp(/(?=.*\d)(?=.*[a-zA-Z]).{8,}/);
 const regexText = new RegExp(/[a-zA-Z ]+/);
 const regexEmail = new RegExp(/(\w\.?)+@[\w\.-]+\.\w+/);
 const regexDigit = new RegExp(/\d+/);
 const regexAntiJS = new RegExp(/[^;<>]+/);
+const path = require('path');
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+       user: process.env.EMAIL_USERNAME,
+       pass: process.env.EMAIL_PASSWORD,
+    },
+});
+
+///const verify = 
 
 const signUp = async (req, res) => {
   if (
@@ -63,6 +75,15 @@ const signUp = async (req, res) => {
                 .status(400)
                 .json({ message: "Sign up failed. Try Again" });
             } else {
+              const verificationToken = user.generateVerificationToken();
+              const url = (os.hostname().indexOf("local") > -1)
+              ? `http://localhost:8080/api/user/verify/${verificationToken}`
+              : `https://nuggets-personal-crm.azurewebsites.net/api/user/verify/${verificationToken}`
+              transporter.sendMail({
+                to: req.body.email,
+                subject: 'Verify Account',
+                html: `Click <a href = '${url}'>here</a> to confirm your email.`
+              })
               return res
                 .status(200)
                 .json({ message: "Successfully signed up" });
@@ -101,10 +122,16 @@ const login = async (req, res) => {
       const user = userAll[0];
       bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
         if (err) {
-          console.log("error");
+          // console.log("error");
           return res.status(111).json({ message: "Password incorrect" });
         }
         if (isMatch) {
+          if(!user.verified){
+            return res.status(403).send({ 
+                  message: "Verify your Account." 
+            });
+          }
+
           const token = auth.generateToken(user._id);
           return res.status(200).json({
             success: true,
@@ -134,6 +161,49 @@ const getInfo = async (req, res) => {
     return res.status(401).json({ message: "No user" });
   }
 };
+
+exports.verify = async (req, res) => {
+  console.log(req.params);
+  const token = req.params.id
+  if (!token) {
+    return res.sendFile(path.join(__dirname, '/token_fail.html'));
+      // return res.status(422).send({ 
+      //      message: "Missing Token" 
+      // });
+  }
+  // Step 1 -  Verify the token from the URL
+  let payload = null
+  try {
+      payload = jwt.verify(
+         token,
+         process.env.JWT_SECRET
+      );
+  } catch (err) {
+    return res.sendFile(path.join(__dirname, '/token_fail.html'));
+    //return res.status(500).send(err);
+  }
+  try{
+      // Step 2 - Find user with matching ID
+      const user = await User.findOne({ _id: payload.ID }).exec();
+      if (!user) {
+        return res.sendFile(path.join(__dirname, '/token_fail.html'));
+        //  return res.status(404).send({ 
+        //     message: "User does not  exists" 
+        //  });
+      }
+      // Step 3 - Update user verification status to true
+      user.verified = true;
+      await user.save();
+      return res.sendFile(path.join(__dirname, '/token_sucess.html'));
+
+      // return res.status(200).send({
+      //       message: "Account Verified"
+      // });
+   } catch (err) {
+      return res.sendFile(path.join(__dirname, '/token_fail.html'));
+      //return res.status(500).send(err);
+   }
+}
 
 module.exports.verifyToken = verifyToken;
 module.exports.signUp = signUp;
