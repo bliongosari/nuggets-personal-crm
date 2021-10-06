@@ -3,6 +3,11 @@ import "./Modal.css";
 import axios from "axios";
 import api from "../../config/axiosConfig.js";
 import Cookies from "js-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+const eyeSlash = <FontAwesomeIcon icon={faEyeSlash} />;
 
 //export function
 export default function SignUpModal() {
@@ -13,6 +18,9 @@ export default function SignUpModal() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState();
   const [message, setMessage] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
+
 
   const sign_up = (user) => {
     api({
@@ -129,7 +137,7 @@ export default function SignUpModal() {
 
               <div className="emailbox">
                 <input
-                  type="password"
+                  type={passwordShown ? "text": "password"}
                   placeholder="  CREATE PASSWORD  | Must contain atleast 8 characters with one digit, and one character"
                   name="password"
                   pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}"
@@ -139,11 +147,12 @@ export default function SignUpModal() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 ></input>
+                                <i className = "eyeBtn" style ={{marginLeft: "-40px", width: "40px"}} onClick = {() => setPasswordShown(!passwordShown)}> {passwordShown ? eye: eyeSlash}</i>
               </div>
 
               <div className="emailbox">
                 <input
-                  type="password"
+                  type={passwordConfirmShown ? "text": "password"}
                   placeholder="  CONFIRM PASSWORD"
                   name="confirm-password"
                   pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}"
@@ -153,6 +162,7 @@ export default function SignUpModal() {
                   value={passwordConfirmation}
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
                 ></input>
+                <i className = "eyeBtn" style ={{marginLeft: "-40px", width: "40px"}} onClick = {() => setPasswordConfirmShown(!passwordConfirmShown)}> {passwordConfirmShown ? eye: eyeSlash}</i>
               </div>
 
               <div className="confirmationbox">

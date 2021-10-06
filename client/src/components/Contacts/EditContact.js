@@ -121,7 +121,7 @@ function EditContact(props) {
             onChange={handleBirthdayChange}
             required={true}
             name="birthday"
-            type="Date" 
+            type="date"
           />
           </div>
         </div>

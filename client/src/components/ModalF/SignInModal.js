@@ -3,6 +3,11 @@ import "./Modal.css";
 import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import api from "../../config/axiosConfig.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+const eyeSlash = <FontAwesomeIcon icon={faEyeSlash} />;
 //import { login, logout } from "../../redux/slices/userSlice";
 
 export default function SignInModal() {
@@ -11,6 +16,7 @@ export default function SignInModal() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useHistory();
+  const [passwordShown, setPasswordShown] = useState(false);
 
   const sign_in = (user) => {
     api({
@@ -68,7 +74,7 @@ export default function SignInModal() {
               <h2 style={{ color: "red" }}> {message}</h2>
               <h2>LOG IN</h2>
             </div>
-
+{/* 
             <div className="logInGoogle">
               <button className="continue-btn">Continue with Google</button>
             </div>
@@ -77,7 +83,7 @@ export default function SignInModal() {
               <hr></hr>
               <h3>OR</h3>
               <hr></hr>
-            </div>
+            </div> */}
             <form onSubmit={requestLogin}>
               <div className="emailbox">
                 <input
@@ -93,13 +99,15 @@ export default function SignInModal() {
 
               <div className="emailbox">
                 <input
-                  type="password"
+                  type= {passwordShown ? "text": "password"}
                   placeholder="   PASSWORD"
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 ></input>
+              
+                <i className = "eyeBtn" style ={{marginLeft: "-40px", width: "40px"}} onClick = {() => setPasswordShown(!passwordShown)}> {passwordShown ? eye: eyeSlash}</i>
               </div>
 
               <div className="submit-div">

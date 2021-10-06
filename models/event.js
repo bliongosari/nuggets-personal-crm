@@ -12,7 +12,7 @@ const eventSchema = new Schema({
     required: true,
   },
   location: {
-    type: [Number],
+    type: String,
   },
   type: {
     type: String,

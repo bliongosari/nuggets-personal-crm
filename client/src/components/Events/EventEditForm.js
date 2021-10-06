@@ -6,6 +6,8 @@ import { Alert } from "react-bootstrap";
 import { props } from "bluebird";
 
 function EventEditForm(props) {
+  
+
   const [allField, setAllFields] = useState({
     title: props.event.title,
     location: props.event.location,
@@ -16,6 +18,13 @@ function EventEditForm(props) {
     // repeat: props.event.repeat,
     alert: props.event.alert,
   });
+
+
+  const changeToTime = (data) => {
+    const start = new Date(data);
+    start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
+    return start.toISOString().slice(0,16);
+  }
 
   const [field, setField] = useState("");
   const [events, setevents] = useState([]);
@@ -108,15 +117,18 @@ function EventEditForm(props) {
           <label> Time: </label>
           <br></br>
           <input
-            value={allField["start"]}
+            // value={allField["start"]}
             onChange={changeHandler}
             name="start"
+            value = {changeToTime(allField.start)}
             type="datetime-local" 
           /> to
           <input
-            value={allField["end"]}
+            // value={allField["end"]}
             name="end"
             type="datetime-local"
+            value = {changeToTime(allField.end)}
+            placeholder={new Date(props.event.end)}
             onChange={changeHandler}
           />
           {/* <br></br>
