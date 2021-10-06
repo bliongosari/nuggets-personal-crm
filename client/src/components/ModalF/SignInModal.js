@@ -17,6 +17,7 @@ export default function SignInModal() {
   const [message, setMessage] = useState("");
   const history = useHistory();
   const [passwordShown, setPasswordShown] = useState(false);
+  const [forgot, setForgot] = useState(false);
 
   const sign_in = (user) => {
     api({
@@ -51,6 +52,16 @@ export default function SignInModal() {
   };
 
   if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+
+  const toggleForgot = () => {
+    setForgot(!forgot);
+  };
+
+  if (forgot) {
     document.body.classList.add("active-modal");
   } else {
     document.body.classList.remove("active-modal");
@@ -121,13 +132,45 @@ export default function SignInModal() {
 
               <div className="submit">
                 <div className="submit-div">
-                  <input
-                    className="submit-btn"
-                    type="submit"
-                    value="FORGET PASSWORD"
-                    id="forget-password"
-                  ></input>
+                <button onClick={toggleForgot} className="submit-btn">
+                  FORGET PASSWORD
+                </button>
                 </div>
+
+                {forgot && (
+                  <div className="modal2">
+                    {/* <div onClick={toggleForgot} className="overlay"></div> */}
+
+                    <div className="modal2-content">
+                      <div className="headingcomp2">
+                        <h2>Forgot Password</h2>
+                        <hr></hr>
+                      </div>
+
+                      <form>
+                        <div className="emailbox2">
+                          <h3>Enter your email address and we will send you an email with password reset confirmations.</h3>
+                          <input
+                            placeholder="   EMAIL ADDRESS"
+                          ></input>
+                        </div>
+
+                        <div className="submit-div">
+                          <input
+                            className="submit-btn2"
+                            type="submit"
+                            value="CONTINUE "
+                            id="submit"
+                          ></input>
+                        </div>
+
+                          <div className="closebutton">
+                            <img alt="" src="../../close.svg" onClick={toggleForgot}></img>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                )}
 
                 <div className="closebutton">
                   <img alt="" src="../../close.svg" onClick={toggleModal}></img>
