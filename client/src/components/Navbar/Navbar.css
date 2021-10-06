@@ -5,8 +5,8 @@
   --primary-blue: #3466aa;
   --secondary-blue: #114084;
   --tertiary-blue: #82b7dc;
-  --fourth-blue: #DEECFF;
-  --fifth-blue: #D2DEED;
+  --fourth-blue: #deecff;
+  --fifth-blue: #d2deed;
   --primary-black: #1c1c1c;
   --primary-white: #f1f1f1;
   --logo-font: "AbeeZee";
@@ -119,7 +119,7 @@
   z-index: 10;
 }
 
-.dropdown-content a{
+.dropdown-content a {
   font-family: "Urbanist";
   font-weight: bolder;
   letter-spacing: 1.5px;
@@ -130,7 +130,7 @@
   display: block;
 }
 
-.dropdown-content1 a{
+.dropdown-content1 a {
   font-family: "Urbanist";
   font-weight: bolder;
   letter-spacing: 1.5px;
@@ -177,8 +177,8 @@ hr {
 }
 
 .arrow-up {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   margin-top: 7px;
   margin-left: 6px;
   border-left: 5px solid transparent;
@@ -188,8 +188,8 @@ hr {
 }
 
 .arrow-up2 {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   margin-top: 5px;
   margin-left: 8px;
   border-left: 5px solid transparent;
@@ -237,7 +237,7 @@ hr {
   margin-left: 16.5px;
 }
 
-.sidebar-container span{
+.sidebar-container span {
   text-align: left;
   align-items: left;
   position: fixed;
@@ -259,4 +259,98 @@ hr {
 .sidebar-container:hover {
   border-radius: 20px;
   margin-left: 10px;
+}
+
+.logout {
+  padding-left: 8px;
+  padding-bottom: 8px;
+}
+
+.logout img {
+  padding-top: 4px;
+}
+
+.logout-header {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: var(--primary-blue);
+  text-align: center;
+  font-family: "Urbanist";
+  line-height: 25px;
+}
+
+.logout-button {
+  padding-top: 0%;
+  margin-top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.butttonn {
+  font-family: var(--button-font);
+  border-radius: 35px;
+  font-size: 100%;
+  width: 50%;
+  font-weight: bolder;
+  color: white;
+  background-color: var(--primary-blue);
+  letter-spacing: 1.5px;
+  border: none;
+  text-align: center;
+  margin: auto;
+  padding: 5px;
+  margin-top: 0;
+  box-shadow: 5px 5px 5px #888888;
+  cursor: pointer;
+  margin-bottom: 10%;
+}
+
+.butttonn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
+
+.logout-header {
+  padding-top: 40px;
+  font-size: 3vh;
+  font-weight: 300;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: var(--primary-blue);
+  text-align: center;
+  font-family: "AbeeZee";
+  font-family: "Urbanist";
+  line-height: 25px;
+}
+
+.logout-header2 {
+  padding-top: 15px;
+  font-size: 2.5vh;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  color: var(--primary-blue);
+  text-align: center;
+  font-family: "Urbanist";
+  line-height: 25px;
+}
+
+.logout-button {
+  padding-top: 25px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 20% 80%;
+  text-align: center;
+  padding-bottom: 20px;
 }
