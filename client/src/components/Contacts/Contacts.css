@@ -253,6 +253,32 @@ hr {
   margin-right: 1%;
 }
 
+.searchbarr {
+  margin-left: 7.5%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: var(--tertiary-blue);
+  margin-bottom: 2%;
+}
+
+.searchbarr img {
+  width: 2%;
+  background: rgba(52, 102, 170, 0.1);
+  padding: 0.8%;
+}
+
+.searchbarr input {
+  width: 83%;
+  letter-spacing: 1.5px;
+  font-size: 100%;
+  font-family: "Urbanist";
+  font-weight: bold;
+  background: rgba(52, 102, 170, 0.1);
+  border: none;
+  padding: 0.7%;
+}
+
 @media screen and (max-width: 320px) {
   .searchbarr img {
     width: 10%;
