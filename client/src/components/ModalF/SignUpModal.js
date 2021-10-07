@@ -75,7 +75,7 @@ export default function SignUpModal() {
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
 
-          <div className="modal-content">
+          <div className="modalcontent3">
             <div className="headingcomp">
               <img alt="" src="../../person.svg" onClick={toggleModal}></img>
               <h2 style={{ color: "red" }}> {message}</h2>
@@ -174,7 +174,7 @@ export default function SignUpModal() {
 
               <div class="submit-div">
                 <input
-                  class="submit-btn"
+                  class="submit-btn3"
                   type="submit"
                   value="CREATE ACCOUNT"
                   id="submit"
