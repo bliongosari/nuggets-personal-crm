@@ -31,6 +31,7 @@ export default function Journal() {
   });
   const [field, setField] = useState("");
   const [journals, setJournals] = useState([]);
+  const [originalJournals, setOriginalJournals] = useState([]);
   const [dates, setDates] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,7 @@ export default function Journal() {
   const [searchedData, setSearchedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false)
   const [temp, setTemp] =useState([]);
+  const [q, setQ] = useState("");
 
   const formStyle = {
     content: {
@@ -113,6 +115,7 @@ export default function Journal() {
       .then((res) => {
         if (res.status === 200) {
           setJournals(res.data.journals);
+          setOriginalJournals(res.data.journals);
           setDates(res.data.dates);
           setSorting("Sort by: Date: Newest to Oldest");
           setLoading(false);
@@ -139,26 +142,34 @@ export default function Journal() {
     } = event;
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch(q);
+    }
+  }
+
   const handleSearch = (e) => {
     setSearchedValue(e.target.value);
     setIsSearching(true)
     if (e.target.value.length > 0){
       if (isSearching) {
-        let value = (e.target.value).toLowerCase();
+        let value = e.target.value.toLowerCase();
         let result = [];
-        result = temp.filter((data) => {
-          return data.full_name.toLowerCase().search(value) !== -1;
-          });
-          if (result){
-            query.data.journals = result;
-          }
+        result = temp.filter((journals) => {
+          return (journals.title.toLowerCase().search(value) !== -1 || 
+          journals.description.toLowerCase().search(value) !== -1);
+        });
+        if (result){
+          setJournals(result);
+        }
       }
       else {
-        setTemp(query.data.journals);
+        setTemp(originalJournals);
+        setJournals(originalJournals);
       }
     }
     else {
-      query.data.journals = temp;
+      setJournals(originalJournals);
       setIsSearching(false)
     }
   }
@@ -217,6 +228,13 @@ export default function Journal() {
                   &#65291;
                   <span> UPLOAD A JOURNAL</span>
                 </button>
+              </div>
+              <div className="search-journal-bar">
+                <img alt="search" src="../../searchbar.svg"></img>
+                <input type="search" 
+                value ={searchedValue}
+                onChange={handleSearch}
+                placeholder="SEARCH JOURNAL"></input>
               </div>
               <div className="sortJournal">
                 <button type="button" autocomplete="off" readonly="readonly" role="button" 

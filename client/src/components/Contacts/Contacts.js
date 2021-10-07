@@ -93,6 +93,8 @@ function Contacts() {
         result = temp.filter((data) => {
           return data.full_name.toLowerCase().search(value) !== -1;
           });
+          console.log(temp);
+          console.log(result);
           if (result){
             query.data.contacts = result;
           }
@@ -155,7 +157,14 @@ function Contacts() {
         {query.isError && <p> ERROR COULD NOT REACH SERVER </p>}
         {query.isSuccess &&
         <div>
-
+      
+      <div className="searchbarr">
+        <img alt="search" src="../../searchbar.svg"></img>
+        <input type="search" 
+        value ={searchedValue}
+        onChange={handleSearch}
+        placeholder="SEARCH CONTACTS"></input>
+      </div>
       <div className="addcontactsdiv">
         <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
           <button className="addnewbtn">

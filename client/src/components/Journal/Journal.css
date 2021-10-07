@@ -257,8 +257,8 @@ input {
 }
 .sortJournal {
   margin: auto;
-  margin-top: 15px;
   width:90%;
+  margin-top: 5px;
 }
 .sort-by-button {
   height: 30px;
@@ -266,6 +266,11 @@ input {
   margin-right: 10px;
   margin-left: auto;
 
+}
+.search-journal-bar {
+  margin: auto;
+  margin-top: 15px;
+  width:90%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -290,8 +295,13 @@ input {
   .sortJournal {
     max-width:90%;
     margin-left: 10%;
-    margin-top: 15px;
   }
+  .search-journal-bar{
+    max-width:90%;
+    margin-left: 10%;
+    margin-top: 0px;
+  }
+    
 }
 @media screen and (max-width: 550px) {
   .upload-btn span {
@@ -306,6 +316,7 @@ input {
   .journal-details h2 {
     font-size: 90%;
   }
+  
 }
 
 @media screen and (max-width: 450px) {
@@ -315,7 +326,10 @@ input {
   }
   .sortJournal {
     max-width:85%;
-    margin-left: 20%;
-    margin-top: 15px;
+    margin-left: 15%;
+  }
+  .search-journal-bar{
+    max-width:85%;
+    margin-left: 15%;
   }
 }
