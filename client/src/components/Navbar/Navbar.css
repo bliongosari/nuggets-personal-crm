@@ -256,6 +256,10 @@ hr {
   transition-delay: 2s;
 }
 
+.sidebar-container button {
+  background: none;
+}
+
 .sidebar-container:hover {
   border-radius: 20px;
   margin-left: 10px;

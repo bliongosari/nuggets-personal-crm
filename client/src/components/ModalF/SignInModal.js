@@ -79,7 +79,7 @@ export default function SignInModal() {
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
 
-          <div className="modal-content">
+          <div className="modalcontent">
             <div className="headingcomp">
               <img alt="" src="../../person.svg" onClick={toggleModal}></img>
               <h2 style={{ color: "red" }}> {message}</h2>
@@ -141,7 +141,7 @@ export default function SignInModal() {
                   <div className="modal2">
                     {/* <div onClick={toggleForgot} className="overlay"></div> */}
 
-                    <div className="modal2-content">
+                    <div className="modalcontent2">
                       <div className="headingcomp2">
                         <h2>Forgot Password</h2>
                         <hr></hr>

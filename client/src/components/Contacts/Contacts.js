@@ -165,6 +165,7 @@ function Contacts() {
         onChange={handleSearch}
         placeholder="SEARCH CONTACTS"></input>
       </div>
+      
       <div className="addcontactsdiv">
         <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
           <button className="addnewbtn">
