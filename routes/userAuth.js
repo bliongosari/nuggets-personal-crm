@@ -4,6 +4,7 @@ const User = require("../models/user");
 const Journal = require("../models/journal");
 const Events = require("../models/event");
 const Contact = require("../models/contact");
+const Reminder = require("../models/reminder");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
@@ -101,22 +102,27 @@ router.get("/numDetails", auth.authenticateToken, async (req, res) => {
 
 router.get("/notifications", auth.authenticateToken, async (req, res) => {
   try {
-    const contacts = await Contact.find({ user_id: req.user.id });
+    const contacts = await Reminder.find({ belongs_to: req.user.id });
     const events = await Events.find({ user_id: req.user.id });
     let editedContacts = [];
+    let editedEvents = [];
     for (var i =0; i < contacts.length; i++) {
-      if (typeof contacts[i].alert !== "undefined"){
-        editedContacts.push(contacts[i])
+      if (contacts[i].alert && new Date(contacts[i].alert) >= Date.now()){
+        editedEvents.push(contacts[i])
+      }
+      else if (contacts[i].alert && new Date(contacts[i].alert) < Date.now()){
+        editedOutstanding.push(contacts[i])
       }
     }
-    let editedEvents = [];
+
     let eventsOutstanding = []
     for (var i =0; i < events.length; i++) {
-      if (events[i].alert <= Date.now() && events[i].alert != new Date(0) && events[i].alert !== "None" && !events[i].notification_deleted){
-        if (new Date(events[i].start) < Date.now()){
+      // console.log(events[i]);
+      if (events[i].alert > new Date(0) && events[i].alert !== "None" && !events[i].notification_deleted){
+        if (new Date(events[i].start) < Date.now() && !events[i].notification_opened){
           eventsOutstanding.push(events[i])
         }
-        else {
+        else if (new Date(events[i].start) > Date.now()) {
           editedEvents.push(events[i])
         }
 
@@ -124,11 +130,11 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     }
 
     const sortedEvents = editedEvents.sort(
-      (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
+      (obj1, obj2) => new Date(obj2.alert) - new Date(obj1.alert)
     );
 
     const sortedOutstandingEvents = eventsOutstanding.sort(
-      (obj1, obj2) => new Date(obj2.start) - new Date(obj1.start)
+      (obj1, obj2) => new Date(obj2.alert) - new Date(obj1.alert)
     );
     return res
       .status(200)

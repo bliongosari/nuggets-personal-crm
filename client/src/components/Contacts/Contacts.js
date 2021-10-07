@@ -147,6 +147,7 @@ function Contacts() {
     }
   }
 
+
   const handleSortChange = (e) => {
     query.data.contacts = filter(query.data.contacts, e.target.value);
   };

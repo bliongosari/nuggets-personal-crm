@@ -65,18 +65,21 @@ function EventDetail(props) {
       });
   };
 
+  function parseDate(notif) {
+    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + new Date(notif).getHours() + ":" + new Date(notif).getMinutes();
+  }
+
   return (
     <div>
       <div className="event-details">
         <h2 className="detail-title"> Event Details </h2>  
         <h3 className="event-name"> Event Name: {props.event.title}</h3>
-        <h3> Location: {props.event.location}</h3>
-        <h3> Type: {props.event.type}</h3>
-        <h3> Alert: {props.event.alert}</h3>
+        <h3> Location: {props.event.location ? props.event.location : "-"}</h3>
+        <h3> Type: {props.event.type ? props.event.type: "-"}</h3>
         <h3> Date start: {start} </h3>
         <h3> Date end: {end} </h3>
         {/* <h3> Repeat: {props.event.repeat} </h3> */}
-        <h3> Alert: {props.event.alert} </h3>
+        <h3> Alert: {new Date(props.event.alert) > new Date(0) ? parseDate(props.event.alert) : "None"} </h3>
         <button className="edit-btn" onClick={openEventModal}> Edit Event </button>
         <button className="delete-btn" onClick={deleteEvent}> Delete Event </button>
       </div>

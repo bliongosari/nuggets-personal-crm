@@ -70,7 +70,7 @@ function NavbarHome() {
     })
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.eventsNotif);
+          // console.log(res.data.eventsNotif);
           setPastNotifications([...res.data.pastNotif]);
           setNotifications([...res.data.eventsNotif]);
         } else {
@@ -134,6 +134,7 @@ function NavbarHome() {
         if (res.status === 200) {
           let currentNotif = arrayRemove(notifications, notif);
           setNotifications([...currentNotif]);
+          showDropdownNotif(true);
         } else {
           console.log("error")
         }
@@ -142,6 +143,53 @@ function NavbarHome() {
         console.log("error2")
         //setFailed(true);
       });
+  }
+
+  const openContactNotif = (notif) => {
+    setNotifSelected(notif);
+    setEventDetail(true);
+    console.log(notif);
+    if (!notif.notification_opened) {
+      api({
+        method: "POST",
+        url: "/api/contacts/open-notif/" + notif._id
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            arrayEditOpened(notifications, notif);
+          } else {
+            console.log("error")
+          }
+        })
+        .catch((err) => {
+          console.log("error2")
+          //setFailed(true);
+        });
+    }
+  }
+
+  const deleteContactNotif = (notif) => {
+    // alert(notif.full_name);
+    // setNotifSelected(notif);
+    // setEventDetail(true);
+    // console.log(notif);
+      api({
+        method: "POST",
+        url: "/api/contacts/delete-notif/" + notif._id
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            let currentNotif = arrayRemove(notifications, notif);
+            setNotifications([...currentNotif]);
+            window.location.reload(false);
+          } else {
+            console.log("error")
+          }
+        })
+        .catch((err) => {
+          console.log("error2")
+          //setFailed(true);
+        });
   }
 
   function arrayRemove(arr, item) { 
@@ -153,6 +201,14 @@ function NavbarHome() {
   function arrayEditOpened(arr, item) { 
     let index = arr.findIndex((itm => itm._id === item._id));
     arr[index].notification_opened = true;
+  }
+
+  function parseDate(notif) {
+    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + new Date(notif).getHours() + ":" + new Date(notif).getMinutes();
+  }
+
+  function parseDateContact(notif) {
+    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
   }
 
 
@@ -231,7 +287,7 @@ function NavbarHome() {
                 &&  <span>No Notification</span>}
                 {pastNotifications.length > 0 &&
                   pastNotifications.map((notif) => (
-                    notif.title !== "undefined" ? 
+                    notif.title !== undefined ? 
                     // passed events labeled red
                     <div>
                       <Button>
@@ -242,7 +298,7 @@ function NavbarHome() {
                           <Stack direction="row" spacing={1} padding>
                             <ListItemText
                              onClick = {() => openEvent(notif)}
-                              primary={notif.title}
+                              primary={"Event: " + notif.title}
                               secondary={
                                 <React.Fragment>
                                   <Typography
@@ -253,7 +309,7 @@ function NavbarHome() {
                                   >
                                     {new Date(notif.start).toDateString()}
                                   </Typography>
-                                  {<br></br>} Alert at: {notif.alert}
+                                  {<br></br>} Alert at: {parseDate(notif.alert)}
                                 </React.Fragment>
                               }
                             />
@@ -269,11 +325,12 @@ function NavbarHome() {
                     {/* add onClick={openEvent} to the clicked event */}
                     <Button>
                       <ListItem alignItems="flex-start">
-                        <ListItemAvatar>
+                        <ListItemAvatar onClick = {() => openContactNotif(notif)}>
                             <img alt="Event" src="/../../contacts.svg" className="avatarimg"/>
                         </ListItemAvatar>
                         <Stack direction="row" spacing={1}>
                           <ListItemText
+                          onClick = {() => openContactNotif(notif)}
                             primary="Contact"
                             secondary={
                               <React.Fragment>
@@ -285,12 +342,12 @@ function NavbarHome() {
                                 >
                                   {notif.full_name}
                                 </Typography>
-                                {<br></br>}Alert at: {notif.alert}
+                                {<br></br>}Alert at: {parseDateContact(notif.alert)}
                               </React.Fragment>
                             }
                           />
                           {/* add onClick={deleteNotif} to the clicked event */}
-                          <IconButton aria-label="delete" size="small">
+                          <IconButton onClick = {() => deleteContactNotif(notif)} aria-label="delete" size="small"  onClick = {() => deleteNotif(notif)}>
                             <DeleteIcon fontSize="inherit"/>
                           </IconButton>
                         </Stack>
@@ -301,7 +358,7 @@ function NavbarHome() {
                   ))}
                   {notifications.length > 0 && 
                   notifications.map((notif) => (
-                    notif.title !== "undefined" ? 
+                    notif.title !== undefined ? 
                     // passed events labeled grey for not opened green for opened
                     <div>
                       <Button>
@@ -312,7 +369,7 @@ function NavbarHome() {
                           <Stack direction="row" spacing={1} padding>
                             <ListItemText
                              onClick = {() => openEvent(notif)}
-                              primary={notif.title}
+                              primary={"Event: " + notif.title}
                               secondary={
                                 <React.Fragment>
                                   <Typography
@@ -323,7 +380,7 @@ function NavbarHome() {
                                   >
                                     {new Date(notif.start).toDateString()}
                                   </Typography>
-                                  {<br></br>} Alert at: {notif.alert}
+                                  {<br></br>}Alert at: {parseDate(notif.alert)}
                                 </React.Fragment>
                               }
                             />
@@ -338,34 +395,34 @@ function NavbarHome() {
                     <div>
                     {/* add onClick={openEvent} to the clicked event */}
                     <Button>
-                      <ListItem alignItems="flex-start">
-                        <ListItemAvatar>
-                            <img alt="Event" src="/../../contacts.svg" className="avatarimg"/>
-                        </ListItemAvatar>
-                        <Stack direction="row" spacing={1}>
-                          <ListItemText
-                            primary="Contact"
-                            secondary={
-                              <React.Fragment>
-                                <Typography
-                                  sx={{ display: 'inline' }}
-                                  component="span"
-                                  variant="body2"
-                                  color="text.primary"
-                                >
-                                  {notif.full_name}
-                                </Typography>
-                                {<br></br>}{notif.alert}
-                              </React.Fragment>
-                            }
-                          />
-                          {/* add onClick={deleteNotif} to the clicked event */}
-                          <IconButton aria-label="delete" size="small">
-                            <DeleteIcon fontSize="inherit"/>
-                          </IconButton>
-                        </Stack>
-                      </ListItem>
-                    </Button>
+                        <ListItem alignItems="flex-start" style ={{ border: notif.notification_opened ? "1px solid grey" : "1px solid green", padding: "0", width: "270px"}}>
+                          <ListItemAvatar onClick = {() => openContactNotif(notif)}>
+                              <img alt="Event" src="/../../events.svg" className="avatarimg"/>
+                          </ListItemAvatar>
+                          <Stack direction="row" spacing={1} padding>
+                            <ListItemText
+                             onClick = {() => openContactNotif(notif)}
+                              primary={"Contact"}
+                              secondary={
+                                <React.Fragment>
+                                  <Typography
+                                    sx={{ display: 'inline' }}
+                                    component="span"
+                                    variant="body2"
+                                    color="text.primary"
+                                  >
+                                    {(notif.full_name)}
+                                  </Typography>
+                                  {<br></br>}Alert at: {parseDateContact(notif.alert)}
+                                </React.Fragment>
+                              }
+                            />
+                            <IconButton onClick = {() => deleteContactNotif(notif)} style = {{zIndex: "2"}} aria-label="delete" size="small">
+                              <DeleteIcon fontSize="inherit"/>
+                            </IconButton>
+                          </Stack>
+                        </ListItem>
+                      </Button>
                     <Divider variant="offset" component="li" />
                   </div>
                   ))

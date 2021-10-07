@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Contact = require("../models/contact");
+const Reminder = require("../models/reminder");
 const auth = require("../middleware/auth");
 
 // get contacts
@@ -62,6 +63,23 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
   }
 });
 
+router.post("/addReminder", auth.authenticateToken, async (req, res) => {
+  try {
+    const contact = await Contact.findById(req.body.userID);
+    const reminder = new Reminder({
+      user_id: req.body.userID,
+      alert: new Date(req.body.alert),
+      full_name: contact.full_name,
+      belongs_to: req.user.id
+    });
+    await reminder.save();
+    return res.status(200).json({ message: "Successfully added" });
+  } catch (e) {
+    console.log(e);
+    return res.status(403).json({ message: "Failed to add reminder. Try again." });
+  }
+});
+
 // delete contact
 router.delete("/delete/:id", auth.authenticateToken, async (req,res) => {
   try {
@@ -86,5 +104,49 @@ router.put("/edit/:id", auth.authenticateToken, async(req, res) => {
     return res.status(403).json({ message: "Failed to edit contact. Try again." });
   }
 });
+
+
+router.post('/delete-notif/:id', auth.authenticateToken, async(req, res) => {
+  try {
+    var eventQueried = await Reminder.findOne({ _id: req.params.id });
+    if ((req.user.id == eventQueried.belongs_to)) {
+      const event = await Reminder.findOneAndDelete({ _id: req.params.id });
+      return res.status(200).json({
+        message: "Successfully deleted",
+      });
+    } else {
+      return res.status(403).json({
+        message: "You are not authorized",
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    return res
+      .status(403)
+      .json({ message: "Failed to delete event. Try again." });
+  }
+});
+
+router.post('/open-notif/:id', auth.authenticateToken, async(req, res) => {
+  try {
+    // console.log(req.params.id);
+    // var eventID = sanitize(req.params.id);
+    // console.log(eventID);
+    // console.log("yes");
+    const edited = await Reminder.findOneAndUpdate(
+      {_id: req.params.id},
+      {
+        notification_opened: true
+      }
+    );
+    //console.log(edited);
+    return res.status(200).json({
+      message: "Successfully opened",
+    });
+  } catch (e) {
+    return res.status(401).json({ message: "No user" });
+  }
+});
+
 
 module.exports = router;

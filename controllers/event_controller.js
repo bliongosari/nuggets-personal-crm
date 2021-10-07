@@ -50,7 +50,9 @@ const createEvent = async (req, res) => {
   const start = new Date(req.body.start);
   const end = new Date(req.body.end);
   try {
+
     const alertTime = getAlert(start, req.body.alert);
+    //console.log(alertTime);
     const event = new Event({
       user_id: req.user.id,
       title: req.body.title,
@@ -58,7 +60,6 @@ const createEvent = async (req, res) => {
       type: req.body.type,
       start: start,
       end: end,
-      repeat: req.body.repeat || "Never",
       alert: alertTime,
       notes: req.body.notes,
     });
