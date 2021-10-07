@@ -87,9 +87,9 @@ export default function SignUpModal() {
             </div>
 
             <div className="divider">
-              <hr></hr>
+              
               <h3>OR</h3>
-              <hr></hr>
+              
             </div>
 
             <form onSubmit={requestSignUp}>
