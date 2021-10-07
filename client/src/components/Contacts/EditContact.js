@@ -65,6 +65,7 @@ function EditContact(props) {
     setTags(
       typeof value === 'string' ? value.split(',') : value,
     );
+    console.log(tags);
   };
 
   const renderTags = (tags) => {
@@ -199,7 +200,7 @@ function EditContact(props) {
               preferred_name,
               birthday,
               relationship,
-              // tags,
+              tags,
               meeting_notes,
               description,
               email,

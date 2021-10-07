@@ -165,7 +165,7 @@ function ContactProfile(props) {
                         </div>
                         <div className="curr-contacts-container" >
                             <h2>Tags</h2>
-                            <h3>{contact.tags[0] || "-"}</h3>
+                            <h3>{contact.tags || "-"}</h3>
                         </div>
                         <div className="curr-contacts-container">
                             <h2>How we met:</h2>

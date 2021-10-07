@@ -21,8 +21,9 @@ const contactSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  tags:
-    [{type: Schema.ObjectId, ref: 'Tag'}],
+  tags: {
+    type: String,
+  },
   relationship: {
     type: String,
   },

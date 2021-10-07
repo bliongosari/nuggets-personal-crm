@@ -47,7 +47,7 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
       preferred_name: req.body.preferred_name,
       birthday: req.body.birthday,
       relationship: req.body.relationship,
-      tags: req.body.tags,
+      tags: renderTags(req.body.tags),
       meeting_notes: req.body.meeting_notes,
       description: req.body.description,
       email: req.body.email,
@@ -92,9 +92,23 @@ router.delete("/delete/:id", auth.authenticateToken, async (req,res) => {
   }
 });
 
+const renderTags = (tags) => {
+  let result = ""
+  for (var i=0; i< tags.length; i++) {
+    if (i !== 0){
+      result += "," + tags[i].name 
+    }
+    else {
+      result += tags[i].name
+    }
+  }
+  return result;
+}
+
 // edit contact
 router.put("/edit/:id", auth.authenticateToken, async(req, res) => {
   try {
+    req.body.tags = renderTags(req.body.tags);
     const contact = await Contact.findById(req.params.id);
     Object.keys(req.body).forEach((key) => {contact[key] = req.body[key]})
     await contact.save();

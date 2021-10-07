@@ -61,7 +61,6 @@
   padding-bottom: 0.3%;
   position: relative;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   transition: 0.2 ease;
 }
@@ -82,6 +81,9 @@
   position: relative;
   margin-left: auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: -20px;
 }
 
 .sortbtn {
@@ -116,7 +118,7 @@
 
 .current-contacts-headingss {
   display: grid;
-  grid-template-columns: 10% 30% 30% 30%;
+  grid-template-columns: 40% 30% 30%;
   transition: 0.2 ease;
   background-color: rgba(52, 102, 170, 0.1);
   margin-bottom: 1%;
@@ -173,9 +175,24 @@ hr {
   padding-left: 2%;
   transition: 0.2 ease;
   display: grid;
-  grid-template-columns: 10% 30% 30% 30%;
+  grid-template-columns: 40% 30% 30%;
   padding-top: 1%;
   padding-bottom: 0.5%;
+}
+
+.table-entry {
+  max-width: 90%;
+  max-height: 100%;
+  padding: 5px;
+  overflow: scroll;
+}
+
+.table-entryTags {
+  max-width: 95%;
+  max-height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .contact-name:hover {
@@ -208,6 +225,9 @@ hr {
 
 .summarytitle {
   display: flex;
+  margin-right: -20px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .summarytitle h2 {
@@ -293,25 +313,10 @@ hr {
     font-size: 70%;
   }
 
-  .sortbutton {
-    right: 15%;
-    margin-top: 5.5%;
-    width: 15%;
-    padding-top: 0.8%;
-  }
-
-  .sortbutton h1 {
-    font-size: 80%;
-  }
-
   .addcontactsdiv {
     width: 50%;
     margin-top: 0%;
     margin-bottom: 5%;
-  }
-
-  .sortbutton img {
-    width: 20%;
   }
 
   .current-contacts-headingss h1 {
@@ -342,7 +347,6 @@ hr {
 
   .current-contacts-headingss {
     display: grid;
-    grid-template-columns: 15% 25% 30% 30%;
   }
 
   .current-contacts-table {
@@ -379,31 +383,12 @@ hr {
     margin-bottom: 4%;
   }
 
-  .sortbutton {
-    right: 15%;
-    margin-top: 5.5%;
-    width: 15%;
-    padding-top: 0.8%;
-  }
-
-  .sortbutton h1 {
-    font-size: 80%;
-  }
-
-  .sortbutton img {
-    width: 20%;
-  }
-
   .current-contacts-headingss h1 {
     font-size: 50%;
     padding-left: 2%;
     margin-bottom: 5%;
   }
 
-  .current-contacts-headingss {
-    display: grid;
-    grid-template-columns: 15% 25% 30% 30%;
-  }
 
   .current-contacts-r h2 {
     font-size: 75%;
@@ -455,11 +440,6 @@ hr {
     font-size: 90%;
   }
 
-  .sortbutton {
-    right: 15%;
-    margin-top: 0.5%;
-  }
-
   .current-contacts-headingss h1 {
     font-size: 70%;
     padding-left: 2%;
@@ -505,6 +485,9 @@ hr {
   .navpagebutton {
     margin-top: 1.7%;
   }
+
+
+  
 
   .navpagebutton h1 {
     font-size: 75%;

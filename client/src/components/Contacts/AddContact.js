@@ -13,6 +13,41 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import "react-datepicker/dist/react-datepicker.css";
 import Icon from '@mui/material/Icon';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  root: {
+    // width: 200,
+    // "& .MuiOutlinedInput-input": {
+    //   color: "green"
+    // },
+    // "& .MuiInputLabel-root": {
+    //   color: "green"
+    // },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#114084"
+    },
+    "&:hover .MuiOutlinedInput-input": {
+      color: "#062d63"
+    },
+    "&:hover .MuiInputLabel-root": {
+      color: "#062d63"
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#062d63"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#062d63"
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#062d63"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#062d63"
+    }
+  }
+});
 
 const tagsQueried = [
   { name: 'Friends', color: "red"},
@@ -35,9 +70,12 @@ const MenuProps = {
 
 
 function AddContact() {
-
+  const classes = useStyles();
   const addContact = async (contact) => {
-    // console.log(contact);
+    if (full_name === "") {
+      alert("Full name cannot be empty")
+    }
+    else {
     api({
       method: "POST",
       url: "/api/contacts/add",
@@ -46,15 +84,18 @@ function AddContact() {
       .then(function (res) {
         if (res.status === 200) {
           window.location.replace("../contacts");
+          setMessage("");
         } else {
-          console.log("FAIL");
+          setMessage(res.data.message);
         }
       })
       .catch(function (error) {
-        console.log(error);
+        setMessage("Error in adding contact")
       });
+    }
   };
 
+  const [message, setMessage] = useState("")
   const [full_name, setFullName] = useState("");
   const [image, setImage] = useState("");
   const [preferred_name, setPrefName] = useState("");
@@ -66,6 +107,7 @@ function AddContact() {
   const [phone_number, setPhoneNumber] = useState("");
   const [linkedin, setLinkedIn] = useState("");
   const [twitter, setTwitter] = useState("");
+  const [imageName, setImageName] = useState("");
   const [tags, setTags] = useState([]);
 
   const handleBirthdayChange = (date) => {
@@ -73,7 +115,10 @@ function AddContact() {
   }
 
   const handleImageChange = (image) => {
-    setImage(image)
+    if (image && image[0]) {
+      let img = image[0];
+      setImage(URL.createObjectURL(img));
+    }
   }
   const handleChange = (event) => {
     const {
@@ -106,19 +151,24 @@ function AddContact() {
 
       {/* Form */}
       <div className="contacts-details-form">
+      <h4 style = {{color: "red"}}>{message}</h4>
         <div className="formtitle">
           <h1>Personal Details</h1>
           <hr></hr>
         </div>
 
-        <div className="profpic">
-          <img alt="plus" src="../../person-blue.svg"></img>
+        <div className="profpic" style = {{display: "flex", flexDirection: "column", alignItems: "center"}}>
+        <label style = {{color: "#114084", fontFamily: "AbeeZee"}}> Profile Pic</label>
+          {image === "" ? <img style = {{width: "100px", height: "100px"}} alt="plus" src="../../person-blue.svg"></img> : <img style = {{width: "125px", height: "125px", objectFit: "cover", borderRadius: "50%"}}alt="second" src={image}></img> } 
         </div>
 
-        <div className="attachimage">
-          <button className="attachhbtn">
-            <input type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
-          </button>
+        <div className="attachimage" style = {{display: "flex", flex:"flex-wrap", width: "40%", margin: "0 auto", alignItems: "center"}}>
+          {/* <button className="attachhbtn"> */}
+            <input style = {{margin: "0 auto", display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}} type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
+            <button className = "trashImage" onClick = {()=> setImage("")}>
+            <DeleteIcon style = {{color:"#114084"}}/>
+            </button>
+          {/* </button> */}
         </div>
 
         <div className="details">
@@ -151,7 +201,9 @@ function AddContact() {
 
         <div className="detail2">
           <h2>Tags:</h2>
-          <FormControl style={{width: "100%", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0"}}>
+          <FormControl 
+          className={classes.root}
+          variant ="outlined"style={{width: "100%", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0", color: "#114084"}}>
         <Select
           displayEmpty
           multiple
@@ -184,11 +236,6 @@ function AddContact() {
           <input type="text" onChange={(e) => setDescription(e.target.value)} />
         </div>
 
-        <div className="formtitle">
-          <h1>Communication</h1>
-          <hr></hr>
-        </div>
-
         <div className="details">
           <h2>Email Address:</h2>
           <input type="text" onChange={(e) => setEmail(e.target.value)} />
@@ -216,7 +263,7 @@ function AddContact() {
               preferred_name,
               birthday,
               relationship,
-              // tags,
+              tags,
               meeting_notes,
               description,
               email,

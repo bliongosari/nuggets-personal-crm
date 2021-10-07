@@ -68,8 +68,12 @@
   text-align: center;
 }
 
+.trashImage:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .profpic img {
-  width: 5%;
   justify-content: center;
   text-align: center;
 }

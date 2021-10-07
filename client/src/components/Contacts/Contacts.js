@@ -14,6 +14,43 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { LoopCircleLoading } from "react-loadingg";
 import Icon from '@mui/material/Icon';
+import CircleIcon from '@mui/icons-material/Circle';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  root: {
+    // width: 200,
+    // "& .MuiOutlinedInput-input": {
+    //   color: "green"
+    // },
+    // "& .MuiInputLabel-root": {
+    //   color: "green"
+    // },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#114084"
+    },
+    "&:hover .MuiOutlinedInput-input": {
+      color: "#062d63"
+    },
+    "&:hover .MuiInputLabel-root": {
+      color: "#062d63"
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#062d63"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#062d63"
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#062d63"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#062d63"
+    }
+  }
+});
+
+
 const Loading = () => <LoopCircleLoading />;
 
 // change when have tags from backend
@@ -39,6 +76,7 @@ const MenuProps = {
 };
 
 function Contacts() {
+  const classes = useStyles();
   const [tags, setTags] = useState([tagsQueried[0]]);
   const [page, setPage] = useState(1);
   const [sorting, setSorting] = useState("")
@@ -51,7 +89,7 @@ function Contacts() {
     staleTime: Infinity,
     onSuccess: (data) => {
       if (!sorting) {
-        data.contacts = filter(data.contacts, "Sort by: Date: Newest to Oldest");
+        data.contacts = filter(data.contacts, "Sort by: Date: New to Old");
       }
     }
   });
@@ -68,6 +106,20 @@ function Contacts() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  const filterData = (data) => {
+    if (tags.some(tag => tag.name === "All")) {
+      return data;
+    }
+    let arr = []
+    for (let tag of tags) {
+      arr.push(tag.name)
+    }
+    return data.filter(d => {
+      return d.tags && d.tags.split(",").some(x => arr.includes(x));
+    })
+  }
+
   const renderTags = (tags) => {
     let result = "";
     let tags1 = tags.filter((tag) => tag.name !== "undefined" );
@@ -79,7 +131,7 @@ function Contacts() {
         result += tags1[i].name
       }
     }
-    console.log(result);
+    // console.log(result);
     return result;
   }
 
@@ -93,8 +145,6 @@ function Contacts() {
         result = temp.filter((data) => {
           return data.full_name.toLowerCase().search(value) !== -1;
           });
-          console.log(temp);
-          console.log(result);
           if (result){
             query.data.contacts = result;
           }
@@ -114,13 +164,13 @@ function Contacts() {
     setSorting(key);
     let filteredData = data;
     switch(key) {
-      case "Sort by: Date: Oldest to Newest":
+      case "Sort by: Date: Old to New":
         filteredData = data.sort(
           (obj1, obj2) => new Date(obj1.createdOn) - new Date(obj2.createdOn)
         );
         return filteredData;
 
-      case "Sort by: Date: Newest to Oldest":
+      case "Sort by: Date: New to Old":
         filteredData = data.sort(
           (obj1, obj2) => new Date(obj2.createdOn) - new Date(obj1.createdOn)
         );
@@ -147,6 +197,18 @@ function Contacts() {
     }
   }
 
+  const tagsToArray = (tags) => {
+    let arr = tags.split(",");
+    console.log(arr)
+    let final = []
+    for (let tag of tagsQueried){
+      if (arr.includes(tag.name)){
+        final.push(tag)
+      }
+    }
+    console.log(final);
+    return final;
+  }
 
   const handleSortChange = (e) => {
     query.data.contacts = filter(query.data.contacts, e.target.value);
@@ -183,7 +245,7 @@ function Contacts() {
           <h1>{query.data.contacts ? query.data.contacts.length : 0} Contact{(query.data.contacts.length<1)||"s"}</h1>
         </div>
         <div className="sortbutton">
-      <FormControl style={{maxWidth: "95px", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0"}}>
+      <FormControl className={classes.root} style={{maxWidth: "95px", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0"}}>
         <Select
           displayEmpty
           multiple
@@ -202,15 +264,15 @@ function Contacts() {
           ))}
         </Select>
       </FormControl>
-      <FormControl style={{marginLeft: "10px", maxWidth: "180px", maxHeight: "30px", borderColor: "#114084" }}>
+      <FormControl className={classes.root} style={{marginLeft: "10px", maxWidth: "180px", maxHeight: "30px", borderColor: "#114084" }}>
           <Select
             renderValue={(selected) => selected}
             value={sorting}
             style = {{height: "30px" ,fontSize: "11px", color: "#114084"}}
             onChange={handleSortChange}
           >
-            <MenuItem value={"Sort by: Date: Newest to Oldest"}>Sort by: Date: Newest to Oldest</MenuItem>
-            <MenuItem value={"Sort by: Date: Oldest to Newest"}>Sort by: Date: Oldest to Newest</MenuItem>
+            <MenuItem value={"Sort by: Date: New to Old"}>Sort by: Date: New to Old</MenuItem>
+            <MenuItem value={"Sort by: Date: Old to New"}>Sort by: Date: Old to New</MenuItem>
             <MenuItem value={"Sort by: Contact: A-Z"}>Sort by: Contact: A-Z</MenuItem>
             <MenuItem value={"Sort by: Contact: Z-A"}>Sort by: Contact: Z-A</MenuItem>
           </Select>
@@ -222,7 +284,7 @@ function Contacts() {
       {/* Contacts Table */}
 
       <div className="current-contacts-headingss">
-          <h1>Avatar</h1>
+          {/* <h1>Avatar</h1> */}
           <h1>Contact</h1>
           <h1>Tags</h1>
           <h1>Date Added </h1>
@@ -230,15 +292,32 @@ function Contacts() {
 
       <div className="current-contacts-table">
         
-        {query.data.contacts.slice(currentShow,currentShow+6).map((contact, index) => (
+        {filterData(query.data.contacts).slice(currentShow,currentShow+6).map((contact, index) => (
           <Link to={{ pathname: `contact/${contact.full_name}`, state: { contact } }} style={{ textDecoration: 'none' }}>
           <div key={contact._id}>
             {index !== 0 && <hr className="line"></hr>}
             <div className="current-contacts-r">
-                <img alt="events" src="../../events.svg"></img>
+                {/* <div>
+                  <img alt="events" src="../../events.svg"></img>
+                </div> */}
+                <div className = "table-entry">
                 <h2 className ="contact-name"> {contact.full_name} </h2>
-                <h2>{contact.tags[0] || "-"}</h2>
+                </div>
+                <div className = "table-entryTags">
+                  {contact.tags ? 
+                  tagsToArray(contact.tags).map((d) => (
+                    <div>
+                    <CircleIcon style = {{color: d.color, margin: "0 0.5vw", fontSize: "11px"}}/>
+                     <span style = {{fontSize: "12px"}}>{d.name}</span> 
+                     </div>
+                  ))
+                  
+                  :  <span> { "-"}</span> }
+                </div>
+                <div className = "table-entry">
+
                 <h2>{contact.createdOn.slice(0,10)}</h2>
+                </div>
             </div>
           </div>
           </Link>
