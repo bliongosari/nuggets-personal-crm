@@ -18,9 +18,6 @@ const journalSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  files: {
-    type: [Buffer],
-  },
 });
 
 const Journal = mongoose.model("Journal", journalSchema);

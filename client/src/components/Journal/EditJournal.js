@@ -9,9 +9,7 @@ function EditJournal(props) {
     const[allField, setAllFields] = useState({
         title: props.journal.title,
         description: props.journal.title,
-        files: props.journal.files,
     });
-    const oldFiles = props.journal.files;
     const [field, setField] = useState("");
     const [journals, setjournals] = useState([]);
     const [message, setMessage] = useState("");
@@ -19,7 +17,7 @@ function EditJournal(props) {
     const [failed, setFailed] = useState(false);
     const [flag, setFlag] = useState(false);
     const [JournalModal, setJournalModal] = useState(false);
-    const files =[];
+   
     const editJournal = async (e) => {
         api({
           method: "POST",
@@ -44,19 +42,13 @@ function EditJournal(props) {
       };
     
       const handleSubmit = async(e) => {
-        allField["files"] = files;
         editJournal(e);
       };
       const SuccessMsg = () => <Alert variant="success">Sucessfully Edited</Alert>;
       const FailedMsg = () => <Alert variant="danger">Failed to edit</Alert>;
     
       const changeHandler = (e) => {
-        if(e.target.name == "files") {
-          files.push(e.target.value);
-        }
-        else{ 
-          setAllFields({ ...allField, [e.target.name]: e.target.value });
-        }
+        setAllFields({ ...allField, [e.target.name]: e.target.value });
       };
     
       function refreshPage() {
@@ -82,12 +74,8 @@ function EditJournal(props) {
                   placeholder={props.journal.description}></input>
               </div>
               <div className="addjournal">
-                <label for="files" class="addjbtn">ATTACH FILES</label>
-                <input type="file" name="files" id="files" onChange={changeHandler}/>
-              </div>
-              <div className="addjournal">
                 <button onClick={handleSubmit} className="addjbtn">
-                  <h1>SAVE CHANGES </h1>
+                  SAVE CHANGES 
                 </button>
               </div>
               </form>

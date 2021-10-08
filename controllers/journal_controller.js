@@ -42,7 +42,6 @@ const createNew = async (req, res) => {
       user_id: req.user.id,
       title: req.body.title,
       description: req.body.description,
-      files: req.body.files,
     });
     await journal.save();
     return res.status(200).json({
@@ -102,17 +101,12 @@ const postEditedJournal = async (req, res) => {
     if (description == "") {
       description = journal.description;
     }
-    var files = sanitize(req.body.files);
-    if(files.length < 1) {
-      files = journal.files;
-    }
 
     journal = await Journal.findOneAndUpdate(
       {_id: req.params.id},
       {
         title: title,
         description: description,
-        files: files,
       },
       { new: true }
     );

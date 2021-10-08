@@ -13,8 +13,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-
-
 const Loading = () => <LoopCircleLoading />;
 
 
@@ -22,12 +20,10 @@ export default function Journal() {
   const [allField, setAllFields] = useState({
     title: '',
     description: '',
-    files: [],
   });
   const [editedField, setEditedFields] = useState({
     title: '',
     description: '',
-    files: [],
   });
   const [field, setField] = useState("");
   const [journals, setJournals] = useState([]);
@@ -39,15 +35,12 @@ export default function Journal() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [JournalModal, setJournalModal] = useState(false);
   const [journal, setJournalID] = useState(null);
-
   const [page, setPage] = useState(1);
   const [sorting, setSorting] = useState("")
   const [currentShow, setCurrentShow] = useState(0);
   const [searchedValue, setSearchedValue] = useState("");
-  const [searchedData, setSearchedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false)
   const [temp, setTemp] =useState([]);
-  const [q, setQ] = useState("");
 
   const formStyle = {
     content: {
@@ -56,6 +49,7 @@ export default function Journal() {
       right: "auto",
       maxWidth: "90%",
       minWidth: "50%",
+      height: "85%",
       borderRadius: "12px",
       bottom: "auto",
       marginRight: "-50%",
@@ -141,12 +135,6 @@ export default function Journal() {
       target: { value },
     } = event;
   };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch(q);
-    }
-  }
 
   const handleSearch = (e) => {
     setSearchedValue(e.target.value);

@@ -3,59 +3,50 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./NewJournal.css";
 import { Alert } from "react-bootstrap";
+import { QueryCursor } from "mongoose";
 
 function AddJournal() {
     const[allField, setAllFields] = useState({
         title: "",
         description:"",
         createdOn: Date.now(),
-        files: [],
     });
     const [field, setField] = useState("");
     const [journal, setjournal] = useState([]);
-    const files = [];
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(true);
     const [failed, setFailed] = useState(false);
     const [flag, setFlag] = useState(false);
 
-    const handleSubmit = async(e) => {
-      allField["files"] = files;
-      addjournal(e);
-    };
-    
+
+
     const addjournal = async (e) => {
-        api({
-            method: "POST",
-            url: "/api/journal/create",
-            data: allField,
-          })
-            .then(function (res) {
-              if (res.status === 200) {
-                setjournal([...journal, field]);
-                setField("");
-                refreshPage();
-              } else {
-                setFailed(true);
-              }
-              setFlag(true);
-              //setMessage(res.data.message);
-            })
-            .catch(function (error) {
-              setFlag(true);
-              setFailed(true);
-            });
+      api({
+          method: "POST",
+          url: "/api/journal/create",
+          data: allField,
+        })
+        .then(function (res) {
+          if (res.status === 200) {
+            setjournal([...journal, field]);
+            setField("");
+            refreshPage();
+          } else {
+            setFailed(true);
+          }
+          setFlag(true);
+          //setMessage(res.data.message);
+        })
+        .catch(function (error) {
+          setFlag(true);
+          setFailed(true);
+        });
     };
     const SuccessMsg = () => <Alert variant="success">Sucessfully Added</Alert>;
     const FailedMsg = () => <Alert variant="danger">Failed to add</Alert>;
 
     const changeHandler = (e) => {
-        if(e.target.name == "files") {
-          files.push(e.target.value);
-        }
-        else{ 
-          setAllFields({ ...allField, [e.target.name]: e.target.value });
-        }
+        setAllFields({ ...allField, [e.target.name]: e.target.value });
     };
 
     function refreshPage() {
@@ -83,12 +74,10 @@ function AddJournal() {
                 onChange={changeHandler}
                 required="false"></input>
             </div>
-
             <div className="addjournal">
-              <label for="files[0][uploaded]" class="addjbtn">ATTACH FILES</label>
-              <input type="file" name="files" id="files" onChange={changeHandler}/>
-              <button onClick={handleSubmit} className="addjbtn">
-                <h1>+ POST </h1>
+              <button onClick={addjournal}
+              className="addjbtn">
+                + POST
               </button>
             </div>
             </form>
