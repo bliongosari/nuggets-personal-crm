@@ -130,15 +130,15 @@ button {
 .addbtn {
   font-family: var(--logo-font);
   border-radius: 10px;
-  width: 100%;
+  width: 17%;
   background-color: var(--primary-blue);
   text-align: center;
-  padding: 1%;
+  padding: 0.5%;
   display: flex;
   flex-direction: row;
-  padding-top: 1%;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 1%;
+  margin-left: 30%;
 }
 .addbtn h1 {
   margin-top: 3%;
@@ -153,10 +153,15 @@ button {
 }
 
 .addlifeevent {
-  width: 20%;
+  width: 100%;
   justify-content: center;
   margin: auto;
   margin-top: 1.6%;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
 }
 
 .eventreminder {
@@ -169,6 +174,13 @@ button {
 .eventreminder-content {
   border: 1px solid var(--secondary-blue);
   border-radius: 10px;
+}
+
+.lifereminder-content {
+  border: 1px solid var(--secondary-blue);
+  border-radius: 10px;
+  width: 100%;
+  padding: 10%;
 }
 
 .eventbtn {
@@ -223,12 +235,22 @@ button {
     font-size: 70%;
   }
 
-  .addlifeevent {
-    width: 55%;
+  .addbtn {
+    font-size: 70%;
+    width: 70%;
+    margin-left: 0;
+    padding: 0;
+    margin: auto;
+    margin-bottom: 3%;
   }
 
-  .addbtn {
-    font-size: 80%;
+  .head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .head h1 {
+    font-size: 70%;
   }
 
   .eventreminder {
@@ -254,16 +276,23 @@ button {
     font-size: 70%;
   }
 
-  .tabs {
-    font-size: 70%;
-  }
-
-  .addlifeevent {
-    width: 30%;
-  }
-
   .addbtn {
-    font-size: 80%;
+    font-size: 70%;
+    width: 50%;
+    margin-left: 0;
+    padding: 0;
+    margin: auto;
+    margin-bottom: 3%;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .head h1 {
+    font-size: 70%;
+    margin-bottom: 3%;
   }
 
   .eventreminder {
@@ -284,21 +313,28 @@ button {
   }
 }
 
-@media screen and (min-width: 701px) and (max-width: 1100px) {
+@media screen and (min-width: 701px) and (max-width: 1200px) {
   .active-tabs {
     font-size: 70%;
   }
 
-  .tabs {
-    font-size: 70%;
-  }
-
-  .addlifeevent {
-    width: 25%;
-  }
-
   .addbtn {
-    font-size: 80%;
+    font-size: 70%;
+    width: 50%;
+    margin-left: 0;
+    padding: 0;
+    margin: auto;
+    margin-bottom: 3%;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .head h1 {
+    font-size: 70%;
+    margin-bottom: 3%;
   }
 
   .eventreminder {

@@ -34,18 +34,23 @@ function Tabs() {
 
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
-          <h1> Life Updates of (contact name)</h1>
-          <hr />
-          <h3>Log what happens to the life of (contact name) for your future reference.</h3>
-          <div className="addlifeevent">
-            <button className="addbtn" onClick={() => setActive("lifeevent")}>
+          <div className="head">
+            <h1> Life Updates of (contact name)</h1>
+          <button className="addbtn" onClick={() => setActive("lifeevent")}>
                 <h1>Add life event</h1>
             </button>
+          {/* <hr /> */}
           </div>
-
+          
+          <div className="addlifeevent">
+            <div className="eventreminder-content">
+                    <h3>All life events regarding this person will show up here</h3>
+                </div>
+          </div>
             <div className="contactfunctionalitydeet">
                 {active === "lifeevent" && <LifeEvent/>}
             </div>
+
         </div>
 
         <div className={toggleState === 2 ? "content  active-content" : "content"}>
