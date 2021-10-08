@@ -53,7 +53,8 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
       email: req.body.email,
       phone_number: req.body.phone_number,
       linkedin: req.body.linkedin,
-      twitter: req.body.twitter
+      twitter: req.body.twitter,
+      lifeevents: [],
     });
     await contact.save();
     return res.status(200).json({ message: "Successfully added" });

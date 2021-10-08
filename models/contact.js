@@ -2,6 +2,24 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Tag = require("./tag");
 
+const lifeeventSchema = new Schema({
+  category: {
+    type: String,
+  },
+  date: {
+    type: Date,
+  },
+  title: {
+    type: String,
+  },
+  story: {
+    type: String,
+  },
+  notes: {
+    type: String,
+  },
+});
+
 const contactSchema = new Schema({
   user_id: {
     type: Schema.Types.ObjectId,
@@ -52,6 +70,7 @@ const contactSchema = new Schema({
   twitter: {
     type: String,
   },
+  lifeevents: [lifeeventSchema],
 });
 
 const Contact = mongoose.model("Contact", contactSchema);
