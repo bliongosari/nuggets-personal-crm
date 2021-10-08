@@ -22,7 +22,7 @@ function Tabs({contact}) {
     <div className="container">
       <div className="bloc-tabs">
         <button className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>
-            Life events
+          Life events
         </button>
         <button className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>
           Conversations, Reminders and Tasks
@@ -36,109 +36,112 @@ function Tabs({contact}) {
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
           <div className="head">
             <h1> Life Updates of {contact.full_name}</h1>
-          <button className="addbtn" onClick={() => setActive("lifeevent")}>
-                <h1>Add life event</h1>
+            <button className="addbtn" onClick={() => setActive("lifeevent")}>
+              <h1>Add life event</h1>
             </button>
-          {/* <hr /> */}
+            {/* <hr /> */}
           </div>
           
           <div className="addlifeevent">
             <div className="eventreminder-content">
-                <h3>All life events regarding this person will show up here</h3>
-                {contact.lifeevents.map((ev) => {
-                    return (
-                        <>
-                        <button onClick={() => console.log("Hellow")}>
-                            {ev.title}
-                        </button>
-                        <hr/>
-                        </>
-                    );
-                })}
+              <h3>All life events regarding this person will show up here</h3>
+              {contact.lifeevents.map((ev) => (
+                <>
+                <hr/>
+                <p>{ev.title}</p>
+                <button onClick={() => alert("Implement edit form")}>
+                    EDIT
+                </button>
+                <br/>
+                <button onClick={() => alert("Implement deletion")}>
+                    DELETE
+                </button>
+                </>
+              ))}
             </div>
           </div>
-            <div className="contactfunctionalitydeet">
-                {active === "lifeevent" && <LifeEvent contact={contact}/>}
-            </div>
+          <div className="contactfunctionalitydeet">
+            {active === "lifeevent" && <LifeEvent contact={contact}/>}
+          </div>
 
         </div>
 
         <div className={toggleState === 2 ? "content  active-content" : "content"}>
-            <div className = "subcontent">
-                <div className="eventreminder">
-                    <h1> Reminders or Notes</h1>
-                    <button className="eventbtn" onClick={() => setActive("reminder")}>
-                        <h1>Add reminder</h1>
-                    </button>
-                </div>
-                <div className="eventreminder-content">
-                    <h3>All reminders regarding this person will show up here</h3>
-                </div>
+          <div className = "subcontent">
+            <div className="eventreminder">
+              <h1> Reminders or Notes</h1>
+              <button className="eventbtn" onClick={() => setActive("reminder")}>
+                <h1>Add reminder</h1>
+              </button>
             </div>
+            <div className="eventreminder-content">
+              <h3>All reminders regarding this person will show up here</h3>
+            </div>
+          </div>
 
-            <hr/>
-            <div className = "subcontent">
-                <div className="eventreminder">
-                    <h1>Task</h1>
-                    <button className="eventbtn" onClick={() => setActive("task")}>
-                        <h1>Add task</h1>
-                    </button>
-                </div>
-                <div className="eventreminder-content">
-                    <h3>All tasks with this person will show up here</h3>
-                </div>
+          <hr/>
+          <div className = "subcontent">
+            <div className="eventreminder">
+              <h1>Task</h1>
+              <button className="eventbtn" onClick={() => setActive("task")}>
+                <h1>Add task</h1>
+              </button>
             </div>
+            <div className="eventreminder-content">
+              <h3>All tasks with this person will show up here</h3>
+            </div>
+          </div>
 
-            <hr/>
-            <div className = "subcontent">
-                <div className="eventreminder">
-                    <h1> Phone calls</h1>
-                    <button className="eventbtn" onClick={() => setActive("call")}>
-                        <h1>Add calls</h1>
-                    </button>
-                </div>
-                <div className="eventreminder-content">
-                    <h3>All phone calls with this person will show up here</h3>
-                </div>
+          <hr/>
+          <div className = "subcontent">
+            <div className="eventreminder">
+              <h1> Phone calls</h1>
+              <button className="eventbtn" onClick={() => setActive("call")}>
+                <h1>Add calls</h1>
+              </button>
             </div>
+            <div className="eventreminder-content">
+              <h3>All phone calls with this person will show up here</h3>
+            </div>
+          </div>
 
-            <div className="contactfunctionalitydeet">
-               {active === "call" && <Conversation/>}
-                {active === "reminder" && <Reminder/>}
-                {active === "task" && <Task/>}
-            </div>
+          <div className="contactfunctionalitydeet">
+            {active === "call" && <Conversation/>}
+            {active === "reminder" && <Reminder/>}
+            {active === "task" && <Task/>}
+          </div>
         </div>
 
         <div className={toggleState === 3 ? "content  active-content" : "content"}>
           <div className = "subcontent">
-                <div className="eventreminder">
-                    <h1> &nbsp; Photos</h1>
-                    <button className="eventbtn" onClick={() => setActive("photo")}>
-                        <h1>Upload photos</h1>
-                    </button>
-                </div>
-                <div className="eventreminder-content">
-                    <h3>All photos regarding this person will show up here</h3>
-                </div>
+            <div className="eventreminder">
+              <h1> &nbsp; Photos</h1>
+              <button className="eventbtn" onClick={() => setActive("photo")}>
+                <h1>Upload photos</h1>
+              </button>
             </div>
+            <div className="eventreminder-content">
+              <h3>All photos regarding this person will show up here</h3>
+            </div>
+          </div>
 
-            <hr/>
-            <div className = "subcontent">
-                <div className="eventreminder">
-                    <h1> &nbsp; Documents</h1>
-                    <button className="eventbtn" onClick={() => setActive("documents")}>
-                        <h1>Upload document</h1>
-                    </button>
-                </div>
-                <div className="eventreminder-content">
-                    <h3>All documents regarding this person will show up here</h3>
-                </div>
+          <hr/>
+          <div className = "subcontent">
+            <div className="eventreminder">
+              <h1> &nbsp; Documents</h1>
+              <button className="eventbtn" onClick={() => setActive("documents")}>
+                <h1>Upload document</h1>
+              </button>
             </div>
+            <div className="eventreminder-content">
+              <h3>All documents regarding this person will show up here</h3>
+            </div>
+          </div>
 
-            <div className="contactfunctionalitydeet">
-                {active === "photo" && <Media/>}
-                {active === "documents" && <Document/>}
-            </div>
+          <div className="contactfunctionalitydeet">
+            {active === "photo" && <Media/>}
+            {active === "documents" && <Document/>}
+          </div>
         </div>
       </div>
     </div>
