@@ -22,8 +22,8 @@ export const deleteContact = async (contact) => {
   window.location.replace("../contacts");
 };
 
-export const editContact = async (contact) => {
+export const editContact = async (contact, reload) => {
   await api.put(`/api/contacts/edit/${contact._id}`, contact);
   // TODO: Account for contact edit failure
-  window.location.replace("../contacts");
+  reload ? window.location.reload() : window.location.replace("../contacts");
 };

@@ -284,7 +284,7 @@ function ContactProfile(props) {
                 </div>
 
                 <div className="contactfunctionality">
-                    <Tabs/>
+                    <Tabs contact={contact}/>
                 </div>
 
             

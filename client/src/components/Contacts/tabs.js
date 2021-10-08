@@ -9,7 +9,7 @@ import Media from "./media";
 
 
 
-function Tabs() {
+function Tabs({contact}) {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -35,7 +35,7 @@ function Tabs() {
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
           <div className="head">
-            <h1> Life Updates of (contact name)</h1>
+            <h1> Life Updates of {contact.full_name}</h1>
           <button className="addbtn" onClick={() => setActive("lifeevent")}>
                 <h1>Add life event</h1>
             </button>
@@ -44,11 +44,21 @@ function Tabs() {
           
           <div className="addlifeevent">
             <div className="eventreminder-content">
-                    <h3>All life events regarding this person will show up here</h3>
-                </div>
+                <h3>All life events regarding this person will show up here</h3>
+                {contact.lifeevents.map((ev) => {
+                    return (
+                        <>
+                        <button onClick={() => console.log("Hellow")}>
+                            {ev.title}
+                        </button>
+                        <hr/>
+                        </>
+                    );
+                })}
+            </div>
           </div>
             <div className="contactfunctionalitydeet">
-                {active === "lifeevent" && <LifeEvent/>}
+                {active === "lifeevent" && <LifeEvent contact={contact}/>}
             </div>
 
         </div>
