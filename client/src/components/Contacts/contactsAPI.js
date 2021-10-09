@@ -19,12 +19,13 @@ export const addContact = async (contact) => {
 export const deleteContact = async (contact) => {
   await api.delete(`/api/contacts/delete/${contact._id}`);
   // TODO: Account for contact deletion failure
-  window.location.replace("../contacts");
+  window.location.replace("../../contacts");
 };
 
 export const editContact = async (contact, reload) => {
   await api.put(`/api/contacts/edit/${contact._id}`, contact);
   // TODO: Account for contact edit failure
   // TODO: Reloading to contacts is necessary to avoid state loss?
-  window.location.replace("../contacts");
+  // window.location.replace("../../contacts");
+  window.location.reload()
 };

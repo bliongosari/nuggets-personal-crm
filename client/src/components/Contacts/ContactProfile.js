@@ -1,17 +1,22 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./ContactProfile.css";
-import { deleteContact } from "./contactsAPI";
+import { deleteContact, getContacts } from "./contactsAPI";
 import Tabs from './tabs';
 import api from "../../config/axiosConfig";
+import { useQuery } from "react-query";
+import LoopCircleLoading from "react-loadingg/lib/LoopCircleLoading";
 
 
-function ContactProfile(props) {
-  const { contact } = props.location.state;
+function ContactProfile() {
   const [reminders, setReminders] = useState(false);
   const [info, setInfo] = useState(false);
   const [dateReminder, setDateReminderReal] = useState("")
   const [reminderMessage, setReminderMessage] = useState("")
+
+  const { id } = useParams();
+  const query = useQuery("contacts", getContacts, { staleTime: Infinity });
+  const contact = query.data?.contacts.find((element) => element._id === id);
   
   const toggleReminders = () => {
     setReminders(!reminders);
@@ -21,11 +26,11 @@ function ContactProfile(props) {
     setDateReminderReal(e.target.value);
   }
 
-const changeToTime = (data) => {
-  const start = new Date(data);
-  start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
-  return start.toISOString().slice(0,16);
-}
+  const changeToTime = (data) => {
+    const start = new Date(data);
+    start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
+    return start.toISOString().slice(0,16);
+  }
 
   const toggleInfo = () => {
     setInfo(!info);
@@ -59,28 +64,30 @@ const changeToTime = (data) => {
     }
   }
 
-  if(reminders) {
+  if (reminders) {
     document.body.classList.add('active-modal')
   } else {
     document.body.classList.remove('active-modal')
   }
 
-  if(info) {
+  if (info) {
     document.body.classList.add('active-modal')
   } else {
     document.body.classList.remove('active-modal')
   }
 
   function parseDate(notif) {
-      return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
-    }
+    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
+  }
+
+  if (contact === undefined) return <LoopCircleLoading />;
 
   return (
     <div className="home">
       <div className="backdiv">
         <a href="/contacts">Back to all contacts</a>
-      </div> 
-
+      </div>
+      
       <div className="profileheader">
         <div className="profpic">
           <img alt="plus" src="../../person-blue.svg"></img>

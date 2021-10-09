@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import "./Contacts.css";
 import { getContacts } from "./contactsAPI";
@@ -84,13 +84,11 @@ function Contacts() {
   const [searchedValue, setSearchedValue] = useState("");
   const [searchedData, setSearchedData] = useState([]);
   const [isSearching, setIsSearching] = useState(false)
-  const [temp, setTemp] =useState([]);
-  const query = useQuery("contacts", getContacts, {
-    staleTime: Infinity,
-    onSuccess: (data) => {
-      if (!sorting) {
-        data.contacts = filter(data.contacts, "Sort by: Date: New to Old");
-      }
+  const [temp, setTemp] = useState([]);
+  const query = useQuery("contacts", getContacts, { staleTime: Infinity });
+  useEffect(() => {
+    if (query.isSuccess && !sorting) {
+      query.data.contacts = filter(query.data.contacts, "Sort by: Date: New to Old")
     }
   });
 
@@ -216,10 +214,10 @@ function Contacts() {
 
   return (
     <div className="home">
-        {query.isLoading && <p> <Loading /> </p>}
-        {query.isError && <p> ERROR COULD NOT REACH SERVER </p>}
-        {query.isSuccess &&
-        <div>
+      {query.isLoading && <p> <Loading /> </p>}
+      {query.isError && <p> ERROR COULD NOT REACH SERVER </p>}
+      {query.isSuccess &&
+      <div>
       
       <div className="searchbarr">
         <img alt="search" src="../../searchbar.svg"></img>
@@ -230,14 +228,11 @@ function Contacts() {
       </div>
       
       <div className="addcontactsdiv">
-        <Link to={{ pathname: `addcontact`}} style={{ textDecoration: 'none' }}>
+        <Link to={{ pathname: `addcontact` }} style={{ textDecoration: 'none' }}>
           <button className="addnewbtn">
-           
             <h1> &#65291; &nbsp; ADD NEW CONTACT</h1>
           </button>
         </Link>
-
-
       </div>
       
       <div className="contactssummary">
@@ -293,7 +288,7 @@ function Contacts() {
       <div className="current-contacts-table">
         
         {filterData(query.data.contacts).slice(currentShow,currentShow+6).map((contact, index) => (
-          <Link to={{ pathname: `contact/${contact.full_name}`, state: { contact } }} style={{ textDecoration: 'none' }}>
+          <Link to={{ pathname: `contact/${contact.full_name}/${contact._id}` }} style={{ textDecoration: 'none' }}>
           <div key={contact._id}>
             {index !== 0 && <hr className="line"></hr>}
             <div className="current-contacts-r">
