@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function LifeEvent({contact}) {
-  const [category, setCategory] = useState("");
+function EditLifeEvent({contact, index}) {
+  const [category, setCategory] = useState();
   const [date, setDate] = useState();
-  const [title, setTitle] = useState("");
-  const [story, setStory] = useState("");
-  const [notes, setNotes] = useState("");
+  const [title, setTitle] = useState();
+  const [story, setStory] = useState();
+  const [notes, setNotes] = useState();
+
+  useEffect(() => {
+    setCategory(contact.lifeevents[index].category);
+    setDate(contact.lifeevents[index].date);
+    setTitle(contact.lifeevents[index].title);
+    setStory(contact.lifeevents[index].story);
+    setNotes(contact.lifeevents[index].notes);
+  }, [index]);
 
   return (
     <div className="containerdivv">
 
       <div className="contacts-form">
         <div className="formtitle">
-          <h1>Add a life event</h1>
+          <h1>Edit life event</h1>
           <hr></hr>
         </div>
 
@@ -26,6 +34,7 @@ function LifeEvent({contact}) {
                   setCategory(e.target[e.target.value].innerText);
                 }}
                 >
+                  <option value="" disabled selected>-- Select an option --</option>
                   <option value="0"/>
                   <option value="1">Started a new job</option>
                   <option value="2">Retirement</option>
@@ -42,40 +51,40 @@ function LifeEvent({contact}) {
 
         <div className="details">
           <h2>Date of event:</h2>
-          <input placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} />
+          <input placeholder="dd/mm/yyyy" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Title:</h2>
-          <input onChange={(e) => setTitle(e.target.value)} />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Story:</h2>
-          <input onChange={(e) => setStory(e.target.value)} />
+          <input value={story} onChange={(e) => setStory(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Personal Notes:</h2>
-          <input onChange={(e) => setNotes(e.target.value)} />
+          <input value={notes} onChange={(e) => setNotes(e.target.value)} />
         </div>
 
         <div className="detailss">
-          <button className="eventbtn">
+          <button className="eventbtn" onClick={() => console.log(index)}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.lifeevents.push({
+            contact.lifeevents[index] = {
               category,
               date,
               title,
               story,
               notes,
-            });
+            };
             editContact(contact);
           }}
           >
-            <h1>Add life event</h1>
+            <h1>Edit life event</h1>
           </button>
         </div>
       </div>
@@ -84,4 +93,4 @@ function LifeEvent({contact}) {
   );
 }
 
-export default LifeEvent;
+export default EditLifeEvent;

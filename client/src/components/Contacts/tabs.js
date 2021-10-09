@@ -1,16 +1,19 @@
 import { useState, render } from "react";
 import "./tabs.css";
 import LifeEvent from "./lifeevent";
+import EditLifeEvent from "./EditLifeEvent";
 import Conversation from "./conversation";
 import Reminder from "./reminder";
 import Task from "./task";
 import Document from "./document";
 import Media from "./media";
+import { editContact } from "./contactsAPI";
 
 
 
 function Tabs({contact}) {
   const [toggleState, setToggleState] = useState(1);
+  const [index, setIndex] = useState(-1);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -45,23 +48,30 @@ function Tabs({contact}) {
           <div className="addlifeevent">
             <div className="eventreminder-content">
               <h3>All life events regarding this person will show up here</h3>
-              {contact.lifeevents.map((ev) => (
-                <>
-                <hr/>
-                <p>{ev.title}</p>
-                <button onClick={() => alert("Implement edit form")}>
+              {contact.lifeevents.map((lifeevent, idx) => (
+                <div>
+                  <hr/>
+                  <p>{lifeevent.title}</p>
+                  <button onClick={() =>  {
+                    setIndex(idx);
+                    setActive("editlifeevent");
+                  }}>
                     EDIT
-                </button>
-                <br/>
-                <button onClick={() => alert("Implement deletion")}>
+                  </button>
+                  <br/>
+                  <button onClick={() => {
+                    contact.lifeevents.splice(idx, 1);
+                    editContact(contact);
+                  }}>
                     DELETE
-                </button>
-                </>
+                  </button>
+                </div>
               ))}
             </div>
           </div>
           <div className="contactfunctionalitydeet">
             {active === "lifeevent" && <LifeEvent contact={contact}/>}
+            {active === "editlifeevent" && <EditLifeEvent contact={contact} index={index}/>}
           </div>
 
         </div>
