@@ -3,8 +3,8 @@ import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
 function EditReminder({deactivate, contact, index}) {
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState();
   const [repeat, setRepeat] = useState();
 

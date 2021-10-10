@@ -1,34 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Task({deactivate, contact}) {
+function EditTask({deactivate, contact, index}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
+
+  useEffect(() => {
+    setTitle(contact.tasks[index].title);
+    setDescription(contact.tasks[index].description);
+    setDate(contact.tasks[index].date);
+  }, [index]);
 
   return (
     <div className="containerdiv">
 
       <div className="contacts-form">
         <div className="formtitle">
-          <h1>Add a new task</h1>
+          <h1>Edit task</h1>
           <hr/>
         </div>
 
         <div className="details">
           <h2>Task title:</h2>
-          <input onChange={(e) => setTitle(e.target.value)} />
+          <input value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Task description:</h2>
-          <input onChange={(e) => setDescription(e.target.value)} />
+          <input value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Due date:</h2>
-          <input onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" />
+          <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" />
         </div>
 
     
@@ -37,15 +43,15 @@ function Task({deactivate, contact}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.tasks.push({
+            contact.tasks[index] = {
               title,
               description,
               date,
-            });
+            };
             editContact(contact);
           }}
           >
-            <h1>Add task</h1>
+            <h1>Edit task</h1>
           </button>
         </div>
       </div>
@@ -54,4 +60,4 @@ function Task({deactivate, contact}) {
   );
 }
 
-export default Task;
+export default EditTask;

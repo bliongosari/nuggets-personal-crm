@@ -3,11 +3,11 @@ import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
 function EditLifeEvent({deactivate, contact, index}) {
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState("");
   const [date, setDate] = useState();
-  const [title, setTitle] = useState();
-  const [story, setStory] = useState();
-  const [notes, setNotes] = useState();
+  const [title, setTitle] = useState("");
+  const [story, setStory] = useState("");
+  const [notes, setNotes] = useState("");
 
   useEffect(() => {
     setCategory(contact.lifeevents[index].category);

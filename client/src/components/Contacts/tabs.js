@@ -6,6 +6,7 @@ import Conversation from "./conversation";
 import Reminder from "./reminder";
 import EditReminder from "./EditReminder"
 import Task from "./task";
+import EditTask from "./EditTask";
 import Document from "./document";
 import Media from "./media";
 import { editContact } from "./contactsAPI";
@@ -53,7 +54,7 @@ function Tabs({contact}) {
             <div className="eventreminder-content">
               <h3>All life events regarding this person will show up here</h3>
               {contact.lifeevents.map((lifeevent, idx) => (
-                <div key={contact._id}>
+                <div key={lifeevent.title+idx}>
                   <hr/>
                   <p>{lifeevent.title}</p>
                   <button onClick={() =>  {
@@ -91,7 +92,7 @@ function Tabs({contact}) {
             <div className="eventreminder-content">
               <h3>All reminders regarding this person will show up here</h3>
               {contact.reminders.map((reminder, idx) => (
-                <div key={contact._id}>
+                <div key={reminder.title+idx}>
                   <hr/>
                   <p>{reminder.title}</p>
                   <button onClick={() => {
@@ -122,6 +123,25 @@ function Tabs({contact}) {
             </div>
             <div className="eventreminder-content">
               <h3>All tasks with this person will show up here</h3>
+              {contact.tasks.map((task, idx) => (
+                <div key={task.title+idx}>
+                  <hr/>
+                  <p>{task.title}</p>
+                  <button onClick={() => {
+                    setIndex(idx);
+                    setActive("edittask");
+                  }}>
+                    EDIT
+                  </button>
+                  <br/>
+                  <button onClick={() => {
+                    contact.tasks.splice(idx, 1);
+                    editContact(contact);
+                  }}>
+                    DELETE
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -143,6 +163,7 @@ function Tabs({contact}) {
             {active === "reminder" && <Reminder deactivate={deactivate} contact={contact}/>}
             {active === "editreminder" && <EditReminder deactivate={deactivate} contact={contact} index={index}/>}
             {active === "task" && <Task deactivate={deactivate} contact={contact}/>}
+            {active === "edittask" && <EditTask deactivate={deactivate} contact={contact} index={index}/>}
           </div>
         </div>
 
