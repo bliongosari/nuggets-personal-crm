@@ -53,7 +53,7 @@ function Tabs({contact}) {
             <div className="eventreminder-content">
               <h3>All life events regarding this person will show up here</h3>
               {contact.lifeevents.map((lifeevent, idx) => (
-                <div>
+                <div key={contact._id}>
                   <hr/>
                   <p>{lifeevent.title}</p>
                   <button onClick={() =>  {

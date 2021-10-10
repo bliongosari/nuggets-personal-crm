@@ -43,9 +43,8 @@ function EditReminder({deactivate, contact, index}) {
           <h2>Repeat reminder:</h2>
           <div className="custom-select">
             <form method="post">
-              <select onChange={(e) => setRepeat(e.target[e.target.value].innerText)}>
-                <option value="" disabled selected>-- Select an option --</option>
-                <option value="0"/>
+              <select defaultValue={""} onChange={(e) => setRepeat(e.target[e.target.value].innerText)}>
+                <option value="" disabled>-- Select an option --</option>
                 <option value="1">Remind me once</option>
                 <option value="2">Remind me every day</option>
                 <option value="3">Remind me every week</option>
