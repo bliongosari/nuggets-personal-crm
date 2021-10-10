@@ -54,10 +54,13 @@ const conversationSchema = new Schema({
   form: {
     type: String,
   },
+  topic: {
+    type: String,
+  },
   messages: {
     type: String,
   },
-  started: {
+  startedBy: {
     type: String,
   },
 })

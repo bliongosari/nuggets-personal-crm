@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./conversation.css";
 
-function Conversation() {
-  const [toggleState, setToggleState] = useState(1);
-
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
+function Conversation({deactivate, contact}) {
+  const [date, setDate] = useState();
+  const [form, setForm] = useState("");
+  const [topic, setTopic] = useState("");
+  const [messages, setMessages] = useState("");
+  const [startedBy, setStartedBy] = useState("");
 
   return (
     <div className="containerdiv">
@@ -14,12 +14,12 @@ function Conversation() {
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Log a new conversation</h1>
-          <hr></hr>
+          <hr/>
         </div>
 
         <div className="details">
           <h2>Date of conversation:</h2>
-          <input placeholder="dd/mm/yyyy"></input>
+          <input onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy"></input>
         </div>
 
         <div className="details">
@@ -41,17 +41,17 @@ function Conversation() {
 
         <div className="details">
           <h2>Topic of conversation:</h2>
-          <input></input>
+          <input onChange={(e) => setTopic(e.target.value)}></input>
         </div>
 
         <div className="details">
           <h2>Important messages to note:</h2>
-          <input></input>
+          <input onChange={(e) => setMessages(e.target.value)}></input>
         </div>
 
         <div className="details">
           <h2>Who started the communication:</h2>
-          <input></input>
+          <input onChange={(e) => setForm(e.target.value)}></input>
         </div>
 
         <div className="detailss">
