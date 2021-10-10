@@ -56,6 +56,7 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
       twitter: req.body.twitter,
       lifeevents: [],
       reminders: [],
+      tasks: [],
     });
     await contact.save();
     return res.status(200).json({ message: "Successfully added" });

@@ -20,7 +20,7 @@ function EditReminder({deactivate, contact, index}) {
 
     <div className="contacts-form">
         <div className="formtitle">
-          <h1>Add a new reminder</h1>
+          <h1>Edit reminder</h1>
           <hr/>
         </div>
 
@@ -69,7 +69,7 @@ function EditReminder({deactivate, contact, index}) {
             editContact(contact);
           }}
           >
-            <h1>Add reminder</h1>
+            <h1>Edit reminder</h1>
           </button>
         </div>
       </div>

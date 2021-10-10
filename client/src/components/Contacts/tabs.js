@@ -142,7 +142,7 @@ function Tabs({contact}) {
             {active === "call" && <Conversation/>}
             {active === "reminder" && <Reminder deactivate={deactivate} contact={contact}/>}
             {active === "editreminder" && <EditReminder deactivate={deactivate} contact={contact} index={index}/>}
-            {active === "task" && <Task/>}
+            {active === "task" && <Task deactivate={deactivate} contact={contact}/>}
           </div>
         </div>
 
