@@ -89,6 +89,22 @@ function Tabs({contact}) {
             </div>
             <div className="eventreminder-content">
               <h3>All reminders regarding this person will show up here</h3>
+              {contact.reminders.map((reminder, idx) => (
+                <div key={contact._id}>
+                  <hr/>
+                  <p>{reminder.title}</p>
+                  <button>
+                    EDIT
+                  </button>
+                  <br/>
+                  <button onClick={() => {
+                    contact.reminders.splice(idx, 1);
+                    editContact(contact);
+                  }}>
+                    DELETE
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
 
