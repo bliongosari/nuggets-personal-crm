@@ -47,6 +47,21 @@ const taskSchema = new Schema({
   },
 });
 
+const conversationSchema = new Schema({
+  date: {
+    type: Date,
+  },
+  form: {
+    type: String,
+  },
+  messages: {
+    type: String,
+  },
+  started: {
+    type: String,
+  },
+})
+
 const contactSchema = new Schema({
   user_id: {
     type: Schema.Types.ObjectId,
@@ -100,6 +115,7 @@ const contactSchema = new Schema({
   lifeevents: [lifeeventSchema],
   reminders: [reminderSchema],
   tasks: [taskSchema],
+  conversations: [conversationSchema],
 });
 
 const Contact = mongoose.model("Contact", contactSchema);

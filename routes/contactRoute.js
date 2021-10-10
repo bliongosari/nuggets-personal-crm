@@ -57,6 +57,7 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
       lifeevents: [],
       reminders: [],
       tasks: [],
+      conversations: [],
     });
     await contact.save();
     return res.status(200).json({ message: "Successfully added" });

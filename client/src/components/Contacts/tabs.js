@@ -149,7 +149,7 @@ function Tabs({contact}) {
           <div className = "subcontent">
             <div className="eventreminder">
               <h1>Conversations</h1>
-              <button className="eventbtn" onClick={() => setActive("call")}>
+              <button className="eventbtn" onClick={() => setActive("conversation")}>
                 <h1>Add conversation</h1>
               </button>
             </div>
@@ -159,7 +159,8 @@ function Tabs({contact}) {
           </div>
 
           <div className="contactfunctionalitydeet">
-            {active === "call" && <Conversation/>}
+            {active === "conversation" && <Conversation/>}
+            {active === "editconversation" && undefined}
             {active === "reminder" && <Reminder deactivate={deactivate} contact={contact}/>}
             {active === "editreminder" && <EditReminder deactivate={deactivate} contact={contact} index={index}/>}
             {active === "task" && <Task deactivate={deactivate} contact={contact}/>}
