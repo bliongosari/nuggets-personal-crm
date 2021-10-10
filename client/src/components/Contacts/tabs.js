@@ -148,13 +148,13 @@ function Tabs({contact}) {
           <hr/>
           <div className = "subcontent">
             <div className="eventreminder">
-              <h1> Phone calls</h1>
+              <h1>Conversations</h1>
               <button className="eventbtn" onClick={() => setActive("call")}>
-                <h1>Add calls</h1>
+                <h1>Add conversation</h1>
               </button>
             </div>
             <div className="eventreminder-content">
-              <h3>All phone calls with this person will show up here</h3>
+              <h3>All conversations with this person will show up here</h3>
             </div>
           </div>
 
