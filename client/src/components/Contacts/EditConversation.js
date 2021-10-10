@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Conversation({deactivate, contact}) {
+function EditConversation({deactivate, contact, index}) {
   const [date, setDate] = useState();
   const [form, setForm] = useState("");
   const [topic, setTopic] = useState("");
@@ -82,4 +82,4 @@ function Conversation({deactivate, contact}) {
   );
 }
 
-export default Conversation;
+export default EditConversation;
