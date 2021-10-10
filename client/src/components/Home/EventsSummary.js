@@ -63,7 +63,7 @@ function EventsSummary() {
         <div>
       {curEvents.map((event) => (
         // <Link to={{ pathname: `product/${event.id}`, state: { product } }}>
-        <div>
+        <div key={event._id}>
           <div className="current-contacts-home">
             <img alt="events" src="../../events.svg"></img>
             <h4>{event.title}</h4>

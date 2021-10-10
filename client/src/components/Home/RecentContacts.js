@@ -70,12 +70,12 @@ function RecentConctacts() {
             </div>
             ) : (
         <div className="new-contacts-container">
-            {current.map((contact) => (
-        <Link to={{ pathname: `contact/${contact.full_name}`, state: { contact: contact } }} style={{ textDecoration: 'none' }}>
-          <div className ="eachContact">
+          {current.map((contact) => (
+          <Link key={contact._id} to={{ pathname: `contact/${contact.full_name}/${contact._id}` }} style={{ textDecoration: 'none' }}>
+            <div className="eachContact">
               <h2 className="square"> {contact.preferred_name[0] || contact.full_name[0]}</h2>
-            <h3>{contact.preferred_name || contact.full_name}</h3>
-          </div>
+              <h3>{contact.preferred_name || contact.full_name}</h3>
+            </div>
           </Link>
           ))}
           {max ? (

@@ -288,8 +288,8 @@ function Contacts() {
       <div className="current-contacts-table">
         
         {filterData(query.data.contacts).slice(currentShow,currentShow+6).map((contact, index) => (
-          <Link to={{ pathname: `contact/${contact.full_name}/${contact._id}` }} style={{ textDecoration: 'none' }}>
-          <div key={contact._id}>
+          <Link key={contact._id} to={{ pathname: `contact/${contact.full_name}/${contact._id}` }} style={{ textDecoration: 'none' }}>
+          <div>
             {index !== 0 && <hr className="line"></hr>}
             <div className="current-contacts-r">
                 {/* <div>
@@ -301,7 +301,7 @@ function Contacts() {
                 <div className = "table-entryTags">
                   {contact.tags ? 
                   tagsToArray(contact.tags).map((d) => (
-                    <div>
+                    <div key={`${contact._id} ${d.name}`}>
                     <CircleIcon style = {{color: d.color, margin: "0 0.5vw", fontSize: "11px"}}/>
                      <span style = {{fontSize: "12px"}}>{d.name}</span> 
                      </div>
