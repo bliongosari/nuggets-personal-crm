@@ -23,7 +23,7 @@ function LifeEvent({deactivate, contact}) {
           <div className="custom-select">
             <form method="post">
                 <select onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
-                  <option value="0"/>
+                  <option value="0" disabled selected>-- Select option --</option>
                   <option value="1">Started a new job</option>
                   <option value="2">Retirement</option>
                   <option value="3">Starting school</option>
@@ -32,6 +32,7 @@ function LifeEvent({deactivate, contact}) {
                   <option value="6">Received achievements</option>
                   <option value="7">Started military service</option>
                   <option value="8">Marriage</option>
+                  <option value="9">Other</option>
                 </select>
             </form>
           </div>

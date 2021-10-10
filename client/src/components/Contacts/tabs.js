@@ -159,7 +159,7 @@ function Tabs({contact}) {
           </div>
 
           <div className="contactfunctionalitydeet">
-            {active === "conversation" && <Conversation/>}
+            {active === "conversation" && <Conversation deactivate={deactivate} contact={contact}/>}
             {active === "editconversation" && undefined}
             {active === "reminder" && <Reminder deactivate={deactivate} contact={contact}/>}
             {active === "editreminder" && <EditReminder deactivate={deactivate} contact={contact} index={index}/>}

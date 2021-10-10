@@ -30,17 +30,17 @@ function EditLifeEvent({deactivate, contact, index}) {
           <h2>Select event category:</h2>
           <div className="custom-select">
             <form method="post">
-                <select defaultValue={""} onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
-                  <option value="" disabled>-- Select an option --</option>
-                  <option value="1"/>
-                  <option value="2">Started a new job</option>
-                  <option value="3">Retirement</option>
-                  <option value="4">Starting school</option>
-                  <option value="5">Studied abroad</option>
-                  <option value="6">Started volunteering</option>
-                  <option value="7">Received achievements</option>
-                  <option value="8">Started military service</option>
-                  <option value="9">Marriage</option>
+                <select onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
+                  <option value="0" disabled selected>-- Select option --</option>
+                  <option value="1">Started a new job</option>
+                  <option value="2">Retirement</option>
+                  <option value="3">Starting school</option>
+                  <option value="4">Studied abroad</option>
+                  <option value="5">Started volunteering</option>
+                  <option value="6">Received achievements</option>
+                  <option value="7">Started military service</option>
+                  <option value="8">Marriage</option>
+                  <option value="9">Other</option>
                 </select>
             </form>
           </div>

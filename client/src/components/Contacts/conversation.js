@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
 function Conversation({deactivate, contact}) {
@@ -26,13 +27,16 @@ function Conversation({deactivate, contact}) {
           <h2>Select form of communication:</h2>
           <div className="custom-select">
             <form method="post">
-              <select>
-                <option value="0">Phone Number</option>
-                <option value="1">Email</option>
-                <option value="2">Tweeter</option>
-                <option value="3">Facebook</option>
-                <option value="4">Instagram</option>
-                <option value="5">LinkedIn</option>
+              <select onChange={(e) => setForm(e.target[e.target.value].innerText)}>
+                <option value="0" disabled selected>-- Select option --</option>
+                <option value="1">Phone Number</option>
+                <option value="2">Email</option>
+                <option value="3">Twitter</option>
+                <option value="4">Facebook</option>
+                <option value="5">Instagram</option>
+                <option value="6">LinkedIn</option>
+                <option value="7">In Person</option>
+                <option value="8">Other</option>
               </select>
             </form>
           </div>
@@ -55,10 +59,20 @@ function Conversation({deactivate, contact}) {
         </div>
 
         <div className="detailss">
-          <button className="eventbtn">
+          <button className="eventbtn" onClick={deactivate}>
             <h1>Cancel</h1>
           </button>
-          <button className="eventbtn">
+          <button className="eventbtn" onClick={() => {
+            contact.conversations.push({
+              date,
+              form,
+              topic,
+              messages,
+              startedBy,
+            });
+            editContact(contact);
+          }}
+          >
             <h1>Log conversation</h1>
           </button>
         </div>

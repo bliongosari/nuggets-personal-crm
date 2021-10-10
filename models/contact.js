@@ -32,6 +32,7 @@ const reminderSchema = new Schema({
   },
   repeat: {
     type: String,
+    required: true,
   },
 });
 
