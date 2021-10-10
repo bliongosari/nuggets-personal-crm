@@ -22,10 +22,7 @@ function LifeEvent({contact}) {
           <h2>Select event category:</h2>
           <div className="custom-select">
             <form method="post">
-                <select onChange={(e) => {
-                  setCategory(e.target[e.target.value].innerText);
-                }}
-                >
+                <select onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
                   <option value="0"/>
                   <option value="1">Started a new job</option>
                   <option value="2">Retirement</option>

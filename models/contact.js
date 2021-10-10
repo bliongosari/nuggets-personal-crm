@@ -20,6 +20,21 @@ const lifeeventSchema = new Schema({
   },
 });
 
+const reminderSchema = new Schema({
+  title: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  date: {
+    type: Date,
+  },
+  repeat: {
+    type: String,
+  },
+});
+
 const contactSchema = new Schema({
   user_id: {
     type: Schema.Types.ObjectId,
@@ -71,6 +86,7 @@ const contactSchema = new Schema({
     type: String,
   },
   lifeevents: [lifeeventSchema],
+  reminders: [reminderSchema],
 });
 
 const Contact = mongoose.model("Contact", contactSchema);
