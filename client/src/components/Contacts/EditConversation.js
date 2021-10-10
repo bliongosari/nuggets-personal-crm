@@ -9,18 +9,26 @@ function EditConversation({deactivate, contact, index}) {
   const [messages, setMessages] = useState("");
   const [startedBy, setStartedBy] = useState("");
 
+  useEffect(() => {
+    setDate(contact.conversations[index].date);
+    setForm(contact.conversations[index].form);
+    setTopic(contact.conversations[index].topic);
+    setMessages(contact.conversations[index].messages);
+    setStartedBy(contact.conversations[index].startedBy);
+  }, [index]);
+
   return (
     <div className="containerdiv">
 
       <div className="contacts-form">
         <div className="formtitle">
-          <h1>Log a new conversation</h1>
+          <h1>Edit conversation</h1>
           <hr/>
         </div>
 
         <div className="details">
           <h2>Date of conversation:</h2>
-          <input onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy"></input>
+          <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" />
         </div>
 
         <div className="details">
@@ -45,17 +53,17 @@ function EditConversation({deactivate, contact, index}) {
 
         <div className="details">
           <h2>Topic of conversation:</h2>
-          <input onChange={(e) => setTopic(e.target.value)}></input>
+          <input value={topic} onChange={(e) => setTopic(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Important messages to note:</h2>
-          <input onChange={(e) => setMessages(e.target.value)}></input>
+          <input value={messages} onChange={(e) => setMessages(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Who started the communication:</h2>
-          <input onChange={(e) => setForm(e.target.value)}></input>
+          <input value={startedBy} onChange={(e) => setStartedBy(e.target.value)} />
         </div>
 
         <div className="detailss">
@@ -63,17 +71,17 @@ function EditConversation({deactivate, contact, index}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.conversations.push({
+            contact.conversations[index] = {
               date,
               form,
               topic,
               messages,
               startedBy,
-            });
+            };
             editContact(contact);
           }}
           >
-            <h1>Log conversation</h1>
+            <h1>Edit conversation</h1>
           </button>
         </div>
       </div>
