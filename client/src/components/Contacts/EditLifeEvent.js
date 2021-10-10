@@ -51,7 +51,7 @@ function EditLifeEvent({deactivate, contact, index}) {
 
         <div className="details">
           <h2>Date of event:</h2>
-          <input placeholder="dd/mm/yyyy" value={date} onChange={(e) => setDate(e.target.value)} />
+          <input value={date} placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} />
         </div>
 
         <div className="details">

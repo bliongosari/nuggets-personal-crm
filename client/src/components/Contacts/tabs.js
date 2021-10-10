@@ -4,6 +4,7 @@ import LifeEvent from "./lifeevent";
 import EditLifeEvent from "./EditLifeEvent";
 import Conversation from "./conversation";
 import Reminder from "./reminder";
+import EditReminder from "./EditReminder"
 import Task from "./task";
 import Document from "./document";
 import Media from "./media";
@@ -27,13 +28,13 @@ function Tabs({contact}) {
   return (
     <div className="container">
       <div className="bloc-tabs">
-        <button className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>
+        <button className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => {toggleTab(1); setActive("");}}>
           Life events
         </button>
-        <button className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>
+        <button className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => {toggleTab(2); setActive("");}}>
           Conversations, Reminders and Tasks
         </button>
-        <button className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)}>
+        <button className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => {toggleTab(3); setActive("");}}>
           Photos and Documents
         </button>
       </div>
@@ -93,7 +94,10 @@ function Tabs({contact}) {
                 <div key={contact._id}>
                   <hr/>
                   <p>{reminder.title}</p>
-                  <button>
+                  <button onClick={() => {
+                    setIndex(idx);
+                    setActive("editreminder");
+                  }}>
                     EDIT
                   </button>
                   <br/>
@@ -137,6 +141,7 @@ function Tabs({contact}) {
           <div className="contactfunctionalitydeet">
             {active === "call" && <Conversation/>}
             {active === "reminder" && <Reminder deactivate={deactivate} contact={contact}/>}
+            {active === "editreminder" && <EditReminder deactivate={deactivate} contact={contact} index={index}/>}
             {active === "task" && <Task/>}
           </div>
         </div>
