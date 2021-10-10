@@ -2,7 +2,7 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function LifeEvent({contact}) {
+function LifeEvent({deactivate, contact}) {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState();
   const [title, setTitle] = useState("");
@@ -58,7 +58,7 @@ function LifeEvent({contact}) {
         </div>
 
         <div className="detailss">
-          <button className="eventbtn">
+          <button className="eventbtn" onClick={deactivate}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Reminder({contact}) {
+function Reminder({deactivate, contact}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
@@ -49,7 +49,7 @@ function Reminder({contact}) {
         </div>
 
         <div className="detailss">
-          <button className="eventbtn">
+          <button className="eventbtn" onClick={deactivate}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {

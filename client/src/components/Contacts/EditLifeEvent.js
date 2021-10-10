@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function EditLifeEvent({contact, index}) {
+function EditLifeEvent({deactivate, contact, index}) {
   const [category, setCategory] = useState();
   const [date, setDate] = useState();
   const [title, setTitle] = useState();
@@ -70,7 +70,7 @@ function EditLifeEvent({contact, index}) {
         </div>
 
         <div className="detailss">
-          <button className="eventbtn" onClick={() => console.log(index)}>
+          <button className="eventbtn" onClick={deactivate}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {

@@ -20,6 +20,9 @@ function Tabs({contact}) {
   };
 
   const [active, setActive] = useState(false)
+  const deactivate = () => {
+    setActive("");
+  }
 
   return (
     <div className="container">
@@ -70,8 +73,8 @@ function Tabs({contact}) {
             </div>
           </div>
           <div className="contactfunctionalitydeet">
-            {active === "lifeevent" && <LifeEvent contact={contact}/>}
-            {active === "editlifeevent" && <EditLifeEvent contact={contact} index={index}/>}
+            {active === "lifeevent" && <LifeEvent deactivate={deactivate} contact={contact}/>}
+            {active === "editlifeevent" && <EditLifeEvent deactivate={deactivate} contact={contact} index={index}/>}
           </div>
 
         </div>
@@ -117,7 +120,7 @@ function Tabs({contact}) {
 
           <div className="contactfunctionalitydeet">
             {active === "call" && <Conversation/>}
-            {active === "reminder" && <Reminder contact={contact}/>}
+            {active === "reminder" && <Reminder deactivate={deactivate} contact={contact}/>}
             {active === "task" && <Task/>}
           </div>
         </div>
