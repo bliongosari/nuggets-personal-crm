@@ -60,23 +60,29 @@ function Tabs({contact}) {
               {contact.lifeevents.map((lifeevent, idx) => (
                 <div key={lifeevent.title+idx}>
                   <hr/>
-                  <p>{lifeevent.title}</p>
-                  <div className="editdelbutton">
-
-                  <button onClick={() =>  {
-                    setIndex(idx);
-                    setActive("editlifeevent");
-                  }} className="confbutton">
-                    EDIT
-                  </button>
-                  <br/>
-                  <button onClick={() => {
-                    contact.lifeevents.splice(idx, 1);
-                    editContact(contact);
-                  }} className="confbutton">
-                    DELETE
-                  </button>
+                  <div className="datacontent">
+                    
+                    <div className="editdelbutton">
+                      <button onClick={() =>  {
+                        setIndex(idx);
+                        setActive("editlifeevent");
+                      }} className="confbutton">
+                        EDIT
+                      </button>
+                      <button onClick={() => {
+                        contact.lifeevents.splice(idx, 1);
+                        editContact(contact);
+                      }} className="confbutton">
+                        DELETE
+                      </button>
+                    </div>
+                    <div className="datadetails">
+                      <h1>{lifeevent.title}</h1>
+                      <p>View More</p>
+                    </div>
+                    
                   </div>
+                  <hr/>
                 </div>
               ))}
             </div>
@@ -96,22 +102,29 @@ function Tabs({contact}) {
               {contact.reminders.map((reminder, idx) => (
                 <div key={reminder.title+idx}>
                   <hr/>
-                  <p>{reminder.title}</p>
-                  <div className="editdelbutton">
-                  <button onClick={() => {
-                    setIndex(idx);
-                    setActive("editreminder");
-                  }} className="confbutton">
-                    EDIT
-                  </button>
-                  <br/>
-                  <button onClick={() => {
-                    contact.reminders.splice(idx, 1);
-                    editContact(contact);
-                  }} className="confbutton">
-                    DELETE
-                  </button>
+                  <div className="datacontent">
+                    <div className="editdelbutton">
+                      <button onClick={() => {
+                        setIndex(idx);
+                        setActive("editreminder");
+                      }} className="confbutton">
+                        EDIT
+                      </button>
+                      <br/>
+                      <button onClick={() => {
+                        contact.reminders.splice(idx, 1);
+                        editContact(contact);
+                      }} className="confbutton">
+                        DELETE
+                      </button>
+                    </div>
+                    <div className="datadetails">
+                      <h1>{reminder.title}</h1>
+                      <p>View More</p>
+                    </div>
+                    
                   </div>
+                  <hr/>
                 </div>
               ))}
             </div>
@@ -130,23 +143,31 @@ function Tabs({contact}) {
               {contact.tasks.map((task, idx) => (
                 <div key={task.title+idx}>
                   <hr/>
-                  <p>{task.title}</p>
-                  
-                  <div className="editdelbutton">
-                    <button onClick={() => {
-                      setIndex(idx);
-                      setActive("edittask");
-                    }} className="confbutton">
-                      EDIT
-                    </button>
-                    <br/>
-                    <button onClick={() => {
-                      contact.tasks.splice(idx, 1);
-                      editContact(contact);
-                    }} className="confbutton">
-                      DELETE
-                    </button>
+                  <div className="datacontent">
+                    <div className="editdelbutton">
+                      <button onClick={() => {
+                        setIndex(idx);
+                        setActive("edittask");
+                      }} className="confbutton">
+                        EDIT
+                      </button>
+                      <br/>
+                      <button onClick={() => {
+                        contact.tasks.splice(idx, 1);
+                        editContact(contact);
+                      }} className="confbutton">
+                        DELETE
+                      </button>
                     </div>
+                    <div className="datadetails">
+                      <h1>{task.title}</h1>
+                      <p>View More</p>
+                    </div>
+                    
+                  </div>
+                  <hr/>
+                  
+                  
                 </div>
               ))}
             </div>
@@ -165,22 +186,29 @@ function Tabs({contact}) {
               {contact.conversations.map((conversation, idx) => (
                 <div key={conversation.topic+idx}>
                   <hr/>
-                  <p>{conversation.topic}</p>
-                  <div className="editdelbutton">
-                  <button onClick={() => {
-                    setIndex(idx);
-                    setActive("editconversation");
-                  }} className="confbutton">
-                    EDIT
-                  </button>
-                  <br/>
-                  <button onClick={() => {
-                    contact.conversations.splice(idx, 1);
-                    editContact(contact);
-                  }} className="confbutton">
-                    DELETE
-                  </button>
+                  <div className="datacontent">
+                    <div className="editdelbutton">
+                      <button onClick={() => {
+                        setIndex(idx);
+                        setActive("editconversation");
+                      }} className="confbutton">
+                        EDIT
+                      </button>
+                      <br/>
+                      <button onClick={() => {
+                        contact.conversations.splice(idx, 1);
+                        editContact(contact);
+                      }} className="confbutton">
+                        DELETE
+                      </button>
+                    </div>
+                  <div className="datadetails">
+                      <h1>{conversation.topic}</h1>
+                      <p>View More</p>
+                    </div>
+                    
                   </div>
+                  <hr/>
                 </div>
               ))}
             </div>
