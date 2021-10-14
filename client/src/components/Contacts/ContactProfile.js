@@ -91,7 +91,11 @@ function ContactProfile() {
     return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
   }
 
-  if (contact === undefined) return <LoopCircleLoading />;
+  if (contact === undefined) return (
+    <div style = {{background: "red"}}>
+      <h1> No Contact Found</h1>
+    </div>
+  );
 
 
   const tagsToArray = (tags) => {
@@ -135,7 +139,7 @@ function ContactProfile() {
                      </div>
                   ))
                   
-                  :  <span> { "-"}</span> }
+                  :  <span> { ""}</span> }
                 </div>
               <button onClick={toggleReminders} className="reminderbtn">
                 <h2>Set reminder to contact</h2>

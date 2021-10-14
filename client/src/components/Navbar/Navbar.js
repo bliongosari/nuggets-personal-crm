@@ -186,7 +186,7 @@ function NavbarHome() {
           if (res.status === 200) {
             let currentNotif = arrayRemove(notifications, notif);
             setNotifications([...currentNotif]);
-            window.location.reload(false);
+            // window.location.reload(false);
           } else {
             console.log("error")
           }
@@ -289,18 +289,15 @@ function NavbarHome() {
                 <List style={{ width: '100%'}}>
                   
                 {( pastNotifications.length <= 0 && notifications.length <= 0) 
-                &&  <span style = {{margin: "0 auto"}}>No Notification</span>}
+                &&  <span style = {{height: "50px", display: "flex", alignItems: "center", justifyContent: "center", margin: "10px"}}>No Notification</span>}
                 {pastNotifications.length > 0 &&
                   pastNotifications.map((notif) => (
                     notif.title !== undefined ? 
                     // passed events labeled red
                     <div>
                       <Button>
-                        <ListItem alignItems="flex-start" style ={{ border: "1px solid red", padding: "0", width: "270px"}}>
-                          <ListItemAvatar onClick = {() => openEvent(notif)}>
-                              <img alt="Event" src="/../../events.svg" className="avatarimg"/>
-                          </ListItemAvatar>
-                          <Stack direction="row" spacing={1} padding>
+                        <ListItem alignItems="flex-start" style ={{padding: "0", width: "270px"}}>
+                        <Stack direction="row" spacing={1} padding style = {{display: "flex", width: "100%", justifyContent: "space-between"}}>
                             <ListItemText
                              onClick = {() => openEvent(notif)}
                               primary={"Event: " + notif.title}
@@ -312,9 +309,11 @@ function NavbarHome() {
                                     variant="body2"
                                     color="text.primary"
                                   >
-                                    {new Date(notif.start).toDateString()}
+                                  Alert at: {parseDate(notif.alert)}
                                   </Typography>
-                                  {<br></br>} Alert at: {parseDate(notif.alert)}
+
+                                  {<br></br>}
+                                  <span style = {{marginLeft: "90px", marginTop: "5px",color: "white" , background: "red", paddingLeft: "3%", paddingRight: "3%"}}> MISSED </span>
                                 </React.Fragment>
                               }
                             />
@@ -329,11 +328,8 @@ function NavbarHome() {
                     <div>
                     {/* add onClick={openEvent} to the clicked event */}
                     <Button>
-                      <ListItem alignItems="flex-start" style ={{ border: "1px solid red", padding: "0", width: "270px"}}>
-                        <ListItemAvatar onClick = {() => openContactNotif(notif)}>
-                            <img alt="Event" src="/../../contacts.svg" className="avatarimg"/>
-                        </ListItemAvatar>
-                        <Stack direction="row" spacing={1}>
+                      <ListItem alignItems="flex-start" style ={{ padding: "0", width: "270px"}}>
+                      <Stack direction="row" spacing={1} padding style = {{display: "flex", width: "100%", justifyContent: "space-between"}}>
                           <ListItemText
                           onClick = {() => openContactNotif(notif)}
                             primary="Contact"
@@ -348,6 +344,7 @@ function NavbarHome() {
                                   {notif.full_name}
                                 </Typography>
                                 {<br></br>}Alert at: {parseDateContact(notif.alert)}
+                                <span style = {{marginLeft: "90px", marginTop: "5px",color: "white" , background: "red", paddingLeft: "3%", paddingRight: "3%"}}> MISSED </span>
                               </React.Fragment>
                             }
                           />
@@ -367,11 +364,8 @@ function NavbarHome() {
                     // passed events labeled grey for not opened green for opened
                     <div>
                       <Button>
-                        <ListItem alignItems="flex-start" style ={{ border: notif.notification_opened ? "1px solid grey" : "1px solid green", padding: "0", width: "270px"}}>
-                          <ListItemAvatar onClick = {() => openEvent(notif)}>
-                              <img alt="Event" src="/../../events.svg" className="avatarimg"/>
-                          </ListItemAvatar>
-                          <Stack direction="row" spacing={1} padding>
+                        <ListItem alignItems="flex-start" style ={{padding: "0", width: "270px"}}>
+                        <Stack direction="row" spacing={1} padding style = {{display: "flex", width: "100%", justifyContent: "space-between"}}>
                             <ListItemText
                              onClick = {() => openEvent(notif)}
                               primary={"Event: " + notif.title}
@@ -386,6 +380,12 @@ function NavbarHome() {
                                     {new Date(notif.start).toDateString()}
                                   </Typography>
                                   {<br></br>}Alert at: {parseDate(notif.alert)}
+                                  {<br></br>}
+
+                                  {notif.notification_opened ? 
+                                  <span style = {{marginLeft:"40px", marginTop: "5px",color: "white" , background: "grey", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING(OPENED) </span> :
+                                  <span style = {{marginLeft:"77px", marginTop: "5px",color: "white" , background: "green", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING </span>                                   
+                                  }
                                 </React.Fragment>
                               }
                             />
@@ -400,11 +400,8 @@ function NavbarHome() {
                     <div>
                     {/* add onClick={openEvent} to the clicked event */}
                     <Button>
-                        <ListItem alignItems="flex-start" style ={{ border: notif.notification_opened ? "1px solid grey" : "1px solid green", padding: "0", width: "270px"}}>
-                          <ListItemAvatar onClick = {() => openContactNotif(notif)}>
-                              <img alt="Event" src="/../../events.svg" className="avatarimg"/>
-                          </ListItemAvatar>
-                          <Stack direction="row" spacing={1} padding>
+                        <ListItem style ={{ display: "flex", justifyContent: "space-between", padding: "0", width: "270px"}}>
+                          <Stack direction="row" spacing={1} padding style = {{display: "flex", width: "100%", justifyContent: "space-between"}}>
                             <ListItemText
                              onClick = {() => openContactNotif(notif)}
                               primary={"Contact"}
@@ -419,10 +416,15 @@ function NavbarHome() {
                                     {(notif.full_name)}
                                   </Typography>
                                   {<br></br>}Alert at: {parseDateContact(notif.alert)}
+                                  {<br></br>}
+                                  {notif.notification_opened ? 
+                                  <span style = {{marginLeft: "80px", marginTop: "5px",color: "white" , background: "grey", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING(OPENED) </span> :
+                                  <span style = {{marginLeft: "77px", marginTop: "5px",color: "white" , background: "green", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING </span>                                   
+                                  }
                                 </React.Fragment>
                               }
                             />
-                            <IconButton onClick = {() => deleteContactNotif(notif)} style = {{zIndex: "2"}} aria-label="delete" size="small">
+                            <IconButton onClick = {() => deleteContactNotif(notif)} style = {{flex: "flex-end", zIndex: "2"}} aria-label="delete" size="small">
                               <DeleteIcon fontSize="inherit"/>
                             </IconButton>
                           </Stack>

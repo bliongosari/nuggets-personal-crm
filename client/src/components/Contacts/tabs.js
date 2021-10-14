@@ -42,7 +42,7 @@ function Tabs({contact}) {
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
           <div className="head">
-            <h1 style = {{fontSize: "15px", marginBottom: "10px"}}> Life Updates with {contact.full_name}</h1>
+            <h1 style = {{fontSize: "15px", marginBottom: "10px"}}> Life Updates with {contact.full_name.split(' ')[0]}</h1>
             <button className="addbtn" onClick={() => active === "lifeevent" ? setActive(""): setActive("lifeevent")}>
               <h1 style = {{fontSize: "12px"}}>Add life event</h1>
             </button>

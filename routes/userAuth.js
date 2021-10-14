@@ -106,7 +106,7 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     const events = await Events.find({ user_id: req.user.id });
     let editedContacts = [];
     let editedEvents = [];
-    console.log(contacts);
+    //console.log(contacts);
     let eventsOutstanding = []
     for (var i =0; i < contacts.length; i++) {
       if (contacts[i].alert && new Date(contacts[i].alert) >= Date.now()){
@@ -137,8 +137,8 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     const sortedOutstandingEvents = eventsOutstanding.sort(
       (obj1, obj2) => new Date(obj2.alert) - new Date(obj1.alert)
     );
-    console.log(sortedEvents);
-    console.log(sortedOutstandingEvents);
+    //onsole.log(sortedEvents);
+    //console.log(sortedOutstandingEvents);
     return res
       .status(200)
       .json({ pastNotif: sortedOutstandingEvents.reverse(), eventsNotif: sortedEvents.reverse() });
