@@ -3,10 +3,33 @@ import api from "../../config/axiosConfig";
 import React from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-
+import { useState, useEffect } from "react";
 
 
 function Notification() {
+    const [notifications, setNotifications] = useState([]);
+    const [pastNotifications, setPastNotifications] = useState([]);
+    useEffect(() => {
+        api({
+          method: "GET",
+          url: "/api/user/notifications/",
+        })
+          .then((res) => {
+            if (res.status === 200) {
+              // console.log(res.data.eventsNotif);
+              setPastNotifications([...res.data.pastNotif]);
+              setNotifications([...res.data.eventsNotif]);
+    
+            } else {
+              console.log("error")
+              //setFailed(true);
+            }
+          })
+          .catch((err) => {
+            console.log("error2")
+            //setFailed(true);
+          });
+      }, []);
   return (
     <>
         <div className="mainnn-content">

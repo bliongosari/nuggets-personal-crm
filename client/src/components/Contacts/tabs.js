@@ -36,20 +36,23 @@ function Tabs({contact}) {
         <button className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => {toggleTab(2); setActive("");}}>
           Conversations, Reminders and Tasks
         </button>
-        <button className={toggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => {toggleTab(3); setActive("");}}>
-          Photos and Documents
-        </button>
+
       </div>
 
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
           <div className="head">
-            <h1> Life Updates of {contact.full_name}</h1>
-            <button className="addbtn" onClick={() => setActive("lifeevent")}>
-              <h1>Add life event</h1>
+            <h1 style = {{fontSize: "15px", marginBottom: "10px"}}> Life Updates with {contact.full_name}</h1>
+            <button className="addbtn" onClick={() => active === "lifeevent" ? setActive(""): setActive("lifeevent")}>
+              <h1 style = {{fontSize: "12px"}}>Add life event</h1>
             </button>
             {/* <hr /> */}
           </div>
+          <div className="contactfunctionalitydeet">
+            {active === "lifeevent" && <LifeEvent deactivate={deactivate} contact={contact}/>}
+            {active === "editlifeevent" && <EditLifeEvent deactivate={deactivate} contact={contact} index={index}/>}
+          </div>
+
           
           <div className="addlifeevent">
             <div className="eventreminder-content">
@@ -75,11 +78,6 @@ function Tabs({contact}) {
               ))}
             </div>
           </div>
-          <div className="contactfunctionalitydeet">
-            {active === "lifeevent" && <LifeEvent deactivate={deactivate} contact={contact}/>}
-            {active === "editlifeevent" && <EditLifeEvent deactivate={deactivate} contact={contact} index={index}/>}
-          </div>
-
         </div>
 
         <div className={toggleState === 2 ? "content  active-content" : "content"}>

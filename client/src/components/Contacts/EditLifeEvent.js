@@ -4,7 +4,7 @@ import "./lifeevent.css";
 
 function EditLifeEvent({deactivate, contact, index}) {
   const [category, setCategory] = useState("");
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [notes, setNotes] = useState("");
@@ -48,7 +48,10 @@ function EditLifeEvent({deactivate, contact, index}) {
 
         <div className="details">
           <h2>Date of event:</h2>
-          <input value={date} placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} />
+          <input value={date} 
+                 name="date"
+                 type="date" //change to time later
+                 onChange={(e) => setDate(e.target.value)} />
         </div>
 
         <div className="details">

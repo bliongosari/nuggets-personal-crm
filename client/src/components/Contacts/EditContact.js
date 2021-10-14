@@ -14,6 +14,41 @@ import "react-datepicker/dist/react-datepicker.css";
 import Icon from '@mui/material/Icon';
 import "./AddContact.css";
 import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  root: {
+    // width: 200,
+    // "& .MuiOutlinedInput-input": {
+    //   color: "green"
+    // },
+    // "& .MuiInputLabel-root": {
+    //   color: "green"
+    // },
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#114084"
+    },
+    "&:hover .MuiOutlinedInput-input": {
+      color: "#062d63"
+    },
+    "&:hover .MuiInputLabel-root": {
+      color: "#062d63"
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#062d63"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      color: "#062d63"
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#062d63"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#062d63"
+    }
+  }
+});
+
 
 const tagsQueried = [
   { name: 'Friends', color: "red"},
@@ -36,6 +71,7 @@ const MenuProps = {
 
 
 function EditContact(props) {
+  const classes = useStyles();
   const { contact } = props.location.state;
   const [full_name, setFullName] = useState(contact.full_name);
   const [image, setImage] = useState("");
@@ -134,7 +170,9 @@ function EditContact(props) {
 
         <div className="detail2">
           <h2>Tags:</h2>
-          <FormControl style={{width: "100%", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0"}}>
+          <FormControl 
+          className={classes.root}
+          variant ="outlined"style={{width: "100%", maxHeight: "30px", borderColor: "#114084", marginLeft: "0", marginRight: "0", color: "#114084"}}>
             <Select
               displayEmpty
               multiple
@@ -166,12 +204,6 @@ function EditContact(props) {
           <h2>Description:</h2>
           <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
-
-        <div className="formtitle">
-          <h1>Communication</h1>
-          <hr></hr>
-        </div>
-
         <div className="details">
           <h2>Email Address:</h2>
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -215,7 +247,7 @@ function EditContact(props) {
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn" onClick={() => history.push(`/contact/${contact.full_name}`)}>
+          <button className="addbtn" onClick={() => history.push(`/contact/${contact.full_name}/${contact._id}`)}>
             <h1>Cancel</h1>
           </button>
         </div>

@@ -6,9 +6,20 @@ import Tabs from './tabs';
 import api from "../../config/axiosConfig";
 import { useQuery } from "react-query";
 import LoopCircleLoading from "react-loadingg/lib/LoopCircleLoading";
+import CircleIcon from '@mui/icons-material/Circle';
+
 
 
 function ContactProfile() {
+  const tagsQueried = [
+    { name: "All", color: "pink"},
+    { name: 'Friends', color: "red"},
+    { name: 'Colleagues', color: "blue"},
+    { name: 'Family', color: "green"},
+    { name: 'Childhood', color: "purple"},
+    { name: 'Others', color: "grey"},
+  ];
+  
   const [reminders, setReminders] = useState(false);
   const [info, setInfo] = useState(false);
   const [dateReminder, setDateReminderReal] = useState("")
@@ -82,6 +93,21 @@ function ContactProfile() {
 
   if (contact === undefined) return <LoopCircleLoading />;
 
+
+  const tagsToArray = (tags) => {
+    let arr = tags.split(",");
+    console.log(arr)
+    let final = []
+    for (let tag of tagsQueried){
+      if (arr.includes(tag.name)){
+        final.push(tag)
+      }
+    }
+    console.log(final);
+    return final;
+  }
+
+
   return (
     <div className="home">
       <div className="backdiv">
@@ -96,8 +122,21 @@ function ContactProfile() {
         <div className="profpic">
           <h1>{contact.full_name}</h1>
           <div className="lastactivity">
-              <h1>Last contacted: </h1>
-              <h1>Tags:</h1>
+              {/* <h1>Last contacted: </h1>
+              <h1>Tags:</h1> */}
+              <div style = {{margin: "0 auto", marginTop: "5px", width: "250px", display: "flex", flexDirection: "row", flexWrap: "wrap", alignItems: "center", justifyContent: "center"}}>
+                  {contact.tags ? 
+                  tagsToArray(contact.tags).map((d) => (
+                    <div style = {{display: "flex", flexDirection: "row"}}>
+                    <div key={`${contact._id} ${d.name}`}>
+                    <CircleIcon style = {{color: d.color, margin: "0 0.5vw", fontSize: "11px"}}/>
+                     <span style = {{fontSize: "12px"}}>{d.name}</span> 
+                     </div>
+                     </div>
+                  ))
+                  
+                  :  <span> { "-"}</span> }
+                </div>
               <button onClick={toggleReminders} className="reminderbtn">
                 <h2>Set reminder to contact</h2>
               </button>
@@ -131,7 +170,7 @@ function ContactProfile() {
                     onChange={setDateReminder}
                     required={true}
                   />
-                    <button onClick={submitReminder} className="addbtn" style = {{width: "100px", fontSize: "13px"}}>
+                    <button onClick={submitReminder} className="addbtn" style = {{width: "100px", fontSize: "13px", marginTop: "10px"}}>
                     <h1>Add a reminder </h1>
                     </button>
                 </div>

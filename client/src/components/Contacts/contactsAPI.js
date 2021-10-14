@@ -1,5 +1,6 @@
 import api from "../../config/axiosConfig"
 import Cookies from "js-cookie";
+import { useHistory } from "react-router-dom";
 
 export const getContacts = async () => {
   const { data } = await api.get("/api/contacts/all");
@@ -27,5 +28,5 @@ export const editContact = async (contact, reload) => {
   // TODO: Account for contact edit failure
   // TODO: Reloading to contacts is necessary to avoid state loss?
   // window.location.replace("../../contacts");
-  window.location.reload()
+  window.location.replace(`/contact/${contact.full_name}/${contact._id}`);
 };

@@ -106,16 +106,18 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     const events = await Events.find({ user_id: req.user.id });
     let editedContacts = [];
     let editedEvents = [];
+    console.log(contacts);
+    let eventsOutstanding = []
     for (var i =0; i < contacts.length; i++) {
       if (contacts[i].alert && new Date(contacts[i].alert) >= Date.now()){
         editedEvents.push(contacts[i])
       }
       else if (contacts[i].alert && new Date(contacts[i].alert) < Date.now()){
-        editedOutstanding.push(contacts[i])
+        eventsOutstanding.push(contacts[i])
       }
     }
 
-    let eventsOutstanding = []
+    //let eventsOutstanding = []
     for (var i =0; i < events.length; i++) {
       // console.log(events[i]);
       if (events[i].alert > new Date(0) && events[i].alert !== "None" && !events[i].notification_deleted){
@@ -125,7 +127,6 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
         else if (new Date(events[i].start) > Date.now()) {
           editedEvents.push(events[i])
         }
-
       }
     }
 
@@ -136,10 +137,13 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     const sortedOutstandingEvents = eventsOutstanding.sort(
       (obj1, obj2) => new Date(obj2.alert) - new Date(obj1.alert)
     );
+    console.log(sortedEvents);
+    console.log(sortedOutstandingEvents);
     return res
       .status(200)
       .json({ pastNotif: sortedOutstandingEvents.reverse(), eventsNotif: sortedEvents.reverse() });
   } catch (e) {
+    console.log("error")
     return res.status(403).json({ message: "Error" });
   }
 })

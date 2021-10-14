@@ -40,7 +40,10 @@ function LifeEvent({deactivate, contact}) {
 
         <div className="details">
           <h2>Date of event:</h2>
-          <input placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} />
+          <input value={date} 
+                 name="date"
+                 type="date" //change to time later
+                 onChange={(e) => setDate(e.target.value)} />
         </div>
 
         <div className="details">

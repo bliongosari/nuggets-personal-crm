@@ -20,6 +20,7 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+//import { useHistory } from "react-router-dom";
 
 const customStyles = {
   content: {
@@ -73,6 +74,7 @@ function NavbarHome() {
           // console.log(res.data.eventsNotif);
           setPastNotifications([...res.data.pastNotif]);
           setNotifications([...res.data.eventsNotif]);
+
         } else {
           console.log("error")
           //setFailed(true);
@@ -106,6 +108,7 @@ function NavbarHome() {
   const openEvent = (notif) => {
     setNotifSelected(notif);
     setEventDetail(true);
+    
     if (!notif.notification_opened) {
       api({
         method: "POST",
@@ -147,8 +150,8 @@ function NavbarHome() {
 
   const openContactNotif = (notif) => {
     setNotifSelected(notif);
-    setEventDetail(true);
-    console.log(notif);
+    // setEventDetail(true);
+    // console.log(notif);
     if (!notif.notification_opened) {
       api({
         method: "POST",
@@ -156,6 +159,7 @@ function NavbarHome() {
       })
         .then((res) => {
           if (res.status === 200) {
+
             arrayEditOpened(notifications, notif);
           } else {
             console.log("error")
@@ -166,6 +170,7 @@ function NavbarHome() {
           //setFailed(true);
         });
     }
+    history.push("/contact/" + notif.full_name + "/" + notif.user_id);
   }
 
   const deleteContactNotif = (notif) => {
@@ -284,7 +289,7 @@ function NavbarHome() {
                 <List style={{ width: '100%'}}>
                   
                 {( pastNotifications.length <= 0 && notifications.length <= 0) 
-                &&  <span>No Notification</span>}
+                &&  <span style = {{margin: "0 auto"}}>No Notification</span>}
                 {pastNotifications.length > 0 &&
                   pastNotifications.map((notif) => (
                     notif.title !== undefined ? 
@@ -324,7 +329,7 @@ function NavbarHome() {
                     <div>
                     {/* add onClick={openEvent} to the clicked event */}
                     <Button>
-                      <ListItem alignItems="flex-start">
+                      <ListItem alignItems="flex-start" style ={{ border: "1px solid red", padding: "0", width: "270px"}}>
                         <ListItemAvatar onClick = {() => openContactNotif(notif)}>
                             <img alt="Event" src="/../../contacts.svg" className="avatarimg"/>
                         </ListItemAvatar>
