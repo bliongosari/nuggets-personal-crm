@@ -125,6 +125,7 @@ router.put("/edit/:id", auth.authenticateToken, async(req, res) => {
 
 
 router.post('/delete-notif/:id', auth.authenticateToken, async(req, res) => {
+  console.log("yes");
   try {
     var eventQueried = await Reminder.findOne({ _id: req.params.id });
     if ((req.user.id == eventQueried.belongs_to)) {
@@ -162,6 +163,7 @@ router.post('/open-notif/:id', auth.authenticateToken, async(req, res) => {
       message: "Successfully opened",
     });
   } catch (e) {
+    console.log(e);
     return res.status(401).json({ message: "No user" });
   }
 });
