@@ -130,7 +130,7 @@ button {
 .addbtn {
   font-family: var(--logo-font);
   border-radius: 10px;
-  width: 17%;
+  width: 20%;
   background-color: var(--primary-blue);
   text-align: center;
   padding: 0.5%;
@@ -152,29 +152,39 @@ button {
   padding: 2%;
 }
 
-.edittbtn {
+.confbutton {
   font-family: var(--logo-font);
   border-radius: 10px;
-  width: 40%;
+  width: 20%;
   background-color: var(--primary-blue);
+  color: white;
   text-align: center;
   padding: 0.5%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: auto;
-  margin-bottom: 2%;
+  margin-bottom: 0%;
 }
-.edittbtn h1 {
-  margin-top: 3%;
-  font-size: 70%;
-  letter-spacing: 2px;
-  color: white;
-  font-weight: bolder;
+
+.editdelbutton {
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: row;
+}
+
+.eventreminder-content p {
+  font-family: var(--logo-font);
+  border-radius: 10px;
+  width: 20%;
+  color: var(--primary-blue);
   text-align: center;
+  padding: 0.5%;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  margin: 4%;
-  padding: 2%;
+  margin: auto;
+  margin-bottom: 0%;
 }
 
 .addlifeevent {
@@ -294,9 +304,14 @@ button {
     text-align: center;
     align-items: center;
   }
+
+  .confbutton {
+    font-size: 80%;
+    width: 30%;
+  }
 }
 
-@media screen and (min-width: 376px) and (max-width: 700px) {
+@media screen and (min-width: 376px) and (max-width: 850px) {
   .active-tabs {
     font-size: 70%;
   }
@@ -338,14 +353,14 @@ button {
   }
 }
 
-@media screen and (min-width: 701px) and (max-width: 1200px) {
+@media screen and (min-width: 851px) and (max-width: 1200px) {
   .active-tabs {
     font-size: 70%;
   }
 
   .addbtn {
     font-size: 70%;
-    width: 50%;
+    width: 30%;
     margin-left: 0;
     padding: 0;
     margin: auto;
@@ -354,7 +369,7 @@ button {
 
   .head {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .head h1 {
