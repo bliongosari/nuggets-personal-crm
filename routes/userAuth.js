@@ -51,6 +51,8 @@ router.post("/edit", auth.authenticateToken, async (req, res) => {
   }
 });
 
+
+
 router.post("/changePassword", auth.authenticateToken, async (req, res) => {
   try {
     var password = sanitize(req.body.password);
@@ -83,6 +85,10 @@ router.post("/changePassword", auth.authenticateToken, async (req, res) => {
     });
   }
 });
+
+router.post("/requestResetPassword", userController.requestPasswordReset);
+router.post("/changeForgetPassword", userController.changeForgetPassword);
+router.post("/checkToken", userController.checkToken);
 
 
 router.get("/numDetails", auth.authenticateToken, async (req, res) => {

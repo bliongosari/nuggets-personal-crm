@@ -28,8 +28,7 @@ function EventForm() {
   const [success, setSuccess] = useState(false);
 
   const addEvents = async (e) => {
-    setFailed(false);
-    setSuccess(false);
+
     if (new Date(allField.start) > new Date(allField.end)){
       setMessage("End date must be after start date")
     }

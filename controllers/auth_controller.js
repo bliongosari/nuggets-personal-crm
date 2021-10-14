@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const User = require("../models/user");
+const Token = require("../models/token");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
@@ -15,6 +16,8 @@ const regexDigit = new RegExp(/\d+/);
 const regexAntiJS = new RegExp(/[^;<>]+/);
 const path = require('path');
 const nodemailer = require('nodemailer');
+const crypto = require("crypto");
+
 
 const transporter = nodemailer.createTransport({
     service: "Gmail",
@@ -162,8 +165,111 @@ const getInfo = async (req, res) => {
   }
 };
 
+// const resetPassword = async (req, res) => {
+//   try {
+//     let email = req.body.email;
+//     let token = req.body.token;
+//     const user = await User.findOne({ email: email});
+//     if (!user) {
+//       return res
+//       .status(404)
+//       .json({ message: "Failed to send" });
+//     }
+//   } catch (err) {
+
+//   }
+// }
+
+const changeForgetPassword = async (req, res) => {
+  try {
+  let email = req.body.email;
+  const user = await User.findOne({ email: email});
+  let token = await Token.findOne({ token: req.body.token });
+  var password = sanitize(req.body.password);
+  const hashedpassword = await bcrypt.hash(password, 10);
+  var changes = {
+    password: hashedpassword
+  }
+  if (JSON.stringify(user._id) == JSON.stringify(token.userId)) {
+    await User.findOneAndUpdate({email: email}, changes);
+    return res.status(200).json({
+      message: "Successfully changed",
+    });
+  }
+  return res.status(111).json({ message: "Password incorrect" });
+  }
+  catch (err) {
+    return res.status(111).json({ message: "Password incorrect" });
+  }
+}
+
+const checkToken = async (req, res) => {
+  try {
+    let email = req.body.email;
+    // console.log(email);
+  const user = await User.findOne({ email: email});
+  if (!user) {
+    return res
+    .status(404)
+    .json({ message: "Failed to send" });
+  }
+  let token = await Token.findOne({ token: req.body.token });
+  if (token){
+    return res
+    .status(200)
+    .json({ message: "Successful" });
+  }
+  console.log("!!!");
+  return res
+  .status(404)
+  .json({ message: "Failed" });
+
+} catch (err){
+  return res
+  .status(404)
+  .json({ message: "Failed to send" });
+}
+}
+
+const requestPasswordReset = async (req, res) => {
+  try {
+    let email = req.body.email;
+  const user = await User.findOne({ email: email});
+  if (!user) {
+    return res
+    .status(404)
+    .json({ message: "Failed to send" });
+  }
+  let token = await Token.findOne({ userId: user._id });
+  if (token) await token.deleteOne();
+  let resetToken = crypto.randomBytes(32).toString("hex");
+  let val = Math.floor(1000 + Math.random() * 9000);
+
+  await new Token({
+    userId: user._id,
+    token: val,
+    createdAt: Date.now(),
+  }).save();
+
+  transporter.sendMail({
+    to: req.body.email,
+    subject: 'Password Reset Request',
+    html: `Your unique code is '${val}'. Enter in the reset password page. This will expire in 8 hours`
+  })
+              return res
+                .status(200)
+                .json({ message: "Successfully sent email" });
+} catch (err){
+  return res
+  .status(404)
+  .json({ message: "Failed to send" });
+}
+};
+
+
+
 exports.verify = async (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   const token = req.params.id
   if (!token) {
     return res.sendFile(path.join(__dirname, '/token_fail.html'));
@@ -209,3 +315,6 @@ module.exports.verifyToken = verifyToken;
 module.exports.signUp = signUp;
 module.exports.getInfo = getInfo;
 module.exports.login = login;
+module.exports.checkToken = checkToken;
+module.exports.requestPasswordReset =requestPasswordReset;
+module.exports.changeForgetPassword = changeForgetPassword;
