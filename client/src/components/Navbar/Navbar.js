@@ -63,6 +63,8 @@ function NavbarHome() {
   const [confirmation, setConfirmation] = useState(false);
   const [eventDetail, setEventDetail] = useState(false);
   const [notifSelected, setNotifSelected] = useState({});
+  const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     api({

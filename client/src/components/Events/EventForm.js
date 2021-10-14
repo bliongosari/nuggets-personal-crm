@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
 import "./Events.css";
 import { Alert } from "react-bootstrap";
+import Feedback from "../Feedback/Feedback";
+
 
 function EventForm() {
   const [allField, setAllFields] = useState({
@@ -20,10 +22,14 @@ function EventForm() {
   const [events, setevents] = useState([]);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
-  const [failed, setFailed] = useState(false);
+
   const [flag, setFlag] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const addEvents = async (e) => {
+    setFailed(false);
+    setSuccess(false);
     if (new Date(allField.start) > new Date(allField.end)){
       setMessage("End date must be after start date")
     }
@@ -40,10 +46,13 @@ function EventForm() {
         if (res.status === 200) {
           setevents([...events, field]);
           setField("");
+          setSuccess(true);
+          makeFalse();
           refreshPage();
-          setMessage("")
+          //setMessage("")
         } else {
           setFailed(true);
+          makeFalse();
         }
         setFlag(true);
         //setMessage(res.data.message);
@@ -51,11 +60,18 @@ function EventForm() {
       .catch(function (error) {
         setFlag(true);
         setFailed(true);
+        makeFalse();
       });
             
     }
   };
 
+  const makeFalse = () => {
+    setTimeout(() => {
+      setFailed(false);
+      setSuccess(false);
+    }, 6000);
+  }
   const SuccessMsg = () => <Alert variant="success">Sucessfully Added</Alert>;
   const FailedMsg = () => <Alert variant="danger">Failed to add</Alert>;
 
@@ -94,6 +110,9 @@ function EventForm() {
     <div>
       {flag && (failed ? <FailedMsg /> : <SuccessMsg />)}
       <div className="addevents">
+      {success && <Feedback success message = "Successfully added event" />}
+      {failed && <Feedback message = "Failed to add event" />}
+      
         <h2 className="add-title">Add a new event</h2>
         <h3 className = "add-details">Event Details</h3>
 

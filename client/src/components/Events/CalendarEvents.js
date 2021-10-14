@@ -100,7 +100,7 @@ function CalendarEvents(props) {
         timeslots={8}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 700, marginBottom: "50px" }}
+        style={{ height: "80vh", marginBottom: "50px" }}
         onSelectSlot={(start, end) => handleSelect(start, end)}
         onSelectEvent={(event) => openEventModal(event)}
         popup

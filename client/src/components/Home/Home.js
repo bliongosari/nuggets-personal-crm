@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { LoopCircleLoading } from "react-loadingg";
 import EventsSummary from "./EventsSummary";
+import Feedback from "../Feedback/Feedback";
 import RecentContacts from "./RecentContacts";
 import api from "../../config/axiosConfig.js";
 import { Link } from "react-router-dom";
-
 
 const Loading = () => <LoopCircleLoading />;
 
@@ -42,9 +42,9 @@ function Home() {
       <Loading />
     </div>
   ) : (
-    <div className="home">
+    <div className="homeMain">
       {/* Summary Table */}
-      <div className="summary summary-container">
+      <div className="summary summary-container" style = {{height: "10vh", justifyContent: "space-around", alignItems: "center", display: "flex"}}>
         <Link to ="/journal" style={{ textDecoration: 'none' }}>
         <div>
           <h1>{numJournal}</h1>

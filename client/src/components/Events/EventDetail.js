@@ -3,7 +3,7 @@ import api from "../../config/axiosConfig.js";
 import "./EventDetail.css";
 import Modal from "react-modal";
 import EventEditForm from "./EventEditForm";
-
+import Feedback from "../Feedback/Feedback";
 
 const customStyles = {
   content: {
@@ -30,6 +30,8 @@ function EventDetail(props) {
   const handleSelect = ({ start, end }) => {
     setIsOpen(true);
   };
+  const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const openEventModal = event => {
     setEventID(props.event);
@@ -55,15 +57,25 @@ function EventDetail(props) {
       .then(function (res) {
         if (res.status === 200) {
           window.location.reload(false);
-          alert("Sucessfully Deleted");
+          setSuccess(true);
+          makeFalse();
         } else {
-          alert("Failed to Delete");
+          setFailed(true);
+          makeFalse();
         }
       })
       .catch(function (error) {
-        alert("Failed to Delete");
+        setFailed(true);
+        makeFalse();
       });
   };
+
+  const makeFalse = () => {
+    setTimeout(() => {
+      setFailed(false);
+      setSuccess(false);
+    }, 6000);
+  }
 
   function parseDate(notif) {
     return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + new Date(notif).getHours() + ":" + new Date(notif).getMinutes();
@@ -71,6 +83,8 @@ function EventDetail(props) {
 
   return (
     <div>
+      {success && <Feedback success message = "Successfully deleted event" />}
+      {failed && <Feedback message = "Failed to delete event" />}
       <div className="event-details">
         <h2 className="detail-title"> Event Details </h2>  
         <h3 className="event-name"> Event Name: {props.event.title}</h3>

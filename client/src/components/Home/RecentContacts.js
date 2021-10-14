@@ -58,7 +58,7 @@ function RecentConctacts() {
   }, []);
 
     return (
-        <div className="new-contacts">
+        <div className="new-contacts" style = {{minHeight: "20vh"}}>
             <span className ="header-left">RECENTLY ADDED CONTACTS</span>
             <Link to = "/addcontact">
             <button className="next1 round">&#43;</button>
@@ -73,12 +73,14 @@ function RecentConctacts() {
           {current.map((contact) => (
           <Link key={contact._id} to={{ pathname: `contact/${contact.full_name}/${contact._id}` }} style={{ textDecoration: 'none' }}>
             <div className="eachContact">
-              <h2 className="square"> {contact.preferred_name[0] || contact.full_name[0]}</h2>
-              <h3>{contact.preferred_name || contact.full_name}</h3>
+              <div style = {{margin: "0 auto",width: "33%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+                <div className="square" style = {{marginLeft: "0", display: "flex", justifyContent: "center", alignItems: "center", color: "white", fontSize: "20px"}}> {contact.preferred_name[0] || contact.full_name[0]}</div>
+              <h3 style = {{marginTop: "6px"}}>{contact.preferred_name || contact.full_name}</h3>
+              </div>
             </div>
           </Link>
           ))}
-          {max ? (
+          {/* {max ? (
           <button className="next" onClick ={moveLeft}>
           <img alt="before" src="../../next.svg" className="next"></img>
         </button>
@@ -88,7 +90,7 @@ function RecentConctacts() {
             <img alt="next" src="../../next.svg" className="next"></img>
           </button>
           </div>
-          )} 
+          )}  */}
           </div>
         )}
         

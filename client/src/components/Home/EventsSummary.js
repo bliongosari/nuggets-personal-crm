@@ -53,7 +53,7 @@ function EventsSummary() {
   }
 
   return (
-    <div className="current-events"> 
+    <div className="current-events" style = {{minHeight: "40vh"}}> 
       <div className ="current-events-title">
       <span>EVENTS IN THE NEXT 2 WEEKS</span>
       </div>

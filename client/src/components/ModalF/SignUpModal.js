@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Feedback from "../Feedback/Feedback";
+
 const eye = <FontAwesomeIcon icon={faEye} />;
 const eyeSlash = <FontAwesomeIcon icon={faEyeSlash} />;
 
@@ -21,6 +23,8 @@ export default function SignUpModal() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
 
+  const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const sign_up = (user) => {
     api({
@@ -29,14 +33,18 @@ export default function SignUpModal() {
       data: user,
     })
       .then(function (response) {
-        setMessage(response.data.message);
+        setSuccess(true);
+        makeFalse();
         setEmail("");
         setFirstname("");
         setLastname("");
         setPassword("");
         setPasswordConfirmation("");
+        refreshPage();
       })
       .catch(function (error) {
+        setFailed(true);
+        makeFalse();
         setMessage(error.response.data.message);
       });
   };
@@ -44,6 +52,10 @@ export default function SignUpModal() {
   const toggleModal = () => {
     setModal(!modal);
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
 
   const requestSignUp = async (e) => {
     e.preventDefault();
@@ -57,6 +69,13 @@ export default function SignUpModal() {
     sign_up(user);
   };
 
+  const makeFalse = () => {
+    setTimeout(() => {
+      setFailed(false);
+      setSuccess(false);
+    }, 6000);
+  }
+
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
@@ -65,6 +84,8 @@ export default function SignUpModal() {
 
   return (
     <>
+        {success && <Feedback success message = "Successfully signed up. An email confirmation has been sent" />}
+      {failed && <Feedback message = "Failed to sign up " />}
       <div className="buttonss">
         <button onClick={toggleModal} className="btn">
           Sign Up
@@ -82,15 +103,6 @@ export default function SignUpModal() {
               <h2>CREATE ACCOUNT</h2>
             </div>
 
-            <div className="logInGoogle">
-              <button className="continue-btn">Continue with Google</button>
-            </div>
-
-            <div className="divider">
-              
-              <h3>OR</h3>
-              
-            </div>
 
             <form onSubmit={requestSignUp}>
               <div className="namediv">
@@ -165,12 +177,12 @@ export default function SignUpModal() {
                 <i className = "eyeBtn" style ={{marginLeft: "-40px", width: "40px"}} onClick = {() => setPasswordConfirmShown(!passwordConfirmShown)}> {passwordConfirmShown ? eye: eyeSlash}</i>
               </div>
 
-              <div className="confirmationbox">
+              {/* <div className="confirmationbox">
                 <h2>
                   <input type="checkbox"></input> &nbsp; &nbsp; By creating an
                   account, you agree to the Terms and Conditions
                 </h2>
-              </div>
+              </div> */}
 
               <div class="submit-div">
                 <input

@@ -21,7 +21,7 @@ import EditJournal from "./components/Journal/EditJournal";
 import Notifications from "./components/Navbar/Notifications.js"
 function App() {
   return (
-    <div className="app">
+    <div className = "app">
       <Switch>
         <Route exact path="/" component={NavbarWelcome} />
         <ProtectedNavbar path="/" component={NavbarHome} />

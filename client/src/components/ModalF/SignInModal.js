@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Modal.css";
 import Cookies from "js-cookie";
+import Feedback from "../Feedback/Feedback";
 import { useHistory } from "react-router-dom";
 import api from "../../config/axiosConfig.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +9,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 const eye = <FontAwesomeIcon icon={faEye} />;
 const eyeSlash = <FontAwesomeIcon icon={faEyeSlash} />;
+
 //import { login, logout } from "../../redux/slices/userSlice";
 
 export default function SignInModal() {
@@ -16,6 +18,8 @@ export default function SignInModal() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useHistory();
+  const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const [forgot, setForgot] = useState(false);
 
@@ -27,7 +31,9 @@ export default function SignInModal() {
       headers: { "X-ACCESS-TOKEN": Cookies.get("token") },
     })
       .then((response) => {
-        setMessage(response.data.message);
+        setSuccess(true);
+        makeFalse();
+        // setMessage(response.data.message);
         Cookies.set("token", response.data.token);
         history.push("/home");
       })
@@ -37,6 +43,12 @@ export default function SignInModal() {
       });
   };
 
+  const makeFalse = () => {
+    setTimeout(() => {
+      setFailed(false);
+      setSuccess(false);
+    }, 6000);
+  }
   const requestLogin = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -69,6 +81,8 @@ export default function SignInModal() {
 
   return (
     <>
+      {success && <Feedback success message = "Successfully logged in" />}
+      {failed && <Feedback message = "Failed to edit event" />}
       <div className="buttons">
         <button onClick={toggleModal} className="btn">
           Sign In

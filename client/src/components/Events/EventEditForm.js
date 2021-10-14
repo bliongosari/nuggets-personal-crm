@@ -4,9 +4,9 @@ import api from "../../config/axiosConfig.js";
 import "./Events.css";
 import { Alert } from "react-bootstrap";
 import { props } from "bluebird";
+import Feedback from "../Feedback/Feedback";
 
 function EventEditForm(props) {
-  
 
   const [allField, setAllFields] = useState({
     title: props.event.title,
@@ -31,9 +31,17 @@ function EventEditForm(props) {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [flag, setFlag] = useState(false);
 
   const editEvents = async (e) => {
+    if (new Date(allField.start) > new Date(allField.end)){
+      setMessage("End date must be after start date")
+    }
+    else if (allField.title === "" || !allField.title){
+      setMessage("Event name must not be empty")
+    } 
+    else {
     api({
       method: "POST",
       url: "/api/events/edit/" + props.event._id,
@@ -43,9 +51,12 @@ function EventEditForm(props) {
         if (res.status === 200) {
           setevents([...events, field]);
           setField("");
+          setSuccess(true);
+          makeFalse();
           refreshPage();
         } else {
           setFailed(true);
+          makeFalse();
         }
         setFlag(true);
         //setMessage(res.data.message);
@@ -53,9 +64,18 @@ function EventEditForm(props) {
       .catch(function (error) {
         setFlag(true);
         setFailed(true);
+        makeFalse();
       });
+            
+    }
   };
 
+  const makeFalse = () => {
+    setTimeout(() => {
+      setFailed(false);
+      setSuccess(false);
+    }, 6000);
+  }
   const SuccessMsg = () => <Alert variant="success">Sucessfully Edited</Alert>;
   const FailedMsg = () => <Alert variant="danger">Failed to edit</Alert>;
 
@@ -91,11 +111,15 @@ function EventEditForm(props) {
   ];
 
   return (
-    <div className="addevents">
+    <>
+    {success && <Feedback success message = "Successfully edited event" />}
+    {failed && <Feedback message = "Failed to edit event" />}
+    <div className="addevents">      
         <h2 className="edit-title">Edit an event</h2>
         <h3 className = "add-details">Event Details</h3>
         <form>
           <label style={{ color: "red" }}> {message}</label>
+          <br></br>
           <label> Event Name: </label>
           <br></br>
           <input name="title" 
@@ -174,6 +198,7 @@ function EventEditForm(props) {
         <button onClick={editEvents} className= "add-button">Save Changes</button>
         
     </div>
+    </>
   );
 }
 

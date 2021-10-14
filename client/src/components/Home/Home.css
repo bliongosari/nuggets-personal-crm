@@ -10,7 +10,14 @@
   --button-font: "Urbanist";
 }
 
-.home {
+.homeMain {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 0;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
   margin-left: 60px;
 }
 
@@ -19,6 +26,7 @@
   grid-column-gap: 5% 5%;
   grid-template-columns: 30% 30% 30%;
   justify-content: center;
+  padding: 10px
 }
 
 .summary {
@@ -82,6 +90,7 @@
   grid-template-columns: 20% 40% 40%;
   padding-top: 3%;
   padding-bottom: 1%;
+  min-height: 7vh;
 }
 
 .current-contacts-home h4 {
@@ -134,8 +143,7 @@
 
 .new-contacts-container {
   display: grid;
-  grid-column-gap: 5% 5%;
-  grid-template-columns: 27% 27% 27% 10%;
+  grid-template-columns: 33% 33% 33%;
   justify-content: center;
   margin-top: 30px;
 }
@@ -212,11 +220,11 @@
 
 .square {
   background: var(--primary-blue);
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  display: flex;
+  min-width: 50px;
+  min-height: 50px;
+  text-align: center;
+  justify-content: center;
 }
 
 .next {
@@ -319,10 +327,6 @@ span {
     transition: 0.2s ease;
   }
 
-  .square {
-    margin-left: 20%;
-    transition: 0.2s ease;
-  }
 
   .current-events h1 {
     font-size: 2vh;
@@ -375,6 +379,7 @@ span {
 }
 
 @media screen and (min-width: 550px) and (max-width: 864px) {
+  
   .next {
     padding-left: 8px;
     width: 3vh;
@@ -399,10 +404,7 @@ span {
     transition: 0.2s ease;
   }
 
-  .square {
-    margin-left: 37%;
-    transition: 0.2s ease;
-  }
+
 
   .line1 {
     margin-top: 5px;
@@ -449,10 +451,7 @@ span {
     transition: 0.2s ease;
   }
 
-  .square {
-    margin-left: 42%;
-    transition: 0.2s ease;
-  }
+
 
   .current-contacts-home h4 {
     font-size: 1.75vh;
@@ -488,8 +487,4 @@ span {
     transition: 0.2s ease;
   }
 
-  .square {
-    margin-left: 45%;
-    transition: 0.2s ease;
-  }
 }
