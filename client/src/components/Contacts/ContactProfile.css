@@ -433,10 +433,11 @@
   z-index: 99;
 }
 
-.modal-content {
+.modal2-content {
   position: fixed;
   top: 50%;
   left: 50%;
+  display: flex;
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background: var(--fifth-blue);
@@ -511,12 +512,6 @@
   color: var(--secondary-blue);
   border-style: solid;
   margin-bottom: 0%;
-}
-
-.modal-content {
-  text-align: left;
-  justify-content: left;
-  margin: auto;
 }
 
 .modal-body label {
@@ -690,16 +685,24 @@
   }
 
   .profileheader {
-    margin-top: 15%;
+    margin-top: 10%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+  }
+
+  .profileheader img {
+    width: 20%;
   }
   .searchbar input {
     width: 83%;
   }
 
-  .modal-content {
+  .modal2-content {
     position: fixed;
-    top: 40%;
-    left: 42%;
+    top: 50%;
+    left: 50%;
+    overflow-x: hidden;
+    width: 80%;
   }
 
   .modal-body label {
@@ -821,10 +824,10 @@
     width: 83%;
   }
 
-  .modal-content {
+  .modal2-content {
     position: fixed;
-    top: 40%;
-    left: 42%;
+    top: 50%;
+    left: 50%;
   }
 
   .modal-body label {
@@ -947,10 +950,10 @@
     width: 83%;
   }
 
-  .modal-content {
+  .modal2-content {
     position: fixed;
-    top: 40%;
-    left: 42%;
+    top: 50%;
+    left: 50%;
   }
 
   .modal-body label {

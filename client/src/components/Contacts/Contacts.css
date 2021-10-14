@@ -354,12 +354,17 @@ hr {
   }
 
   .addnewbtn {
-    width: 80%;
+    width: 100%;
+  }
+
+  .table-entry {
+    overflow-wrap: break-word;
   }
 
   .addnewbtn h1 {
     font-size: 70%;
     line-height: 150%;
+    width: 100%;
   }
 }
 
@@ -388,7 +393,6 @@ hr {
     padding-left: 2%;
     margin-bottom: 5%;
   }
-
 
   .current-contacts-r h2 {
     font-size: 75%;
@@ -485,9 +489,6 @@ hr {
   .navpagebutton {
     margin-top: 1.7%;
   }
-
-
-  
 
   .navpagebutton h1 {
     font-size: 75%;

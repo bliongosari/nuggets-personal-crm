@@ -257,7 +257,7 @@ function AddContact() {
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn" onClick={(e) => {
+          <button className="addcbtn" onClick={(e) => {
             addContact({
               full_name,
               preferred_name,
@@ -278,7 +278,7 @@ function AddContact() {
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn">
+          <button className="addcbtn">
             <h1>Cancel</h1>
           </button>
         </div>

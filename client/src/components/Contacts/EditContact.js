@@ -225,7 +225,7 @@ function EditContact(props) {
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn" onClick={(e) => {
+          <button className="addcbtn" onClick={(e) => {
             editContact({
               ...contact,
               full_name,
@@ -247,7 +247,7 @@ function EditContact(props) {
         </div>
 
         <div className="addcontacts">
-          <button className="addbtn" onClick={() => history.push(`/contact/${contact.full_name}/${contact._id}`)}>
+          <button className="addcbtn" onClick={() => history.push(`/contact/${contact.full_name}/${contact._id}`)}>
             <h1>Cancel</h1>
           </button>
         </div>

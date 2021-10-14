@@ -50,27 +50,10 @@ body.active-modal {
   background: var(--fourth-blue);
   padding: 0% 0%;
   border-radius: 30px;
-  width: 30%;
+  width: 50%;
   z-index: 5;
   border: solid 1px var(--secondary-blue);
   z-index: 15;
-}
-
-.modalcontent2 {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 1.4;
-  background: var(--fourth-blue);
-  padding: 0% 0%;
-  border-radius: 30px;
-  width: 90%;
-  z-index: 5;
-  border: solid 1px var(--secondary-blue);
-  z-index: 25;
-  padding-bottom: 2%;
-  padding-top: 2%;
 }
 
 .modalcontent3 {
@@ -82,7 +65,7 @@ body.active-modal {
   background: var(--fourth-blue);
   padding: 0% 0%;
   border-radius: 30px;
-  width: 25%;
+  width: 50%;
   z-index: 5;
   border: solid 1px var(--secondary-blue);
   z-index: 25;
@@ -445,7 +428,7 @@ body.active-modal {
   z-index: 15;
 }
 
-.modalcontent2 form {
+.modalcontent3 form {
   background-color: var(--fourth-blue);
   display: flex;
   flex-direction: column;
@@ -514,6 +497,50 @@ body.active-modal {
   margin-top: 1%;
 }
 
+@media only screen and (max-width: 370px) {
+  .buttonss {
+    height: auto;
+    transition: 0.2 ease;
+  }
+
+  .buttons {
+    height: auto;
+    transition: 0.2 ease;
+    right: ;
+  }
+
+  .modalcontent {
+    width: 97%;
+    height: 60%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+  }
+
+  .emailbox input {
+    width: 80%;
+  }
+
+  .modal2content {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+  }
+
+  .confirmationbox h2 {
+    font-size: 50%;
+  }
+
+  .confirmationbox {
+    margin-top: 2%;
+  }
+
+  .namebox input {
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 550px) {
   .buttonss {
     height: auto;
@@ -526,15 +553,22 @@ body.active-modal {
     transition: 0.2 ease;
   }
 
-  .modal-content {
-    width: 100%;
+  .modalcontent {
+    width: 90%;
     height: auto;
     margin: auto;
     position: fixed;
   }
+  .emailbox input {
+    width: 80%;
+  }
 
-  .modal2-content {
-    width: 100%;
+  .namebox input {
+    width: 80%;
+  }
+
+  .modalcontent3 {
+    width: 90%;
     height: auto;
     margin: auto;
     position: fixed;
@@ -562,6 +596,30 @@ body.active-modal {
     height: auto;
     transition: 0.2 ease;
   }
+  .namebox input {
+    width: 80%;
+  }
+
+  .modalcontent {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+  }
+  .emailbox input {
+    width: 80%;
+  }
+
+  .modalcontent3 {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+  }
+
+  .namebox input {
+    width: 80%;
+  }
 }
 
 @media only screen and (min-width: 660px) and (max-width: 1100px) {
@@ -576,6 +634,27 @@ body.active-modal {
     right: 165px;
     height: auto;
     transition: 0.2 ease;
+  }
+
+  .modalcontent {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+  }
+  .emailbox input {
+    width: 80%;
+  }
+
+  .modalcontent3 {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+  }
+
+  .namebox input {
+    width: 80%;
   }
 }
 

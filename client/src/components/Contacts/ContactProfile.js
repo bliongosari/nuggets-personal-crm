@@ -146,7 +146,7 @@ function ContactProfile() {
             <div className="modal1">
               <div onClick={toggleReminders} className="overlay"></div>
 
-              <div className="modal-content">
+              <div className="modal2-content">
                 <div className="modal-title">
                   <h2>Stay in touch</h2>
                   <hr/>
@@ -234,7 +234,7 @@ function ContactProfile() {
                   <div className="modal1">
                     <div onClick={toggleInfo} className="overlay"></div>
 
-                    <div className="modal-content">
+                    <div className="modal2-content">
                       <div className="modal-titlee">
                         <h2>Contact Information</h2>
                         <hr></hr>

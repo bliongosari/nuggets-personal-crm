@@ -64,14 +64,14 @@ function Tabs({contact}) {
                   <button onClick={() =>  {
                     setIndex(idx);
                     setActive("editlifeevent");
-                  }}>
+                  }} className="edittbtn">
                     EDIT
                   </button>
                   <br/>
                   <button onClick={() => {
                     contact.lifeevents.splice(idx, 1);
                     editContact(contact);
-                  }}>
+                  }} className="edittbtn">
                     DELETE
                   </button>
                 </div>
