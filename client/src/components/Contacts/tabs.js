@@ -11,7 +11,8 @@ import EditTask from "./EditTask";
 import Document from "./document";
 import Media from "./media";
 import { editContact } from "./contactsAPI";
-
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function Tabs({contact}) {
@@ -26,6 +27,7 @@ function Tabs({contact}) {
   const deactivate = () => {
     setActive("");
   }
+
 
   return (
     <div className="container">
@@ -67,13 +69,13 @@ function Tabs({contact}) {
                         setIndex(idx);
                         setActive("editlifeevent");
                       }} className="confbutton">
-                        EDIT
+                        <ModeEditIcon/>
                       </button>
                       <button onClick={() => {
                         contact.lifeevents.splice(idx, 1);
                         editContact(contact);
                       }} className="confbutton">
-                        DELETE
+                        <DeleteIcon/>
                       </button>
                     </div>
                     <div className="datadetails">
@@ -108,14 +110,14 @@ function Tabs({contact}) {
                         setIndex(idx);
                         setActive("editreminder");
                       }} className="confbutton">
-                        EDIT
+                        <ModeEditIcon/>
                       </button>
                       <br/>
                       <button onClick={() => {
                         contact.reminders.splice(idx, 1);
                         editContact(contact);
                       }} className="confbutton">
-                        DELETE
+                        <DeleteIcon/>
                       </button>
                     </div>
                     <div className="datadetails">
@@ -149,14 +151,14 @@ function Tabs({contact}) {
                         setIndex(idx);
                         setActive("edittask");
                       }} className="confbutton">
-                        EDIT
+                        <ModeEditIcon/>
                       </button>
                       <br/>
                       <button onClick={() => {
                         contact.tasks.splice(idx, 1);
                         editContact(contact);
                       }} className="confbutton">
-                        DELETE
+                        <DeleteIcon/>
                       </button>
                     </div>
                     <div className="datadetails">
@@ -192,14 +194,14 @@ function Tabs({contact}) {
                         setIndex(idx);
                         setActive("editconversation");
                       }} className="confbutton">
-                        EDIT
+                        <ModeEditIcon/>
                       </button>
                       <br/>
                       <button onClick={() => {
                         contact.conversations.splice(idx, 1);
                         editContact(contact);
                       }} className="confbutton">
-                        DELETE
+                        <DeleteIcon/>
                       </button>
                     </div>
                   <div className="datadetails">
