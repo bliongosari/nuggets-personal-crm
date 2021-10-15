@@ -87,8 +87,9 @@ router.post("/addReminder", auth.authenticateToken, async (req, res) => {
 // delete contact
 router.delete("/delete/:id", auth.authenticateToken, async (req,res) => {
   try {
-    const contact = await Contact.findOneAndDelete({ _id: req.params.id })
-    .exec();
+    const contact = await Contact.findById(req.params.id);
+    await Reminder.deleteMany({ user_id: contact._id });
+    await Contact.deleteOne(contact);
     return res.status(200).json({ message: "Successfully deleted" });
   } catch (e) {
     console.log(e);
