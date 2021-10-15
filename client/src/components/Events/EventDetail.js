@@ -4,6 +4,7 @@ import "./EventDetail.css";
 import Modal from "react-modal";
 import EventEditForm from "./EventEditForm";
 import Feedback from "../Feedback/Feedback";
+import Cookies from "js-cookie";
 
 const customStyles = {
   content: {
@@ -50,6 +51,8 @@ function EventDetail(props) {
   }, []);
 
   const deleteEvent = async () => {
+    console.log(Cookies.get("token"));
+    console.log(props.event._id);
     api({
       method: "GET",
       url: "/api/events/delete/" + props.event._id,
@@ -60,11 +63,13 @@ function EventDetail(props) {
           setSuccess(true);
           makeFalse();
         } else {
+          console.log("ERR"+ res.data.message);
           setFailed(true);
           makeFalse();
         }
       })
       .catch(function (error) {
+        console.log("ERRR"+ error);
         setFailed(true);
         makeFalse();
       });

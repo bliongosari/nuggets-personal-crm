@@ -25,10 +25,11 @@ function EditJournal(props) {
           data: allField,
         })
           .then(function (res) {
+            console.log(res);
             if (res.status === 200) {
               setjournals([...journals, field]);
               setField("");
-              refreshPage();
+              //refreshPage();
             } else {
               setFailed(true);
             }
@@ -42,6 +43,7 @@ function EditJournal(props) {
       };
     
       const handleSubmit = async(e) => {
+        e.preventDefault();
         editJournal(e);
       };
       const SuccessMsg = () => <Alert variant="success">Sucessfully Edited</Alert>;

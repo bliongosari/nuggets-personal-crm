@@ -42,6 +42,7 @@ function EventForm() {
       data: allField,
     })
       .then(function (res) {
+        console.log("AAa");
         if (res.status === 200) {
           setevents([...events, field]);
           setField("");
@@ -57,6 +58,9 @@ function EventForm() {
         //setMessage(res.data.message);
       })
       .catch(function (error) {
+        console.log(error.response.data);  
+        console.log(error.response.status);  
+        console.log(error.response.headers); 
         setFlag(true);
         setFailed(true);
         makeFalse();

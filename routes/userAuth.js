@@ -32,9 +32,10 @@ router.get('/verify/:id', userController.verify);
 
 router.post("/edit", auth.authenticateToken, async (req, res) => {
   try {
-    var firstname = sanitize(req.body.firstname);
-    var lastname = sanitize(req.body.lastname);
-    var id = sanitize(req.user.id);
+
+    var firstname = (req.body.firstname);
+    var lastname = (req.body.lastname);
+    var id = (req.user.id);
     var changes = {
       firstname: firstname,
       lastname: lastname
@@ -46,7 +47,8 @@ router.post("/edit", auth.authenticateToken, async (req, res) => {
   } catch (e) {
     console.log(e);
     return res.status(403).json({
-      message: "Failed to edit event. Try again.",
+      message: "Failed to edit user. Try again.",
+      errorMsg: e,
     });
   }
 });

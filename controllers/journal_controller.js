@@ -86,6 +86,7 @@ const editJournal = async (req, res) => {
     console.log(e);
     return res.status(403).json({
       message: "Failed to retrieve journal. Try again.",
+      msg: e,
     });
   }
 };

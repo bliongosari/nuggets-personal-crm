@@ -48,6 +48,7 @@ function EventEditForm(props) {
       data: allField,
     })
       .then(function (res) {
+        console.log(res);
         if (res.status === 200) {
           setevents([...events, field]);
           setField("");
@@ -61,7 +62,8 @@ function EventEditForm(props) {
         setFlag(true);
         //setMessage(res.data.message);
       })
-      .catch(function (error) {
+      .catch((error) => {
+        console.log(error);
         setFlag(true);
         setFailed(true);
         makeFalse();
