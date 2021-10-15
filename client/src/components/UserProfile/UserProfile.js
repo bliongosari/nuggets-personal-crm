@@ -105,7 +105,7 @@ function UserProfile() {
           window.location.reload(false);
         } else {
           setEditMessage("Failed. Try again")
-        }
+        } 
         // setFlag(true);
         //setMessage(res.data.message);
       })
