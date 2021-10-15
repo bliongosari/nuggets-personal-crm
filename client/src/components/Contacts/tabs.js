@@ -13,11 +13,16 @@ import Media from "./media";
 import { editContact } from "./contactsAPI";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import "./lifeevent.css";
+import "./conversation.css";
 
 function Tabs({contact}) {
   const [toggleState, setToggleState] = useState(1);
   const [index, setIndex] = useState(-1);
+  const [Life, setLife] = useState(false);
+  const [Remind, setRemind] = useState(false);
+  const [Convo, setConvo] = useState(false);
+  const [Task2, setTask2] = useState(false);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -26,6 +31,41 @@ function Tabs({contact}) {
   const [active, setActive] = useState(false)
   const deactivate = () => {
     setActive("");
+  }
+
+  const toggleLife = () => {
+    setLife(!Life);
+  };
+   const toggleRemind = () => {
+    setRemind(!Remind);
+  };
+   const toggleConvo = () => {
+    setConvo(!Convo);
+  };
+   const toggleTask2 = () => {
+    setTask2(!Task2);
+  };
+
+
+  if (Life) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+  if (Remind) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+  if (Convo) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
+  if (Task2) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
   }
 
 
@@ -67,10 +107,94 @@ function Tabs({contact}) {
                     <div className="editdelbutton">
                       <button onClick={() =>  {
                         setIndex(idx);
-                        setActive("editlifeevent");
+                        toggleLife();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
+                      { Life && (
+                        <div className="editmodal">
+                           <div onClick={toggleLife} className="editoverlay"></div>
+                          <div className="modalcontentedit">
+                            <div className="contacts-form">
+                            <div className="formtitle">
+                              <h1>Edit life event</h1>
+                              <div className="closeee">
+                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                              </div>
+                              <hr></hr>
+                            </div>
+
+                            <div className="details">
+                              <h2>Select event category:</h2>
+                              <div className="custom-select">
+                                {/* <form method="post">
+                                    <select onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
+                                      <option value="0" disabled selected>-- Select option --</option>
+                                      <option value="1">Started a new job</option>
+                                      <option value="2">Retirement</option>
+                                      <option value="3">Starting school</option>
+                                      <option value="4">Studied abroad</option>
+                                      <option value="5">Started volunteering</option>
+                                      <option value="6">Received achievements</option>
+                                      <option value="7">Started military service</option>
+                                      <option value="8">Marriage</option>
+                                      <option value="9">Other</option>
+                                    </select>
+                                </form> */}
+                              </div>
+                            </div>
+
+                            <div className="details">
+                              <h2>Date of event:</h2>
+                              <input></input>
+                              {/* <input value={date} 
+                                    name="date"
+                                    type="date" //change to time later
+                                    onChange={(e) => setDate(e.target.value)} /> */}
+                            </div>
+
+                            <div className="details">
+                              <h2>Title:</h2>
+                              {/* <input value={title} onChange={(e) => setTitle(e.target.value)} /> */}
+                              <input/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Story:</h2>
+                              {/* <input value={story} onChange={(e) => setStory(e.target.value)} /> */}
+                              <input/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Personal Notes:</h2>
+                              {/* <input value={notes} onChange={(e) => setNotes(e.target.value)} /> */}
+                              <input/>
+                            </div>
+
+                            {/* <div className="detailss">
+                              <button className="eventbtn" onClick={deactivate}>
+                                <h1>Cancel</h1>
+                              </button>
+                              <button className="eventbtn" onClick={() => {
+                                contact.lifeevents[index] = {
+                                  category,
+                                  date,
+                                  title,
+                                  story,
+                                  notes,
+                                };
+                                editContact(contact);
+                              }}
+                              >
+                                <h1>Edit life event</h1>
+                              </button>
+                            </div> */}
+                          </div>
+                          </div>
+                          
+                        </div>
+                      )
+                      }
                       <button onClick={() => {
                         contact.lifeevents.splice(idx, 1);
                         editContact(contact);
@@ -108,10 +232,81 @@ function Tabs({contact}) {
                     <div className="editdelbutton">
                       <button onClick={() => {
                         setIndex(idx);
-                        setActive("editreminder");
+                        toggleRemind();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
+                      { Remind && (
+                        <div className="editmodal">
+                           <div onClick={toggleRemind} className="editoverlay"></div>
+                           <div className="modalcontentedit">
+                          <div className="contacts-form">
+                            <div className="formtitle">
+                              <h1>Edit reminder</h1>
+                              <div className="closeee">
+                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                              </div>
+                              <hr/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Reminder title:</h2>
+                              <input/>
+                              {/* <input value={title} onChange={(e) => setTitle(e.target.value)} /> */}
+                            </div>
+
+                            <div className="details">
+                              <h2>Reminder description:</h2>
+                              <input/>
+                              {/* <input value={description} onChange={(e) => setDescription(e.target.value)} /> */}
+                            </div>
+
+                            <div className="details">
+                              <h2>Reminder date:</h2>
+                              <input/>
+                              {/* <input value={date} placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} /> */}
+                            </div>
+
+                            <div className="details">
+                              <h2>Repeat reminder:</h2>
+                              <div className="custom-select">
+                                {/* <form method="post">
+                                  <select onChange={(e) => setRepeat(e.target[e.target.value].innerText)}>
+                                    <option value="0" disabled selected>-- Select option --</option>
+                                    <option value="1">Remind me once</option>
+                                    <option value="2">Remind me every day</option>
+                                    <option value="3">Remind me every week</option>
+                                    <option value="4">Remind me every month</option>
+                                  </select>
+                                </form> */}
+                              </div>
+                                
+                            </div>
+
+                            <div className="detailss">
+                              {/* <button className="eventbtn" onClick={deactivate}>
+                                <h1>Cancel</h1>
+                              </button>
+                              <button className="eventbtn" onClick={() => {
+                                contact.reminders[index] = {
+                                  title,
+                                  description,
+                                  date,
+                                  repeat,
+                                };
+                                editContact(contact);
+                              }}
+                              >
+                                <h1>Edit reminder</h1>
+                              </button> */}
+                            </div>
+                          </div>
+                          
+                        </div>
+                        </div>
+                      )
+                      }
+
                       <br/>
                       <button onClick={() => {
                         contact.reminders.splice(idx, 1);
@@ -126,7 +321,7 @@ function Tabs({contact}) {
                     </div>
                     
                   </div>
-                  <hr/>
+                  {/* <hr/> */}
                 </div>
               ))}
             </div>
@@ -149,10 +344,64 @@ function Tabs({contact}) {
                     <div className="editdelbutton">
                       <button onClick={() => {
                         setIndex(idx);
-                        setActive("edittask");
+                         toggleTask2();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
+                      { Task2 && (
+                        <div className="editmodal">
+                           <div onClick={toggleTask2} className="editoverlay"></div>
+                          <div className="modalcontentedit">
+                            <div className="contacts-form">
+                              <div className="formtitle">
+                                <h1>Edit task</h1>
+                                <div className="closeee">
+                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                              </div>
+                                <hr/>
+                              </div>
+
+                              <div className="details">
+                                <h2>Task title:</h2>
+                                <input/>
+                                {/* <input value={title} onChange={(e) => setTitle(e.target.value)} /> */}
+                              </div>
+
+                              <div className="details">
+                                <h2>Task description:</h2>
+                                 <input/>
+                                {/* <input value={description} onChange={(e) => setDescription(e.target.value)} /> */}
+                              </div>
+
+                              <div className="details">
+                                <h2>Due date:</h2>
+                                 <input/>
+                                {/* <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" /> */}
+                              </div>
+
+                          
+                              <div className="detailss">
+                                {/* <button className="eventbtn" onClick={deactivate}>
+                                  <h1>Cancel</h1>
+                                </button>
+                                <button className="eventbtn" onClick={() => {
+                                  contact.tasks[index] = {
+                                    title,
+                                    description,
+                                    date,
+                                  };
+                                  editContact(contact);
+                                }}
+                                >
+                                  <h1>Edit task</h1>
+                                </button> */}
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      )
+                      }
                       <br/>
                       <button onClick={() => {
                         contact.tasks.splice(idx, 1);
@@ -192,10 +441,90 @@ function Tabs({contact}) {
                     <div className="editdelbutton">
                       <button onClick={() => {
                         setIndex(idx);
-                        setActive("editconversation");
+                         toggleConvo();;
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
+                      { Convo && (
+                        <div className="editmodal">
+                           <div onClick={toggleConvo} className="editoverlay"></div>
+                          <div className="modalcontentedit">
+                            <div className="contacts-form">
+                            <div className="formtitle">
+                              <h1>Edit conversation</h1>
+                              <div className="closeee">
+                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                              </div>
+                              <hr/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Date of conversation:</h2>
+                              {/* <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" /> */}
+                              <input/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Select form of communication:</h2>
+                              <div className="custom-select">
+                                {/* <form method="post">
+                                  <select onChange={(e) => setForm(e.target[e.target.value].innerText)}>
+                                    <option value="0" disabled selected>-- Select option --</option>
+                                    <option value="1">Phone Number</option>
+                                    <option value="2">Email</option>
+                                    <option value="3">Twitter</option>
+                                    <option value="4">Facebook</option>
+                                    <option value="5">Instagram</option>
+                                    <option value="6">LinkedIn</option>
+                                    <option value="7">In Person</option>
+                                    <option value="8">Other</option>
+                                  </select>
+                                </form> */}
+                              </div>
+                                
+                            </div>
+
+                            <div className="details">
+                              <h2>Topic of conversation:</h2>
+                              {/* <input value={topic} onChange={(e) => setTopic(e.target.value)} /> */}
+                                <input/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Important messages to note:</h2>
+                              {/* <input value={messages} onChange={(e) => setMessages(e.target.value)} /> */}
+                                <input/>
+                            </div>
+
+                            <div className="details">
+                              <h2>Who started the communication:</h2>
+                              {/* <input value={startedBy} onChange={(e) => setStartedBy(e.target.value)} /> */}
+                            <input/>
+                            </div>
+
+                            <div className="detailss">
+                              {/* <button className="eventbtn" onClick={deactivate}>
+                                <h1>Cancel</h1>
+                              </button>
+                              <button className="eventbtn" onClick={() => {
+                                contact.conversations[index] = {
+                                  date,
+                                  form,
+                                  topic,
+                                  messages,
+                                  startedBy,
+                                };
+                                editContact(contact);
+                              }}
+                              >
+                                <h1>Edit conversation</h1>
+                              </button> */}
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      )
+                      }
                       <br/>
                       <button onClick={() => {
                         contact.conversations.splice(idx, 1);
@@ -223,38 +552,6 @@ function Tabs({contact}) {
             {active === "editreminder" && <EditReminder deactivate={deactivate} contact={contact} index={index}/>}
             {active === "task" && <Task deactivate={deactivate} contact={contact}/>}
             {active === "edittask" && <EditTask deactivate={deactivate} contact={contact} index={index}/>}
-          </div>
-        </div>
-
-        <div className={toggleState === 3 ? "content  active-content" : "content"}>
-          <div className = "subcontent">
-            <div className="eventreminder">
-              <h1> &nbsp; Photos</h1>
-              <button className="eventbtn" onClick={() => setActive("photo")}>
-                <h1>Upload photos</h1>
-              </button>
-            </div>
-            <div className="eventreminder-content">
-              <h3>All photos regarding this person will show up here</h3>
-            </div>
-          </div>
-
-          <hr/>
-          <div className = "subcontent">
-            <div className="eventreminder">
-              <h1> &nbsp; Documents</h1>
-              <button className="eventbtn" onClick={() => setActive("documents")}>
-                <h1>Upload document</h1>
-              </button>
-            </div>
-            <div className="eventreminder-content">
-              <h3>All documents regarding this person will show up here</h3>
-            </div>
-          </div>
-
-          <div className="contactfunctionalitydeet">
-            {active === "photo" && <Media/>}
-            {active === "documents" && <Document/>}
           </div>
         </div>
       </div>
