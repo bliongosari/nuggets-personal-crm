@@ -317,7 +317,6 @@ export default function SignInModal() {
                 }
                 { changeModal && (
                   <div className="modal2">
-                    {/* <div onClick={toggleForgot} className="overlay"></div> */}
 
                     <div className="modalcontent2">
                       <div className="headingcomp2">
