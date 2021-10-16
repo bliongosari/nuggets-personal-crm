@@ -244,7 +244,7 @@ function Tabs({contact}) {
                             <div className="formtitle">
                               <h1>Edit reminder</h1>
                               <div className="closeee">
-                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                                <img alt="" src="../../close.svg" onClick={toggleRemind}></img>
                               </div>
                               <hr/>
                             </div>
@@ -356,7 +356,7 @@ function Tabs({contact}) {
                               <div className="formtitle">
                                 <h1>Edit task</h1>
                                 <div className="closeee">
-                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                                <img alt="" src="../../close.svg" onClick={toggleTask2}></img>
                               </div>
                                 <hr/>
                               </div>
@@ -453,7 +453,7 @@ function Tabs({contact}) {
                             <div className="formtitle">
                               <h1>Edit conversation</h1>
                               <div className="closeee">
-                                <img alt="" src="../../close.svg" onClick={toggleLife}></img>
+                                <img alt="" src="../../close.svg" onClick={toggleConvo}></img>
                               </div>
                               <hr/>
                             </div>
