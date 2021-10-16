@@ -19,8 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: microsoft/playwright-github-action@v1
-
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:
@@ -35,16 +33,14 @@ jobs:
           npm run client-install
           npm run build --if-present
           npm run dev --if-present
-          npx playwright install chromium && npx playwright install-deps chromium
-          npm run e2e --if-present
           npm run jest-install --if-present
           npm run test --if-present
           npm run uninstall-jest --if-present
-      - name: Upload e2e tests result
-        uses: actions/upload-artifact@v2
-        with:
-         name: testImages
-         path: tests/
+      # - name: Upload e2e tests result
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #    name: testImages
+      #    path: tests/
 
 
       - name: "Deploy to Azure WebApp"

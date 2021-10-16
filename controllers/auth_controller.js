@@ -76,7 +76,7 @@ const signUp = async (req, res) => {
             if (err) {
               return res
                 .status(400)
-                .json({ message: "Sign up failed. Try Again" });
+                .json({ message: err });
             } else {
               const verificationToken = user.generateVerificationToken();
               const url = (os.hostname().indexOf("local") > -1)
