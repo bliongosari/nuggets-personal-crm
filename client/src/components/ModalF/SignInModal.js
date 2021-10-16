@@ -76,51 +76,91 @@ export default function SignInModal() {
     setForgot(false);
   };
 
-  const submitToken = () => {
+  const submitToken = (e) => {
+    e.preventDefault();
     api({
       method: "POST",
       url: "/api/user/checkToken",
       data: {email: emailForgot, token: token},
-      headers: { "X-ACCESS-TOKEN": Cookies.get("token") },
     })
       .then((response) => {
         console.log(response);
         if (response.status === 200){
+          setForgotMessage("");
           setChangeModal(true);
           setVerifyModal(false);
         }
         else {
-          setForgotMessage("Failed to send email")
+          setForgotMessage("Token invalid")
         }
 
       })
       .catch((error) => {
-        setForgotMessage("Failed to send email")
+        setForgotMessage("Token invalid")
       });
   }
 
-  const submitEmailForget = () => {
-    setForgot(false);
-    setVerifyModal(true);
-    api({
-      method: "POST",
-      url: "/api/user/requestResetPassword",
-      data: {email: emailForgot},
-      headers: { "X-ACCESS-TOKEN": Cookies.get("token") },
-    })
-      .then((response) => {
-        if (response.status === 200){
-          setForgot(false);
-          setVerifyModal(true);
-        }
-        else {
-          setForgotMessage("Failed to send email")
-        }
-
+  const resendToken = (e) => {
+    e.preventDefault();
+    if (emailForgot ===  ""){
+      setForgotMessage("Email can't be empty");
+    }
+    // setForgot(false);
+    // setVerifyModal(true);
+    else {
+      api({
+        method: "POST",
+        url: "/api/user/requestResetPassword",
+        data: {email: emailForgot},
       })
-      .catch((error) => {
-        setForgotMessage("Failed to send email")
-      });
+        .then((response) => {
+          if (response.status === 200){
+            setForgotMessage("Token have been re-sent");
+            setForgot(false);
+            setVerifyModal(true);
+          }
+          else {
+            setForgotMessage("No email found");
+
+          }
+
+        })
+        .catch((error) => {
+          setForgotMessage("No email found")
+        });
+    }
+
+  }
+
+  const submitEmailForget = (e) => {
+    e.preventDefault();
+    if (emailForgot ===  ""){
+      setForgotMessage("Email can't be empty");
+    }
+    // setForgot(false);
+    // setVerifyModal(true);
+    else {
+      api({
+        method: "POST",
+        url: "/api/user/requestResetPassword",
+        data: {email: emailForgot},
+      })
+        .then((response) => {
+          if (response.status === 200){
+            setForgotMessage("");
+            setForgot(false);
+            setVerifyModal(true);
+          }
+          else {
+            setForgotMessage("No email found");
+
+          }
+
+        })
+        .catch((error) => {
+          setForgotMessage("No email found")
+        });
+    }
   };
 
   const submitChangePassword = () => {
@@ -134,9 +174,10 @@ export default function SignInModal() {
         console.log(response);
         if (response.status === 200){
           alert("Password Successfully Changed");
+          setForgotMessage("");         
           setChangeModal(false);
           setForgot(false);
-          setVerifyModal(true);
+          setVerifyModal(false);
         }
         else {
           setForgotMessage("Failed to send email")
@@ -231,7 +272,7 @@ export default function SignInModal() {
                   id="submit"
                 ></input>
               </div>
-
+              </form>
               <div className="submit">
                 <div className="submit-div">
                 <button onClick={toggleForgot} className="submit-btn">
@@ -251,12 +292,11 @@ export default function SignInModal() {
 
                       <form > 
                         <div className="emailbox2">
-                          <h3>Enter your email address and we will send you an email with password reset confirmations.</h3>
-                          <h5>{forgotMesssage}</h5>
+                          <h3 style = {{margin: "10px", marginBottom: "5px"}}>Enter your email address and we will send you an email with password reset confirmations.</h3>
+                          <span style = {{marginBottom: "4px", color: "red"}}>{forgotMesssage}</span>
                           <input
                             placeholder="EMAIL ADDRESS"
                             value = {emailForgot}
-                            required
                             type = "email"
                             onChange = {(e) => setEmailForgot(e.target.value)}
                           ></input>
@@ -268,7 +308,7 @@ export default function SignInModal() {
                             type="submit"
                             value="CONTINUE "
                             id="submit"
-                            onClick = {() => submitEmailForget()}
+                            onClick = {(e) => submitEmailForget(e)}
                           ></input>
                         </div>
 
@@ -291,7 +331,9 @@ export default function SignInModal() {
 
                       <form>
                         <div className="emailbox2">
-                          <h3>Enter the token we sent you </h3>
+                          <h3 style = {{margin: "10px", marginBottom: "5px"}}>Enter the token we sent you </h3>
+                          <span style = {{marginBottom: "4px", color: "red"}}>{forgotMesssage}</span>
+
                           <input
                             placeholder="   ENTER TOKEN"
                             value = {token}
@@ -301,15 +343,19 @@ export default function SignInModal() {
 
                         <div className="submit-div">
                           <input
+                            style = {{marginBottom: "0px"}}
                             className="submit-btn2"
                             value="CONTINUE "
                             id="submit"
-                            onClick = {() => submitToken()}
+                            onClick = {(e) => submitToken(e)}
                           ></input>
                         </div>
-
+                        
+                          <button onClick = {(e) => resendToken(e)} className = "submit-btn2" style = {{width: "30%", marginTop: "0", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                            Re-Send Code
+                          </button>
                           <div className="closebutton">
-                            <img alt="" src="../../close.svg" onClick={toggleForgot}></img>
+                            <img alt="" src="../../close.svg" onClick={() => setVerifyModal(false)}></img>
                           </div>
                       </form>
                     </div>
@@ -352,7 +398,7 @@ export default function SignInModal() {
                         </div>
 
                           <div className="closebutton">
-                            <img alt="" src="../../close.svg" onClick={toggleForgot}></img>
+                            <img alt="" src="../../close.svg" onClick={()=> setChangeModal(false)}></img>
                           </div>
                       </form>
                     </div>
@@ -366,7 +412,7 @@ export default function SignInModal() {
                   <img alt="" src="../../close.svg" onClick={toggleModal}></img>
                 </div>
               </div>
-            </form>
+
           </div>
         </div>
       )}

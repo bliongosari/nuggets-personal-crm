@@ -221,9 +221,8 @@ const checkToken = async (req, res) => {
     .status(200)
     .json({ message: "Successful" });
   }
-  console.log("!!!");
   return res
-  .status(404)
+  .status(111)
   .json({ message: "Failed" });
 
 } catch (err){

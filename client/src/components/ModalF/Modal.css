@@ -282,7 +282,7 @@ body.active-modal {
 .submit-btn2 {
   font-family: var(--button-font);
   font-size: 60%;
-  width: 20%;
+  width: 30%;
   height: auto;
   font-weight: bolder;
   background-color: var(--primary-blue);
@@ -523,7 +523,6 @@ body.active-modal {
   .buttons {
     height: auto;
     transition: 0.2 ease;
-    right: ;
   }
 
   .modalcontent {
