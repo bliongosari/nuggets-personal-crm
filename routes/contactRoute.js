@@ -3,6 +3,8 @@ const router = express.Router();
 const Contact = require("../models/contact");
 const Reminder = require("../models/reminder");
 const auth = require("../middleware/auth");
+const sanitize = require("mongo-sanitize");
+
 
 // get contacts
 router.get("/all", auth.authenticateToken, async (req, res) => {
@@ -69,9 +71,10 @@ router.post("/add", auth.authenticateToken, async (req, res) => {
 
 router.post("/addReminder", auth.authenticateToken, async (req, res) => {
   try {
-    const contact = await Contact.findById(req.body.userID);
+    let userID = sanitize(req.body.userID);
+    const contact = await Contact.findById(userID);
     const reminder = new Reminder({
-      user_id: req.body.userID,
+      user_id: userID,
       alert: new Date(req.body.alert),
       full_name: contact.full_name,
       belongs_to: req.user.id
@@ -128,9 +131,10 @@ router.put("/edit/:id", auth.authenticateToken, async(req, res) => {
 router.post('/delete-notif/:id', auth.authenticateToken, async(req, res) => {
   console.log("yes");
   try {
-    var eventQueried = await Reminder.findOne({ _id: req.params.id });
+    let reminderID = sanitize(req.params.id);
+    var eventQueried = await Reminder.findOne({ _id: reminderID });
     if ((req.user.id == eventQueried.belongs_to)) {
-      const event = await Reminder.findOneAndDelete({ _id: req.params.id });
+      const event = await Reminder.findOneAndDelete({ _id: reminderID });
       return res.status(200).json({
         message: "Successfully deleted",
       });
