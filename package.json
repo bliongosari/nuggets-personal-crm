@@ -13,7 +13,7 @@
     "e2e": "npm run testPlaywright",
     "testPlaywright": "npx playwright test --config=./e2e/playwright.config.js",
     "jest-install": "npm install jest",
-    "test": "jest",
+    "test": "jest --watchAll --testPathPattern=__tests__",
     "uninstall-jest": "npm uninstall jest"
   },
   "repository": {
