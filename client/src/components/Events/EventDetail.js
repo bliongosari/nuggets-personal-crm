@@ -8,10 +8,8 @@ import Cookies from "js-cookie";
 
 const customStyles = {
   content: {
-    top: "50%",
     left: "50%",
     right: "auto",
-    height: "580px",
     width: "325px",
     borderRadius: "12px",
     textAlign: "left",
@@ -25,7 +23,7 @@ const customStyles = {
 };
 
 function EventDetail(props) {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(true);
   const [eventModal, setEventModal] = useState(false);
   const [eventID, setEventID] = useState(null);
   const handleSelect = ({ start, end }) => {
@@ -36,7 +34,9 @@ function EventDetail(props) {
 
   const openEventModal = event => {
     setEventID(props.event);
+    setIsOpen(false);
     setEventModal(true);
+    setEventModal(false);
   };
   
   const [start, setStart] = useState("");
@@ -83,11 +83,22 @@ function EventDetail(props) {
   }
 
   function parseDate(notif) {
-    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + new Date(notif).getHours() + ":" + new Date(notif).getMinutes();
+    let hours = new Date(notif).getHours().toString();
+    let minutes = new Date(notif).getMinutes().toString();
+    if (hours.length === 1){
+      hours = "0" + hours;
+    }
+    if (minutes.length === 1){
+      minutes = "0" + minutes;
+    }
+    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + hours + ":" + minutes;
   }
 
   return (
+    
     <div>
+      {modalIsOpen ? 
+      <div> 
       {success && <Feedback success message = "Successfully deleted event" />}
       {failed && <Feedback message = "Failed to delete event" />}
       <div className="event-details">
@@ -99,10 +110,12 @@ function EventDetail(props) {
         <h3> Date end: {end} </h3>
         {/* <h3> Repeat: {props.event.repeat} </h3> */}
         <h3> Alert: {new Date(props.event.alert) > new Date(0) ? parseDate(props.event.alert) : "None"} </h3>
+        <div style ={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+
         <button className="edit-btn" onClick={openEventModal}> Edit Event </button>
         <button className="delete-btn" onClick={deleteEvent}> Delete Event </button>
+        </div>
       </div>
-
       <Modal
         isOpen={eventModal}
         onRequestClose={() => setEventModal(false)}
@@ -112,10 +125,14 @@ function EventDetail(props) {
         <button className="exitBtn" onClick={() => setEventModal(false)}>
           &times;
         </button>
-        <div>
-          <EventEditForm event={props.event} />
-        </div>
       </Modal>
+
+      </div>
+      : (
+      <div>
+        <EventEditForm event={props.event} />
+      </div>
+      )} 
     </div>
   );
 }

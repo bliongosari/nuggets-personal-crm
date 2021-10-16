@@ -84,29 +84,18 @@ test('Testing opening, creating, editing, deleting event', async ({ page }) => {
   await page.screenshot({ path: './e2e/images/contactDetails.png' });
 });
 
-// test('Testing opening, creating, editing, deleting journal', async ({ page }) => {
-//   await page.goto('http://localhost:3000/');
-//   await page.click("#events");
-//   await page.click('#addNewEvent');
-//   await page.fill('input[name="title"]', 'new event name');
-//   var now = new Date();
-//   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-//   var start = now.toISOString().slice(0,16);
-//   var day = 60 * 60 * 24 * 1000;
-//   var end = new Date(now.getTime() + day);
-//   var end = end.toISOString().slice(0,16);
-//   await page.fill('input[name="start"]', start);
-//   await page.fill('input[name="end"]', end);
-//   await page.click('#addEventSubmit');
-//   await page.waitForTimeout(3000);
-//   // get the event calendar after added
-//   await page.screenshot({ path: './e2e/images/events.png' });
-//   await page.click('"Day"');
-//   await page.screenshot({ path: './e2e/images/events.png' });
-//   await page.click('text=new event name');
-//   await page.click('text=Delete Event');
-//   await page.waitForTimeout(3000);
-//   // get image after delete event 
-//   await page.screenshot({ path: './e2e/images/contactDetails.png' });
-// });
+test('Testing opening, creating, editing, deleting journal', async ({ page }) => {
+  await page.goto('http://localhost:3000/');
+  await page.click("#journals");
+  await page.click('#uploadJournal');
+  await page.fill('input[name="title"]', 'new journal name');
+  await page.fill('input[name="description"]', 'new description');
+  await page.click('#addNewJournalBtn');
+  await page.waitForTimeout(3000);
+  // get the event calendar after added
+  await page.screenshot({ path: './e2e/images/journal.png' });
+  await page.click('.delete-journal-btn');
+  await page.waitForTimeout(3000);
+  await page.screenshot({ path: './e2e/images/journalAfterDelete.png' });
+});
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import { LoopCircleLoading } from "react-loadingg";
+import { BlockLoading } from "react-loadingg";
 import EventsSummary from "./EventsSummary";
 import Feedback from "../Feedback/Feedback";
 import RecentContacts from "./RecentContacts";
 import api from "../../config/axiosConfig.js";
 import { Link } from "react-router-dom";
 
-const Loading = () => <LoopCircleLoading />;
+const Loading = () => <BlockLoading />;
 
 function Home() {
   const [loading, setLoading] = useState(true);

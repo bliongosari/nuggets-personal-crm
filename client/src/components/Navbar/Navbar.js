@@ -27,8 +27,8 @@ const customStyles = {
     top: "50%",
     left: "50%",
     right: "auto",
-    height: "580px",
-    width: "325px",
+    height: "680px",
+    width: "375px",
     borderRadius: "12px",
     textAlign: "left",
     bottom: "auto",
@@ -211,7 +211,15 @@ function NavbarHome() {
   }
 
   function parseDate(notif) {
-    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + new Date(notif).getHours() + ":" + new Date(notif).getMinutes();
+    let hours = new Date(notif).getHours().toString();
+    let minutes = new Date(notif).getMinutes().toString();
+    if (hours.length === 1){
+      hours = "0" + hours;
+    }
+    if (minutes.length === 1){
+      minutes = "0" + minutes;
+    }
+    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + hours + ":" + minutes;
   }
 
   function parseDateContact(notif) {
@@ -240,8 +248,8 @@ function NavbarHome() {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    height:'460px',
-    width: '325px',
+    height:'600px',
+    width: '375px',
     transform: 'translate(-50%, -50%)',
     bgcolor: '#f1f1f1',
     borderRadius: '30px',
@@ -346,6 +354,7 @@ function NavbarHome() {
                                   {notif.full_name}
                                 </Typography>
                                 {<br></br>}Alert at: {parseDateContact(notif.alert)}
+                                {<br></br>}
                                 <span style = {{marginLeft: "90px", marginTop: "5px",color: "white" , background: "red", paddingLeft: "3%", paddingRight: "3%"}}> MISSED </span>
                               </React.Fragment>
                             }

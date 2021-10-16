@@ -20,9 +20,18 @@ function Notification() {
         arr[index].notification_opened = true;
       }
 
-    function parseDate(notif) {
-        return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + new Date(notif).getHours() + ":" + new Date(notif).getMinutes();
+      function parseDate(notif) {
+        let hours = new Date(notif).getHours().toString();
+        let minutes = new Date(notif).getMinutes().toString();
+        if (hours.length === 1){
+          hours = "0" + hours;
+        }
+        if (minutes.length === 1){
+          minutes = "0" + minutes;
+        }
+        return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + hours + ":" + minutes;
       }
+    
     
       function parseDateContact(notif) {
         return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();

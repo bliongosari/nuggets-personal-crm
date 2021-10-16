@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
-import { LoopCircleLoading } from "react-loadingg";
+import { BlockLoading } from "react-loadingg";
 import api from "../../config/axiosConfig.js";
 import Cookies from "js-cookie";
 import Alert from 'react-bootstrap/Alert';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Loading = () => <LoopCircleLoading />;
+const Loading = () => <BlockLoading />;
 
 function UserProfile() {
   const [editProfile, setEditProfile] = useState(false);

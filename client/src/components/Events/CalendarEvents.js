@@ -8,7 +8,9 @@ import EventForm from "./EventForm";
 import EventDetail from "./EventDetail";
 import React, { useState, useEffect } from "react";
 import api from "../../config/axiosConfig.js";
+import { BlockLoading } from "react-loadingg";
 
+const Loading = () => <BlockLoading />;
 const localizer = momentLocalizer(moment);
 
 let allViews = Object.keys(Views).map((k) => Views[k]);
@@ -53,6 +55,7 @@ function CalendarEvents(props) {
   const [eventModal, setEventModal] = useState(false);
   const [eventID, setEventID] = useState(null);
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const handleSelect = ({ start, end }) => {
     setIsOpen(true);
   };
@@ -71,10 +74,15 @@ function CalendarEvents(props) {
           // DO NOT DELETE
           let allEvents = res.data.events;
           allEvents.forEach(
-            (event, index) => (allEvents[index].start = new Date(event.start))
+            (event, index) =>  {
+              allEvents[index].start = new Date(event.start);
+              allEvents[index].end = new Date(event.end);
+            }
           );
           setEvents(allEvents);
+          setLoading(false);
         } else {
+
           //setFailed(true);
         }
       })
@@ -83,7 +91,11 @@ function CalendarEvents(props) {
       });
   }, []);
 
-  return (
+  return loading ? (
+    <div>
+      <Loading />
+    </div>
+  ) : (
     <div className="calendarEvents">
       <div className="toprow">
         <button onClick={() => setIsOpen(true)} id= "addNewEvent" className="popup-btn">
@@ -137,7 +149,7 @@ function CalendarEvents(props) {
         </div>
       </Modal>
     </div>
-  );
+  )
 }
 
 export default CalendarEvents;

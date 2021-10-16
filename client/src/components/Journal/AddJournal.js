@@ -75,7 +75,7 @@ function AddJournal() {
                 required="false"></input>
             </div>
             <div className="addjournal">
-              <button onClick={addjournal}
+              <button id = "addNewJournalBtn" onClick={addjournal}
               className="addjbtn">
                 + POST
               </button>

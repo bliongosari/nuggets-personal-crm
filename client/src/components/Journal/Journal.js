@@ -7,13 +7,13 @@ import AddJournal from "./AddJournal";
 import EditJournal from "./EditJournal";
 import moment from "moment";
 import Modal from "react-modal";
-import { LoopCircleLoading } from "react-loadingg";
+import { BlockLoading } from "react-loadingg";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-const Loading = () => <LoopCircleLoading />;
+const Loading = () => <BlockLoading />;
 
 
 export default function Journal() {
@@ -208,11 +208,11 @@ export default function Journal() {
       ) : (
         <div>
           {loading ? (
-            <h1> Loading.... </h1>
+            <Loading />
           ) : (
             <div className="journals">
               <div className="upload">
-                <button onClick={() => setIsOpen(true)} className="upload-btn">
+                <button id ="uploadJournal" onClick={() => setIsOpen(true)} className="upload-btn">
                   &#65291;
                   <span> UPLOAD A JOURNAL</span>
                 </button>

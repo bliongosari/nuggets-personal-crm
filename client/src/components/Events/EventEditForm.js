@@ -118,10 +118,8 @@ function EventEditForm(props) {
     {failed && <Feedback message = "Failed to edit event" />}
     <div className="addevents">      
         <h2 className="edit-title">Edit an event</h2>
-        <h3 className = "add-details">Event Details</h3>
         <form>
           <label style={{ color: "red" }}> {message}</label>
-          <br></br>
           <label> Event Name: </label>
           <br></br>
           <input name="title" 
@@ -157,20 +155,7 @@ function EventEditForm(props) {
             placeholder={new Date(props.event.end)}
             onChange={changeHandler}
           />
-          {/* <br></br>
-          <label className="repeat">Repeat</label>
-            <select
-              name="repeat"
-              value={allField["repeat"]}
-              onChange={changeHandler}
-              className="dragdown"
-            >
-              {repeat_list.map((repeat) => (
-                <option name={repeat} value={repeat}>
-                  {repeat}
-                </option>
-              ))}
-            </select>  */}
+
           <br></br>
           <label className="alert">Alert</label>
             <select

@@ -27,7 +27,6 @@
     border-bottom: 2px solid var(--primary-blue);
   }
   .delete-btn {
-    margin-left: 50px;
     margin-top: 10px;
     cursor: pointer;
     color:white;
@@ -46,7 +45,6 @@
   }
   .edit-btn {
     margin-top: 20px;
-    margin-left: 50px;
     cursor: pointer;
     color:white;
     background-color: var(--primary-blue);
