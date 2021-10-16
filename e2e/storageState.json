@@ -3,7 +3,7 @@
     {
       "sameSite": "Lax",
       "name": "token",
-      "value": "Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjUwY2Y0OWViMmU0MTI3YWU3ZDMzNCIsImlhdCI6MTYzNDM3NjMzNSwiZXhwIjoxNjM0NDYyNzM1fQ.nqWvlKcwj4whyNQ5ILMSYZMrWTRevorbMZ9ad5Vp-JM",
+      "value": "Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjUwY2Y0OWViMmU0MTI3YWU3ZDMzNCIsImlhdCI6MTYzNDM4NDYwNSwiZXhwIjoxNjM0NDcxMDA1fQ.-cw1Bq1_V-IQFz3fzvl6QkabKJrGBI4GqosyXxh25ok",
       "domain": "localhost",
       "path": "/",
       "expires": -1,
