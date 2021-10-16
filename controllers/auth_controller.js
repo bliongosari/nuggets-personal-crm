@@ -89,7 +89,9 @@ const signUp = async (req, res) => {
               })
               return res
                 .status(200)
-                .json({ message: "Successfully signed up" });
+                .json({ message: "Successfully signed up", 
+                        url: url
+                        });
             }
           });
         }

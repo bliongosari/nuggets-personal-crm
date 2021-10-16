@@ -33,6 +33,7 @@ export default function SignUpModal() {
       data: user,
     })
       .then(function (response) {
+        console.log(response);
         setSuccess(true);
         makeFalse();
         setEmail("");
