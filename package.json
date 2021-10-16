@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "server": "node app.js",
+    "server": "node server.js",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build --prefix client",
+    "e2e": "npm run testPlaywright",
+    "testPlaywright": "npx playwright test --config=./e2e/playwright.config.js",
     "jest-install": "npm install jest",
     "test": "jest",
     "uninstall-jest": "npm uninstall jest"
@@ -40,6 +42,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.15.2",
     "supertest": "^6.1.6"
   }
 }

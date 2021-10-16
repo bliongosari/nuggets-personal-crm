@@ -227,6 +227,7 @@ export default function SignInModal() {
                   className="submit-btn"
                   type="submit"
                   value="CONTINUE "
+                  name ="submit-login"
                   id="submit"
                 ></input>
               </div>

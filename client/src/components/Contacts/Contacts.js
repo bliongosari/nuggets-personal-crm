@@ -12,7 +12,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { LoopCircleLoading } from "react-loadingg";
+import { BlockLoading } from "react-loadingg";
 import Icon from '@mui/material/Icon';
 import CircleIcon from '@mui/icons-material/Circle';
 import { makeStyles } from "@material-ui/core/styles";
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 });
 
 
-const Loading = () => <LoopCircleLoading />;
+const Loading = () => <BlockLoading />;
 
 // change when have tags from backend
 const tagsQueried = [
@@ -229,7 +229,7 @@ function Contacts() {
       
       <div className="addcontactsdiv">
         <Link to={{ pathname: `addcontact` }} style={{ textDecoration: 'none' }}>
-          <button className="addnewbtn">
+          <button className="addnewbtn" id = "addnewBtn">
             <h1> &#65291; &nbsp; ADD NEW CONTACT</h1>
           </button>
         </Link>

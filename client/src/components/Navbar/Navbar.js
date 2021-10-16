@@ -506,25 +506,25 @@ function NavbarHome() {
 
       {/* Collapse Sidebar */}
       {!sidebar && (
-        <div className="sidebar">
+        <div className="sidebar" id = "home">
           <div className="sidebar-container">
             <Link to="/home">
               <img alt="" src="../../home.svg"></img>
             </Link>
           </div>
-          <div className="sidebar-container">
+          <div className="sidebar-container" >
             <Link to="/journal">
-              <img alt="" src="../../journal.svg"></img>
+              <img id = "journals" alt="" src="../../journal.svg"></img>
             </Link>
           </div>
-          <div className="sidebar-container">
+          <div className="sidebar-container" >
             <Link to="/events">
-              <img alt="" src="../../events.svg"></img>
+              <img id = "events" alt="" src="../../events.svg"></img>
             </Link>
           </div>
-          <div className="sidebar-container">
+          <div className="sidebar-container" >
             <Link to="/contacts">
-              <img alt="" src="../../contacts.svg"></img>
+              <img id="contacts" alt="" src="../../contacts.svg"></img>
             </Link>
           </div>
           <div className="sidebar-container">

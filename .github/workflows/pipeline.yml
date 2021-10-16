@@ -32,6 +32,8 @@ jobs:
           npm install
           npm run client-install
           npm run build --if-present
+          npm run dev --if-present
+          npm run e2e --if-present
           npm run jest-install --if-present
           npm run test --if-present
           npm run uninstall-jest --if-present

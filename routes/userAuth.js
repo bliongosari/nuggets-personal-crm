@@ -32,10 +32,9 @@ router.get('/verify/:id', userController.verify);
 
 router.post("/edit", auth.authenticateToken, async (req, res) => {
   try {
-
-    var firstname = (req.body.firstname);
-    var lastname = (req.body.lastname);
-    var id = (req.user.id);
+    var firstname = sanitize(req.body.firstname);
+    var lastname = sanitize(req.body.lastname);
+    var id = sanitize(req.user.id);
     var changes = {
       firstname: firstname,
       lastname: lastname

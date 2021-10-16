@@ -86,7 +86,7 @@ function CalendarEvents(props) {
   return (
     <div className="calendarEvents">
       <div className="toprow">
-        <button onClick={() => setIsOpen(true)} className="popup-btn">
+        <button onClick={() => setIsOpen(true)} id= "addNewEvent" className="popup-btn">
           &#65291;
           <span> Add New Event</span>
         </button>{" "}

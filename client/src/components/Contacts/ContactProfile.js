@@ -314,14 +314,14 @@ function ContactProfile() {
 
               <div className="editcontact">
                 <Link to={{ pathname: `/editcontact`, state: { contact } }} style={{ textDecoration: 'none' }}>
-                  <button className="editbtn">
+                  <button className="editbtn" id = "editBtn">
                     <h1>Edit Contact</h1>
                   </button>
                 </Link>
               </div>
 
               <div className="editcontact">
-                <button className="editbtn" onClick={() => deleteContact(contact)}>
+                <button className="editbtn" id = "deleteContact" onClick={() => deleteContact(contact)}>
                   <h1>Delete Contact</h1>
                 </button>
               </div>

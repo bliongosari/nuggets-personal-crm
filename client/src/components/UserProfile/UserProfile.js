@@ -228,7 +228,7 @@ function UserProfile() {
                   ></input>
             </div>
             <div className="centered-button">
-              <button className="button" onClick={showEditProfile}>
+              <button className="button" id = "editProfileBtn" onClick={showEditProfile}>
                 <img alt="Edit" src="../../edit.svg" className="icon"></img>
                 EDIT PROFILE
               </button>

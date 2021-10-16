@@ -35,7 +35,7 @@ function EventEditForm(props) {
   const [flag, setFlag] = useState(false);
 
   const editEvents = async (e) => {
-    if (new Date(allField.start) > new Date(allField.end)){
+    if (new Date(allField.start) >= new Date(allField.end)){
       setMessage("End date must be after start date")
     }
     else if (allField.title === "" || !allField.title){

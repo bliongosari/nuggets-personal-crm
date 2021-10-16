@@ -173,7 +173,7 @@ function AddContact() {
 
         <div className="details">
           <h2>Full Name:</h2>
-          <input type="text" onChange={(e) => setFullName(e.target.value)} />
+          <input type="text" name = "fullname" onChange={(e) => setFullName(e.target.value)} />
         </div>
 
         <div className="details">
@@ -257,7 +257,7 @@ function AddContact() {
         </div>
 
         <div className="addcontacts">
-          <button className="addcbtn" onClick={(e) => {
+          <button className="addcbtn" id = "addContactBtn" onClick={(e) => {
             addContact({
               full_name,
               preferred_name,

@@ -142,7 +142,7 @@ function EditContact(props) {
 
         <div className="details">
           <h2>Full Name:</h2>
-          <input type="text" value={full_name} onChange={(e) => setFullName(e.target.value)} />
+          <input type="text" name = "fullname" value={full_name} onChange={(e) => setFullName(e.target.value)} />
         </div>
 
         <div className="details">
@@ -225,7 +225,7 @@ function EditContact(props) {
         </div>
 
         <div className="addcontacts">
-          <button className="addcbtn" onClick={(e) => {
+          <button className="addcbtn" id = "editSubmitBtn" onClick={(e) => {
             editContact({
               ...contact,
               full_name,

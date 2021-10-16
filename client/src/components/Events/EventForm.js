@@ -29,7 +29,7 @@ function EventForm() {
 
   const addEvents = async (e) => {
 
-    if (new Date(allField.start) > new Date(allField.end)){
+    if (new Date(allField.start) >= new Date(allField.end)){
       setMessage("End date must be after start date")
     }
     else if (allField.title === "" || !allField.title){
@@ -123,7 +123,7 @@ function EventForm() {
           <h5 style={{ textAlign:"center", color: "red" }}> {message}</h5>
           <label> Event Name: </label>
           <br></br>
-          <input name="title" onChange={changeHandler} required={true} />
+          <input name="title" id = "eventTitle" onChange={changeHandler} required={true} />
           <br></br>
           <label> Location: </label>
           <br></br>
@@ -184,7 +184,7 @@ function EventForm() {
           <br></br>
         </form>
 
-        <button onClick={addEvents} className= "add-button">ADD</button>
+        <button onClick={addEvents} id="addEventSubmit" className= "add-button">ADD</button>
         
       </div>
     </div>
