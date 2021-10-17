@@ -4,6 +4,7 @@ import { BlockLoading } from "react-loadingg";
 import api from "../../config/axiosConfig.js";
 import Cookies from "js-cookie";
 import Alert from 'react-bootstrap/Alert';
+import DeleteIcon from '@mui/icons-material/Delete';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Loading = () => <BlockLoading />;
@@ -12,6 +13,7 @@ function UserProfile() {
   const [editProfile, setEditProfile] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
 
+  const [image, setImage] = useState("");
   const [changePasswordMsg, setChangePasswordMsg] = useState("");
   const [oldPassword, setOldPassword] = useState("")
   const [password, setPassword] = useState("");
@@ -150,6 +152,13 @@ function UserProfile() {
       });
   };
 
+  const handleImageChange = (image) => {
+    if (image && image[0]) {
+      let img = image[0];
+      setImage(URL.createObjectURL(img));
+    }
+  }
+
   return loading ? (
     <div>
       <Loading />
@@ -197,9 +206,21 @@ function UserProfile() {
             <span className="close-icon" onClick={() => setEditProfile(false)}>
               <img alt="close" src="../../close.svg"></img>
             </span>
-            <img alt="User" src="../../user.svg" className="user-image"></img>
+            <div className="profpic" style = {{display: "flex", flexDirection: "column", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
+              {image === "" ? <img style = {{width: "100px", height: "100px"}} alt="plus" src="../../person-blue.svg"></img> : <img style = {{width: "125px", height: "125px", objectFit: "cover", borderRadius: "50%"}}alt="second" src={image}></img> } 
+            </div>
             
             <h1 className="popup-header">Edit Profile</h1>
+
+            <div className="attachimage" style = {{display: "flex", flex:"flex-wrap", width: "85%", margin: "0 auto", alignItems: "center", marginTop: "15px", marginBottom: "15px"}}>
+              {/* <button className="attachhbtn"> */}
+                <input style = {{margin: "0 auto", display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}} type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
+                <button className = "trashImage" onClick = {()=> setImage("")}>
+                <DeleteIcon style = {{color:"#114084", height: "100%"}}/>
+                </button>
+              {/* </button> */}
+            </div>
+
             <span style ={{ color: "red", margin: "0 auto", fontSize: "14px"}}>{editMessage}</span>
             <div className="popup-text">
             <input
@@ -244,13 +265,15 @@ function UserProfile() {
             <span className="close-icon" onClick={showChangePassword}>
               <img alt="close" src="../../close.svg"></img>
             </span>
-            <img alt="User" src="../../user.svg" className="user-image"></img>
+            <div className="profpic" style = {{display: "flex", flexDirection: "column", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
+              {image === "" ? <img style = {{width: "100px", height: "100px"}} alt="plus" src="../../person-blue.svg"></img> : <img style = {{width: "125px", height: "125px", objectFit: "cover", borderRadius: "50%"}}alt="second" src={image}></img> } 
+            </div>
             <h1 className="popup-header">CHANGE PASSWORD</h1>
             <div style = {{textAlign:"center"}}>
             <span style = {{color: "red"}}>{changePasswordMsg}</span>
             </div>
 
-            <form onSubmit={requestChangePassword}>
+            {/* <form onSubmit={requestChangePassword}> */}
             <div className="popup-text">
               <input
                   type="password"
@@ -287,9 +310,9 @@ function UserProfile() {
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
               />
             </div>
-            <div className="centered-button">
+            {/* <div className="centered-button">
               <button className="button">
-                <img alt="Edit" src="../../edit.svg" className="icon"></img>
+                <img alt="Edit" src="../../edit.svg" className="icon">CHANGE PASSWORD</img>
                 <input
                   class="submit-btn"
                   type="submit"
@@ -297,8 +320,14 @@ function UserProfile() {
                   id="submit"
                 ></input>
               </button>
+            </div> */}
+            <div className="centered-button">
+              <button className="button" id = "editProfileBtn" onClick={showChangePassword} onSubmit={requestChangePassword}>
+                <img alt="Edit" src="../../edit.svg" className="icon"></img>
+                CHANGE PASSWORD
+              </button>
             </div>
-            </form>
+            {/* </form> */}
           </div>
         </div>
       )}
