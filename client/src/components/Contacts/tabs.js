@@ -13,7 +13,7 @@ import Media from "./media";
 import { editContact } from "./contactsAPI";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ViewLife from "./ViewLife"
+import ViewDetails from "./ViewLife"
 import "./lifeevent.css";
 import "./conversation.css";
 
@@ -114,13 +114,12 @@ function Tabs({contact}) {
                     
                     <div className="editdelbutton">
                       <button onClick={() =>  {
-                        setIndex(idx);
                         toggleLife();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
                       { Life && (
-                        <EditLifeEvent deactivate={deactivate} contact={contact} index={index} toggleLife = {toggleLife} />
+                        <EditLifeEvent deactivate={deactivate} contact={contact} index={idx} toggleLife = {toggleLife} />
                       )}
                       <button onClick={() => {
                         contact.lifeevents.splice(idx, 1);
@@ -131,11 +130,14 @@ function Tabs({contact}) {
                     </div>
                     <div className="datadetails">
                       <h1>{lifeevent.title}</h1>
-                      <button className="viewbtn" onClick={() => {toggleViewLife();}}>      
+                      <button className="viewbtn" onClick={() =>  {
+                        toggleViewLife();
+                      }}>      
                         <h1>View More</h1>
                       </button>
                       {ViewLife && (
-                        <ViewLife deactivate={deactivate} contact={contact} index={index} toggleViewLife = {toggleViewLife}/>)}
+                        <ViewDetails contact={contact} index={idx} toggleViewLife = {toggleViewLife} />
+                        )}
                     </div>
                     
                   </div>

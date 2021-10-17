@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function ViewLife({deactivate, contact, index, toggleViewLife}) {
+function ViewDetails({deactivate, contact, index, toggleViewLife}) {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
@@ -80,4 +80,4 @@ function ViewLife({deactivate, contact, index, toggleViewLife}) {
   );
 }
 
-export default ViewLife;
+export default ViewDetails;
