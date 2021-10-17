@@ -13,6 +13,7 @@ import Media from "./media";
 import { editContact } from "./contactsAPI";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ViewLife from "./ViewLife"
 import "./lifeevent.css";
 import "./conversation.css";
 
@@ -27,6 +28,7 @@ function Tabs({contact}) {
   const [AddRemind, setAddRemind] = useState(false);
   const [AddConvo, setAddConvo] = useState(false);
   const [AddTask2, setAddTask2] = useState(false);
+  const [ViewLife, setViewLife] = useState(false);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -61,6 +63,19 @@ function Tabs({contact}) {
    const toggleTask2 = () => {
     setTask2(!Task2);
   };
+  const toggleViewLife = () => {
+    setViewLife(!ViewLife);
+  };
+  // const toggleTask2 = () => {
+  //   setTask2(!Task2);
+  // };
+  // const toggleTask2 = () => {
+  //   setTask2(!Task2);
+  // };
+  // const toggleTask2 = () => {
+  //   setTask2(!Task2);
+  // };
+
 
   return (
     <div className="container">
@@ -116,11 +131,15 @@ function Tabs({contact}) {
                     </div>
                     <div className="datadetails">
                       <h1>{lifeevent.title}</h1>
-                      <p>View More</p>
+                      <button className="viewbtn" onClick={() => {toggleViewLife();}}>      
+                        <h1>View More</h1>
+                      </button>
+                      {ViewLife && (
+                        <ViewLife deactivate={deactivate} contact={contact} index={index} toggleViewLife = {toggleViewLife}/>)}
                     </div>
                     
                   </div>
-                  <hr/>
+
                 </div>
               ))}
             </div>

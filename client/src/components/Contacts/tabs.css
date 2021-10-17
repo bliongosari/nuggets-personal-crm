@@ -191,6 +191,7 @@ button {
 .datacontent {
   display: flex;
   flex-direction: row;
+  padding-bottom: 1%;
 }
 
 .datadetails {
@@ -253,6 +254,34 @@ button {
   border-radius: 10px;
   width: 100%;
   padding: 10%;
+}
+
+.viewbtn {
+  font-family: var(--logo-font);
+  border-radius: 10px;
+  height: 100%;
+  width: 60%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  margin-top: 2%;
+  cursor: pointer;
+  background: white;
+}
+
+.viewbtn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.viewbtn h1 {
+  font-size: 85%;
+  letter-spacing: 2px;
+  color: var(--primary-blue);
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
 }
 
 .eventbtn {
