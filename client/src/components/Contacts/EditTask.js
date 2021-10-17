@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function EditTask({deactivate, contact, index}) {
+function EditTask({deactivate, contact, index, toggleTask2}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
@@ -15,10 +15,15 @@ function EditTask({deactivate, contact, index}) {
 
   return (
     <div className="containerdiv">
-
+      <div className="editmodal">
+          <div onClick={toggleTask2} className="editoverlay"></div>
+      <div className="modalcontentedit">
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Edit task</h1>
+          <div className="closeee">
+              <img alt="" src="../../close.svg" onClick={toggleTask2}></img>
+            </div>
           <hr/>
         </div>
 
@@ -39,7 +44,7 @@ function EditTask({deactivate, contact, index}) {
 
     
         <div className="detailss">
-          <button className="eventbtn" onClick={deactivate}>
+          <button className="eventbtn" onClick={toggleTask2}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
@@ -55,8 +60,10 @@ function EditTask({deactivate, contact, index}) {
           </button>
         </div>
       </div>
-
+      </div>
     </div>
+    </div>
+
   );
 }
 

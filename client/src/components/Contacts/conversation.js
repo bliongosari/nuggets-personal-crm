@@ -2,7 +2,7 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Conversation({deactivate, contact}) {
+function Conversation({deactivate, contact, toggleAddConvo}) {
   const [date, setDate] = useState();
   const [form, setForm] = useState("");
   const [topic, setTopic] = useState("");
@@ -11,10 +11,15 @@ function Conversation({deactivate, contact}) {
 
   return (
     <div className="containerdiv">
-
+      <div className="editmodal">
+          <div onClick={toggleAddConvo} className="editoverlay"></div>
+        <div className="modalcontentedit">
       <div className="contacts-form">
         <div className="formtitle">
-          <h1>Log a new conversation</h1>
+          <h4>Log a new conversation</h4>
+          <div className="closeee">
+              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+            </div>
           <hr/>
         </div>
 
@@ -78,6 +83,8 @@ function Conversation({deactivate, contact}) {
         </div>
       </div>
 
+    </div>
+    </div>
     </div>
   );
 }

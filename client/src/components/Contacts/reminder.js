@@ -2,7 +2,7 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Reminder({deactivate, contact}) {
+function Reminder({deactivate, contact, toggleAddRemind}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
@@ -10,10 +10,15 @@ function Reminder({deactivate, contact}) {
 
   return (
     <div className="containerdiv">
-
+      <div className="editmodal">
+          <div onClick={toggleAddRemind} className="editoverlay"></div>
+        <div className="modalcontentedit">
     <div className="contacts-form">
         <div className="formtitle">
-          <h1>Add a new reminder</h1>
+          <h4>Add a new reminder</h4>
+          <div className="closeee">
+              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+            </div>
           <hr/>
         </div>
 
@@ -67,6 +72,8 @@ function Reminder({deactivate, contact}) {
         </div>
       </div>
 
+    </div>
+    </div>
     </div>
   );
 }

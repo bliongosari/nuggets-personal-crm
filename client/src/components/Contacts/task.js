@@ -2,17 +2,22 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Task({deactivate, contact}) {
+function Task({deactivate, contact, toggleAddTask2}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
 
   return (
     <div className="containerdiv">
-
+      <div className="editmodal">
+          <div onClick={toggleAddTask2} className="editoverlay"></div>
+        <div className="modalcontentedit">
       <div className="contacts-form">
         <div className="formtitle">
-          <h1>Add a new task</h1>
+          <h4>Add a new task</h4>
+          <div className="closeee">
+              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+            </div>
           <hr/>
         </div>
 
@@ -50,6 +55,8 @@ function Task({deactivate, contact}) {
         </div>
       </div>
 
+    </div>
+    </div>
     </div>
   );
 }

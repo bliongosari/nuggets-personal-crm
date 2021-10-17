@@ -2,7 +2,7 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function LifeEvent({deactivate, contact}) {
+function LifeEvent({deactivate, contact, toggleAddLife}) {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState();
   const [title, setTitle] = useState("");
@@ -11,10 +11,15 @@ function LifeEvent({deactivate, contact}) {
 
   return (
     <div className="containerdivv">
-
+      <div className="editmodal">
+          <div onClick={toggleAddLife} className="editoverlay"></div>
+        <div className="modalcontentedit">
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Add a life event</h1>
+          <div className="closeee">
+              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+            </div>
           <hr></hr>
         </div>
 
@@ -81,6 +86,8 @@ function LifeEvent({deactivate, contact}) {
         </div>
       </div>
 
+    </div>
+    </div>
     </div>
   );
 }
