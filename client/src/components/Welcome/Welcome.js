@@ -21,6 +21,7 @@ function Welcome() {
         <div className="main-content">
           <h1>Welcome to Nuggets!</h1>
           <h2>Your personal organiser, contacts storage, and reminder</h2>
+          <img alt="Nuggets" src="../../welcome-img.svg" class="welcome-img"></img>
         </div>
       }
     </>
