@@ -106,7 +106,7 @@ function Tabs({contact}) {
           </div>
           <div className="contactfunctionalitydeet">
             {active === "lifeevent" && <LifeEvent deactivate={deactivate} contact={contact}/>}
-            {active === "editlifeevent" && <EditLifeEvent deactivate={deactivate} contact={contact} index={index} toggleLife = {toggleLife} />}
+            {active === "editlifeevent" && <EditLifeEvent deactivate={deactivate} contact={contact} index={index} toggleLife={toggleLife} />}
           </div>
 
           
@@ -120,12 +120,13 @@ function Tabs({contact}) {
                     
                     <div className="editdelbutton">
                       <button onClick={() =>  {
+                        setIndex(idx);
                         toggleLife();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
                       { Life && (
-                        <EditLifeEvent deactivate={deactivate} contact={contact} index={idx} toggleLife = {toggleLife} />
+                        <EditLifeEvent deactivate={deactivate} contact={contact} index={index} toggleLife = {toggleLife} />
                       )}
                       <button onClick={() => {
                         contact.lifeevents.splice(idx, 1);
@@ -142,8 +143,8 @@ function Tabs({contact}) {
                         <h1>View More</h1>
                       </button>
                       {ViewLife && (
-                        <ViewDetails contact={contact} index={idx} toggleViewLife = {toggleViewLife} />
-                        )}
+                        <ViewDetails contact={contact} index={index} toggleViewLife = {toggleViewLife} />
+                      )}
                     </div>
                     
                   </div>
@@ -197,7 +198,7 @@ function Tabs({contact}) {
                         <h1>View More</h1>
                       </button>
                       {ViewReminder && (
-                        <ViewReminderdet contact={contact} index={idx} toggleViewReminder = {toggleViewReminder} />
+                        <ViewReminderdet contact={contact} index={index} toggleViewReminder = {toggleViewReminder} />
                         )}
                     </div>
                     
@@ -226,7 +227,7 @@ function Tabs({contact}) {
                     <div className="editdelbutton">
                       <button onClick={() => {
                         setIndex(idx);
-                         toggleTask2();
+                        toggleTask2();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
@@ -250,7 +251,7 @@ function Tabs({contact}) {
                       </button>
                     </div>
                     {ViewTask2 && (
-                        <ViewTaskdet contact={contact} index={idx} toggleViewTask2 = {toggleViewTask2} />
+                        <ViewTaskdet contact={contact} index={index} toggleViewTask2 = {toggleViewTask2} />
                         )}
                     
                   </div>
@@ -280,7 +281,7 @@ function Tabs({contact}) {
                     <div className="editdelbutton">
                       <button onClick={() => {
                         setIndex(idx);
-                         toggleConvo();
+                        toggleConvo();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
@@ -303,7 +304,7 @@ function Tabs({contact}) {
                         <h1>View More</h1>
                       </button>
                       {ViewConvo && (
-                        <ViewConvodet contact={contact} index={idx} toggleViewConvo = {toggleViewConvo} />
+                        <ViewConvodet contact={contact} index={index} toggleViewConvo = {toggleViewConvo} />
                         )}
                     </div>
                     

@@ -10,6 +10,7 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
   const [notes, setNotes] = useState("");
 
   useEffect(() => {
+    console.log(index);
     setCategory(contact.lifeevents[index].category);
     setDate(contact.lifeevents[index].date);
     setTitle(contact.lifeevents[index].title);
@@ -24,7 +25,7 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
         <div className="modalcontentedit">
           <div className="contacts-form">
           <div className="formtitle">
-            <h1>Edit life event</h1>
+            <h1>{contact.lifeevents[index].title}</h1>
             <div className="closeee">
               <img alt="" src="../../close.svg" onClick={toggleViewLife}></img>
             </div>
