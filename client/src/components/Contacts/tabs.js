@@ -14,6 +14,9 @@ import { editContact } from "./contactsAPI";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ViewDetails from "./ViewLife"
+import ViewTaskdet from "./ViewTask"
+import ViewReminderdet from "./ViewReminder"
+import ViewConvodet from "./ViewConvo"
 import "./lifeevent.css";
 import "./conversation.css";
 
@@ -29,6 +32,9 @@ function Tabs({contact}) {
   const [AddConvo, setAddConvo] = useState(false);
   const [AddTask2, setAddTask2] = useState(false);
   const [ViewLife, setViewLife] = useState(false);
+  const [ViewTask2, setViewTask2] = useState(false);
+  const [ViewReminder, setViewReminder] = useState(false);
+  const [ViewConvo, setViewConvo] = useState(false);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -66,15 +72,15 @@ function Tabs({contact}) {
   const toggleViewLife = () => {
     setViewLife(!ViewLife);
   };
-  // const toggleTask2 = () => {
-  //   setTask2(!Task2);
-  // };
-  // const toggleTask2 = () => {
-  //   setTask2(!Task2);
-  // };
-  // const toggleTask2 = () => {
-  //   setTask2(!Task2);
-  // };
+  const toggleViewTask2 = () => {
+    setViewTask2(!ViewTask2);
+  };
+  const toggleViewReminder = () => {
+    setViewReminder(!ViewReminder);
+  };
+  const toggleViewConvo = () => {
+    setViewConvo(!ViewConvo);
+  };
 
 
   return (
@@ -185,7 +191,14 @@ function Tabs({contact}) {
                     </div>
                     <div className="datadetails">
                       <h1>{reminder.title}</h1>
-                      <p>View More</p>
+                      <button className="viewbtn" onClick={() =>  {
+                        toggleViewReminder();
+                      }}>      
+                        <h1>View More</h1>
+                      </button>
+                      {ViewReminder && (
+                        <ViewReminderdet contact={contact} index={idx} toggleViewReminder = {toggleViewReminder} />
+                        )}
                     </div>
                     
                   </div>
@@ -230,8 +243,15 @@ function Tabs({contact}) {
                     </div>
                     <div className="datadetails">
                       <h1>{task.title}</h1>
-                      <p>View More</p>
+                      <button className="viewbtn" onClick={() =>  {
+                        toggleViewTask2();
+                      }}>      
+                        <h1>View More</h1>
+                      </button>
                     </div>
+                    {ViewTask2 && (
+                        <ViewTaskdet contact={contact} index={idx} toggleViewTask2 = {toggleViewTask2} />
+                        )}
                     
                   </div>
                   <hr/>
@@ -277,7 +297,14 @@ function Tabs({contact}) {
                     </div>
                   <div className="datadetails">
                       <h1>{conversation.topic}</h1>
-                      <p>View More</p>
+                      <button className="viewbtn" onClick={() =>  {
+                        toggleViewConvo();
+                      }}>      
+                        <h1>View More</h1>
+                      </button>
+                      {ViewConvo && (
+                        <ViewConvodet contact={contact} index={idx} toggleViewConvo = {toggleViewConvo} />
+                        )}
                     </div>
                     
                   </div>

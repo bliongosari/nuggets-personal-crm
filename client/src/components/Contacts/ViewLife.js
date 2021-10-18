@@ -32,7 +32,7 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
           </div>
 
           <div className="details">
-            <h2>Select event category:</h2>
+            <h2>Event category:</h2>
             {/* <div className="custom-select">
                   <select onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
                     <option value="0" disabled selected>-- Select option --</option>
