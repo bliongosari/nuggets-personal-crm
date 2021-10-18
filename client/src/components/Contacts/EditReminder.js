@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function EditReminder({deactivate, contact, index, toggleRemind}) {
+function EditReminder({edit, deactivate, contact, index, toggleRemind}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
@@ -14,6 +14,21 @@ function EditReminder({deactivate, contact, index, toggleRemind}) {
     setDate(contact.reminders[index].date);
     setRepeat(contact.reminders[index].repeat);
   }, [index]);
+
+  const editDetails = () => {
+    contact.reminders[index] = {
+      title,
+      description,
+      date,
+      repeat,
+    };
+    if (editContact(contact)){
+      edit(true);
+    }
+    else {
+      edit(false);
+    }
+  }
 
   return (
     <div className="containerdiv">
@@ -65,13 +80,7 @@ function EditReminder({deactivate, contact, index, toggleRemind}) {
                   <h1>Cancel</h1>
                 </button>
                 <button className="eventbtn" onClick={() => {
-                  contact.reminders[index] = {
-                    title,
-                    description,
-                    date,
-                    repeat,
-                  };
-                  editContact(contact);
+                  editDetails();
                 }}
                 >
                   <h1>Edit reminder</h1>

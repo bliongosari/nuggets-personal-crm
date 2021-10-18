@@ -2,12 +2,28 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function EditLifeEvent({deactivate, contact, index, toggleLife}) {
+function EditLifeEvent({editLife, deactivate, contact, index, toggleLife}) {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [notes, setNotes] = useState("");
+
+  const editDetails = () => {
+    contact.lifeevents[index] = {
+      category,
+      date,
+      title,
+      story,
+      notes,
+    };
+    if (editContact(contact)){
+      editLife(true);
+    }
+    else {
+      editLife(false);
+    }
+  }
 
   useEffect(() => {
     setCategory(contact.lifeevents[index].category);
@@ -78,14 +94,7 @@ function EditLifeEvent({deactivate, contact, index, toggleLife}) {
               <h1>Cancel</h1>
             </button>
             <button className="eventbtn" onClick={() => {
-              contact.lifeevents[index] = {
-                category,
-                date,
-                title,
-                story,
-                notes,
-              };
-              editContact(contact);
+              editDetails()
             }}
             >
               <h1>Edit life event</h1>

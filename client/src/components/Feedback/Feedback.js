@@ -18,7 +18,6 @@ function Feedback(props) {
       if (reason === 'clickaway') {
         return;
       }
-  
       setOpen(false);
     };
   
@@ -33,7 +32,7 @@ function Feedback(props) {
     }
     else {
         return (
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar open={open} onClose={handleClose}>
             <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
               {props.message}
             </Alert>

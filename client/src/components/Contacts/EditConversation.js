@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function EditConversation({deactivate, contact, index, toggleConvo}) {
+function EditConversation({edit, deactivate, contact, index, toggleConvo}) {
   const [date, setDate] = useState();
   const [form, setForm] = useState("");
   const [topic, setTopic] = useState("");
@@ -16,6 +16,22 @@ function EditConversation({deactivate, contact, index, toggleConvo}) {
     setMessages(contact.conversations[index].messages);
     setStartedBy(contact.conversations[index].startedBy);
   }, [index]);
+  
+  const editDetails = () => {
+    contact.conversations[index] = {
+      date,
+      form,
+      topic,
+      messages,
+      startedBy,
+    };
+    if (editContact(contact)){
+      edit(true);
+    }
+    else {
+      edit(false);
+    }
+  }
 
   return (
     <div className="containerdiv">
@@ -76,14 +92,7 @@ function EditConversation({deactivate, contact, index, toggleConvo}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.conversations[index] = {
-              date,
-              form,
-              topic,
-              messages,
-              startedBy,
-            };
-            editContact(contact);
+            editDetails();
           }}
           >
             <h1>Edit conversation</h1>

@@ -55,14 +55,20 @@ const Loading = () => <BlockLoading />;
 
 // change when have tags from backend
 const tagsQueried = [
-  { name: "All", color: "pink"},
+  { name: "All", color: "#58427C"},
   { name: 'Friends', color: "red"},
   { name: 'Colleagues', color: "blue"},
   { name: 'Family', color: "green"},
   { name: 'Childhood', color: "purple"},
+  { name: 'Gym', color: "#36454F"},
+  { name: 'Sports', color: "darkgreen"},
+  { name: 'Mutuals', color: "#DC143C"},
+  { name: 'Fun', color: "#5D3954"},
+  { name: 'School', color: "#A7D8DE"},
+  { name: 'Neighbour', color: "pink"},
+  { name: 'Bar', color: "#AD6F69"},
   { name: 'Others', color: "grey"},
 ];
-
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

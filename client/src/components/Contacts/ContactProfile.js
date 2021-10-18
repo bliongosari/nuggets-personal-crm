@@ -12,11 +12,18 @@ import CircleIcon from '@mui/icons-material/Circle';
 
 function ContactProfile() {
   const tagsQueried = [
-    { name: "All", color: "pink"},
+    { name: "All", color: "#58427C"},
     { name: 'Friends', color: "red"},
     { name: 'Colleagues', color: "blue"},
     { name: 'Family', color: "green"},
     { name: 'Childhood', color: "purple"},
+    { name: 'Gym', color: "#36454F"},
+    { name: 'Sports', color: "darkgreen"},
+    { name: 'Mutuals', color: "#DC143C"},
+    { name: 'Fun', color: "#5D3954"},
+    { name: 'School', color: "#A7D8DE"},
+    { name: 'Neighbour', color: "pink"},
+    { name: 'Bar', color: "#AD6F69"},
     { name: 'Others', color: "grey"},
   ];
   
@@ -88,7 +95,10 @@ function ContactProfile() {
   }
 
   function parseDate(notif) {
-    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
+    if (new Date(notif) > Date(0)){
+      return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
+    }
+    return undefined;
   }
 
   if (contact === undefined) return (
@@ -107,7 +117,6 @@ function ContactProfile() {
         final.push(tag)
       }
     }
-    console.log(final);
     return final;
   }
 
@@ -139,7 +148,7 @@ function ContactProfile() {
                      </div>
                   ))
                   
-                  :  <span> { ""}</span> }
+                  :  <span> {""}</span> }
                 </div>
               <button onClick={toggleReminders} className="reminderbtn">
                 <h2>Set reminder to contact</h2>
@@ -162,7 +171,7 @@ function ContactProfile() {
 
                 <div className="modal-body">
                   <label>Remind me via notifications on</label>
-                  <h3>{reminderMessage} </h3>
+                  <h3 style ={{fontSize: "12px", color: "red"}}>{reminderMessage} </h3>
                 </div>
 
                 <div style = {{display: "flex", flexDirection: "column", marginTop: "10px", alignItems: "center"}}>
@@ -175,7 +184,7 @@ function ContactProfile() {
                     required={true}
                   />
                     <button onClick={submitReminder} className="addbtn" style = {{width: "100px", fontSize: "13px", marginTop: "10px"}}>
-                    <h1>Add a reminder </h1>
+                    <h1 style = {{color: "white", fontSize: "12px"}}>Add a reminder </h1>
                     </button>
                 </div>
               </div>
@@ -202,7 +211,7 @@ function ContactProfile() {
                 </div>
                 <div className="curr-contacts-container ">
                   <h2>Birthday:</h2>
-                  <h3>{parseDate(contact.birthday) || "-"}</h3>
+                  <h3> {parseDate(contact.birthday) || "-"}</h3>
                 </div>
 
                 <div className="curr-contacts-container" >

@@ -2,12 +2,27 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Conversation({deactivate, contact, toggleAddConvo}) {
+function Conversation({msg, deactivate, contact, toggleAddConvo}) {
   const [date, setDate] = useState();
   const [form, setForm] = useState("");
   const [topic, setTopic] = useState("");
   const [messages, setMessages] = useState("");
   const [startedBy, setStartedBy] = useState("");
+
+  const submit = () => {
+    contact.conversations.push({
+      date,
+      form,
+      topic,
+      messages,
+      startedBy,
+    });
+    if (editContact(contact)) {
+      msg(true);
+    } else {
+      msg(false);
+    };
+  }
 
   return (
     <div className="containerdiv">
@@ -18,14 +33,14 @@ function Conversation({deactivate, contact, toggleAddConvo}) {
         <div className="formtitle">
           <h4>Log a new conversation</h4>
           <div className="closeee">
-              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+              <img alt="" src="../../close.svg" onClick={toggleAddConvo}></img>
             </div>
           <hr/>
         </div>
 
         <div className="details">
           <h2>Date of conversation:</h2>
-          <input onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy"></input>
+          <input type = "date" value = {date} onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy"></input>
         </div>
 
         <div className="details">
@@ -68,14 +83,7 @@ function Conversation({deactivate, contact, toggleAddConvo}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.conversations.push({
-              date,
-              form,
-              topic,
-              messages,
-              startedBy,
-            });
-            editContact(contact);
+            submit();
           }}
           >
             <h1>Log conversation</h1>

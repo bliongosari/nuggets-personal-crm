@@ -2,11 +2,24 @@ import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function EditTask({deactivate, contact, index, toggleTask2}) {
+function EditTask({edit, deactivate, contact, index, toggleTask2}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
 
+  const editDetails = () => {
+    contact.tasks[index] = {
+      title,
+      description,
+      date,
+    };
+    if (editContact(contact)){
+      edit(true);
+    }
+    else {
+      edit(false);
+    }
+  }
   useEffect(() => {
     setTitle(contact.tasks[index].title);
     setDescription(contact.tasks[index].description);
@@ -48,12 +61,7 @@ function EditTask({deactivate, contact, index, toggleTask2}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.tasks[index] = {
-              title,
-              description,
-              date,
-            };
-            editContact(contact);
+            editDetails();
           }}
           >
             <h1>Edit task</h1>

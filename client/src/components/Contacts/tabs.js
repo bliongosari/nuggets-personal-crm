@@ -19,6 +19,7 @@ import ViewReminderdet from "./ViewReminder"
 import ViewConvodet from "./ViewConvo"
 import "./lifeevent.css";
 import "./conversation.css";
+import Feedback from "../Feedback/Feedback";
 
 function Tabs({contact}) {
   const [toggleState, setToggleState] = useState(1);
@@ -35,6 +36,9 @@ function Tabs({contact}) {
   const [ViewTask2, setViewTask2] = useState(false);
   const [ViewReminder, setViewReminder] = useState(false);
   const [ViewConvo, setViewConvo] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [curMsg, setCurMsg] = useState("");
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -81,10 +85,92 @@ function Tabs({contact}) {
   const toggleViewConvo = () => {
     setViewConvo(!ViewConvo);
   };
+  
+  const setSuccessMsg = async (msg) => {
+    setCurMsg(msg);
+    setSuccess(true);
+    setTimeout(function(){ 
+      setSuccess(false);
+      setCurMsg("");
+    }, 6000)
+  }
+
+  const setFailedMsg = async (msg) => {
+    setCurMsg(msg);
+    setFailed(true);
+    setTimeout(function(){ 
+      setFailed(false);
+      setCurMsg("");
+    }, 6000)
+  }
+
+  const editResponse = async (res) => {
+    if (res){
+      setSuccessMsg("Successfully edited");
+      setLife(false);
+      setRemind(false);
+      setTask2(false);
+      setConvo(false);
+    } else {
+      setFailedMsg("Failed to edit");
+    };
+  }
+
+  const addResponse = async (res) => {
+    if (res){
+      setSuccessMsg("Successfully added");
+      setAddRemind(false);
+      setAddLife(false);
+      setAddConvo(false);
+      setAddTask2(false);
+    } else {
+      setFailedMsg("Failed to add");
+    };
+  }
+
+  const deleteDetailLife = async (idx) => {
+    contact.lifeevents.splice(idx, 1);
+    if (editContact(contact)){
+      setSuccessMsg("Successfully deleted life event");
+    } else {
+      setFailedMsg("Failed to delete");
+    };
+  }
+
+  const deleteReminder = async (idx) => {
+    contact.reminders.splice(idx, 1);
+    if (editContact(contact)) {
+      setSuccessMsg("Successfully deleted reminder");
+    }
+    else {
+      setFailedMsg("Failed to delete");
+    }
+  }
+  const deleteTask = async (idx) => {
+    contact.tasks.splice(idx, 1);
+    if (editContact(contact)) {
+      setSuccessMsg("Successfully deleted task");
+    }
+    else {
+      setFailedMsg("Failed to delete");
+    }
+  }
+
+  const deleteConversation = async (idx) => {
+    contact.conversations.splice(idx, 1);
+    if (editContact(contact)) {
+      setSuccessMsg("Successfully deleted conversation");
+    }
+    else {
+      setFailedMsg("Failed to delete");
+    }
+  }
 
 
   return (
     <div className="container">
+      {success && <Feedback success message = {curMsg} />}
+      {failed && <Feedback message = {curMsg} />}
       <div className="bloc-tabs">
         <button className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => {toggleTab(1); setActive("");}}>
           Life events
@@ -97,16 +183,17 @@ function Tabs({contact}) {
 
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
-          <div className="head">
+          <div style = {{display: "flex", justifyContent: "space-between", width: "100%", flexWrap: "wrap"}}>
+          <div className="head" style = {{display: "flex"}}>
             <h1 style = {{fontSize: "15px", marginBottom: "10px"}}> Life Updates with {contact.full_name.split(' ')[0]}</h1>
-            <button className="add1btn" onClick={() => active === "lifeevent" ? setActive(""): setActive("lifeevent")}>
-              <h1 style = {{fontSize: "12px"}}>Add life event</h1>
-            </button>
             {/* <hr /> */}
           </div>
+          <button className = "btnAdd" style ={{display: "flex", alignItems: "center", justifyContent: "center", marginRight: "10px", padding: "1% 5%", borderRadius: "10px", color : "white"}} onClick={() => setAddLife(true)}>
+              <h1 style = {{color : "white", fontSize: "12px"}}>Add life event</h1>
+            </button>
+          </div>
           <div className="contactfunctionalitydeet">
-            {active === "lifeevent" && <LifeEvent deactivate={deactivate} contact={contact}/>}
-            {active === "editlifeevent" && <EditLifeEvent deactivate={deactivate} contact={contact} index={index} toggleLife={toggleLife} />}
+            {AddLife && <LifeEvent msg = {addResponse} deactivate={deactivate} contact={contact} toggleLife = {toggleAddLife} />}
           </div>
 
           
@@ -126,12 +213,10 @@ function Tabs({contact}) {
                         <ModeEditIcon/>
                       </button>
                       { Life && (
-                        <EditLifeEvent deactivate={deactivate} contact={contact} index={index} toggleLife = {toggleLife} />
+                        <EditLifeEvent editLife = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleLife = {toggleLife} />
                       )}
-                      <button onClick={() => {
-                        contact.lifeevents.splice(idx, 1);
-                        editContact(contact);
-                      }} className="confbutton">
+
+                      <button onClick={() => {deleteDetailLife(idx)}} className="confbutton">
                         <DeleteIcon/>
                       </button>
                     </div>
@@ -158,14 +243,16 @@ function Tabs({contact}) {
 
         <div className={toggleState === 2 ? "content  active-content" : "content"}>
           <div className = "subcontent">
-            <div className="eventreminder">
+            <div style = {{marginBottom: "20px", fontSize: "80%", display: "flex", justifyContent: "space-between", width: "100%", flexWrap: "wrap", flexDirection: "row"}}>
+            <div style = {{display: "flex"}} >
               <h1> Reminders or Notes</h1>
               {/* <button className="eventbtn" onClick={() => setActive("reminder")}> */}
-              <button className="eventbtn1" onClick={toggleAddRemind}>
-                { AddRemind && (<Reminder deactivate={deactivate} contact={contact}  toggleAddRemind = {toggleAddRemind} />)}
-                <h1>Add reminder</h1>
-              </button>
             </div>
+            <button  className = "btnAdd" style ={{display: "flex", alignItems: "center", justifyContent: "center", marginRight: "10px", padding: "1% 5%", borderRadius: "10px", color : "white"}} onClick={toggleAddRemind}>
+                <h1 style = {{color : "white", fontSize: "12px"}}>Add reminder</h1>
+            </button>
+            </div>
+              { AddRemind && (<Reminder msg = {addResponse} deactivate={deactivate} contact={contact}  toggleAddRemind = {toggleAddRemind} />)}
             <div className="eventreminder-content">
               <h3>All reminders regarding this person will show up here</h3>
               {contact.reminders.map((reminder, idx) => (
@@ -180,13 +267,12 @@ function Tabs({contact}) {
                         <ModeEditIcon/>
                       </button>
                       { Remind && (
-                        <EditReminder deactivate={deactivate} contact={contact} index={index} toggleRemind = {toggleRemind} />
+                        <EditReminder edit = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleRemind = {toggleRemind} />
                         )}
 
                       <br/>
                       <button onClick={() => {
-                        contact.reminders.splice(idx, 1);
-                        editContact(contact);
+                        deleteReminder(idx)
                       }} className="confbutton">
                         <DeleteIcon/>
                       </button>
@@ -213,12 +299,14 @@ function Tabs({contact}) {
 
           <hr/>
           <div className = "subcontent">
-            <div className="eventreminder">
+          <div style = {{marginBottom: "20px", fontSize: "80%", display: "flex", justifyContent: "space-between", width: "100%", flexWrap: "wrap", flexDirection: "row"}}>
+            <div  style = {{display: "flex"}}>
               <h1>Task</h1>
-               <button className="eventbtn1" onClick={toggleAddTask2}>
-                { AddTask2 && (<Task deactivate={deactivate} contact={contact}  toggleAddTask2 = {toggleAddTask2} />)}
-                <h1>Add task</h1>
+            </div>
+            <button  className = "btnAdd" style ={{display: "flex", alignItems: "center", justifyContent: "center", marginRight: "10px", padding: "1% 5%", borderRadius: "10px", color : "white"}} onClick={toggleAddTask2}>
+                <h1 style = {{color : "white", fontSize: "12px"}}>Add task</h1>
               </button>
+              { AddTask2 && (<Task msg = {addResponse} deactivate={deactivate} contact={contact}  toggleAddTask2 = {toggleAddTask2} />)}
             </div>
             <div className="eventreminder-content">
               <h3>All tasks with this person will show up here</h3>
@@ -228,18 +316,17 @@ function Tabs({contact}) {
                   <div className="datacontent">
                     <div className="editdelbutton">
                       <button onClick={() => {
-                        setIndex(idx);
-                        toggleTask2();
+                          setIndex(idx);
+                          toggleTask2();
                       }} className="confbutton">
                         <ModeEditIcon/>
                       </button>
                       { Task2 && (
-                        <EditTask deactivate={deactivate} contact={contact} index={index} toggleTask2 = {toggleTask2} />
+                        <EditTask edit = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleTask2 = {toggleTask2} />
                       )}
                       <br/>
                       <button onClick={() => {
-                        contact.tasks.splice(idx, 1);
-                        editContact(contact);
+                        deleteTask(idx);
                       }} className="confbutton">
                         <DeleteIcon/>
                       </button>
@@ -268,13 +355,15 @@ function Tabs({contact}) {
 
           <hr/>
           <div className = "subcontent">
-            <div className="eventreminder">
+          <div style = {{marginBottom: "20px", fontSize: "80%", display: "flex", justifyContent: "space-between", width: "100%", flexWrap: "wrap", flexDirection: "row"}}>
+            <div  style = {{display: "flex"}}>
               <h1>Conversations</h1>
-              <button className="eventbtn1" onClick={toggleAddConvo}>
-                { AddConvo && (<Conversation deactivate={deactivate} contact={contact}  toggleAddConvo = {toggleAddConvo} />)}
-                <h1>Add conversation</h1>
-              </button>
             </div>
+            <button  className = "btnAdd" style ={{display: "flex", alignItems: "center", justifyContent: "center", marginRight: "10px", padding: "1% 5%", borderRadius: "10px", color : "white"}}  onClick={toggleAddConvo}>
+                <h1 style = {{color : "white", fontSize: "12px"}}>Add conversation</h1>
+              </button>
+              </div>
+              { AddConvo && (<Conversation msg = {addResponse} deactivate={deactivate} contact={contact}  toggleAddConvo = {toggleAddConvo} />)}
             <div className="eventreminder-content">
               <h3>All conversations with this person will show up here</h3>
               {contact.conversations.map((conversation, idx) => (
@@ -289,12 +378,11 @@ function Tabs({contact}) {
                         <ModeEditIcon/>
                       </button>
                       { Convo && (
-                        <EditConversation deactivate={deactivate} contact={contact} index={index} toggleConvo = {toggleConvo} />
+                        <EditConversation edit = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleConvo = {toggleConvo} />
                       )}
                       <br/>
                       <button onClick={() => {
-                        contact.conversations.splice(idx, 1);
-                        editContact(contact);
+                          deleteConversation()
                       }} className="confbutton">
                         <DeleteIcon/>
                       </button>

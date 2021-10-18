@@ -50,10 +50,18 @@ const useStyles = makeStyles({
 });
 
 const tagsQueried = [
+  { name: "All", color: "#58427C"},
   { name: 'Friends', color: "red"},
   { name: 'Colleagues', color: "blue"},
   { name: 'Family', color: "green"},
   { name: 'Childhood', color: "purple"},
+  { name: 'Gym', color: "#36454F"},
+  { name: 'Sports', color: "darkgreen"},
+  { name: 'Mutuals', color: "#DC143C"},
+  { name: 'Fun', color: "#5D3954"},
+  { name: 'School', color: "#A7D8DE"},
+  { name: 'Neighbour', color: "pink"},
+  { name: 'Bar', color: "#AD6F69"},
   { name: 'Others', color: "grey"},
 ];
 
@@ -154,22 +162,20 @@ function AddContact() {
       <h4 style = {{color: "red"}}>{message}</h4>
         <div className="formtitle">
           <h1>Personal Details</h1>
-          <hr></hr>
+          {/* <hr></hr> */}
         </div>
 
-        <div className="profpic" style = {{display: "flex", flexDirection: "column", alignItems: "center"}}>
+        {/* <div className="profpic" style = {{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <label style = {{color: "#114084", fontFamily: "AbeeZee"}}> Profile Pic</label>
           {image === "" ? <img style = {{width: "100px", height: "100px"}} alt="plus" src="../../person-blue.svg"></img> : <img style = {{width: "125px", height: "125px", objectFit: "cover", borderRadius: "50%"}}alt="second" src={image}></img> } 
         </div>
 
         <div className="attachimage" style = {{display: "flex", flex:"flex-wrap", width: "40%", margin: "0 auto", alignItems: "center"}}>
-          {/* <button className="attachhbtn"> */}
             <input style = {{margin: "0 auto", display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}} type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
             <button className = "trashImage" onClick = {()=> setImage("")}>
             <DeleteIcon style = {{color:"#114084"}}/>
             </button>
-          {/* </button> */}
-        </div>
+        </div> */}
 
         <div className="details">
           <h2>Full Name:</h2>

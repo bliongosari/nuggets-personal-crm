@@ -51,13 +51,20 @@ const useStyles = makeStyles({
 
 
 const tagsQueried = [
+  { name: "All", color: "#58427C"},
   { name: 'Friends', color: "red"},
   { name: 'Colleagues', color: "blue"},
   { name: 'Family', color: "green"},
   { name: 'Childhood', color: "purple"},
+  { name: 'Gym', color: "#36454F"},
+  { name: 'Sports', color: "darkgreen"},
+  { name: 'Mutuals', color: "#DC143C"},
+  { name: 'Fun', color: "#5D3954"},
+  { name: 'School', color: "#A7D8DE"},
+  { name: 'Neighbour', color: "pink"},
+  { name: 'Bar', color: "#AD6F69"},
   { name: 'Others', color: "grey"},
 ];
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -116,6 +123,28 @@ function EditContact(props) {
     }
     return result;
   }
+  const submitForm = () => {
+    if (
+    editContact({
+      ...contact,
+      full_name,
+      preferred_name,
+      birthday,
+      relationship,
+      tags,
+      meeting_notes,
+      description,
+      email,
+      phone_number,
+      linkedin,
+      twitter,
+    })) {
+      window.location.replace(`/contact/${contact.full_name}/${contact._id}`);
+    }
+    else {
+      alert("Error in adding");
+    }
+  }
 
   return (
     <div className="home">
@@ -128,16 +157,6 @@ function EditContact(props) {
         <div className="formtitle">
           <h1>Personal Details</h1>
           <hr></hr>
-        </div>
-
-        <div className="profpic">
-          <img alt="plus" src="../../person-blue.svg"></img>
-        </div>
-
-        <div className="attachimage">
-          <button className="attachhbtn">
-            <input type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
-          </button>
         </div>
 
         <div className="details">
@@ -226,20 +245,7 @@ function EditContact(props) {
 
         <div className="addcontacts">
           <button className="addcbtn" id = "editSubmitBtn" onClick={(e) => {
-            editContact({
-              ...contact,
-              full_name,
-              preferred_name,
-              birthday,
-              relationship,
-              tags,
-              meeting_notes,
-              description,
-              email,
-              phone_number,
-              linkedin,
-              twitter,
-            });
+            submitForm()
           }}
           >
             <h1>Save Changes</h1>

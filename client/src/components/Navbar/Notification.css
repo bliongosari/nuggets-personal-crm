@@ -17,6 +17,8 @@
   margin-top: 30px;
   margin-left: 60px;
   overflow-x: hidden;
+  max-height: 80vh;
+  overflow-y: scroll;
 }
 
 .notif-header h1 {

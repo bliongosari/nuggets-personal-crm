@@ -429,7 +429,7 @@ function NavbarHome() {
                                   {<br></br>}Alert at: {parseDateContact(notif.alert)}
                                   {<br></br>}
                                   {notif.notification_opened ? 
-                                  <span style = {{marginLeft: "80px", marginTop: "5px",color: "white" , background: "grey", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING(OPENED) </span> :
+                                  <span style = {{marginLeft: "40px", marginTop: "5px",color: "white" , background: "grey", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING(OPENED) </span> :
                                   <span style = {{marginLeft: "77px", marginTop: "5px",color: "white" , background: "green", paddingLeft: "3%", paddingRight: "3%"}}> UPCOMING </span>                                   
                                   }
                                 </React.Fragment>

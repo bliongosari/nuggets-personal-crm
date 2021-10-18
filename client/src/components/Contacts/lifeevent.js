@@ -2,23 +2,39 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./lifeevent.css";
 
-function LifeEvent({deactivate, contact, toggleAddLife}) {
+function LifeEvent({msg, deactivate, contact, toggleLife}) {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState();
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [notes, setNotes] = useState("");
 
+  const submit = () => {
+    contact.lifeevents.push({
+      category,
+      date,
+      title,
+      story,
+      notes,
+    });
+    if (editContact(contact)) {
+      msg(true);
+    } else {
+      msg(false);
+    };
+  }
+
+
   return (
     <div className="containerdivv">
       <div className="editmodal1">
-          <div onClick={deactivate} className="editoverlay"></div>
+          <div onClick={toggleLife} className="editoverlay"></div>
         <div className="modalcontentedit1">
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Add a life event</h1>
           <div className="closeee">
-              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+              <img alt="" src="../../close.svg" onClick={toggleLife}></img>
             </div>
           <hr></hr>
         </div>
@@ -71,14 +87,7 @@ function LifeEvent({deactivate, contact, toggleAddLife}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.lifeevents.push({
-              category,
-              date,
-              title,
-              story,
-              notes,
-            });
-            editContact(contact);
+            submit();
           }}
           >
             <h1>Add life event</h1>

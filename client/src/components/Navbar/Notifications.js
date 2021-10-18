@@ -181,7 +181,7 @@ function Notification() {
             <div className="notif-header">
                 <h1>Notifications</h1>
             </div>
-            <div className="notiftable" style = {{maxHeight: "1000px", yOverflow: "scroll"}}>
+            <div className="notiftable" style = {{yOverflow: "scroll"}}>
 
             <Modal
               open={eventDetail}

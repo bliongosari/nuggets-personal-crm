@@ -2,11 +2,22 @@ import { useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function Task({deactivate, contact, toggleAddTask2}) {
+function Task({msg, deactivate, contact, toggleAddTask2}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
-
+  const submit = () => {
+    contact.tasks.push({
+      title,
+      description,
+      date,
+    });
+    if (editContact(contact)) {
+      msg(true);
+    } else {
+      msg(false);
+    };
+  }
   return (
     <div className="containerdiv">
       <div className="editmodal">
@@ -16,24 +27,24 @@ function Task({deactivate, contact, toggleAddTask2}) {
         <div className="formtitle">
           <h4>Add a new task</h4>
           <div className="closeee">
-              <img alt="" src="../../close.svg" onClick={deactivate}></img>
+              <img alt="" src="../../close.svg" onClick={toggleAddTask2}></img>
             </div>
           <hr/>
         </div>
 
         <div className="details">
           <h2>Task title:</h2>
-          <input onChange={(e) => setTitle(e.target.value)} />
+          <input value = {title} type = "title" onChange={(e) => setTitle(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Task description:</h2>
-          <input onChange={(e) => setDescription(e.target.value)} />
+          <input value = {description} type = "description" onChange={(e) => setDescription(e.target.value)} />
         </div>
 
         <div className="details">
           <h2>Due date:</h2>
-          <input onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" />
+          <input value = {date} type = "date" onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" />
         </div>
 
     
@@ -42,12 +53,7 @@ function Task({deactivate, contact, toggleAddTask2}) {
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {
-            contact.tasks.push({
-              title,
-              description,
-              date,
-            });
-            editContact(contact);
+            submit();
           }}
           >
             <h1>Add task</h1>

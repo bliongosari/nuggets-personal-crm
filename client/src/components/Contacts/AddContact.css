@@ -268,7 +268,7 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 20px;
 }
 
 .addcbtn:hover {
@@ -292,7 +292,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 1.6%;
 }
 
 .modal,
