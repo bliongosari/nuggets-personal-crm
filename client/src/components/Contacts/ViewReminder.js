@@ -19,7 +19,7 @@ function ViewReminder({deactivate, contact, index, toggleViewReminder}) {
     <div className="containerdiv">
       <div className="editmodal">
           <div onClick={toggleViewReminder} className="editoverlay"></div>
-        <div className="modalcontentedit">
+        <div className="modalcontentedit1">
           <div className="contacts-form">
               <div className="formtitle">
                 <h1>Reminder Information</h1>

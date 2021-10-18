@@ -133,3 +133,52 @@ body {
   padding-top: 1%;
   padding-bottom: 1%;
 }
+
+.modalcontentedit1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: var(--fourth-blue);
+  padding: 0% 0%;
+  border-radius: 30px;
+  width: 30%;
+  z-index: 5;
+  border: solid 1px var(--secondary-blue);
+  z-index: 25;
+  padding: 3%;
+  padding-top: 0%;
+}
+
+@media screen and (max-width: 350px) {
+  .modalcontentedit1 {
+    width: 90%;
+    padding: 5%;
+    padding-top: 0%;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 600px) {
+  .modalcontentedit1 {
+    width: 90%;
+    padding: 5%;
+    padding-top: 0%;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 800px) {
+  .modalcontentedit1 {
+    width: 70%;
+    padding: 5%;
+    padding-top: 0%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  .modalcontentedit1 {
+    width: 40%;
+    padding: 5%;
+    padding-top: 0%;
+  }
+}

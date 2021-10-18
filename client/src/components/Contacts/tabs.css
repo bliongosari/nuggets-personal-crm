@@ -451,7 +451,7 @@ button {
   }
 }
 
-@media screen and (min-width: 851px) and (max-width: 1200px) {
+@media screen and (min-width: 851px) and (max-width: 1500px) {
   .active-tabs {
     font-size: 70%;
   }
@@ -490,5 +490,9 @@ button {
     width: 50%;
     text-align: center;
     align-items: center;
+  }
+
+  .closeee {
+    top: 5px;
   }
 }

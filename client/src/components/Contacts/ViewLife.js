@@ -21,7 +21,7 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
     <div className="containerdivv">
       <div className="editmodal">
           <div onClick={toggleViewLife} className="editoverlay"></div>
-        <div className="modalcontentedit">
+        <div className="modalcontentedit1">
           <div className="contacts-form">
           <div className="formtitle">
             <h1>Life Event Information</h1>

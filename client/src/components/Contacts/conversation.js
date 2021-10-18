@@ -13,7 +13,7 @@ function Conversation({deactivate, contact, toggleAddConvo}) {
     <div className="containerdiv">
       <div className="editmodal">
           <div onClick={toggleAddConvo} className="editoverlay"></div>
-        <div className="modalcontentedit">
+        <div className="modalcontentedit1">
       <div className="contacts-form">
         <div className="formtitle">
           <h4>Log a new conversation</h4>

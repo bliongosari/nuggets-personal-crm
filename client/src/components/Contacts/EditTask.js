@@ -17,7 +17,7 @@ function EditTask({deactivate, contact, index, toggleTask2}) {
     <div className="containerdiv">
       <div className="editmodal">
           <div onClick={toggleTask2} className="editoverlay"></div>
-      <div className="modalcontentedit">
+      <div className="modalcontentedit1">
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Edit task</h1>
