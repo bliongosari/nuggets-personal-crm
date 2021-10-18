@@ -11,9 +11,9 @@ function LifeEvent({deactivate, contact, toggleAddLife}) {
 
   return (
     <div className="containerdivv">
-      <div className="editmodal">
+      <div className="editmodal1">
           <div onClick={toggleAddLife} className="editoverlay"></div>
-        <div className="modalcontentedit">
+        <div className="modalcontentedit1">
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Add a life event</h1>

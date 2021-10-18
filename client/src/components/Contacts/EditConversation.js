@@ -21,7 +21,7 @@ function EditConversation({deactivate, contact, index, toggleConvo}) {
     <div className="containerdiv">
       <div className="editmodal">
           <div onClick={toggleConvo} className="editoverlay"></div>
-          <div className="modalcontentedit">
+          <div className="modalcontentedit1">
       <div className="contacts-form">
         <div className="formtitle">
           <h1>Edit conversation</h1>

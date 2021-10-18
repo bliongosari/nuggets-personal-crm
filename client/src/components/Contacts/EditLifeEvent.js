@@ -21,7 +21,7 @@ function EditLifeEvent({deactivate, contact, index, toggleLife}) {
     <div className="containerdivv">
       <div className="editmodal">
           <div onClick={toggleLife} className="editoverlay"></div>
-        <div className="modalcontentedit">
+        <div className="modalcontentedit1">
           <div className="contacts-form">
           <div className="formtitle">
             <h1>Edit life event</h1>

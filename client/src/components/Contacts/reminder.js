@@ -12,7 +12,7 @@ function Reminder({deactivate, contact, toggleAddRemind}) {
     <div className="containerdiv">
       <div className="editmodal">
           <div onClick={toggleAddRemind} className="editoverlay"></div>
-        <div className="modalcontentedit">
+        <div className="modalcontentedit1">
     <div className="contacts-form">
         <div className="formtitle">
           <h4>Add a new reminder</h4>
