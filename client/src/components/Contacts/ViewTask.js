@@ -1,39 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { editContact } from "./contactsAPI";
 import "./conversation.css";
 
-function ViewTask({deactivate, contact, toggleViewTask2}) {
+function ViewTask({deactivate, contact, index, toggleViewTask2}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState();
 
+  useEffect(() => {
+    setTitle(contact.tasks[index].title);
+    setDescription(contact.tasks[index].description);
+    setDate(contact.tasks[index].date);
+  }, [index]);
+
   return (
     <div className="containerdiv">
       <div className="editmodal">
-          <div onClick={toggleViewTask2} className="editoverlay"></div>
+        <div onClick={toggleViewTask2} className="editoverlay"></div>
         <div className="modalcontentedit">
       <div className="contacts-form">
         <div className="formtitle">
-          <h4>Add a new task</h4>
-          <div className="closeee">
+          <h4>Task Information</h4>
+            <div className="closeee">
               <img alt="" src="../../close.svg" onClick={toggleViewTask2}></img>
             </div>
           <hr/>
         </div>
 
         <div className="details">
-          <h2>Task title:</h2>
-          {/* <input onChange={(e) => setTitle(e.target.value)} /> */}
+          <h2>Task title: {title}</h2>
         </div>
 
         <div className="details">
-          <h2>Task description:</h2>
-          {/* <input onChange={(e) => setDescription(e.target.value)} /> */}
+          <h2>Task description: {description}</h2>
         </div>
 
         <div className="details">
-          <h2>Due date:</h2>
-          {/* <input onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" /> */}
+          <h2>Due date:
+            {
+              (new Date(date)).toDateString() == "Invalid Date"
+              ? "" : (new Date(date)).toDateString()
+            }
+          </h2>
         </div>
 
 

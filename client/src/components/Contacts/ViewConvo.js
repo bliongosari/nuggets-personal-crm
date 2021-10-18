@@ -24,51 +24,36 @@ function ViewConvo({deactivate, contact, index, toggleViewConvo}) {
           <div className="modalcontentedit">
       <div className="contacts-form">
         <div className="formtitle">
-          <h1>Edit conversation</h1>
-          <div className="closeee">
+          <h1>Conversation Information</h1>
+            <div className="closeee">
               <img alt="" src="../../close.svg" onClick={toggleViewConvo}></img>
             </div>
           <hr/>
         </div>
 
         <div className="details">
-          <h2>Date of conversation:</h2>
-          {/* <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="dd/mm/yyyy" /> */}
+          <h2>Date of conversation:
+            {
+              (new Date(date)).toDateString() == "Invalid Date"
+              ? "" : (new Date(date)).toDateString()
+            }
+          </h2>
         </div>
 
         <div className="details">
-          <h2>Select form of communication:</h2>
-          <div className="custom-select">
-            {/* <form method="post">
-              <select onChange={(e) => setForm(e.target[e.target.value].innerText)}>
-                <option value="0" disabled selected>-- Select option --</option>
-                <option value="1">Phone Number</option>
-                <option value="2">Email</option>
-                <option value="3">Twitter</option>
-                <option value="4">Facebook</option>
-                <option value="5">Instagram</option>
-                <option value="6">LinkedIn</option>
-                <option value="7">In Person</option>
-                <option value="8">Other</option>
-              </select>
-            </form> */}
-          </div>
-            
+          <h2>Select form of communication: {form}</h2>
         </div>
 
         <div className="details">
-          <h2>Topic of conversation:</h2>
-          {/* <input value={topic} onChange={(e) => setTopic(e.target.value)} /> */}
+          <h2>Topic of conversation: {topic}</h2>
         </div>
 
         <div className="details">
-          <h2>Important messages to note:</h2>
-          {/* <input value={messages} onChange={(e) => setMessages(e.target.value)} /> */}
+          <h2>Important messages to note: {messages}</h2>
         </div>
 
         <div className="details">
-          <h2>Who started the communication:</h2>
-          {/* <input value={startedBy} onChange={(e) => setStartedBy(e.target.value)} /> */}
+          <h2>Who started the communication: {startedBy}</h2>
         </div>
 
       </div>

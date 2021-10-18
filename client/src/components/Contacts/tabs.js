@@ -254,7 +254,7 @@ function Tabs({contact}) {
                       </button>
                     </div>
                     {ViewTask2 && (
-                        <ViewTaskdet contact={contact} index={index} toggleViewTask2 = {toggleViewTask2} />
+                        <ViewTaskdet contact={contact} index={index} toggleViewTask2={toggleViewTask2} />
                         )}
                     
                   </div>

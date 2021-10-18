@@ -10,7 +10,6 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
   const [notes, setNotes] = useState("");
 
   useEffect(() => {
-    console.log(index);
     setCategory(contact.lifeevents[index].category);
     setDate(contact.lifeevents[index].date);
     setTitle(contact.lifeevents[index].title);
@@ -37,7 +36,12 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
           </div>
 
           <div className="details">
-            <h2>Date of event: {date}</h2>
+            <h2>Date of event:
+              {
+                (new Date(date)).toDateString() == "Invalid Date"
+                ? "" : (new Date(date)).toDateString()
+              }
+            </h2>
           </div>
 
           <div className="details">

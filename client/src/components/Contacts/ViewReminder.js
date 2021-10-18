@@ -22,7 +22,7 @@ function ViewReminder({deactivate, contact, index, toggleViewReminder}) {
         <div className="modalcontentedit">
           <div className="contacts-form">
               <div className="formtitle">
-                <h1>Edit reminder</h1>
+                <h1>Reminder Information</h1>
                 <div className="closeee">
               <img alt="" src="../../close.svg" onClick={toggleViewReminder}></img>
             </div>
@@ -30,33 +30,24 @@ function ViewReminder({deactivate, contact, index, toggleViewReminder}) {
               </div>
 
               <div className="details">
-                <h2>Reminder title:</h2>
-                {/* <input value={title} onChange={(e) => setTitle(e.target.value)} /> */}
+                <h2>Reminder title: {title}</h2>
               </div>
 
               <div className="details">
-                <h2>Reminder description:</h2>
-                {/* <input value={description} onChange={(e) => setDescription(e.target.value)} /> */}
+                <h2>Reminder description: {description}</h2>
               </div>
 
               <div className="details">
-                <h2>Reminder date:</h2>
-                {/* <input value={date} placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} /> */}
+                <h2>Reminder date:
+                  {
+                    (new Date(date)).toDateString() == "Invalid Date"
+                    ? "" : (new Date(date)).toDateString()
+                  }
+                </h2>
               </div>
 
               <div className="details">
-                <h2>Repeat reminder:</h2>
-                <div className="custom-select">
-                  {/* <form method="post">
-                    <select onChange={(e) => setRepeat(e.target[e.target.value].innerText)}>
-                      <option value="0" disabled selected>-- Select option --</option>
-                      <option value="1">Remind me once</option>
-                      <option value="2">Remind me every day</option>
-                      <option value="3">Remind me every week</option>
-                      <option value="4">Remind me every month</option>
-                    </select>
-                  </form> */}
-                </div>
+                <h2>Repeat reminder: {repeat}</h2>
                   
               </div>
 
