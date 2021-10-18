@@ -148,14 +148,13 @@ body {
   border: solid 1px var(--secondary-blue);
   z-index: 25;
   padding: 3%;
-  padding-top: 0%;
+  padding-top: 3%;
 }
 
 @media screen and (max-width: 350px) {
   .modalcontentedit1 {
     width: 90%;
     padding: 5%;
-    padding-top: 0%;
   }
 }
 
@@ -163,7 +162,6 @@ body {
   .modalcontentedit1 {
     width: 90%;
     padding: 5%;
-    padding-top: 0%;
   }
 }
 
@@ -171,7 +169,6 @@ body {
   .modalcontentedit1 {
     width: 70%;
     padding: 5%;
-    padding-top: 0%;
   }
 }
 
@@ -179,6 +176,5 @@ body {
   .modalcontentedit1 {
     width: 40%;
     padding: 5%;
-    padding-top: 0%;
   }
 }

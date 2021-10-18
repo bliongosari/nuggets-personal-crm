@@ -99,7 +99,7 @@ function Tabs({contact}) {
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
           <div className="head">
             <h1 style = {{fontSize: "15px", marginBottom: "10px"}}> Life Updates with {contact.full_name.split(' ')[0]}</h1>
-            <button className="addbtn" onClick={() => active === "lifeevent" ? setActive(""): setActive("lifeevent")}>
+            <button className="add1btn" onClick={() => active === "lifeevent" ? setActive(""): setActive("lifeevent")}>
               <h1 style = {{fontSize: "12px"}}>Add life event</h1>
             </button>
             {/* <hr /> */}
@@ -161,7 +161,7 @@ function Tabs({contact}) {
             <div className="eventreminder">
               <h1> Reminders or Notes</h1>
               {/* <button className="eventbtn" onClick={() => setActive("reminder")}> */}
-              <button className="eventbtn" onClick={toggleAddRemind}>
+              <button className="eventbtn1" onClick={toggleAddRemind}>
                 { AddRemind && (<Reminder deactivate={deactivate} contact={contact}  toggleAddRemind = {toggleAddRemind} />)}
                 <h1>Add reminder</h1>
               </button>
@@ -215,7 +215,7 @@ function Tabs({contact}) {
           <div className = "subcontent">
             <div className="eventreminder">
               <h1>Task</h1>
-               <button className="eventbtn" onClick={toggleAddTask2}>
+               <button className="eventbtn1" onClick={toggleAddTask2}>
                 { AddTask2 && (<Task deactivate={deactivate} contact={contact}  toggleAddTask2 = {toggleAddTask2} />)}
                 <h1>Add task</h1>
               </button>
@@ -270,7 +270,7 @@ function Tabs({contact}) {
           <div className = "subcontent">
             <div className="eventreminder">
               <h1>Conversations</h1>
-              <button className="eventbtn" onClick={toggleAddConvo}>
+              <button className="eventbtn1" onClick={toggleAddConvo}>
                 { AddConvo && (<Conversation deactivate={deactivate} contact={contact}  toggleAddConvo = {toggleAddConvo} />)}
                 <h1>Add conversation</h1>
               </button>
