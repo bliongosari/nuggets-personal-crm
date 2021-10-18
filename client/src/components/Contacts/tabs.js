@@ -138,6 +138,7 @@ function Tabs({contact}) {
                     <div className="datadetails">
                       <h1>{lifeevent.title}</h1>
                       <button className="viewbtn" onClick={() =>  {
+                        setIndex(idx);
                         toggleViewLife();
                       }}>      
                         <h1>View More</h1>
@@ -193,6 +194,7 @@ function Tabs({contact}) {
                     <div className="datadetails">
                       <h1>{reminder.title}</h1>
                       <button className="viewbtn" onClick={() =>  {
+                        setIndex(idx);
                         toggleViewReminder();
                       }}>      
                         <h1>View More</h1>
@@ -245,6 +247,7 @@ function Tabs({contact}) {
                     <div className="datadetails">
                       <h1>{task.title}</h1>
                       <button className="viewbtn" onClick={() =>  {
+                        setIndex(idx);
                         toggleViewTask2();
                       }}>      
                         <h1>View More</h1>
@@ -299,6 +302,7 @@ function Tabs({contact}) {
                   <div className="datadetails">
                       <h1>{conversation.topic}</h1>
                       <button className="viewbtn" onClick={() =>  {
+                        setIndex(idx);
                         toggleViewConvo();
                       }}>      
                         <h1>View More</h1>

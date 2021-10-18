@@ -25,7 +25,7 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
         <div className="modalcontentedit">
           <div className="contacts-form">
           <div className="formtitle">
-            <h1>{contact.lifeevents[index].title}</h1>
+            <h1>Life Event Information</h1>
             <div className="closeee">
               <img alt="" src="../../close.svg" onClick={toggleViewLife}></img>
             </div>
@@ -33,44 +33,23 @@ function ViewDetails({deactivate, contact, index, toggleViewLife}) {
           </div>
 
           <div className="details">
-            <h2>Event category:</h2>
-            {/* <div className="custom-select">
-                  <select onChange={(e) => setCategory(e.target[e.target.value].innerText)}>
-                    <option value="0" disabled selected>-- Select option --</option>
-                    <option value="1">Started a new job</option>
-                    <option value="2">Retirement</option>
-                    <option value="3">Starting school</option>
-                    <option value="4">Studied abroad</option>
-                    <option value="5">Started volunteering</option>
-                    <option value="6">Received achievements</option>
-                    <option value="7">Started military service</option>
-                    <option value="8">Marriage</option>
-                    <option value="9">Other</option>
-                  </select>
-            </div> */}
+            <h2>Event category: {category}</h2>
           </div>
 
           <div className="details">
-            <h2>Date of event:</h2>
-            {/* <input value={date} 
-                  name="date"
-                  type="date" //change to time later
-                  onChange={(e) => setDate(e.target.value)} /> */}
+            <h2>Date of event: {date}</h2>
           </div>
 
           <div className="details">
-            <h2>Title:</h2>
-            {/* <input value={title} onChange={(e) => setTitle(e.target.value)} /> */}
+            <h2>Title: {title}</h2>
           </div>
 
           <div className="details">
-            <h2>Story:</h2>
-            {/* <input value={story} onChange={(e) => setStory(e.target.value)} /> */}
+            <h2>Story: {story}</h2>
           </div>
 
           <div className="details">
-            <h2>Personal Notes:</h2>
-            {/* <input value={notes} onChange={(e) => setNotes(e.target.value)} /> */}
+            <h2>Personal Notes: {notes}</h2>
 
           </div>
         </div>
