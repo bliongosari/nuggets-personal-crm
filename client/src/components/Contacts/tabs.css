@@ -432,7 +432,7 @@ button {
   }
 }
 
-@media screen and (min-width: 376px) and (max-width: 850px) {
+@media screen and (min-width: 376px) and (max-width: 700px) {
   .active-tabs {
     font-size: 70%;
   }
@@ -452,8 +452,12 @@ button {
     flex-direction: row;
   }
 
+  .btnAdd {
+    margin-top: 3%;
+  }
+
   .head h1 {
-    font-size: 70%;
+    font-size: 60%;
     margin-bottom: 3%;
   }
 
@@ -482,9 +486,14 @@ button {
   .closeee {
     top: 5px;
   }
+
+  .addlifeevent {
+    margin-top: 8%;
+    margin-bottom: 5%;
+  }
 }
 
-@media screen and (min-width: 851px) and (max-width: 1500px) {
+@media screen and (min-width: 701px) and (max-width: 1500px) {
   .active-tabs {
     font-size: 70%;
   }
@@ -516,6 +525,11 @@ button {
 
   .eventreminder h1 {
     font-size: 80%;
+  }
+
+  .btnAdd {
+    margin-top: 2%;
+    margin-bottom: 4%;
   }
 
   .eventbtn1 {

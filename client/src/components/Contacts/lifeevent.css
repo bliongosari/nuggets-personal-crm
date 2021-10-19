@@ -163,6 +163,9 @@ body {
     width: 90%;
     padding: 5%;
   }
+  .closeee {
+    top: 5px;
+  }
 }
 
 @media screen and (min-width: 601px) and (max-width: 800px) {

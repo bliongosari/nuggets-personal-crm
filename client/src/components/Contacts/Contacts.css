@@ -17,8 +17,8 @@
 }
 
 .addnewbtn {
-  width: 130%;
-  padding: 2%;
+  width: 100%;
+  padding: 1%;
   background: var(--primary-blue);
   color: white;
   border-radius: 10px;
@@ -30,8 +30,7 @@
 }
 
 .addnewbtn h1 {
-  font-size: 100%;
-  width: 100%;
+  font-size: 90%;
   padding: 3%;
   text-align: center;
   line-height: 20px;
@@ -418,10 +417,11 @@ hr {
   .addcontactsdiv {
     margin-top: 0;
     padding-top: 0;
+    width: 100%;
   }
 
   .addnewbtn {
-    width: 80%;
+    width: 100%;
   }
 
   .addnewbtn h1 {
@@ -492,5 +492,14 @@ hr {
 
   .navpagebutton h1 {
     font-size: 75%;
+  }
+
+  .addnewbtn {
+    width: 100%;
+  }
+
+  .addnewbtn h1 {
+    font-size: 70%;
+    line-height: 150%;
   }
 }
