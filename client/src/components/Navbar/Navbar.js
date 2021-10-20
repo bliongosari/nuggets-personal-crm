@@ -139,6 +139,7 @@ function NavbarHome() {
         if (res.status === 200) {
           let currentNotif = arrayRemove(notifications, notif);
           setNotifications([...currentNotif]);
+          
           showDropdownNotif(true);
         } else {
           console.log("error")
@@ -208,6 +209,8 @@ function NavbarHome() {
   function arrayEditOpened(arr, item) { 
     let index = arr.findIndex((itm => itm._id === item._id));
     arr[index].notification_opened = true;
+    let clonedArr = JSON.parse(JSON.stringify(arr))
+    setNotifications(clonedArr);
   }
 
   function parseDate(notif) {

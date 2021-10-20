@@ -51,8 +51,7 @@ function Reminder({msg, deactivate, contact, toggleAddRemind}) {
 
         <div className="details">
           <h2>Repeat reminder:</h2>
-          <div className="custom-select">
-            <form method="post">
+          <div >
               <select onChange={(e) => setRepeat(e.target[e.target.value].innerText)}>
                 <option value="0" disabled selected>-- Select option --</option>
                 <option value="1">Remind me once</option>
@@ -60,7 +59,6 @@ function Reminder({msg, deactivate, contact, toggleAddRemind}) {
                 <option value="3">Remind me every week</option>
                 <option value="4">Remind me every month</option>
               </select>
-            </form>
           </div>
             
         </div>
