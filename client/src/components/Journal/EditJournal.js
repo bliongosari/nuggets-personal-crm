@@ -8,7 +8,7 @@ import { props } from "bluebird";
 function EditJournal(props) {
     const[allField, setAllFields] = useState({
         title: props.journal.title,
-        description: props.journal.title,
+        description: props.journal.description,
     });
     const [field, setField] = useState("");
     const [journals, setjournals] = useState([]);
@@ -29,7 +29,7 @@ function EditJournal(props) {
             if (res.status === 200) {
               setjournals([...journals, field]);
               setField("");
-              //refreshPage();
+              refreshPage();
             } else {
               setFailed(true);
             }
@@ -43,7 +43,6 @@ function EditJournal(props) {
       };
     
       const handleSubmit = async(e) => {
-        e.preventDefault();
         editJournal(e);
       };
       const SuccessMsg = () => <Alert variant="success">Sucessfully Edited</Alert>;

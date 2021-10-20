@@ -111,7 +111,6 @@ const postEditedJournal = async (req, res) => {
       },
       { new: true }
     );
-    //console.log("NEW: " +journal);
     return res.status(200).json({
       user: req.user,
       message: "Successfully edited",
