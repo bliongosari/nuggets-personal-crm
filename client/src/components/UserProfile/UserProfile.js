@@ -211,16 +211,6 @@ function UserProfile() {
             </div>
             
             <h1 className="popup-header">Edit Profile</h1>
-
-            <div className="attachimage" style = {{display: "flex", flex:"flex-wrap", width: "85%", margin: "0 auto", alignItems: "center", marginTop: "15px", marginBottom: "15px"}}>
-              {/* <button className="attachhbtn"> */}
-                <input style = {{margin: "0 auto", display: "flex", alignItems: "center", textAlign: "center", justifyContent: "center"}} type="file" name="myImage" accept="image/*" placeholder = "Attach Image" onChange={ (e) => handleImageChange(e.target.files)}/>
-                <button className = "trashImage" onClick = {()=> setImage("")}>
-                <DeleteIcon style = {{color:"#114084", height: "100%"}}/>
-                </button>
-              {/* </button> */}
-            </div>
-
             <span style ={{ color: "red", margin: "0 auto", fontSize: "14px"}}>{editMessage}</span>
             <div className="popup-text">
             <input
@@ -232,6 +222,7 @@ function UserProfile() {
                     name="firstname"
                     value={firstname}
                     required
+                    style = {{background: "white"}}
                     onChange={(e) => setFirstname(e.target.value)}
                   ></input>
             </div>
@@ -245,6 +236,7 @@ function UserProfile() {
                     placeholder=" ENTER A NEW LAST NAME   | Must only be alphabetical characters"
                     name="lastname"
                     required
+                    style = {{background: "white"}}
                     onChange={(e) => setLastname(e.target.value)}
                   ></input>
             </div>
@@ -281,6 +273,7 @@ function UserProfile() {
                   name="password"
                   required
                   value={oldPassword}
+                  style = {{background: "white"}}
                   onChange={(e) => setOldPassword(e.target.value)}
               />
             </div>
@@ -294,6 +287,7 @@ function UserProfile() {
                   oninput="this.setCustomValidity('')"
                   required
                   value={password}
+                  style = {{background: "white"}}
                   onChange={(e) => setPassword(e.target.value)}
               />
             </div>
@@ -306,6 +300,7 @@ function UserProfile() {
                   oninvalid="this.setCustomValidity('Must contain atleast one alphabet character, one numerical digit (0-9), and at least 8 characters')"
                   oninput="this.setCustomValidity('')"
                   required
+                  style = {{background: "white"}}
                   value={passwordConfirmation}
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
               />

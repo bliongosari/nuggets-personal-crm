@@ -54,6 +54,14 @@ function ContactProfile() {
     setInfo(!info);
   };
 
+  const parseTags = (tags) => {
+    if (tags.split(',')[0] === "undefined"){
+      return undefined;
+    }
+    return tags;
+
+  }
+
   const submitReminder = () => {
     if (dateReminder == "" || new Date(dateReminder) < Date.now()){
       setReminderMessage("Reminder need to be after the current date")
@@ -95,7 +103,7 @@ function ContactProfile() {
   }
 
   function parseDate(notif) {
-    if (new Date(notif) > Date(0)){
+    if (new Date(notif) > new Date(0)){
       return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
     }
     return undefined;
@@ -222,7 +230,7 @@ function ContactProfile() {
                 </div>
                 <div className="curr-contacts-container" >
                   <h2>Tags</h2>
-                  <h3>{contact.tags || "-"}</h3>
+                  <h3>{parseTags(contact.tags) || "-"}</h3>
                 </div>
                 <div className="curr-contacts-container">
                   <h2>How we met:</h2>
@@ -280,7 +288,7 @@ function ContactProfile() {
                           </div>
                           <div className="currr-contacts-container">
                             <h2>Tags</h2>
-                            <h3>{contact.tags[0] || "-"}</h3>
+                            <h3>{parseTags(contact.tags) || "-"}</h3>
                           </div>
                           <div className="currr-contacts-container">
                             <h2>How we met:</h2>
