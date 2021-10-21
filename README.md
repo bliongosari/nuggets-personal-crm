@@ -44,6 +44,25 @@ my-document/     # Root directory.
 |- Makefile      # Makefile used for building our documents.
 ```
 
+### Contributors
+
+
+### Coding Standards
+- Multiple folders for different React Components
+
+- Consistent file naming in React
+
+- API names are consistent (e.g. user/all/ or contact/all/ or user/:id or contact/:id )
+
+- Uses ESLint and Prettier (extension in Visual Studio Code)
+
+- CodeQL and Nodejs Code scanning
+
+
+### Roadmap
+
+
+
 
 ### Tools & Technologies
 
@@ -56,5 +75,4 @@ Sprint Feedback: Mira\
 Deployment: Azure\
 CI/CD: GitHub Actions\
 MongoDB email: chickenwebit2021@gmail.com\
-\
-\
+
