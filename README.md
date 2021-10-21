@@ -1,12 +1,51 @@
 # Nugget-IT-Project
 
-**Deployment**
+This repository containg a personal CRM using React.js, Node.js, MongoDB, Azure, GitHub Actions, Confluence, Jira, Jest, and Playwright
+
+### Main Features
+
+### Deployment
 
 URL: https://nuggets-personal-crm.azurewebsites.net/
 
 Automatic deployment on every commit to main and pull requests to main.
 
-**Tools & Technologies**
+### Running locally
+
+#### To Run Frontend:
+```
+cd client
+npm install //if you are missing modules from package.json
+npm start
+```
+#### To Run Backend:
+```
+npm install //if you are missing modules from package.json
+npm start
+```
+
+### Running tests
+```
+// e2e test
+npm build
+npm run e2e
+// integration & unit tests
+npm test
+```
+
+### Folder structure
+
+```
+my-document/     # Root directory.
+|- client/        # Folder used to store builded (output) files.
+|- src/          # Markdowns files; one for each chapter.
+|- images/       # Images folder.
+|- metadata.yml  # Metadata content (title, author...).
+|- Makefile      # Makefile used for building our documents.
+```
+
+
+### Tools & Technologies
 
 Documentation: Confluence\
 Task-Management: Jira\
@@ -19,13 +58,3 @@ CI/CD: GitHub Actions\
 MongoDB email: chickenwebit2021@gmail.com\
 \
 \
-To Run Frontend:
-
-- cd client
-- npm install _(if you are missing modules from package.json)_
-- npm start
-
-To Run Backend:
-
-- npm install _(if you are missing modules from package.json)_
-- npm start
