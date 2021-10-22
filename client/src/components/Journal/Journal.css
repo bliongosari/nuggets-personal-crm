@@ -25,13 +25,13 @@
 }
 
 .pagetitlee h1 {
-  margin-top: 30px;
+  margin-top: 2%;
   width: 100%;
   height: 40px;
   font-size: 130%;
   letter-spacing: 2px;
-  font-family: var(--logo-font);
-  font-weight: lighter;
+  font-family: var(--button-font);
+  font-weight: bolder;
   text-align: center;
   vertical-align: middle;
   opacity: 100%;
@@ -85,13 +85,12 @@
   padding-left: 0.7%;
   padding-bottom: 2%;
   padding-top: 0;
-
 }
 .exit-Btn {
   margin-top: -40px;
   cursor: pointer;
-  font-size: 50px;
-  background-color: white;
+  font-size: 30px;
+  background-color: var(--fourth-blue);
 }
 .exit-Btn:hover {
   color: var(--primary-blue);
@@ -104,7 +103,7 @@
 }
 
 .upload-btn {
-  width: 18%;
+  width: 25%;
   padding: 1%;
   background: var(--primary-blue);
   color: white;
@@ -113,7 +112,7 @@
   cursor: pointer;
   font-family: var(--button-font);
   font-weight: bolder;
-  font-size: 70%;
+  font-size: 60%;
   box-shadow: 5px 5px 5px #888888;
 }
 
@@ -182,7 +181,7 @@ form {
   font-weight: bold;
   line-height: 25px;
   font-size: 13px;
-  margin-bottom: 1em; 
+  margin-bottom: 1em;
   display: block;
 }
 .add-details {
@@ -257,20 +256,19 @@ input {
 }
 .sortJournal {
   margin: auto;
-  width:90%;
+  width: 90%;
   margin-top: 5px;
 }
 .sort-by-button {
   height: 30px;
-  color: #114084; 
+  color: #114084;
   margin-right: 10px;
   margin-left: auto;
-
 }
 .search-journal-bar {
   margin: auto;
   margin-top: 15px;
-  width:90%;
+  width: 90%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -293,15 +291,14 @@ input {
     margin-left: 10%;
   }
   .sortJournal {
-    max-width:90%;
+    max-width: 90%;
     margin-left: 10%;
   }
-  .search-journal-bar{
-    max-width:90%;
+  .search-journal-bar {
+    max-width: 90%;
     margin-left: 10%;
     margin-top: 0px;
   }
-    
 }
 @media screen and (max-width: 550px) {
   .upload-btn span {
@@ -316,7 +313,6 @@ input {
   .journal-details h2 {
     font-size: 90%;
   }
-  
 }
 
 @media screen and (max-width: 450px) {
@@ -325,11 +321,16 @@ input {
     margin-left: 15%;
   }
   .sortJournal {
-    max-width:85%;
+    max-width: 85%;
     margin-left: 15%;
   }
-  .search-journal-bar{
-    max-width:85%;
+  .search-journal-bar {
+    max-width: 85%;
     margin-left: 15%;
+  }
+
+  .upload-btn {
+    padding: 2%;
+    margin-top: 8%;
   }
 }

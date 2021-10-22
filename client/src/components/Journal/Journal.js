@@ -49,13 +49,14 @@ export default function Journal() {
       right: "auto",
       maxWidth: "90%",
       minWidth: "50%",
-      height: "85%",
+      height: "75%",
       borderRadius: "12px",
       bottom: "auto",
       marginRight: "-50%",
       marginBottom: "10px",
       transform: "translate(-50%, -50%)",
       zIndex: "100",
+      background: "#deecff"
     },
   };
 
