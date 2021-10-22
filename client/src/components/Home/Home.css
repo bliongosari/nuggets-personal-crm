@@ -26,7 +26,7 @@
   grid-column-gap: 5% 5%;
   grid-template-columns: 30% 30% 30%;
   justify-content: center;
-  padding: 10px
+  padding: 10px;
 }
 
 .summary {
@@ -217,7 +217,6 @@
   margin-right: 15px;
 }
 
-
 .square {
   background: var(--primary-blue);
   display: flex;
@@ -305,7 +304,7 @@ span {
   margin-bottom: 0;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 390px) and (max-width: 550px) {
   .next {
     padding-left: 0.5px;
     transition: 0.2s ease;
@@ -323,10 +322,9 @@ span {
   }
 
   .before:hover {
-    padding-left:0.5px;
+    padding-left: 0.5px;
     transition: 0.2s ease;
   }
-
 
   .current-events h1 {
     font-size: 2vh;
@@ -379,7 +377,6 @@ span {
 }
 
 @media screen and (min-width: 550px) and (max-width: 864px) {
-  
   .next {
     padding-left: 8px;
     width: 3vh;
@@ -403,8 +400,6 @@ span {
     width: 3vh;
     transition: 0.2s ease;
   }
-
-
 
   .line1 {
     margin-top: 5px;
@@ -451,8 +446,6 @@ span {
     transition: 0.2s ease;
   }
 
-
-
   .current-contacts-home h4 {
     font-size: 1.75vh;
   }
@@ -486,5 +479,4 @@ span {
     width: 4.8vh;
     transition: 0.2s ease;
   }
-
 }
