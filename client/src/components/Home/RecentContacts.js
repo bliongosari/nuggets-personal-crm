@@ -61,7 +61,7 @@ function RecentConctacts() {
         <div className="new-contacts" style = {{minHeight: "20vh"}}>
             <span className ="header-left">RECENTLY ADDED CONTACTS</span>
             <Link to = "/addcontact">
-            <button className="next1 round">&#43;</button>
+              <button className="next1 round">+</button>
             </Link>
             
         { noContacts ? (

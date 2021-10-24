@@ -374,6 +374,33 @@ span {
     width: 2vh;
     transition: 0.2s ease;
   }
+
+  .current-events-title span {
+    font-size: 1.7vh;
+  }
+
+  .current-contacts-home img {
+    height: 2vh;
+  }
+
+  .current-contacts-home h4 {
+    padding-top: 2vh;
+    font-size: 1.5vh;
+  }
+
+  .current-contacts-home h5 {
+    padding-top: 2vh;
+    font-size: 1.5vh;
+  }
+
+  .new-contacts span {
+    font-size: 1.5vh;
+  }
+
+  .next1 {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media screen and (min-width: 550px) and (max-width: 864px) {
