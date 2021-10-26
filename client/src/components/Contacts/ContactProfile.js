@@ -28,6 +28,7 @@ function ContactProfile() {
   ];
   
   const [reminders, setReminders] = useState(false);
+  const [delContact, setDelContact] = useState(false);
   const [info, setInfo] = useState(false);
   const [dateReminder, setDateReminderReal] = useState("")
   const [reminderMessage, setReminderMessage] = useState("")
@@ -38,6 +39,10 @@ function ContactProfile() {
   
   const toggleReminders = () => {
     setReminders(!reminders);
+  };
+
+  const toggleDelContact = () => {
+    setDelContact(!delContact);
   };
 
   const setDateReminder = (e) =>{
@@ -338,9 +343,37 @@ function ContactProfile() {
               </div>
 
               <div className="editcontact">
-                <button className="editbtn" id = "deleteContact" onClick={() => deleteContact(contact)}>
+                
+                
+                <button className="editbtn" id = "deleteContact" onClick={toggleDelContact}>
                   <h1>Delete Contact</h1>
                 </button>
+                {delContact && (
+                  <div className="modal1">
+                    <div onClick={toggleDelContact} className="overlay"></div>
+
+                    <div className="modal2-content">
+                      <div className="modal-titlee">
+                        <h2>Confirmation</h2>
+                        <hr></hr>
+                      </div>
+
+                      <div className="closebutton">
+                        <img alt="" src="../../close.svg" onClick={toggleDelContact}></img>
+                      </div>
+
+                      <div className="modal-titlee">
+                        <br/>
+                        <h2>Are you sure you want to delete this contact?</h2>
+                        <br/>
+                      </div>
+
+                      <button className="editbtn3" id = "deleteContact" onClick={() => deleteContact(contact)}>
+                        <h1>Delete Contact</h1>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
             </div>

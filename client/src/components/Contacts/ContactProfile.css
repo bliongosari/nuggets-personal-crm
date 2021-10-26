@@ -67,6 +67,20 @@
   justify-content: center;
   padding: 2%;
 }
+
+.editbtn3:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
+.editbtn3 h1 {
+  font-size: 75%;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
+  padding: 2%;
+}
 .editcontact {
   margin: 0;
   width: 100%;
@@ -374,6 +388,29 @@
 }
 
 .editbtn h1 {
+  font-size: 85%;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  justify-content: center;
+  padding: 2%;
+}
+
+.editbtn3 {
+  font-family: var(--button-font);
+  border-radius: 10px;
+  width: 50%;
+  background-color: var(--primary-blue);
+  text-align: center;
+  padding: 0.5%;
+  margin-top: 0.7%;
+  margin-bottom: 2%;
+  margin: auto;
+  justify-content: center;
+}
+
+.editbtn3 h1 {
   font-size: 85%;
   letter-spacing: 2px;
   color: white;
@@ -760,6 +797,9 @@
   .editbtn {
     width: 80%;
   }
+  .editbtn3 {
+    width: 80%;
+  }
 }
 
 @media screen and (min-width: 401px) and (max-width: 700px) {
@@ -895,6 +935,9 @@
   }
 
   .editbtn {
+    width: 50%;
+  }
+  .editbtn3 {
     width: 50%;
   }
 }
