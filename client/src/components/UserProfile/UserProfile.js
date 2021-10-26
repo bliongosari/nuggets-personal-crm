@@ -218,7 +218,7 @@ function UserProfile() {
             
             <h1 className="popup-header">Edit Profile</h1>
             <span style ={{ color: "red", margin: "0 auto", fontSize: "14px"}}>{editMessage}</span>
-            <div className="popup-text">
+            <div style ={{width: "80%", paddingTop: "0.5vh", margin: "0 auto"}}>
             <input
                     type="firstname"
                     placeholder=" ENTER A NEW FIRST NAME | Must only be alphabetical characters"
@@ -232,7 +232,7 @@ function UserProfile() {
                     onChange={(e) => setFirstname(e.target.value)}
                   ></input>
             </div>
-            <div className="popup-text">
+            <div style ={{width: "80%", paddingTop: "0.5vh", margin: "0 auto", marginTop: "2vh"}}>
             <input
                     type="lastname"
                     pattern="[a-zA-Z ]+"
@@ -272,7 +272,7 @@ function UserProfile() {
             </div>
 
             {/* <form onSubmit={requestChangePassword}> */}
-            <div className="popup-text">
+            <div style ={{width: "80%", paddingTop: "0.5vh", margin: "0 auto", marginTop: "2vh"}}>
               <input
                   type="password"
                   placeholder="  ENTER YOUR CURRENT PASSWORD  | Must contain atleast 8 characters with one digit, and one character"
@@ -283,7 +283,7 @@ function UserProfile() {
                   onChange={(e) => setOldPassword(e.target.value)}
               />
             </div>
-            <div className="popup-text">
+            <div style ={{width: "80%", paddingTop: "0.5vh", margin: "0 auto", marginTop: "2vh"}}>
               <input
                   type="password"
                   placeholder="  CREATE NEW PASSWORD  | Must contain atleast 8 characters with one digit, and one character"
@@ -297,7 +297,7 @@ function UserProfile() {
                   onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="popup-text">
+            <div style ={{width: "80%", paddingTop: "0.5vh", margin: "0 auto", marginTop: "2vh"}}>
               <input
                   type="password"
                   placeholder="  CONFIRM PASSWORD"
