@@ -269,6 +269,7 @@
   align-items: center;
   margin: auto;
   margin-top: 20px;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .addcbtn:hover {

@@ -196,7 +196,7 @@ function ContactProfile() {
                     onChange={setDateReminder}
                     required={true}
                   />
-                    <button onClick={submitReminder} className="addbtn" style = {{width: "100px", fontSize: "13px", marginTop: "10px"}}>
+                    <button onClick={submitReminder} className="addbtn" style = {{width: "60%", fontSize: "13px", marginTop: "8%", marginBottom: "0%"}}>
                     <h1 style = {{color: "white", fontSize: "12px"}}>Add a reminder </h1>
                     </button>
                 </div>

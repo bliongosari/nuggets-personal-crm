@@ -239,7 +239,6 @@ function Tabs({contact}) {
                       {delLifeEvent && (
                   <div className="modal1">
                     <div onClick={toggleDelLifeEvent} className="overlay"></div>
-
                     <div className="modal2-content">
                       <div className="modal-titlee">
                         <h2>Confirmation</h2>
