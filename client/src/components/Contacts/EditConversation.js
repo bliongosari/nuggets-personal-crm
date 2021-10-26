@@ -54,8 +54,8 @@ function EditConversation({edit, deactivate, contact, index, toggleConvo}) {
 
         <div className="details">
           <h2>Select form of communication:</h2>
-          {/* <div className="custom-select">
-            <form method="post"> */}
+          <div className="custom-select">
+            <form method="post">
               <select onChange={(e) => setForm(e.target[e.target.value].innerText)}>
                 <option value="0" disabled selected>-- Select option --</option>
                 <option value="1">Phone Number</option>
@@ -67,8 +67,8 @@ function EditConversation({edit, deactivate, contact, index, toggleConvo}) {
                 <option value="7">In Person</option>
                 <option value="8">Other</option>
               </select>
-            {/* </form>
-          </div> */}
+            </form>
+          </div>
             
         </div>
 
