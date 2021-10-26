@@ -279,7 +279,7 @@ function ContactProfile() {
                           </div>
                           <div className="currr-contacts-container">
                             <h2>Birthday:</h2>
-                            <h3>{contact.birthday || "-"}</h3>
+                            <h3>{parseDate(contact.birthday) || "-"}</h3>
                           </div>
 
                           <div className="currr-contacts-container">
