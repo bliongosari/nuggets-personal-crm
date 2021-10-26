@@ -65,6 +65,7 @@ body {
   width: 100%;
   padding-top: 1%;
   padding-bottom: 1%;
+  word-break: normal;
 }
 
 .details h2 {
@@ -76,6 +77,7 @@ body {
   margin-top: 1%;
   margin-bottom: 0.5%;
   text-align: left;
+  overflow-wrap: break-word;
 }
 
 .custom-select h2 {
