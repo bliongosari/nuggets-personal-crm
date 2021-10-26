@@ -184,7 +184,7 @@ function ContactProfile() {
 
                 <div className="modal-body">
                   <label>Remind me via notifications on</label>
-                  <h3 style ={{fontSize: "12px", color: "red"}}>{reminderMessage} </h3>
+                  <h3 style ={{fontSize: "50%", color: "red"}}>{reminderMessage} </h3>
                 </div>
 
                 <div style = {{display: "flex", flexDirection: "column", marginTop: "10px", alignItems: "center"}}>
@@ -196,7 +196,7 @@ function ContactProfile() {
                     onChange={setDateReminder}
                     required={true}
                   />
-                    <button onClick={submitReminder} className="addbtn" style = {{width: "100px", fontSize: "13px", marginTop: "10px"}}>
+                    <button onClick={submitReminder} className="addbtn" style = {{width: "70%", fontSize: "13px", marginTop: "5%"}}>
                     <h1 style = {{color: "white", fontSize: "12px"}}>Add a reminder </h1>
                     </button>
                 </div>

@@ -385,6 +385,7 @@
   margin-top: 0.7%;
   margin-bottom: 2%;
   justify-content: center;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .editbtn h1 {
@@ -502,6 +503,7 @@
   letter-spacing: 2.5px;
   font-size: 100%;
   left: 10%;
+  margin-top: 5%;
 }
 
 .modal-bodyy label {
