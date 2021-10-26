@@ -25,6 +25,7 @@ const customStyles = {
 function EventDetail(props) {
   const [modalIsOpen, setIsOpen] = useState(true);
   const [eventModal, setEventModal] = useState(false);
+  const [delEvent, setDelEvent] = useState(false);
   const [eventID, setEventID] = useState(null);
   const handleSelect = ({ start, end }) => {
     setIsOpen(true);
@@ -37,6 +38,10 @@ function EventDetail(props) {
     setIsOpen(false);
     setEventModal(true);
     setEventModal(false);
+  };
+
+   const toggleDelEvent = () => {
+    setDelEvent(!delEvent);
   };
   
   const [start, setStart] = useState("");
@@ -101,6 +106,7 @@ function EventDetail(props) {
       <div> 
       {success && <Feedback success message = "Successfully deleted event" />}
       {failed && <Feedback message = "Failed to delete event" />}
+      
       <div className="event-details">
         <h2 className="detail-title"> Event Details </h2>  
         <h3 className="event-name"> Event Name: {props.event.title}</h3>
@@ -113,7 +119,34 @@ function EventDetail(props) {
         <div style ={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
 
         <button className="edit-btn" onClick={openEventModal}> Edit Event </button>
-        <button className="delete-btn" onClick={deleteEvent}> Delete Event </button>
+        {/* <button className="delete-btn" onClick={deleteEvent}> Delete Event </button> */}
+        <button className="delete-btn" onClick={() => {toggleDelEvent(); setEventModal(!modalIsOpen);}}> Delete Event </button>
+        {delEvent && (
+          <div className="modal1">
+            <div onClick={toggleDelEvent} className="overlay"></div>
+
+            <div className="modal2-content">
+              <div className="modal-titlee">
+                <h2>Confirmation</h2>
+                <hr></hr>
+              </div>
+
+              <div className="closebutton">
+                <img alt="" src="../../close.svg" onClick={toggleDelEvent}></img>
+              </div>
+
+              <div className="modal-titlee">
+                <br/>
+                <h2>Are you sure you want to delete this event?</h2>
+                <br/>
+              </div>
+
+              <button className="editbtn3" onClick={deleteEvent}>
+                <h1>Delete Event</h1>
+              </button>
+            </div>
+          </div>
+        )}
         </div>
       </div>
       <Modal
