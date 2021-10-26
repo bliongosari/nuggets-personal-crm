@@ -70,9 +70,10 @@ function AddJournal() {
 
             <div className="detailsdesc">
               <h2>Description:</h2>
-              <input name="description"
+              <textarea name="description"
                 onChange={changeHandler}
-                required="false"></input>
+                required="false"
+                className="description"></textarea>
             </div>
             <div className="addjournal">
               <button id = "addNewJournalBtn" onClick={addjournal}

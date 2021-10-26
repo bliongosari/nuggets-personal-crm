@@ -116,10 +116,10 @@ function EventDetail(props) {
         <h3> Date end: {end} </h3>
         {/* <h3> Repeat: {props.event.repeat} </h3> */}
         <h3> Alert: {new Date(props.event.alert) > new Date(0) ? parseDate(props.event.alert) : "None"} </h3>
+        <h3> Notes: {props.event.notes ? props.event.notes: "-"}</h3>
         <div style ={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
 
         <button className="edit-btn" onClick={openEventModal}> Edit Event </button>
-        {/* <button className="delete-btn" onClick={deleteEvent}> Delete Event </button> */}
         <button className="delete-btn" onClick={() => {toggleDelEvent();}}> Delete Event </button>
         {delEvent && (
           <div className="modal5">

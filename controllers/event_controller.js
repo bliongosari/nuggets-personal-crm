@@ -52,7 +52,6 @@ const createEvent = async (req, res) => {
   try {
 
     const alertTime = getAlert(start, req.body.alert);
-    //console.log(alertTime);
     const event = new Event({
       user_id: req.user.id,
       title: req.body.title,
@@ -63,7 +62,6 @@ const createEvent = async (req, res) => {
       alert: alertTime,
       notes: req.body.notes,
     });
-    console.log(event);
     const savedEvent = await event.save();
     return res
       .status(200)

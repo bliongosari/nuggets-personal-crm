@@ -163,9 +163,14 @@
 .post-btn:hover {
   text-decoration: underline;
 }
-input[name="description"] {
+.description {
   height: 300px;
+  text-align: left;
+  padding: 0.4em 0.4em 0.4em 5px;
   vertical-align: top;
+  width: 100%;
+  color: var(--secondary-blue);
+  border: 1px solid var(--primary-blue);
 }
 
 form {
@@ -183,6 +188,9 @@ form {
   font-size: 13px;
   margin-bottom: 1em;
   display: block;
+}
+.addjbtn {
+  margin-top: 15%;
 }
 .add-details {
   border-bottom: 2px solid var(--primary-blue);
@@ -252,7 +260,8 @@ input {
   width: 100%;
   color: var(--secondary-blue);
   border: 1px solid var(--primary-blue);
-  padding: 5px;
+  padding-left: 5px;
+
 }
 .sortJournal {
   margin: auto;

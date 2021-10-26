@@ -166,10 +166,10 @@ function EventForm() {
             <br></br>
           <label> Notes </label>
           <br></br>
-          <input className="notes" 
+          <textarea className="notes" 
           name="notes" 
           onChange={changeHandler} 
-          required={false} />
+          required={false}></textarea>
           <br></br>
         </form>
 

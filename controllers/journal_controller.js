@@ -18,7 +18,7 @@ const getAll = async (req, res) => {
       return dateB - dateA;
     });
     var i=0;
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'2-digit', minute:'2-digit'};
     for(i=0; i<journals.length;i++) {
       var date = new Date(journals[i].createdOn);
       parsedDates[i] = date.toLocaleDateString('en-US', options);

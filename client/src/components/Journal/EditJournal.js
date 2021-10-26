@@ -70,9 +70,11 @@ function EditJournal(props) {
               </div>
               <div className="detailsdesc">
                 <h2>Description:</h2>
-                <input name="description"
+                <textarea name="description"
                   onChange={changeHandler}
-                  placeholder={props.journal.description}></input>
+                  placeholder={props.journal.description}
+                  align="top"
+                  className="description"></textarea>
               </div>
               <div className="addjournal">
                 <button onClick={handleSubmit} className="addjbtn">

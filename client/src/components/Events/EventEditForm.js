@@ -226,12 +226,12 @@ function EventEditForm(props) {
             <br></br>
           <label> Notes </label>
           <br></br>
-          <input className="notes" 
-                name="note" 
+          <textarea className="notes" 
+                name="notes" 
                 onChange={changeHandler} 
                 placeholder={props.event.notes}
                 required={false} 
-                />
+                ></textarea>
           <br></br>
         </form>
 

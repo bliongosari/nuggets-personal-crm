@@ -66,7 +66,7 @@ export default function Journal() {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     for(i=0; i<journals.length;i++) {
       var date = new Date(journals[i].createdOn);
-      parsedDates[i] = date.toLocaleDateString('en-US', options);
+      parsedDates[i] = date.toLocaleTimeString('en-US', options);
     }
     setDates(parsedDates);
   }
