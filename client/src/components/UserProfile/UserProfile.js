@@ -222,7 +222,7 @@ function UserProfile() {
                     name="firstname"
                     value={firstname}
                     required
-                    style = {{background: "white"}}
+                    
                     onChange={(e) => setFirstname(e.target.value)}
                   ></input>
             </div>
@@ -236,7 +236,6 @@ function UserProfile() {
                     placeholder=" ENTER A NEW LAST NAME   | Must only be alphabetical characters"
                     name="lastname"
                     required
-                    style = {{background: "white"}}
                     onChange={(e) => setLastname(e.target.value)}
                   ></input>
             </div>
@@ -273,7 +272,6 @@ function UserProfile() {
                   name="password"
                   required
                   value={oldPassword}
-                  style = {{background: "white"}}
                   onChange={(e) => setOldPassword(e.target.value)}
               />
             </div>
@@ -287,7 +285,6 @@ function UserProfile() {
                   oninput="this.setCustomValidity('')"
                   required
                   value={password}
-                  style = {{background: "white"}}
                   onChange={(e) => setPassword(e.target.value)}
               />
             </div>
@@ -300,7 +297,6 @@ function UserProfile() {
                   oninvalid="this.setCustomValidity('Must contain atleast one alphabet character, one numerical digit (0-9), and at least 8 characters')"
                   oninput="this.setCustomValidity('')"
                   required
-                  style = {{background: "white"}}
                   value={passwordConfirmation}
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
               />
