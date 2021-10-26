@@ -1,62 +1,137 @@
-  :root {
-    --primary-blue: #3466aa;
-    --secondary-blue: #114084;
-    --tertiary-blue: #82b7dc;
-    --fourth-blue: #deecff;
-    --fifth-blue: #e8f2ff;
-    --primary-black: #1c1c1c;
-    --primary-white: #f1f1f1;
-    --logo-font: "AbeeZee";
-    --button-font: "Urbanist";
-  }
-  .event-details {
-    margin-top: 10%;
-    color: var(--secondary-blue);
-    font-family: var(--button-font);
-    letter-spacing: 0.8px;
-    line-height: 25px;
-    font-size: 13px;
-  }
-  .event-name {
-      margin-top: 10px;
-  }
-  .detail-title {
-    font-size: 20px;
-    line-height: 35px;
-    width: 100%;
-    border-bottom: 2px solid var(--primary-blue);
-  }
-  .delete-btn {
-    margin-top: 10px;
-    cursor: pointer;
-    color:white;
-    background-color: var(--primary-blue);
-    font-family: var(--button-font);
-    width: 170px;
-    border: 0px;
-    border-radius: 3px;
-    padding: 7px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-  .delete-btn:hover {
-    text-decoration: underline;
-  }
-  .edit-btn {
-    margin-top: 20px;
-    cursor: pointer;
-    color:white;
-    background-color: var(--primary-blue);
-    font-family: var(--button-font);
-    width: 170px;
-    border: 0px;
-    border-radius: 3px;
-    padding: 7px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-  .edit-btn:hover {
-    text-decoration: underline;
-  }
+:root {
+  --primary-blue: #3466aa;
+  --secondary-blue: #114084;
+  --tertiary-blue: #82b7dc;
+  --fourth-blue: #deecff;
+  --fifth-blue: #e8f2ff;
+  --primary-black: #1c1c1c;
+  --primary-white: #f1f1f1;
+  --logo-font: "AbeeZee";
+  --button-font: "Urbanist";
+}
+.event-details {
+  margin-top: 10%;
+  color: var(--secondary-blue);
+  font-family: var(--button-font);
+  letter-spacing: 0.8px;
+  line-height: 25px;
+  font-size: 13px;
+}
+.event-name {
+  margin-top: 10px;
+}
+.detail-title {
+  font-size: 20px;
+  line-height: 35px;
+  width: 100%;
+  border-bottom: 2px solid var(--primary-blue);
+}
+.delete-btn {
+  margin-top: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: var(--primary-blue);
+  font-family: var(--button-font);
+  width: 170px;
+  border: 0px;
+  border-radius: 3px;
+  padding: 7px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.delete-btn:hover {
+  text-decoration: underline;
+}
+.edit-btn {
+  margin-top: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: var(--primary-blue);
+  font-family: var(--button-font);
+  width: 170px;
+  border: 0px;
+  border-radius: 3px;
+  padding: 7px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.edit-btn:hover {
+  text-decoration: underline;
+}
+
+.modal5 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+}
+
+.modaleventdeet-content {
+  position: fixed;
+  top: 48%;
+  left: 50%;
+  display: flex;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: var(--fifth-blue);
+  padding: 1% 1%;
+  border-radius: 30px;
+  width: 250px;
+  height: 200px;
+  z-index: 150;
+  flex-direction: column;
+}
+
+.modaleventtitle hr {
+  margin-bottom: 0;
+}
+
+.modaleventtitleee {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8%;
+}
+
+.modaleventtitle {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12%;
+}
+
+.modaleventtitle h2 {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.5px;
+  font-size: 120%;
+  padding: 0;
+  margin-top: 0%;
+  margin-bottom: 4%;
+  text-align: center;
+}
+.modaleventtitleee h2 {
+  font-family: var(--button-font);
+  color: var(--secondary-blue);
+  letter-spacing: 2.5px;
+  font-size: 120%;
+  padding: 0;
+  margin-top: 0%;
+  margin-bottom: 1.5%;
+  text-align: center;
+}
+
+.closebutton {
+  right: 20px;
+  top: 10px;
+  position: absolute;
+}
+
+.closebutton img {
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+  margin-right: 10%;
+}

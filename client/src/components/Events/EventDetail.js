@@ -120,13 +120,13 @@ function EventDetail(props) {
 
         <button className="edit-btn" onClick={openEventModal}> Edit Event </button>
         {/* <button className="delete-btn" onClick={deleteEvent}> Delete Event </button> */}
-        <button className="delete-btn" onClick={() => {toggleDelEvent(); setEventModal(!modalIsOpen);}}> Delete Event </button>
+        <button className="delete-btn" onClick={() => {toggleDelEvent();}}> Delete Event </button>
         {delEvent && (
-          <div className="modal1">
+          <div className="modal5">
             <div onClick={toggleDelEvent} className="overlay"></div>
 
-            <div className="modal2-content">
-              <div className="modal-titlee">
+            <div className="modaleventdeet-content">
+              <div className="modaleventtitle">
                 <h2>Confirmation</h2>
                 <hr></hr>
               </div>
@@ -135,10 +135,9 @@ function EventDetail(props) {
                 <img alt="" src="../../close.svg" onClick={toggleDelEvent}></img>
               </div>
 
-              <div className="modal-titlee">
-                <br/>
+              <div className="modaleventtitleee">
+
                 <h2>Are you sure you want to delete this event?</h2>
-                <br/>
               </div>
 
               <button className="editbtn3" onClick={deleteEvent}>
