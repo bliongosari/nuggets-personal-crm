@@ -127,7 +127,7 @@ router.get("/notifications", auth.authenticateToken, async (req, res) => {
     //let eventsOutstanding = []
     for (var i =0; i < events.length; i++) {
       // console.log(events[i]);
-      if (events[i].alert > new Date(0) && events[i].alert !== "None" && !events[i].notification_deleted){
+      if (events[i].alert && events[i].alert !== "None" && !events[i].notification_deleted){
         if (new Date(events[i].start) < Date.now() && !events[i].notification_opened){
           eventsOutstanding.push(events[i])
         }

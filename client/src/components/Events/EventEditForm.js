@@ -89,15 +89,6 @@ function EventEditForm(props) {
     window.location.reload(false);
   }
 
-  const repeat_list = [
-    "Never",
-    "Every Day",
-    "Every Week",
-    "Every Fortnight",
-    "Every Month",
-    "Every Year",
-  ];
-
   const alert_list = [
     "None",
     "At time of event",
