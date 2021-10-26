@@ -46,10 +46,10 @@ function ViewReminder({deactivate, contact, index, toggleViewReminder}) {
                 </h2>
               </div>
 
-              <div className="details">
+              {/* <div className="details">
                 <h2>Repeat reminder: {repeat}</h2>
                   
-              </div>
+              </div> */}
 
             </div>
         </div>

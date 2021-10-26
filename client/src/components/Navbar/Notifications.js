@@ -34,7 +34,7 @@ function Notification() {
     
     
       function parseDateContact(notif) {
-        return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
+        return (new Date(notif).toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ new Date(notif).toLocaleDateString("en-US", { month: 'short' })+ "-" + new Date(notif).toLocaleDateString("en-US", { year: 'numeric' }))
       }
 
       const closeEventDetail = () => {
@@ -87,6 +87,7 @@ function Notification() {
         // setNotifSelected(notif);
         // setEventDetail(true);
         // console.log(notif);
+          console.log(notif);
           api({
             method: "POST",
             url: "/api/contacts/delete-notif/" + notif._id

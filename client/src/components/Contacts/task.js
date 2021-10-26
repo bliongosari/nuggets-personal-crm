@@ -49,7 +49,7 @@ function Task({msg, deactivate, contact, toggleAddTask2}) {
 
     
         <div className="detailss">
-          <button className="eventbtn" onClick={deactivate}>
+          <button className="eventbtn" onClick={toggleAddTask2}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {

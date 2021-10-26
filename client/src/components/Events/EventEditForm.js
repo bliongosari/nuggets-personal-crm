@@ -19,6 +19,66 @@ function EventEditForm(props) {
     alert: props.event.alert,
   });
 
+  // "None",
+  // "At time of event",
+  // "5 minutes before",
+  // "10 minutes before",
+  // "15 minutes before",
+  // "20 minutes before",
+  // "1 hour before",
+  // "2 hours before",
+  // "1 day before",
+  // "2 days before",
+  // "1 week before",
+  useEffect(() => {
+    //console.log(new Date(allField["alert"]));
+    if (!props.event.alert) {
+      setAllFields({ ...allField, "alert": "None" });
+    }
+    const days = parseInt((new Date(props.event.start).getTime() - new Date(props.event.alert).getTime()) / (1000 * 60 * 60 * 24));
+    const hours = parseInt(Math.abs(new Date(props.event.start).getTime() - new Date(props.event.alert).getTime()) / (1000 * 60 * 60) % 24);
+    const minutes = parseInt(Math.abs(new Date(props.event.start).getTime() - new Date(props.event.alert).getTime()) / (1000 * 60) % 60);
+    if (days === 7){
+      setAllFields({ ...allField, "alert": "1 week before"});
+      return;
+    }
+    else if (days === 1){
+      setAllFields({ ...allField, "alert": "1 day before"});
+      return;
+    }
+    else if (days === 2){
+      setAllFields({ ...allField, "alert": "2 days before"});
+      return;
+    }
+    else if (hours === 1){
+      setAllFields({ ...allField, "alert": "1 hour before" });
+      return;
+    }
+    else if (hours === 2){
+      setAllFields({ ...allField, "alert":"2 hours before"});
+      return;
+    }
+    else if (minutes === 0){
+      setAllFields({ ...allField, "alert": "At time of event"});
+      return;
+    }
+    else if (minutes === 5){
+      setAllFields({ ...allField, "alert": "5 minutes before" });
+      return;
+    }
+    else if (minutes === 10){
+      setAllFields({ ...allField, "alert": "10 minutes before" });
+      return;
+    }
+    else if (minutes === 15){
+      setAllFields({ ...allField, "alert": "15 minutes before" });
+      return;
+    }
+    else if (minutes === 20){
+      setAllFields({ ...allField, "alert": "20 minutes before" });
+      return;
+    }
+  }, []);
 
   const changeToTime = (data) => {
     const start = new Date(data);
@@ -82,7 +142,9 @@ function EventEditForm(props) {
   const FailedMsg = () => <Alert variant="danger">Failed to edit</Alert>;
 
   const changeHandler = (e) => {
+    console.log(allField["alert"]);
     setAllFields({ ...allField, [e.target.name]: e.target.value });
+    console.log(allField["alert"]);
   };
 
   function refreshPage() {

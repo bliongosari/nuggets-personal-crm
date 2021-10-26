@@ -169,7 +169,29 @@ const editEvent = async (req, res) => {
     if (notes == "") {
       notes = event.notes;
     }
+    const days = parseInt((new Date(event.alert).getTime() - new Date(alert).getTime()) / (1000 * 60 * 60 * 24));
+    const hours = parseInt(Math.abs(new Date(event.alert).getTime() - new Date(alert).getTime()) / (1000 * 60 * 60) % 24);
+    const minutes = parseInt(Math.abs(new Date(event.alert).getTime() - new Date(alert).getTime()) / (1000 * 60) % 60);
 
+    if (days == 0 && hours == 0 && minutes == 0){
+      console.log("yes");
+      event = await Event.findOneAndUpdate(
+        {_id: eventID},
+        {
+          title: title,
+          location: location,
+          type: type,
+          start: new Date(start),
+          end: new Date(end),
+          notes: notes,
+        },
+        { new: true }
+      );
+      return res.status(200).json({
+        user: req.user,
+        message: "Successfully edited",
+      });
+    }
     event = await Event.findOneAndUpdate(
       {_id: eventID},
       {
@@ -179,6 +201,8 @@ const editEvent = async (req, res) => {
         start: new Date(start),
         end: new Date(end),
         alert: new Date(alert),
+        notification_opened: false,
+        notification_deleted: false,
         notes: notes,
       },
       { new: true }

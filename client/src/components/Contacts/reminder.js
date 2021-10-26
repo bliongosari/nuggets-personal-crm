@@ -49,7 +49,7 @@ function Reminder({msg, deactivate, contact, toggleAddRemind}) {
           <input value = {date} type = "date"  onChange={(e) => setDate(e.target.value)} />
         </div>
 
-        <div className="details">
+        {/* <div className="details">
           <h2>Repeat reminder:</h2>
           <div >
               <select onChange={(e) => setRepeat(e.target[e.target.value].innerText)}>
@@ -61,7 +61,7 @@ function Reminder({msg, deactivate, contact, toggleAddRemind}) {
               </select>
           </div>
             
-        </div>
+        </div> */}
 
         <div className="detailss">
           <button className="eventbtn" onClick={toggleAddRemind}>

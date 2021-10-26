@@ -55,7 +55,13 @@ function UserProfile() {
       setEditProfile(!editProfile);
     }
   }
-  const showChangePassword = () => setChangePassword(!changePassword);
+  const showChangePassword = () => {
+    setChangePassword(!changePassword)
+    setPassword("");
+    setOldPassword("");
+    setPasswordConfirmation("");
+    setChangePasswordMsg("");
+  };
 
   const [editMessage, setEditMessage] = useState("");
   const [user, setUser] = useState(null);
@@ -140,7 +146,7 @@ function UserProfile() {
           return;
           // window.location.reload(false);
         } else {
-          setChangePasswordMsg(res.data.message);
+          setChangePasswordMsg("Wrong password");
         }
         // setFlag(true);
         //setMessage(res.data.message);
@@ -317,7 +323,7 @@ function UserProfile() {
               </button>
             </div> */}
             <div className="centered-button">
-              <button className="button" id = "editProfileBtn" onClick={showChangePassword} onSubmit={requestChangePassword}>
+              <button className="button" id = "editProfileBtn" onClick={requestChangePassword}>
                 <img alt="Edit" src="../../edit.svg" className="icon"></img>
                 CHANGE PASSWORD
               </button>

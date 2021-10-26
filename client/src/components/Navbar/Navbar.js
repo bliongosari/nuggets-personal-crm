@@ -118,7 +118,12 @@ function NavbarHome() {
       })
         .then((res) => {
           if (res.status === 200) {
-            arrayEditOpened(notifications, notif);
+            if (notifications.includes(notif)){
+              arrayEditOpened(notifications, notif);
+            }
+            else {
+              deleteNotif(notif);
+            }
           } else {
             console.log("error")
           }
@@ -137,16 +142,23 @@ function NavbarHome() {
     })
       .then((res) => {
         if (res.status === 200) {
-          let currentNotif = arrayRemove(notifications, notif);
-          setNotifications([...currentNotif]);
+          if (notifications.includes(notif)){
+            let currentNotif = arrayRemove(notifications, notif);
+            setNotifications(currentNotif);
+          }
+          else {
+            let currentNotif = arrayRemove(pastNotifications, notif);
+            setPastNotifications(currentNotif);
+          }
+
           
-          showDropdownNotif(true);
+          // showDropdownNotif(true);
         } else {
           console.log("error")
         }
       })
       .catch((err) => {
-        console.log("error2")
+        console.log("error x")
         //setFailed(true);
       });
   }
@@ -162,14 +174,18 @@ function NavbarHome() {
       })
         .then((res) => {
           if (res.status === 200) {
-
-            arrayEditOpened(notifications, notif);
+            if (notifications.includes(notif)){
+              arrayEditOpened(notifications, notif);
+            }
+            else {
+              deleteContactNotif(notif);
+            }
           } else {
             console.log("error")
           }
         })
         .catch((err) => {
-          console.log("error2")
+          console.log("error a")
           //setFailed(true);
         });
     }
@@ -187,23 +203,33 @@ function NavbarHome() {
       })
         .then((res) => {
           if (res.status === 200) {
-            let currentNotif = arrayRemove(notifications, notif);
-            setNotifications([...currentNotif]);
+            if (notifications.includes(notif)){
+              let currentNotif = arrayRemove(notifications, notif);
+              setNotifications(currentNotif);
+            }
+            else {
+              let currentNotif = arrayRemove(pastNotifications, notif);
+              setPastNotifications(currentNotif);
+            }
             // window.location.reload(false);
           } else {
-            console.log("error")
+            console.log("error a")
           }
         })
         .catch((err) => {
-          console.log("error2")
+          console.log("error here")
           //setFailed(true);
         });
   }
 
   function arrayRemove(arr, item) { 
-    return arr.filter(function(ele){ 
+    let ar = arr.filter(function(ele){ 
         return ele !== item; 
     });
+
+    let clonedArr = JSON.parse(JSON.stringify(ar));
+    console.log(clonedArr);
+    return clonedArr;
   }
 
   function arrayEditOpened(arr, item) { 
@@ -222,11 +248,11 @@ function NavbarHome() {
     if (minutes.length === 1){
       minutes = "0" + minutes;
     }
-    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear()  + " " + hours + ":" + minutes;
+    return (new Date(notif).toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ new Date(notif).toLocaleDateString("en-US", { month: 'short' })+ "-" + new Date(notif).toLocaleDateString("en-US", { year: 'numeric' })) + " " + hours + ":" + minutes;
   }
 
   function parseDateContact(notif) {
-    return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
+    return (new Date(notif).toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ new Date(notif).toLocaleDateString("en-US", { month: 'short' })+ "-" + new Date(notif).toLocaleDateString("en-US", { year: 'numeric' }))
   }
 
 
