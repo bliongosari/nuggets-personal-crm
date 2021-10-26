@@ -172,7 +172,6 @@ const editEvent = async (req, res) => {
     const minutes = parseInt(Math.abs(new Date(event.alert).getTime() - new Date(alert).getTime()) / (1000 * 60) % 60);
 
     if (days == 0 && hours == 0 && minutes == 0){
-      console.log("yes");
       event = await Event.findOneAndUpdate(
         {_id: eventID},
         {

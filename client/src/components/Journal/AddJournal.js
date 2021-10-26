@@ -57,7 +57,6 @@ function AddJournal() {
           <div className="journalentryform">
             <form>
             <div className="formtitlee">
-              {/* <h1>Journal Details</h1> */}
               <hr></hr>
             </div>
 
