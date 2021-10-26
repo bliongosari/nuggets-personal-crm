@@ -51,6 +51,9 @@ body {
   margin-right: 10%;
 }
 
+.closeee img:hover {
+  cursor: pointer;
+}
 .tabs {
   padding: 15px;
   text-align: center;

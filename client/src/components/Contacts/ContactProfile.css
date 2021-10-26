@@ -626,6 +626,9 @@
   margin-top: 10%;
   margin-right: 10%;
 }
+.closebutton img:hover {
+  cursor: pointer;
+}
 
 .reminderbtn {
   font-family: var(--button-font);
