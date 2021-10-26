@@ -273,6 +273,7 @@
 
 .addcbtn:hover {
   background-color: var(--secondary-blue);
+  cursor: pointer;
 }
 .addcbtn h1 {
   font-size: 85%;

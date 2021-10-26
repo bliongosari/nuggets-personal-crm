@@ -258,7 +258,7 @@ function AddContact() {
         </div>
 
         <div className="details">
-          <h2>Tweeter:</h2>
+          <h2>Twitter:</h2>
           <input type="text" onChange={(e) => setTwitter(e.target.value)} />
         </div>
 
