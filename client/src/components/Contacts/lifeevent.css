@@ -75,6 +75,14 @@ body {
   margin-bottom: 0.5%;
 }
 
+.eventbtn:hover {
+  background-color: var(--secondary-blue);
+  cursor: pointer;
+}
+
+.custom-select select {
+  cursor: pointer;
+}
 .details input {
   background: var(--primary-white);
   border-color: var(--primary-blue);
