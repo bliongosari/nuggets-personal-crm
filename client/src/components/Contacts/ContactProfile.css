@@ -455,15 +455,15 @@
 
 .modal2-content {
   position: fixed;
-  top: 40%;
-  left: 47%;
+  top: 50%;
+  left: 50%;
   display: flex;
   transform: translate(-50%, -50%);
   line-height: 1.4;
   background: var(--fifth-blue);
   padding: 1% 1%;
   border-radius: 30px;
-  width: 380px;
+  width: 30%;
   height: auto;
   padding: 40px 20px;
   z-index: 10;
