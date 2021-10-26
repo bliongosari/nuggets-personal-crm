@@ -109,7 +109,7 @@ function ContactProfile() {
 
   function parseDate(notif) {
     if (new Date(notif) > new Date(0)){
-      return new Date(notif).getDate()+"/"+new Date(notif).getMonth()+"/"+new Date(notif).getFullYear();
+      return (new Date(notif).toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ new Date(notif).toLocaleDateString("en-US", { month: 'short' })+ "-" + new Date(notif).toLocaleDateString("en-US", { year: 'numeric' }))
     }
     return undefined;
   }
@@ -241,7 +241,7 @@ function ContactProfile() {
                   <h2>How we met:</h2>
                 </div>
                 <div className="curr-contacts-container" style ={{display: "flex", marginTop: "10px", maxHeight: "150px", overflow: "scroll"}}>
-                  <h3>{contact.meetDetails|| "-"}</h3>
+                  <h3>{contact.meeting_notes|| "-"}</h3>
                 </div>
                 <div className="curr-contacts-container">
                   <h2>Description:</h2>

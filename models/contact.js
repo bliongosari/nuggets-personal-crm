@@ -29,11 +29,7 @@ const reminderSchema = new Schema({
   },
   date: {
     type: Date,
-  },
-  repeat: {
-    type: String,
-    required: true,
-  },
+  }
 });
 
 const taskSchema = new Schema({
@@ -104,7 +100,7 @@ const contactSchema = new Schema({
     type: String,
   },
   phone_number: {
-    type: Number,
+    type: String,
   },
   notification_deleted: {
     type: Boolean,

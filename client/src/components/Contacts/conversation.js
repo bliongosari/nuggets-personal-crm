@@ -77,7 +77,7 @@ function Conversation({msg, deactivate, contact, toggleAddConvo}) {
         </div>
 
         <div className="detailss">
-          <button className="eventbtn" onClick={deactivate}>
+          <button className="eventbtn" onClick={toggleAddConvo}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {

@@ -183,7 +183,7 @@
   width: 85%;
 }
 
-.popup-text input {
+/* .popup-text input {
   font-family: var(--logo-font);
   font-size: 1.5vh;
   letter-spacing: 1.5px;
@@ -194,7 +194,7 @@
   background-color: var(--primary-white);
   border-radius: 0;
   border: solid 2px var(--secondary-blue);
-}
+} */
 
 .popup-header {
   font-family: var(--button-font);

@@ -129,10 +129,11 @@ router.put("/edit/:id", auth.authenticateToken, async(req, res) => {
 
 
 router.post('/delete-notif/:id', auth.authenticateToken, async(req, res) => {
-  console.log("yes");
+  console.log("a2");
   try {
     let reminderID = sanitize(req.params.id);
     var eventQueried = await Reminder.findOne({ _id: reminderID });
+    console.log(eventQueried);
     if ((req.user.id == eventQueried.belongs_to)) {
       const event = await Reminder.findOneAndDelete({ _id: reminderID });
       return res.status(200).json({
@@ -153,7 +154,7 @@ router.post('/delete-notif/:id', auth.authenticateToken, async(req, res) => {
 
 router.post('/open-notif/:id', auth.authenticateToken, async(req, res) => {
   try {
-    // console.log(req.params.id);
+    console.log("aa");
     // var eventID = sanitize(req.params.id);
     // console.log(eventID);
     // console.log("yes");

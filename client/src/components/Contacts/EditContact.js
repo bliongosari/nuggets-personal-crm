@@ -83,7 +83,7 @@ function EditContact(props) {
   const [full_name, setFullName] = useState(contact.full_name);
   const [image, setImage] = useState("");
   const [preferred_name, setPrefName] = useState(contact.preferred_name);
-  const [birthday, setBirthday] = useState(contact.birthday);
+  const [birthday, setBirthday] = useState(contact.birthday ? new Date(contact.birthday).toISOString().split('T')[0] : contact.birthday);
   const [relationship, setRelationship] = useState(contact.relationship);
   const [meeting_notes, setHowWeMet] = useState(contact.meeting_notes);
   const [description, setDescription] = useState(contact.description);
@@ -91,9 +91,16 @@ function EditContact(props) {
   const [phone_number, setPhoneNumber] = useState(contact.phone_number);
   const [linkedin, setLinkedIn] = useState(contact.linkedin);
   const [twitter, setTwitter] = useState(contact.twitter);
-  const [tags, setTags] = useState([]);
+
   const history = useHistory();
 
+  const getInitial = (contact) => {
+    console.log(birthday);
+    let items = contact.tags.split(",")
+    let filtered = tagsQueried.filter(t => items.includes(t.name));
+    return filtered; 
+  }
+  const [tags, setTags] = useState(contact.tags ? getInitial(contact) : []);
   const handleBirthdayChange = (date) => {
     setBirthday(date.target.value);
   }
@@ -102,6 +109,7 @@ function EditContact(props) {
     setImage(image)
   }
   const handleChange = (event) => {
+    console.log(tags);
     const {
       target: { value },
     } = event;

@@ -81,7 +81,7 @@ function LifeEvent({msg, deactivate, contact, toggleLife}) {
         </div>
 
         <div className="detailss">
-          <button className="eventbtn" onClick={deactivate}>
+          <button className="eventbtn" onClick={toggleLife}>
             <h1>Cancel</h1>
           </button>
           <button className="eventbtn" onClick={() => {

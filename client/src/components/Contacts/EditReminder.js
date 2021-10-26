@@ -11,7 +11,7 @@ function EditReminder({edit, deactivate, contact, index, toggleRemind}) {
   useEffect(() => {
     setTitle(contact.reminders[index].title);
     setDescription(contact.reminders[index].description);
-    setDate(contact.reminders[index].date);
+    setDate(contact.reminders[index].date ? new Date(contact.reminders[index].date).toISOString().split('T')[0] : contact.reminders[index].date);
     setRepeat(contact.reminders[index].repeat);
   }, [index]);
 
@@ -56,9 +56,9 @@ function EditReminder({edit, deactivate, contact, index, toggleRemind}) {
 
               <div className="details">
                 <h2>Reminder date:</h2>
-                <input value={date} placeholder="dd/mm/yyyy" onChange={(e) => setDate(e.target.value)} />
+                <input value={date} type = "date" onChange={(e) => setDate(e.target.value)} />
               </div>
-
+{/* 
               <div className="details">
                 <h2>Repeat reminder:</h2>
                 {/* <div className="custom-select">
@@ -73,7 +73,7 @@ function EditReminder({edit, deactivate, contact, index, toggleRemind}) {
                   {/* </form>
                 </div> */}
                   
-              </div>
+              </div> */}
 
               <div className="detailss">
                 <button className="eventbtn" onClick={toggleRemind}>

@@ -27,7 +27,7 @@ function EditLifeEvent({editLife, deactivate, contact, index, toggleLife}) {
 
   useEffect(() => {
     setCategory(contact.lifeevents[index].category);
-    setDate(contact.lifeevents[index].date);
+    setDate(contact.lifeevents[index].date ? new Date(contact.lifeevents[index].date).toISOString().split('T')[0] : contact.lifeevents[index].date );
     setTitle(contact.lifeevents[index].title);
     setStory(contact.lifeevents[index].story);
     setNotes(contact.lifeevents[index].notes);

@@ -284,7 +284,7 @@ function AddContact() {
         </div>
 
         <div className="addcontacts">
-          <button className="addcbtn">
+          <button className="addcbtn" onClick = {()  => {window.location.replace("../contacts")}}>
             <h1>Cancel</h1>
           </button>
         </div>
