@@ -149,20 +149,6 @@ function EventForm() {
             onChange={changeHandler}
             required={true}
           />
-          {/* 
-          <label className="repeat">Repeat</label>
-            <select
-              name="repeat"
-              value={allField["repeat"]}
-              onChange={changeHandler}
-              className="dragdown"
-            >
-              {repeat_list.map((repeat) => (
-                <option name={repeat} value={repeat}>
-                  {repeat}
-                </option>
-              ))}
-            </select>  */}
           <br></br>
           <label className="alert">Alert</label>
             <select
@@ -180,7 +166,10 @@ function EventForm() {
             <br></br>
           <label> Notes </label>
           <br></br>
-          <input className="notes" name="note" onChange={changeHandler} required={false} />
+          <input className="notes" 
+          name="notes" 
+          onChange={changeHandler} 
+          required={false} />
           <br></br>
         </form>
 

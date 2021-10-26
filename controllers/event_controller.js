@@ -63,6 +63,7 @@ const createEvent = async (req, res) => {
       alert: alertTime,
       notes: req.body.notes,
     });
+    console.log(event);
     const savedEvent = await event.save();
     return res
       .status(200)
@@ -195,7 +196,7 @@ const editEvent = async (req, res) => {
 };
 
 function getAlert(start, alert) {
-  var alertTime = new Date(0);
+  var alertTime = null;
   if(alert == "None") {
     return alertTime
   }
