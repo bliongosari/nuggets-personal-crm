@@ -39,6 +39,10 @@ function Tabs({contact}) {
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
   const [curMsg, setCurMsg] = useState("");
+  const [delLifeEvent, setDelLifeEvent] = useState(false);
+  const [delTask, setDelTask] = useState(false);
+  const [delConvo, setDelConvo] = useState(false);
+  const [delReminder, setDelReminder] = useState(false);
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -84,6 +88,18 @@ function Tabs({contact}) {
   };
   const toggleViewConvo = () => {
     setViewConvo(!ViewConvo);
+  };
+  const toggleDelLifeEvent = () => {
+    setDelLifeEvent(!delLifeEvent);
+  };
+  const toggleDelTask = () => {
+    setDelTask(!delTask);
+  };
+  const toggleDelReminder = () => {
+    setDelReminder(!delReminder);
+  };
+  const toggleDelConvo = () => {
+    setDelConvo(!delConvo);
   };
   
   const setSuccessMsg = async (msg) => {
@@ -216,9 +232,38 @@ function Tabs({contact}) {
                         <EditLifeEvent editLife = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleLife = {toggleLife} />
                       )}
 
-                      <button onClick={() => {deleteDetailLife(idx)}} className="confbutton">
+                      <button onClick={() => {toggleDelLifeEvent(); }} className="confbutton">
                         <DeleteIcon/>
                       </button>
+
+                      {delLifeEvent && (
+                  <div className="modal1">
+                    <div onClick={toggleDelLifeEvent} className="overlay"></div>
+
+                    <div className="modal2-content">
+                      <div className="modal-titlee">
+                        <h2>Confirmation</h2>
+                        <hr></hr>
+                      </div>
+
+                      <div className="closebutton">
+                        <img alt="" src="../../close.svg" onClick={toggleDelLifeEvent}></img>
+                      </div>
+
+                      <div className="modal-titlee2">
+                        <br/>
+                        <h2>Are you sure you want to delete this life event?</h2>
+                        <br/>
+                      </div>
+
+                      <button className="confirmbtn1" onClick={() => {deleteDetailLife(idx); toggleDelLifeEvent();}}>
+                        <h1>Delete Life Event</h1>
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+
                     </div>
                     <div className="datadetails">
                       <h1>{lifeevent.title}</h1>
@@ -271,11 +316,42 @@ function Tabs({contact}) {
                         )}
 
                       <br/>
-                      <button onClick={() => {
+                      {/* <button onClick={() => {
                         deleteReminder(idx)
                       }} className="confbutton">
                         <DeleteIcon/>
+                      </button> */}
+                      <button onClick={() => {toggleDelReminder(); }} className="confbutton">
+                        <DeleteIcon/>
                       </button>
+
+                      {delReminder && (
+                  <div className="modal1">
+                    <div onClick={toggleDelReminder} className="overlay"></div>
+
+                    <div className="modal2-content">
+                      <div className="modal-titlee">
+                        <h2>Confirmation</h2>
+                        <hr></hr>
+                      </div>
+
+                      <div className="closebutton">
+                        <img alt="" src="../../close.svg" onClick={toggleDelReminder}></img>
+                      </div>
+
+                      <div className="modal-titlee2">
+                        <br/>
+                        <h2>Are you sure you want to delete this reminder?</h2>
+                        <br/>
+                      </div>
+
+                      <button className="confirmbtn1"  onClick={() => {
+                        deleteReminder(idx); toggleDelReminder();}}>
+                        <h1>Delete Reminder</h1>
+                      </button>
+                    </div>
+                  </div>
+                )}
                     </div>
                     <div className="datadetails">
                       <h1>{reminder.title}</h1>
@@ -325,11 +401,39 @@ function Tabs({contact}) {
                         <EditTask edit = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleTask2 = {toggleTask2} />
                       )}
                       <br/>
-                      <button onClick={() => {
-                        deleteTask(idx);
-                      }} className="confbutton">
+                    
+                      <button onClick={() => {toggleDelTask(); }} className="confbutton">
                         <DeleteIcon/>
                       </button>
+
+                      {delTask && (
+                  <div className="modal1">
+                    <div onClick={toggleDelTask} className="overlay"></div>
+
+                    <div className="modal2-content">
+                      <div className="modal-titlee">
+                        <h2>Confirmation</h2>
+                        <hr></hr>
+                      </div>
+
+                      <div className="closebutton">
+                        <img alt="" src="../../close.svg" onClick={toggleDelTask}></img>
+                      </div>
+
+                      <div className="modal-titlee">
+                        <br/>
+                        <h2>Are you sure you want to delete this task?</h2>
+                        <br/>
+                      </div>
+
+                      <button className="confirmbtn1" onClick={() => {
+                        deleteTask(idx); toggleDelTask();
+                      }}>
+                        <h1>Delete Task</h1>
+                      </button>
+                    </div>
+                  </div>
+                )}
                     </div>
                     <div className="datadetails">
                       <h1>{task.title}</h1>
@@ -381,11 +485,39 @@ function Tabs({contact}) {
                         <EditConversation edit = {editResponse} deactivate={deactivate} contact={contact} index={index} toggleConvo = {toggleConvo} />
                       )}
                       <br/>
-                      <button onClick={() => {
-                          deleteConversation()
-                      }} className="confbutton">
+                      
+                      <button onClick={() => {toggleDelConvo(); }} className="confbutton">
                         <DeleteIcon/>
                       </button>
+
+                      {delConvo && (
+                  <div className="modal1">
+                    <div onClick={toggleDelConvo} className="overlay"></div>
+
+                    <div className="modal2-content">
+                      <div className="modal-titlee">
+                        <h2>Confirmation</h2>
+                        <hr></hr>
+                      </div>
+
+                      <div className="closebutton">
+                        <img alt="" src="../../close.svg" onClick={toggleDelConvo}></img>
+                      </div>
+
+                      <div className="modal-titlee2">
+                        <br/>
+                        <h2>Are you sure you want to delete this conversation?</h2>
+                        <br/>
+                      </div>
+
+                      <button className="confirmbtn1" onClick={() => {
+                        deleteConversation(idx); toggleDelConvo();
+                      }}>
+                        <h1>Delete Conversation</h1>
+                      </button>
+                    </div>
+                  </div>
+                )}
                     </div>
                   <div className="datadetails">
                       <h1>{conversation.topic}</h1>

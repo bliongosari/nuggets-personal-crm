@@ -368,7 +368,7 @@ function ContactProfile() {
                         <br/>
                       </div>
 
-                      <button className="editbtn3" id = "deleteContact" onClick={() => deleteContact(contact)}>
+                      <button className="editbtn3" id = "deleteContact" onClick={() => {deleteContact(contact); toggleDelContact();}}>
                         <h1>Delete Contact</h1>
                       </button>
                     </div>
