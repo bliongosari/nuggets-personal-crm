@@ -594,3 +594,18 @@ button {
   text-align: center;
   left: 50%;
 }
+
+.modal-titlee2 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.modal-titlee {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.datadetails h1 {
+  overflow-y: scroll;
+  height: 50%;
+}
