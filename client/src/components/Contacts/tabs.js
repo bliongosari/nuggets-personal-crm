@@ -197,7 +197,7 @@ function Tabs({contact}) {
 
       </div>
 
-      <div className="content-tabs">
+      <div className="content-tabs" style = {{paddingBottom: "20px", background: "white"}}>
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
           <div style = {{display: "flex", justifyContent: "space-between", width: "100%", flexWrap: "wrap"}}>
           <div className="head" style = {{display: "flex"}}>
