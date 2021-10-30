@@ -33,20 +33,6 @@ npm run e2e
 npm test
 ```
 
-### Folder structure
-
-```
-my-document/     # Root directory.
-|- client/        # Folder used to store builded (output) files.
-|- src/          # Markdowns files; one for each chapter.
-|- images/       # Images folder.
-|- metadata.yml  # Metadata content (title, author...).
-|- Makefile      # Makefile used for building our documents.
-```
-
-### Contributors
-
-
 ### Coding Standards
 - Multiple folders for different React Components
 
@@ -57,11 +43,6 @@ my-document/     # Root directory.
 - Uses ESLint and Prettier (extension in Visual Studio Code)
 
 - CodeQL and Nodejs Code scanning
-
-
-### Roadmap
-
-
 
 
 ### Tools & Technologies
